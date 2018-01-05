@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="TBAdvantagesTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="330" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="330" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nyc-P2-LQe" customClass="IQTextView">
+                        <rect key="frame" x="10" y="0.0" width="310" height="99.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="74" id="rCc-qb-CzP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2d-YC-ksx">
+                        <rect key="frame" x="290" y="69.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="7ST-T0-GEn"/>
+                            <constraint firstAttribute="height" constant="30" id="XYx-66-dfg"/>
+                        </constraints>
+                        <state key="normal" image="task-voice-small"/>
+                        <connections>
+                            <action selector="buttonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UQv-1q-YT1"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="nyc-P2-LQe" secondAttribute="bottom" constant="10" id="IqG-1U-NmA"/>
+                    <constraint firstItem="m2d-YC-ksx" firstAttribute="bottom" secondItem="nyc-P2-LQe" secondAttribute="bottom" id="NFE-4y-FSU"/>
+                    <constraint firstItem="m2d-YC-ksx" firstAttribute="trailing" secondItem="nyc-P2-LQe" secondAttribute="trailing" id="Scf-Oa-FBO"/>
+                    <constraint firstItem="nyc-P2-LQe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ctA-Vw-5uc"/>
+                    <constraint firstItem="nyc-P2-LQe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ds1-UJ-oZ0"/>
+                    <constraint firstAttribute="trailing" secondItem="nyc-P2-LQe" secondAttribute="trailing" constant="10" id="f4d-py-gpq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="recordingButton" destination="m2d-YC-ksx" id="ljj-t7-aKr"/>
+                <outlet property="textView" destination="nyc-P2-LQe" id="veZ-2X-OJb"/>
+            </connections>
+            <point key="canvasLocation" x="30" y="85"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="task-voice-small" width="8" height="12"/>
+    </resources>
+</document>

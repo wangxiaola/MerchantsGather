@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="138" id="KGk-i7-Jjw" customClass="TBNoteTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="138"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="137.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXb-rj-0zO">
+                        <rect key="frame" x="0.0" y="0.0" width="356" height="137"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kqI-V3-saG" customClass="IQTextView">
+                                <rect key="frame" x="14" y="37" width="328" height="90"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Wpl-ys-XeK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2F-41-fid">
+                                <rect key="frame" x="10" y="10" width="38" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title=" 备注" image="task_bt">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kqI-V3-saG" firstAttribute="leading" secondItem="UXb-rj-0zO" secondAttribute="leading" constant="14" id="1EZ-xt-XcC"/>
+                            <constraint firstItem="R2F-41-fid" firstAttribute="top" secondItem="UXb-rj-0zO" secondAttribute="top" constant="10" id="9Um-dT-eUl"/>
+                            <constraint firstItem="R2F-41-fid" firstAttribute="leading" secondItem="UXb-rj-0zO" secondAttribute="leading" constant="10" id="E5o-fr-VXk"/>
+                            <constraint firstItem="kqI-V3-saG" firstAttribute="top" secondItem="R2F-41-fid" secondAttribute="bottom" constant="10" id="RvP-cB-c9N"/>
+                            <constraint firstAttribute="trailing" secondItem="kqI-V3-saG" secondAttribute="trailing" constant="14" id="fkW-cA-1vH"/>
+                            <constraint firstAttribute="bottom" secondItem="kqI-V3-saG" secondAttribute="bottom" constant="10" id="yIX-dh-pS7"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="UXb-rj-0zO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="O4c-1N-e5P"/>
+                    <constraint firstAttribute="trailing" secondItem="UXb-rj-0zO" secondAttribute="trailing" id="gnr-ot-AZK"/>
+                    <constraint firstItem="UXb-rj-0zO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lwZ-jM-pp9"/>
+                    <constraint firstAttribute="bottom" secondItem="UXb-rj-0zO" secondAttribute="bottom" id="uPr-mx-7m0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="promptButton" destination="R2F-41-fid" id="cQq-0T-Sx7"/>
+                <outlet property="textView" destination="kqI-V3-saG" id="dEY-zE-46S"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="99"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="task_bt" width="5" height="16"/>
+    </resources>
+</document>

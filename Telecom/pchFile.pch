@@ -1,0 +1,149 @@
+//
+//  pchFile.pch
+//  slyjg
+//
+//  Created by 王小腊 on 16/2/29.
+//  Copyright © 2016年 王小腊. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#define checkStringNull(Str) (Str) == [NSNull class]||Str == nil?@"":Str;
+
+#define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
+
+#define iOS11_0Later ([UIDevice currentDevice].systemVersion.floatValue >= 11.0f)
+
+#define NAVIGATION_COLOR [UIColor colorWithRed:19/255.0 green:149/255.0 blue:217/255.0 alpha:1]
+#define BODER_COLOR [UIColor colorWithRed:223/255.0 green:224/255.0 blue:225/255.0 alpha:1]
+// 列表浅灰色背景
+#define BACKLIST_COLOR RGB(244, 244, 244)
+
+// RGB颜色转换（16进制->10进制）
+#define UIColorFromRGB(rgbValue,alphaValue)\
+\
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 \
+alpha:(float)(alphaValue)]
+
+// 补全图片路径
+#define FullImagePath(suffix) [NSString stringWithFormat:@"%@", suffix];
+// 循环引用
+#define MDStrongify(object) __strong typeof(object) object = weak##object;
+// 隐藏录音功能
+#define HIDE_RECORDING NO
+/**
+ 缓存的有效期  单位是s
+ */
+#define kYBCache_Expire_Time (3600*24)
+/**
+ 弱引用
+ */
+#define TBWeakSelf __weak typeof(self) weakSelf = self;
+
+#define JXWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define JXStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+
+//像素转大小
+#define pointFromPixel(px) px*1.15/3*(MainScreenW/414.0f) //px to pt
+#define fontFromPixel(px) px/2*(72/96.f) // font for px
+
+/**
+ *  沙盒Cache路径
+ */
+#define kCachePath ([NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject])
+
+#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+
+// 找widow
+#define APPDELEGATE     [[UIApplication sharedApplication] delegate]
+// 屏幕
+#define _SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define _SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
+#define GET_SCREEN_SCALE(scale) CGFloat scale = _SCREEN_WIDTH /375.0f;
+
+/*
+ ==========================================弱引用=================================================
+ */
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+
+
+#define VIDEO_FOLDER    @"videos"
+
+//http://ab114.weixin.geeker.com.cn
+//#define POST_URL @"http://172.16.12.16/xf1/service.csw"
+#define POST_URL @"http://ab114.weixin.geeker.com.cn/service.csw"
+#define IMAGE_URL @"http://ab114.weixin.geeker.com.cn/"
+#define is_IMAGE_URL @"upload/file"
+
+//团购秒杀分享详情
+#define GROUP_SHARE @"http://114cyab.wx.geeker.com.cn/tg-desc.html?id="
+//开启或停止验证名称 yes_validation no_validation
+#define VALIDATION_NAME  @"no_validation"
+
+#define HTML_URL(shop_ID)      [NSString stringWithFormat:@"%@/shop/shop_%ld.html",[UserInfo account].domain,(long)shop_ID]
+
+#define myDotNumbers     @"0123456789.\n"
+#define myNumbers          @"0123456789\n"
+#define  VALIDATION @"validation"// 登陆验证标示
+//#define _CODE @"513200" // 区域代码  513200
+#define TaskToInform @"TaskToInform" //任务通知
+#define CardVoucherNotice @"CardVoucherNotice" //卡券发布通知
+#define  Verification_code @"VALIDATION_code"// 验证码保存
+#define  Verification_phone @"VALIDATION_phone"// 验证手机号保存
+#define  Verification_video @"Verification_video"// 视频录制完成通知
+
+#define  TELECOM_ID @"1204691981"//app商店id
+#define  GDMAP_KEY @"3ef1c1270041d8eda5ad4212740a6004"//高德
+#define  START_PAGE @"START_PAGE"
+#define  IMAGE_OPERATOR @"WENWEN"//图片分割符
+#define  BASEDATA_NEW @"BASEDATA_NEW"//是否是第一次加载。切换账号
+// 比例 系数
+#define PROPORTION _SCREEN_WIDTH / 375
+// 模板别名
+#define PACKAGE_0  @"普通模板样式"
+#define PACKAGE_29  @"中级模板样式"
+#define PACKAGE_99  @"高级模板样式"
+
+// 贵州区域地区编码
+#define GZ_CODE @"520000"//15528149978
+// 句容区域地区编码
+#define JR_CODE @"321183"
+// 天津蓟州地区编码
+#define JIZHOU_CODE @"120225"
+/**
+ *  微信
+ *
+ */
+#define weixinID @"wx071c2201ad28845c"
+#define weixinSecret @"e96c5edc5384dba650fd0378411f104a"
+
+// DEBUG LOG
+#ifdef DEBUG
+#define TASK_DEBUG  0
+#define MMLog( s, ... ) NSLog( @"< %@ > ( 第%d行 ) %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define MMLog( s, ... )
+#define TASK_DEBUG  0
+#endif
+
+#ifdef __OBJC__
+
+#import "ZKUtil.h"
+#import "ZKPostHttp.h"
+#import "HUD.h"
+#import "MJUpdateUI.h"
+#import "MJExtension.h"
+#import "Masonry.h"
+#import "UserInfo.h"
+#import "NSDictionary+FixedParams.h"
+#import "UIView+MJAlertView.h"
+
+#endif

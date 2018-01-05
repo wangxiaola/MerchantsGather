@@ -1,0 +1,30 @@
+
+/* Class = "UINavigationController"; title = "任务"; ObjectID = "Jwq-0P-sq4"; */
+"Jwq-0P-sq4.title" = "更多";
+
+/* Class = "UITabBarItem"; title = "我的"; ObjectID = "LKO-9b-ZTf"; */
+"LKO-9b-ZTf.title" = "我的";
+
+/* Class = "UINavigationItem"; title = "首页"; ObjectID = "Wae-Jp-2pX"; */
+"Wae-Jp-2pX.title" = "采集";
+
+/* Class = "UITabBarItem"; title = "首页"; ObjectID = "aZY-yi-UeZ"; */
+"aZY-yi-UeZ.title" = "采集";
+
+/* Class = "UINavigationItem"; title = "我的"; ObjectID = "dKL-BA-K4i"; */
+"dKL-BA-K4i.title" = "我的";
+
+/* Class = "UITabBarItem"; title = "任务"; ObjectID = "ghA-ti-rch"; */
+"ghA-ti-rch.title" = "更多";
+
+/* Class = "UIViewController"; title = "首页"; ObjectID = "sRj-sT-ezP"; */
+"sRj-sT-ezP.title" = "采集";
+
+/* Class = "UINavigationController"; title = "我的"; ObjectID = "un1-Ek-VqZ"; */
+"un1-Ek-VqZ.title" = "我的";
+
+/* Class = "UITableViewController"; title = "我的"; ObjectID = "xyq-OP-ffD"; */
+"xyq-OP-ffD.title" = "我的";
+
+/* Class = "UINavigationController"; title = "首页"; ObjectID = "ysP-4c-2Wt"; */
+"ysP-4c-2Wt.title" = "采集";
