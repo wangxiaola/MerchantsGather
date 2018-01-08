@@ -22,9 +22,17 @@
 @property (nonatomic, assign) BOOL isUpload;
 // 数据库工具
 @property (nonatomic, strong) TBMakingSaveTool *saveTool;
+// 参数集合
+@property (nonatomic, strong) NSMutableDictionary *dictionary;
 @end
 @implementation TBTaskMakeViewMode
-
+- (NSMutableDictionary *)dictionary
+{
+    if (!_dictionary) {
+        _dictionary = [NSMutableDictionary dictionary];
+    }
+    return _dictionary;
+}
 - (TBMoreReminderView *)more
 {
     if (!_more)
@@ -77,6 +85,8 @@
 
 - (void)authenticationInformation
 {
+    
+    __block  NSString *images = @"";// 基础信息照片
     __block NSString *audioDataUrl = @"";//声音
     __block NSString *bossHeadImageUrl = @"";//头像
     __block NSString *coverImageUrl = @"";//背景图片
@@ -99,6 +109,8 @@
     __block  NSString *reverseImages = @"";// 商家账户信息照片(反)
     __block  NSString *signingImages = @"";// 签约合同信息照片
     
+    [self.dictionary removeAllObjects];
+    
     if (self.hiddeHUD == NO)
     {
         self.isUpload = YES;
@@ -107,7 +119,6 @@
             self.isUpload = NO;
         }];
     }
-    
     
     dispatch_group_t group = dispatch_group_create();
     TBWeakSelf
@@ -140,8 +151,31 @@
         environmentInfo = self.makingMode.environmentText;
     }
     
+    if (self.makingMode.images.count > 0) {
+        
+        // 上传基础图片
+        dispatch_group_enter(group);
+        [self uploadingResourcesArray:self.makingMode.images resourcesType:0 resultArray:^(NSArray *array) {
+            images = nil;
+            if (array)
+            {
+                images = [array componentsJoinedByString:@","];
+                weakSelf.makingMode.images = array.mutableCopy;
+                if (self.hiddeHUD == NO)
+                {
+                    [weakSelf hudProgress:0.1];
+                }
+                
+                if (coverImageUrl.length == 0 ) {
+                    coverImageUrl = array.firstObject;
+                }
+            }
+            dispatch_group_leave(group);
+            
+        }];
+    }
     // 上传背景图片
-    if (self.makingMode.coverPhotoUrl.length>0)
+    if (self.makingMode.coverPhotoUrl.length > 0)
     {
         coverImageUrl = self.makingMode.coverPhotoUrl;
     }
@@ -166,22 +200,25 @@
     }
     
     // 上传环境
-    dispatch_group_enter(group);
-    [self uploadingResourcesArray:self.makingMode.environmentPhotos resourcesType:0 resultArray:^(NSArray *array) {
-        environmentImagesUrls = nil;
-        if (array)
-        {
-            environmentImagesUrls = [array componentsJoinedByString:@","];
-            weakSelf.makingMode.environmentPhotos = array.mutableCopy;
-            
-            if (self.hiddeHUD == NO)
+    if (self.makingMode.environmentPhotos.count > 0) {
+        dispatch_group_enter(group);
+        [self uploadingResourcesArray:self.makingMode.environmentPhotos resourcesType:0 resultArray:^(NSArray *array) {
+            environmentImagesUrls = nil;
+            if (array)
             {
-                [weakSelf hudProgress:0.1];
+                environmentImagesUrls = [array componentsJoinedByString:@","];
+                weakSelf.makingMode.environmentPhotos = array.mutableCopy;
+                
+                if (self.hiddeHUD == NO)
+                {
+                    [weakSelf hudProgress:0.1];
+                }
             }
-        }
-        dispatch_group_leave(group);
-        
-    }];
+            dispatch_group_leave(group);
+            
+        }];
+    }
+    
     
     // 上传美食
     if (self.makingMode.foodPhotos.count>0)
@@ -204,21 +241,24 @@
     }
     
     // 上传外观
-    dispatch_group_enter(group);
-    [self uploadingResourcesArray:self.makingMode.appearancePhotos resourcesType:0 resultArray:^(NSArray *array) {
-        appearanceImageUrls = nil;
-        if (array)
-        {
-            appearanceImageUrls = [array componentsJoinedByString:@","];
-            weakSelf.makingMode.appearancePhotos = array.mutableCopy;
-            if (self.hiddeHUD == NO)
+    if (self.makingMode.appearancePhotos.count > 0) {
+        dispatch_group_enter(group);
+        [self uploadingResourcesArray:self.makingMode.appearancePhotos resourcesType:0 resultArray:^(NSArray *array) {
+            appearanceImageUrls = nil;
+            if (array)
             {
-                [weakSelf hudProgress:0.1];
+                appearanceImageUrls = [array componentsJoinedByString:@","];
+                weakSelf.makingMode.appearancePhotos = array.mutableCopy;
+                if (self.hiddeHUD == NO)
+                {
+                    [weakSelf hudProgress:0.1];
+                }
             }
-        }
-        dispatch_group_leave(group);
-        
-    }];
+            dispatch_group_leave(group);
+            
+        }];
+    }
+    
     
     // 上传老板图片
     if (self.makingMode.bossHeaderImageUrl.length>0)
@@ -386,17 +426,25 @@
             return;
         }
         
-        if (coverImageUrl.length == 0)
+        NSMutableDictionary *m1 = weakSelf.makingMode.infoDic.mutableCopy;
+        if (images.length > 0) {
+            
+            [m1 setObject:images forKey:@"imgs"];
+        }
+        if (coverImageUrl.length == 0 && images.length == 0)
         {
             weakSelf.makingMode.coverPhotoUrl = coverImageUrl = weakSelf.makingMode.appearancePhotos.firstObject;
         }
         
         NSMutableDictionary *povertyDic = weakSelf.makingMode.povertyInfoDic.mutableCopy;
-        [povertyDic setObject:povertyImages forKey:@"listPoverty"];
+        if (povertyImages.count > 0) {
+            [povertyDic setObject:povertyImages forKey:@"listPoverty"];
+        }
         if (weakSelf.makingMode.poorPeopleArray.count > 0)
         {
             [povertyDic setObject:weakSelf.makingMode.poorPeopleArray forKey:@"listPoorPeople"];
         }
+        
         // m1 m2-老板 m3-外观 m5-美食 m6-环境 m9-封面
         NSString *labelKey = @"label";
         
@@ -410,24 +458,36 @@
         
         NSString *indexType = weakSelf.makingMode.appearanceTemplateIndex.length == 0?@"":weakSelf.makingMode.appearanceTemplateIndex;
         
-        NSDictionary *tionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 weakSelf.makingMode.infoDic,@"m1",
-                                 @{@"img":bossHeadImageUrl,@"mic":audioDataUrl},@"m2",
-                                 @{@"img":appearanceImageUrls,@"desc":appearanceInfo,labelKey:appearanceLabel,@"type":indexType},@"m3",
-                                 @{@"img":@"",@"desc":@"",labelKey:@""},@"m4",
-                                 @{@"img":foodImagesUrls,@"desc":foodInfo,labelKey:foodLabel},@"m5",
-                                 @{@"img":environmentImagesUrls,@"desc":environmentInfo,labelKey:environmentLabel},@"m6",
-                                 @{@"img":@"",@"desc":@""},@"m7",
-                                 dic,@"m8",
-                                 @{@"logo":coverImageUrl,@"music":music},@"m9",
-                                 weakSelf.makingMode.preferentialDic,@"m10",
-                                 povertyDic,@"m11",
-                                 @{@"img1":positiveImages,@"img2":reverseImages},@"m12",
-                                 @{@"imgs":signingImages},@"m13",
-                                 weakSelf.makingMode.discountCardDic,@"m14",
-                                 roomDatas,@"m15",nil];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m1":m1.copy}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":bossHeadImageUrl,@"mic":audioDataUrl}:@"m2"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":appearanceImageUrls,@"desc":appearanceInfo,labelKey:appearanceLabel,@"type":indexType}:@"m3"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":@"",@"desc":@"",labelKey:@""}:@"m4"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":foodImagesUrls,@"desc":foodInfo,labelKey:foodLabel}:@"m5"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":environmentImagesUrls,@"desc":environmentInfo,labelKey:environmentLabel}:@"m6"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":@"",@"desc":@""}:@"m7"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{dic:@"m8"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"logo":coverImageUrl,@"music":music}:@"m9"}];
+        if (weakSelf.makingMode.preferentialDic.count > 0) {
+            [weakSelf.dictionary addEntriesFromDictionary:@{weakSelf.makingMode.preferentialDic:@"m10"}];
+        }
+        if (povertyDic.count > 0) {
+            [weakSelf.dictionary addEntriesFromDictionary:@{povertyDic:@"m11"}];
+        }
         
-        [weakSelf uploadingAllData:tionary];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img1":positiveImages,@"img2":reverseImages}:@"m12"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"imgs":signingImages}:@"m13"}];
+        if (weakSelf.makingMode.discountCardDic.count > 0) {
+            [weakSelf.dictionary addEntriesFromDictionary:@{weakSelf.makingMode.discountCardDic:@"m14"}];
+        }
+        if (roomDatas.count > 0) {
+            [weakSelf.dictionary addEntriesFromDictionary:@{roomDatas:@"m15"}];
+        }
+        
+        if (weakSelf.makingMode.bankMeg.length == 0 && weakSelf.makingMode.bankDic.count > 0) {
+            
+            [weakSelf.dictionary addEntriesFromDictionary:@{weakSelf.makingMode.bankDic:@"m16"}];
+        }
+        [weakSelf uploadingAllData:self.dictionary.copy];
         
     });
     
@@ -532,185 +592,6 @@
         
     }
     
-}
-#pragma mark --服务场所---
-
-// 服务场所上传
-- (void)submitServiceSuccessful:(successful)successful failure:(failure)failure;
-{
-    self.successful_s = successful;
-    self.failure_f = failure;
-    
-    if (self.hiddeHUD == NO)
-    {
-        self.isUpload = YES;
-        self.uploadHUD.prompStr = @"资源上传中...";
-        [self.uploadHUD showViewCancelUpload:^{
-            self.isUpload = NO;
-        }];
-    }
-    
-    __block  NSString *images = @"";// 基础信息照片
-    __block  NSMutableArray *povertyImages = [NSMutableArray arrayWithCapacity:self.makingMode.povertyPhotoArray.count];// 精准扶贫照
-    __block  NSString *positiveImages = @"";// 商家账户信息照片(正)
-    __block  NSString *reverseImages = @"";// 商家账户信息照片(反)
-    __block  NSString *signingImages = @"";// 签约合同信息照片
-    
-    
-    dispatch_group_t group = dispatch_group_create();
-    TBWeakSelf
-    
-    // 上传基础图片
-    dispatch_group_enter(group);
-    [self uploadingResourcesArray:self.makingMode.images resourcesType:0 resultArray:^(NSArray *array) {
-        images = nil;
-        if (array)
-        {
-            images = [array componentsJoinedByString:@","];
-            weakSelf.makingMode.images = array.mutableCopy;
-            if (self.hiddeHUD == NO)
-            {
-                [weakSelf hudProgress:0.1];
-            }
-        }
-        dispatch_group_leave(group);
-        
-    }];
-    
-    // 上传精准扶贫照片
-    [self.makingMode.povertyPhotoArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        dispatch_group_enter(group);
-        [self uploadingPovertyData:obj result:^(NSDictionary *dic) {
-            
-            if (dic)
-            {
-                [povertyImages addObject:dic];
-            }
-            if (self.hiddeHUD == NO)
-            {
-                [weakSelf hudProgress:0.1/weakSelf.makingMode.povertyPhotoArray.count];
-            }
-            dispatch_group_leave(group);
-        }];
-    }];
-    // 上传商家正面照
-    if (self.makingMode.positivePhotoUrl.length >0)
-    {
-        positiveImages = self.makingMode.positivePhotoUrl;
-    }
-    else if ([self.makingMode.positivePhotoData isKindOfClass:[NSData class]])
-    {
-        dispatch_group_enter(group);
-        [self uploadingResourcesArray:@[self.makingMode.positivePhotoData] resourcesType:0 resultArray:^(NSArray *array) {
-            positiveImages = nil;
-            if (array)
-            {
-                positiveImages = array.firstObject;
-                weakSelf.makingMode.positivePhotoUrl = array.firstObject;
-                weakSelf.makingMode.positivePhotoData = nil;
-                if (self.hiddeHUD == NO)
-                {
-                    [weakSelf hudProgress:0.1];
-                }
-            }
-            dispatch_group_leave(group);
-            
-        }];
-        
-    }
-    // 上传商家反面照
-    if (self.makingMode.reversePhotoUrl.length >0)
-    {
-        reverseImages = self.makingMode.reversePhotoUrl;
-    }
-    if ([self.makingMode.reversePhotoData isKindOfClass:[NSData class]])
-    {
-        dispatch_group_enter(group);
-        [self uploadingResourcesArray:@[self.makingMode.reversePhotoData] resourcesType:0 resultArray:^(NSArray *array) {
-            reverseImages = nil;
-            if (array)
-            {
-                reverseImages = array.firstObject;
-                weakSelf.makingMode.reversePhotoUrl = array.firstObject;
-                weakSelf.makingMode.reversePhotoData = nil;
-                if (self.hiddeHUD == NO)
-                {
-                    [weakSelf hudProgress:0.1];
-                }
-            }
-            dispatch_group_leave(group);
-            
-        }];
-        
-    }
-    // 上传合同照片
-    if (self.makingMode.signingArray.count >0)
-    {
-        dispatch_group_enter(group);
-        [self uploadingResourcesArray:self.makingMode.signingArray resourcesType:0 resultArray:^(NSArray *array) {
-            signingImages = nil;
-            if (array)
-            {
-                signingImages = [array componentsJoinedByString:@","];
-                weakSelf.makingMode.signingArray = array.mutableCopy;
-                if (self.hiddeHUD == NO)
-                {
-                    [weakSelf hudProgress:0.1];
-                }
-            }
-            dispatch_group_leave(group);
-            
-        }];
-    }
-    
-    
-    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
-        if (images == nil||positiveImages == nil||reverseImages == nil||signingImages == nil||povertyImages.count !=weakSelf.makingMode.povertyPhotoArray.count)
-        {
-            if (self.hiddeHUD == NO)
-            {
-                [weakSelf hudDism];
-                hudShowError(@"有图片上传失败,请重新上传提交!");
-                
-            }
-            [weakSelf postSuccess:NO];
-            return;
-        }
-        
-        NSMutableDictionary *m1 = weakSelf.makingMode.infoDic.mutableCopy;
-        [m1 setObject:images forKey:@"imgs"];
-        
-        NSMutableDictionary *povertyDic = weakSelf.makingMode.povertyInfoDic.mutableCopy;
-        [povertyDic setObject:povertyImages forKey:@"listPoverty"];
-        if (weakSelf.makingMode.poorPeopleArray.count > 0)
-        {
-            [povertyDic setObject:weakSelf.makingMode.poorPeopleArray forKey:@"listPoorPeople"];
-        }
-        
-        NSDictionary *tionary = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 m1,@"m1",
-                                 
-                                 @{@"img":@"",@"mic":@""},@"m2",
-                                 @{@"img":@"",@"desc":@"",@"label":@""},@"m3",
-                                 @{@"img":@"",@"desc":@"",@"label":@""},@"m4",
-                                 @{@"img":@"",@"desc":@"",@"label":@""},@"m5",
-                                 @{@"img":@"",@"desc":@"",@"label":@""},@"m6",
-                                 @{@"img":@"",@"desc":@""},@"m7",
-                                 @{},@"m8",
-                                 @{@"logo":weakSelf.makingMode.images.firstObject,@"music":@""},@"m9",
-                                 povertyDic,@"m11",
-                                 @{@"img1":positiveImages,@"img2":reverseImages},@"m12",
-                                 @{@"imgs":signingImages},@"m13",
-                                 @{@"edate":@"",@"id":@"",@"isRandom":@"false",@"money":@"5",
-                                   @"num":@"99999",@"sdate":@"",@"selfmoney":@"",@"stype":@"hong",@"ucondit":@"0"},@"m10",
-                                 @{@"edate":@"",@"id":@"",@"isRandom":@"false",@"money":@"9.5",@"num":@"99999",
-                                   @"sdate":@"",@"selfmoney":@"0",@"stype":@"ka",@"ucondit":@"0"},@"m14", nil];
-        
-        [weakSelf uploadingAllData:tionary];
-        
-    });
 }
 
 /**

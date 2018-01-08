@@ -83,37 +83,17 @@
     
     [self.allArray enumerateObjectsUsingBlock:^(TBMakingListMode * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
-        
-        if ([obj.type isEqualToString:@"service"])// 服务场所
-        {
-            dispatch_group_enter(group);
-            TBTaskMakeViewMode *tool = [self createMakeViewTool];
-            tool.makingMode = obj;
-            [tool submitServiceSuccessful:^(TBMakingListMode *mode) {
-                
-                [weakSelf hudProgress:self.progress];
-                [weakSelf.successArray addObject:mode];
-                dispatch_group_leave(group);
-            } failure:^{
-                
-                dispatch_group_leave(group);
-            }];
-        }
-        else
-        {
-            dispatch_group_enter(group);
-            TBTaskMakeViewMode *tool = [self createMakeViewTool];
-            tool.makingMode = obj;
-            [tool submitDataSuccessful:^(TBMakingListMode *mode) {
-                
-                [weakSelf hudProgress:self.progress];
-                [weakSelf.successArray addObject:mode];
-                dispatch_group_leave(group);
-            } failure:^{
-                dispatch_group_leave(group);
-            }];
+        dispatch_group_enter(group);
+        TBTaskMakeViewMode *tool = [self createMakeViewTool];
+        tool.makingMode = obj;
+        [tool submitDataSuccessful:^(TBMakingListMode *mode) {
             
-        }
+            [weakSelf hudProgress:self.progress];
+            [weakSelf.successArray addObject:mode];
+            dispatch_group_leave(group);
+        } failure:^{
+            dispatch_group_leave(group);
+        }];
         
     }];
     

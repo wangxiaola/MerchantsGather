@@ -72,8 +72,6 @@ typedef void(^isSaveState)(BOOL state);
 
 // 其它类型上传
 - (void)submitDataSuccessful:(successful)successful failure:(failure)failure;
-// 服务场所上传
-- (void)submitServiceSuccessful:(successful)successful failure:(failure)failure;
 
 /**
  保存

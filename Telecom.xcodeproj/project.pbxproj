@@ -3435,18 +3435,6 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		3B5C753E1F4E7DA800B2CE42 /* 我的 */ = {
-			isa = PBXGroup;
-			children = (
-				3B5C753F1F4E7DA800B2CE42 /* controller */,
-				3B5C75691F4E7DA800B2CE42 /* mode */,
-				3B5C757D1F4E7DA800B2CE42 /* tool */,
-				3B5C75801F4E7DA800B2CE42 /* viewMode */,
-				3B5C758B1F4E7DA800B2CE42 /* views */,
-			);
-			path = "我的";
-			sourceTree = "<group>";
-		};
 		3B5C753F1F4E7DA800B2CE42 /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -3887,13 +3875,13 @@
 		3B8BA19E1DF1276F0007027F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3B5C74701F4E7DA700B2CE42 /* 登录 */,
+				3B5C75EB1F4E7DA800B2CE42 /* 主文件 */,
+				3B5C74B21F4E7DA800B2CE42 /* 任务 */,
+				3BA7937A20031C0900D79669 /* 我的模块 */,
 				3B5D35011FFF6BAE0067688A /* 任务采集模块 */,
 				3BA454351FF1E65200176874 /* 视频录制 */,
-				3B5C74701F4E7DA700B2CE42 /* 登录 */,
 				3B5C74901F4E7DA700B2CE42 /* 模版 */,
-				3B5C74B21F4E7DA800B2CE42 /* 任务 */,
-				3B5C753E1F4E7DA800B2CE42 /* 我的 */,
-				3B5C75EB1F4E7DA800B2CE42 /* 主文件 */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -4074,6 +4062,18 @@
 				3BA454681FF1EC2400176874 /* SCRecordSessionManager.m */,
 			);
 			path = SCRecordSessionManager;
+			sourceTree = "<group>";
+		};
+		3BA7937A20031C0900D79669 /* 我的模块 */ = {
+			isa = PBXGroup;
+			children = (
+				3B5C753F1F4E7DA800B2CE42 /* controller */,
+				3B5C75691F4E7DA800B2CE42 /* mode */,
+				3B5C757D1F4E7DA800B2CE42 /* tool */,
+				3B5C75801F4E7DA800B2CE42 /* viewMode */,
+				3B5C758B1F4E7DA800B2CE42 /* views */,
+			);
+			path = "我的模块";
 			sourceTree = "<group>";
 		};
 		3BAD862D1FCFF26F00493C1A /* TZImagePickerController */ = {

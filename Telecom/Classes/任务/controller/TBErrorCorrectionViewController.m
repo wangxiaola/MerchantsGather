@@ -96,7 +96,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return indexPath.section == 0 ?44:UITableViewAutomaticDimension;;
-    
+
 }
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -109,7 +109,7 @@
     [self.viewArray enumerateObjectsUsingBlock:^(TBTemplateBaseView *base, NSUInteger idx, BOOL * _Nonnull stop) {
         
         [self.scrollView addSubview:base];
-         base.frame = CGRectMake(_SCREEN_WIDTH*idx, 0, _SCREEN_WIDTH,viewHeight);
+        base.frame = CGRectMake(_SCREEN_WIDTH*idx, 0, _SCREEN_WIDTH,viewHeight);
     }];
     
     //设置页数
