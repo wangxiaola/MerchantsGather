@@ -19,9 +19,11 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
 @property (weak, nonatomic) IBOutlet UILabel *adderssLabel;
 @property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet UIButton *twoButton;
+@property (weak, nonatomic) IBOutlet UIButton *lastButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailsWidth;
 @property (weak, nonatomic) IBOutlet UIImageView *labeBackView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *activationWidth;
+
 
 @property (nonatomic, strong) TBTaskListRoot *mode;
 
@@ -45,6 +47,7 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
     self.mode = list;
     self.cellTasktype = state;
     
+    NSString *lastName = @"";// 最后一个按钮的名称
     NSString  *twoButtonName = @"";// 第二个Button的名称
     NSInteger buttonNumber = 0;// 按钮数量
     CGFloat   buttonActivationWidth = 0.01f;
@@ -66,6 +69,18 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
         default:
             break;
     }
+    // 最后一个按钮名称判断
+    if ([list.abcbankstate isEqualToString:@"0"]) {
+        
+        lastName = @"绑定台卡";
+    }
+    else if ([list.abcbankstate isEqualToString:@"2"])
+    {
+        lastName = @"验证详情";
+    }else
+    {
+        lastName = @"激活";
+    }
     
     if ([list.isbind isEqualToString:@"1"])
     {
@@ -79,7 +94,7 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
         cellButtonWidth = ((_SCREEN_WIDTH - buttonNumber+1)/buttonNumber);
         buttonActivationWidth = cellButtonWidth;
     }
-
+    
     if (state == TasktypeNotThrough)
     {
         self.detailsWidth.constant = cellButtonWidth;
@@ -87,13 +102,15 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
     else
     {
         self.detailsWidth.constant = 0.01f;
-
+        
     }
-
+    
     self.activationWidth.constant = buttonActivationWidth;
     [self.twoButton setTitle:twoButtonName forState:UIControlStateNormal];
+    [self.lastButton setTitle:lastName forState:UIControlStateNormal];
     
     [ZKUtil downloadImage:self.headerImageView imageUrl:list.img duImageName:@"homeDefault"];
+    
     self.nameLabel.text = list.name;
     self.telLabel.text = list.tel;
     self.adderssLabel.text = list.address;
@@ -110,7 +127,7 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
         self.packageLabel.hidden = NO;
         self.packageLabel.text = [NSString stringWithFormat:@"%@元套餐",list.price];
     }
-
+    
     self.shareButton.enabled = share;
     self.shareButton.alpha = share?1.0f:0.3f;
     self.typeLabel.text = list.type;
@@ -126,21 +143,12 @@ NSString *const TBTaskListTableViewCellID = @"TBTaskListTableViewCellID";
 }
 - (IBAction)detailsClick:(UIButton *)sender
 {
-//    if (self.cellTasktype == TasktypeThrough) {
-//     
-//        if ([self.delegate respondsToSelector:@selector(taskCellClickBusinessMode:)])
-//        {
-//            [self.delegate taskCellClickBusinessMode:self.mode];
-//        }
-//    }
-//    else
-//    {
-        if ([self.delegate respondsToSelector:@selector(taskCellClickDetailsMode:)])
-        {
-            [self.delegate taskCellClickDetailsMode:self.mode];
-        }
-//    }
-
+    
+    if ([self.delegate respondsToSelector:@selector(taskCellClickDetailsMode:)])
+    {
+        [self.delegate taskCellClickDetailsMode:self.mode];
+    }
+    
 }
 - (IBAction)shareClick:(UIButton *)sender
 {

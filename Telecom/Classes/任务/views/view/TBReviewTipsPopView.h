@@ -10,6 +10,13 @@
 
 @interface TBReviewTipsPopView : UIView
 
-- (void)showTime:(NSString *)time content:(NSString *)info;
+/**
+ 赋值
+
+ @param title 名称
+ @param time 时间
+ @param info 内容
+ */
+- (void)showViewTitle:(NSString *)title time:(NSString *)time content:(NSString *)info;
 
 @end

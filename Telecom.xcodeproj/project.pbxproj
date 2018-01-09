@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3925AB200472850041AA0E /* TBLBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3925AA200472850041AA0E /* TBLBXScanViewController.m */; };
 		3B44EAA91F5946960089877B /* TBPreferentialInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAA61F5946960089877B /* TBPreferentialInformationView.m */; };
 		3B44EAAA1F5946960089877B /* TBDiscountCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAA81F5946960089877B /* TBDiscountCardView.m */; };
 		3B44EAAD1F59469F0089877B /* TBPreferentialStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAAC1F59469F0089877B /* TBPreferentialStatusView.m */; };
@@ -647,6 +648,8 @@
 /* Begin PBXFileReference section */
 		17BB67B0358954F0928443F7 /* Pods_Telecom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Telecom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		382E642283A572C6A35FAE7C /* Pods-Telecom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telecom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telecom/Pods-Telecom.debug.xcconfig"; sourceTree = "<group>"; };
+		3B3925A9200472850041AA0E /* TBLBXScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBLBXScanViewController.h; sourceTree = "<group>"; };
+		3B3925AA200472850041AA0E /* TBLBXScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBLBXScanViewController.m; sourceTree = "<group>"; };
 		3B44EAA51F5946960089877B /* TBPreferentialInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPreferentialInformationView.h; sourceTree = "<group>"; };
 		3B44EAA61F5946960089877B /* TBPreferentialInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferentialInformationView.m; sourceTree = "<group>"; };
 		3B44EAA71F5946960089877B /* TBDiscountCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBDiscountCardView.h; sourceTree = "<group>"; };
@@ -3307,6 +3310,8 @@
 				3B5C74BF1F4E7DA800B2CE42 /* TBTaskListTypeViewController.m */,
 				3B5C74C41F4E7DA800B2CE42 /* TBTemplateChooseCollectionViewController.h */,
 				3B5C74C51F4E7DA800B2CE42 /* TBTemplateChooseCollectionViewController.m */,
+				3B3925A9200472850041AA0E /* TBLBXScanViewController.h */,
+				3B3925AA200472850041AA0E /* TBLBXScanViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -3706,16 +3711,8 @@
 			isa = PBXGroup;
 			children = (
 				3B5D35061FFF6BD50067688A /* view */,
-				3B5D35051FFF6BCD0067688A /* cells */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		3B5D35051FFF6BCD0067688A /* cells */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = cells;
 			sourceTree = "<group>";
 		};
 		3B5D35061FFF6BD50067688A /* view */ = {
@@ -4514,6 +4511,7 @@
 				3B5C75FD1F4E7DA800B2CE42 /* TBSetPasswordViewController.m in Sources */,
 				3BBCE2001FCBF10800117771 /* TBAppearanceTemplateTableViewCell.m in Sources */,
 				3B5C73E81F4E7D5100B2CE42 /* ZXDataMatrixBitMatrixParser.m in Sources */,
+				3B3925AB200472850041AA0E /* TBLBXScanViewController.m in Sources */,
 				3B5C760B1F4E7DA800B2CE42 /* HomeHeaderView.m in Sources */,
 				3B5C736B1F4E7D5100B2CE42 /* MBProgressHUD+Add.m in Sources */,
 				3B5C737C1F4E7D5100B2CE42 /* TAAbstractDotView.m in Sources */,

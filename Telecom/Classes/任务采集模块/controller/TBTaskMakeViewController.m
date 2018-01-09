@@ -203,7 +203,7 @@
 - (void)goBackClick
 {
     [self.view endEditing:YES];
-    if (self.makingList.msg.length == 0 ||self.makingList.appearancePhotos.count>0 )
+    if (self.makingList.appearancePhotos.count>0 || self.makingList.infoDic.count > 0 )
     {
         [self showPrompt];
     }

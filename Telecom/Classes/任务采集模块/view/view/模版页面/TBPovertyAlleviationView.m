@@ -439,7 +439,6 @@
 - (BOOL)updataMakingIsPrompt:(BOOL)prompt;
 {
     __block  NSString *message = @"";
-    
     TBWeakSelf
     [self.photoArray enumerateObjectsUsingBlock:^(NSDictionary *obj, NSUInteger idx, BOOL * _Nonnull stop)
      {
@@ -483,21 +482,20 @@
     }
     
     NSString *code = [UserInfo account].code;
-    if (self.makingList.modelsID == 5 || [code isEqualToString:JR_CODE] || [code isEqualToString:GZ_CODE])
+    if (self.makingList.modelsID == 5 || [code isEqualToString:GZ_CODE])
     {
-        self.makingList.povertyMsg = @"";
+        message = @"";
     }
 
-    if (self.makingList.povertyMsg.length >0 && prompt == YES)
+    if (message.length >0 && prompt == YES)
     {
-        self.makingList.povertyMsg = message;
         NSIndexPath *indexPath = self.infoDictionary[@"indexPath"];
         [self shakeAnimationForViewIndexPath:indexPath];
-        [UIView addMJNotifierWithText:self.makingList.povertyMsg dismissAutomatically:YES];
+        [UIView addMJNotifierWithText:message dismissAutomatically:YES];
     }
     
     [self.infoDictionary removeObjectForKey:@"indexPath"];
-    return self.makingList.povertyMsg.length == 0;
+    return message.length == 0;
 }
 
 

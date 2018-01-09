@@ -19,7 +19,7 @@
 
 @interface TBTemplateInfoView ()<UITableViewDelegate,UITableViewDataSource,TBRegionChooseViewDelegate,ZKLocationDelegate>
 
-@property (nonatomic, strong) NSString *mes;
+@property (nonatomic, strong) NSString *message;
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -599,16 +599,15 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
  */
 - (BOOL)updataMakingIsPrompt:(BOOL)prompt;
 {
-    self.mes = @"";
+    self.message = @"";
     if (self.dataTool.suitables.count == 0&&self.dataTool.labels.count == 0)
     {
-        self.mes = @"数据还未加载完";
+        self.message = @"数据还未加载完";
         [self updataCellShoptypesID:self.shopsID];
     }
     NSMutableDictionary *dic = [self extractingData];
-    self.makingList.msg = self.mes;
     
-    if (self.makingList.msg.length == 0 )
+    if (self.message.length == 0 )
     {
         [dic removeObjectForKey:@"indexPath"];
         self.makingList.infoDic = dic.copy;
@@ -617,7 +616,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     else
     {
         if (prompt == YES) {
-            [UIView addMJNotifierWithText:self.makingList.msg dismissAutomatically:YES];
+            [UIView addMJNotifierWithText:self.message dismissAutomatically:YES];
             NSIndexPath *indexPath = self.makingList.infoDic[@"indexPath"];
             [self shakeAnimationForViewIndexPath:indexPath];
         }
@@ -643,7 +642,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     {
         if (self.suitablesArray.count == 0)
         {
-            self.mes = @"请选择标签";
+            self.message = @"请选择标签";
             dic[@"indexPath"] = [NSIndexPath indexPathForRow:2 inSection:1];
         }
         
@@ -652,7 +651,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     {
         if (self.suitablesArray.count == 0)
         {
-            self.mes = @"请选择标签";
+            self.message = @"请选择标签";
             dic[@"indexPath"] = [NSIndexPath indexPathForRow:2 inSection:1];
         }
         
@@ -661,7 +660,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     {
         if (self.labelsArray.count == 0)
         {
-            self.mes = @"请选择标签";
+            self.message = @"请选择标签";
             dic[@"indexPath"] = [NSIndexPath indexPathForRow:1 inSection:1];
         }
         
@@ -669,7 +668,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     if (self.dataTool.ranges.count > 0) {
         if (self.rangesArray.count == 0)
         {
-            self.mes = @"请选择标签";
+            self.message = @"请选择标签";
             dic[@"indexPath"] = [NSIndexPath indexPathForRow:0 inSection:1];
         }
         
@@ -679,12 +678,12 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     if (![ZKUtil isMobileNumber:phone])
     {
         [self cellRitTextViewText:@"" index:7];
-        self.mes = @"绑定手机号码有误！";
+        self.message = @"绑定手机号码有误！";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:7 inSection:0];
     }
     else if ([phone isEqualToString:[UserInfo account].phone])
     {
-        self.mes = @"绑定手机号码不能是网格经理的";
+        self.message = @"绑定手机号码不能是网格经理的";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:7 inSection:0];
         
     }
@@ -692,43 +691,43 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     if (![ZKUtil checkNumber:tel])
     {
         [self cellRitTextViewText:@"" index:6];
-        self.mes = @"联系电话填写有误！";
+        self.message = @"联系电话填写有误！";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:6 inSection:0];
     }
     
     if (![ZKUtil ismoney:xf]) {
         
         [self cellRitTextViewText:@"" index:5];
-        self.mes = @"人均消费格式不对!";
+        self.message = @"人均消费格式不对!";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:5 inSection:0];
     }
     
     if (address.length == 0)
     {
-        self.mes = @"请填写详细地址!";
+        self.message = @"请填写详细地址!";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:4 inSection:0];
     }
     if (gps.length == 0)
     {
-        self.mes = @"请先定位!";
+        self.message = @"请先定位!";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:3 inSection:0];
     }
     
     if (qy.length == 0)
     {
-        self.mes = @"请选择区域类型!";
+        self.message = @"请选择区域类型!";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:2 inSection:0];
     }
     
     if (type.length == 0)
     {
-        self.mes = @"请选择商家类型!";
+        self.message = @"请选择商家类型!";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:1 inSection:0];
     }
     
     if (name.length == 0)
     {
-        self.mes = @"请填写商家名称!";
+        self.message = @"请填写商家名称!";
         dic[@"indexPath"] = [NSIndexPath indexPathForRow:0 inSection:0];
     }
     
@@ -751,7 +750,6 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     {
         [dic setObject:[self.rangesArray componentsJoinedByString:@","] forKey:@"range"];
     }
-    
     
     NSString *lat = [NSString stringWithFormat:@"%.6f",self.latitude];
     NSString *lon = [NSString stringWithFormat:@"%.6f",self.longitude];

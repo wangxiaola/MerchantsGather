@@ -459,33 +459,33 @@
         NSString *indexType = weakSelf.makingMode.appearanceTemplateIndex.length == 0?@"":weakSelf.makingMode.appearanceTemplateIndex;
         
         [weakSelf.dictionary addEntriesFromDictionary:@{@"m1":m1.copy}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":bossHeadImageUrl,@"mic":audioDataUrl}:@"m2"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":appearanceImageUrls,@"desc":appearanceInfo,labelKey:appearanceLabel,@"type":indexType}:@"m3"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":@"",@"desc":@"",labelKey:@""}:@"m4"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":foodImagesUrls,@"desc":foodInfo,labelKey:foodLabel}:@"m5"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":environmentImagesUrls,@"desc":environmentInfo,labelKey:environmentLabel}:@"m6"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img":@"",@"desc":@""}:@"m7"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{dic:@"m8"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"logo":coverImageUrl,@"music":music}:@"m9"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m2":@{@"img":bossHeadImageUrl,@"mic":audioDataUrl}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m3":@{@"img":appearanceImageUrls,@"desc":appearanceInfo,labelKey:appearanceLabel,@"type":indexType}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m4":@{@"img":@"",@"desc":@"",labelKey:@""}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m5":@{@"img":foodImagesUrls,@"desc":foodInfo,labelKey:foodLabel}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m6":@{@"img":environmentImagesUrls,@"desc":environmentInfo,labelKey:environmentLabel}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m7":@{@"img":@"",@"desc":@""}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m8":dic}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m9":@{@"logo":coverImageUrl,@"music":music}}];
         if (weakSelf.makingMode.preferentialDic.count > 0) {
-            [weakSelf.dictionary addEntriesFromDictionary:@{weakSelf.makingMode.preferentialDic:@"m10"}];
+            [weakSelf.dictionary addEntriesFromDictionary:@{@"m10":weakSelf.makingMode.preferentialDic}];
         }
         if (povertyDic.count > 0) {
-            [weakSelf.dictionary addEntriesFromDictionary:@{povertyDic:@"m11"}];
+            [weakSelf.dictionary addEntriesFromDictionary:@{@"m11":povertyDic}];
         }
         
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"img1":positiveImages,@"img2":reverseImages}:@"m12"}];
-        [weakSelf.dictionary addEntriesFromDictionary:@{@{@"imgs":signingImages}:@"m13"}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m12":@{@"img1":positiveImages,@"img2":reverseImages}}];
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m13":@{@"imgs":signingImages}}];
         if (weakSelf.makingMode.discountCardDic.count > 0) {
-            [weakSelf.dictionary addEntriesFromDictionary:@{weakSelf.makingMode.discountCardDic:@"m14"}];
+            [weakSelf.dictionary addEntriesFromDictionary:@{@"m14":weakSelf.makingMode.discountCardDic}];
         }
         if (roomDatas.count > 0) {
-            [weakSelf.dictionary addEntriesFromDictionary:@{roomDatas:@"m15"}];
+            [weakSelf.dictionary addEntriesFromDictionary:@{@"m15":roomDatas}];
         }
         
         if (weakSelf.makingMode.bankMeg.length == 0 && weakSelf.makingMode.bankDic.count > 0) {
             
-            [weakSelf.dictionary addEntriesFromDictionary:@{weakSelf.makingMode.bankDic:@"m16"}];
+            [weakSelf.dictionary addEntriesFromDictionary:@{@"m16":weakSelf.makingMode.bankDic}];
         }
         [weakSelf uploadingAllData:self.dictionary.copy];
         

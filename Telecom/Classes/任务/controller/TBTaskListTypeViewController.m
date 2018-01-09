@@ -10,6 +10,7 @@
 #import "TBBasicDataTool.h"
 #import "TBErrorCorrectionViewController.h"
 #import "TBFinancialActivateViewController.h"
+#import "TBLBXScanViewController.h"
 
 #import "TBHtmlShareTool.h"
 #import "TBReviewTipsPopView.h"
@@ -367,9 +368,8 @@
  */
 - (void)taskCellClickDetailsMode:(TBTaskListRoot *)data;
 {
-    
     TBReviewTipsPopView *popView = [[TBReviewTipsPopView alloc] init];
-    [popView showTime:data.time content:data.info];
+    [popView showViewTitle:@"审核详情" time:data.time content:data.info];
 }
 /**
  点击营业状态
@@ -402,8 +402,25 @@
  */
 - (void)taskCellClickActivationMode:(TBTaskListRoot *)data;
 {
-    TBFinancialActivateViewController *vc = [[TBFinancialActivateViewController alloc] initMerchantsPhone:data.tel];
-    [self.navigationController pushViewController:vc animated:YES];
+    // 最后一个按钮名称判断
+    if ([data.abcbankstate isEqualToString:@"0"]) {
+        // 绑定台卡
+        TBLBXScanViewController *lbVc = [[TBLBXScanViewController alloc] init];
+        lbVc.shopID = data.ID;
+        [self.navigationController pushViewController:lbVc animated:YES];
+    }
+    else if ([data.abcbankstate isEqualToString:@"2"])
+    {
+        // 验证详情
+        TBReviewTipsPopView *popView = [[TBReviewTipsPopView alloc] init];
+        [popView showViewTitle:@"验证详情" time:@"" content:data.info];
+    }else
+    {
+        // 激活
+        TBFinancialActivateViewController *vc = [[TBFinancialActivateViewController alloc] initMerchantsPhone:data.tel];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

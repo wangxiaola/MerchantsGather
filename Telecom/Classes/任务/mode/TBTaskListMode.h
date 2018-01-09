@@ -38,6 +38,10 @@
 
 @interface TBTaskListRoot : NSObject
 
+@property (nonatomic, copy) NSString *abcbankdesc;
+
+@property (nonatomic, copy) NSString *abcbankstate;
+
 @property (nonatomic, copy) NSString *isbind;
 
 @property (nonatomic, copy) NSString *address;

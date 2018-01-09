@@ -229,7 +229,7 @@ static NSString*const  reuseIdentifier_describe = @"cell_describe";
 {
     if (makingList == nil)
     {
-         return @{@"name":@"基本信息",@"prompt":@"(必填)"};
+        return @{@"name":@"基本信息",@"prompt":@"(必填)"};
     }
     self.makingList = makingList;
     
@@ -762,11 +762,9 @@ static NSString*const  reuseIdentifier_describe = @"cell_describe";
     self.makingList.complete = message.length == 0?1:0;
     self.makingList.infoDic = dic.copy;
     
-    self.makingList.msg = message;
-    
     NSIndexPath *indexPath = dic[@"indexPath"];
     
-    if (self.makingList.msg.length == 0 )
+    if (message.length == 0 )
     {
         [dic removeObjectForKey:@"indexPath"];
         return YES;
@@ -774,14 +772,13 @@ static NSString*const  reuseIdentifier_describe = @"cell_describe";
     else
     {
         if (prompt == YES) {
-            [UIView addMJNotifierWithText:self.makingList.msg dismissAutomatically:YES];
+            [UIView addMJNotifierWithText:message dismissAutomatically:YES];
             [self shakeAnimationForViewIndexPath:indexPath];
         }
         [dic removeObjectForKey:@"indexPath"];
         return NO;
     }
 }
-
 
 /**
  验证对象合法性

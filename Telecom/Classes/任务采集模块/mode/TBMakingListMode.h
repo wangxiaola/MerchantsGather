@@ -28,7 +28,6 @@
  基本信息 验证 - 0
  */
 @property (nonatomic, strong) NSDictionary *infoDic;// 可串演服务场所基本信息
-@property (nonatomic, strong) NSString *msg;
 
 /**
  老板信息 验证 - 1
@@ -99,7 +98,6 @@
  */
 @property (nonatomic, strong) NSDictionary *povertyInfoDic;
 @property (nonatomic, strong) NSMutableArray *povertyPhotoArray;
-@property (nonatomic, strong) NSString *povertyMsg;
 // 贫困人员信息
 @property (nonatomic, strong) NSMutableArray *poorPeopleArray;
 

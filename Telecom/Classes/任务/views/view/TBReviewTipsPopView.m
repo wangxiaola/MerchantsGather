@@ -9,7 +9,9 @@
 #import "TBReviewTipsPopView.h"
 
 @interface TBReviewTipsPopView ()
-
+{
+    UILabel *titleLabel;
+}
 @property (nonatomic, strong) UIView *popView;
 @property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UITextView *textView;
@@ -31,9 +33,8 @@
         self.popView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.popView];
         
-        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel = [[UILabel alloc] init];
         titleLabel.textColor = [UIColor blackColor];
-        titleLabel.text = @"审核不通过原因";
         titleLabel.font = [UIFont systemFontOfSize:18 weight:0.2];
         [self.popView addSubview:titleLabel];
         
@@ -109,10 +110,13 @@
     return self;
 
 }
-- (void)showTime:(NSString *)time content:(NSString *)info;
+- (void)showViewTitle:(NSString *)title time:(NSString *)time content:(NSString *)info;
 {
-    self.timeLabel.text = time;
+    if (time.length > 0) {
+      self.timeLabel.text = time;
+    }
     self.textView.text = info;
+    titleLabel.text = title;
     
     [[APPDELEGATE window] addSubview:self];
     self.popView.transform = CGAffineTransformMakeScale(0, 0);

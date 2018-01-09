@@ -140,9 +140,6 @@
 }
 
 
-
-
-
 //开关闪光灯
 - (void)openOrCloseFlash
 {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="371" height="146"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="371" height="146"/>
+                <rect key="frame" x="0.0" y="0.0" width="371" height="145.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2F9-2u-6R7">
@@ -241,6 +241,7 @@
                 <outlet property="detailsWidth" destination="YHV-Im-Vtg" id="TJe-Pi-lIA"/>
                 <outlet property="headerImageView" destination="BgA-qc-RJ5" id="VJP-OB-0VJ"/>
                 <outlet property="labeBackView" destination="VgH-Ht-xNi" id="MrH-cy-QWH"/>
+                <outlet property="lastButton" destination="xBM-M0-RWj" id="nuW-7I-MXT"/>
                 <outlet property="nameLabel" destination="I7b-BM-wLb" id="jph-QH-Uwy"/>
                 <outlet property="packageLabel" destination="5AI-wD-m3c" id="ewr-J6-gRQ"/>
                 <outlet property="shareButton" destination="xOC-MO-0s4" id="1rE-1g-klV"/>

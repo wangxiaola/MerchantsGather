@@ -491,7 +491,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     [self cellRitTextViewText:[m1 valueForKey:@"address"] index:4];
     [self cellRitTextViewText:[m1 valueForKey:@"tel"] index:5];
     [self cellRitTextViewText:[m1 valueForKey:@"phone"] index:6];
-
+    
     
     
     NSString *labels = [m1 valueForKey:@"label"];
@@ -514,7 +514,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     [self.tableView reloadData];
     [self updataCellLabels];
     
-     return @{@"name":@"基本信息",@"prompt":@"(必填)"};
+    return @{@"name":@"基本信息",@"prompt":@"(必填)"};
 }
 
 - (void)updataCellShoptypesID:(NSInteger)code;
@@ -603,14 +603,14 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
         [self updataCellShoptypesID:self.shopsID];
     }
     self.makingList.infoDic = [self extractingData];
-    self.makingList.msg = self.mes;
-    if (self.makingList.msg.length == 0 )
+    
+    if (self.mes.length == 0 )
     {
         return YES;
     }
     else
     {
-        prompt == NO ? : [UIView addMJNotifierWithText:self.makingList.msg dismissAutomatically:YES];
+        prompt == NO ? : [UIView addMJNotifierWithText:self.mes dismissAutomatically:YES];
         return NO;
     }
 }
@@ -624,7 +624,7 @@ static NSString*const  reuseIdentifier_label = @"cell_label";
     NSString *address = [self cellRitTextViewTextIndex:4];
     NSString *tel = [self cellRitTextViewTextIndex:5];
     NSString *phone = [self cellRitTextViewTextIndex:6];
-
+    
     
     if (self.dataTool.grades.count>0)
     {
