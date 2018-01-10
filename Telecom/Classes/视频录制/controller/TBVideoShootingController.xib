@@ -23,6 +23,7 @@
                 <outlet property="previewView" destination="Nbh-Xr-mn6" id="GUB-Xl-VGh"/>
                 <outlet property="progressBar" destination="59Q-cY-Xac" id="nUj-FX-yzI"/>
                 <outlet property="recordingBackimageView" destination="9Jc-CL-bqu" id="5eI-BW-lWm"/>
+                <outlet property="recordingButton" destination="TuX-7V-eYx" id="oUC-LZ-DeP"/>
                 <outlet property="timeLabel" destination="9mc-iQ-oMm" id="pBu-k3-oMj"/>
                 <outlet property="videoViewHeight" destination="f64-O3-Z7u" id="pcH-jJ-8if"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

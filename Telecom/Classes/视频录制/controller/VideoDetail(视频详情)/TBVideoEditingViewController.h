@@ -1,5 +1,5 @@
 //
-//  LZVideoDetailsVC.h
+//  TBVideoEditingViewController.h
 //  laziz_Merchant
 //
 //  Created by biyuhuaping on 2017/4/19.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SCRecorder.h"
 
-@interface LZVideoDetailsVC : UIViewController
+@interface TBVideoEditingViewController : UIViewController
 
 @property (nonatomic, strong) SCRecordSession * recordSession;
 /**

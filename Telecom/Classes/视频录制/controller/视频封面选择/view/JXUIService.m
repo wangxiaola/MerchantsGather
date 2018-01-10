@@ -15,8 +15,7 @@
 
 @property(nonatomic, strong) NSArray <JXVideoImage *>*displayKeyframeImages;
 
-@property(nonatomic, assign) BOOL isNotFristScroll;//一开始就会滚动
-
+@property (nonatomic, assign) NSInteger scrollHDTag;
 @end
 @implementation JXUIService
 
@@ -63,15 +62,6 @@
 }
 
 
-- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    /**!
-     加载Collectionview一开始会调用scrollViewDidScroll:
-     */
-    self.isNotFristScroll = YES;
-}
-
-
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -79,7 +69,13 @@
     if (self.asset == nil) {
         return;
     }
-    
+    if (self.scrollHDTag == 2) {
+    }
+    else
+    {
+        self.scrollHDTag += 1;
+        return;
+    }
     // 视频图片总长度
     CGFloat videoTrackLength = KeyframePickerViewCellWidth *self.displayKeyframeImages.count;
     
@@ -113,7 +109,7 @@
     
     
     // 回调
-    if (self.scrollDidBlock && self.isNotFristScroll) {
+    if (self.scrollDidBlock) {
         self.scrollDidBlock(currentTime);
     }
     

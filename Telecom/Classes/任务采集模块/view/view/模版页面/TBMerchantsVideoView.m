@@ -234,7 +234,7 @@
         weakSelf.videoMode = [[TBRecordVideoMode alloc] init];
         [weakSelf updateVideoViewMode:weakSelf.videoMode];
     }];
-
+    
 }
 /**
  播放视频
@@ -311,13 +311,41 @@
     self.makingList = makingList;
     
     self.videoMode = [TBRecordVideoMode mj_objectWithKeyValues:makingList.videoDictionary];
+    
     if (makingList.videoData)
     {
         self.videoMode.coverImage = [UIImage imageWithData:makingList.videoData];
+        
     }
-    [self updateVideoViewMode:self.videoMode];
     
-     return @{@"name":@"商户视频",@"prompt":@""};
+    if ([self.videoMode.videoPath containsString:is_IMAGE_URL]) {
+        [self updateVideoViewMode:self.videoMode];
+    }
+    else
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSString *path = NSTemporaryDirectory();
+            NSString * url = [NSString stringWithFormat:@"%@%@",path,self.videoMode.videoPath];
+            NSData *data = [NSData dataWithContentsOfFile:url];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if (!data) {
+                 self.videoMode = [[TBRecordVideoMode alloc] init];
+                }
+                [self updateVideoViewMode:self.videoMode];
+            });
+        });
+        
+        
+        [self updateVideoViewMode:self.videoMode];
+    }
+    
+    
+    
+    
+    return @{@"name":@"商户视频",@"prompt":@""};
 }
 /**
  数据提交

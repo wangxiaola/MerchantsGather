@@ -107,7 +107,6 @@
     [more cancelClick:^{
         [weakSelf reStartDevice];
     }];
-    
 }
 - (void)showHUDError:(NSString *)str
 {

@@ -1,21 +1,23 @@
 //
-//  LZVideoDetailsVC.m
+//  TBVideoEditingViewController.m
 //  laziz_Merchant
 //
 //  Created by biyuhuaping on 2017/4/19.
 //  Copyright © 2017年 XBN. All rights reserved.
 //  视频详情
 
-#import "LZVideoDetailsVC.h"
+#import "TBVideoEditingViewController.h"
 #import "AWCollectionViewDialLayout.h"
-#import "LZVideoTools.h"
-#import "TBWatermarkOverlayView.h"
 #import "JXVideoImagePickerViewController.h"
+#import "LZVideoTools.h"
+#import "TBCaptureUtilities.h"
 #import "TBFilterCollectionViewCell.h"
+#import "TBVideoRecordingView.h"
+#import "TBWatermarkOverlayView.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 static NSString * const cellID = @"cellID";
 
-@interface LZVideoDetailsVC ()<SCPlayerDelegate,UICollectionViewDataSource, UICollectionViewDelegate>
+@interface TBVideoEditingViewController ()<SCPlayerDelegate,UICollectionViewDataSource, UICollectionViewDelegate>
 {
     CGFloat cell_height;
     NSString *_videoPath;
@@ -34,7 +36,7 @@ static NSString * const cellID = @"cellID";
 @property (nonatomic, strong) NSArray *filtrtNames;
 @end
 
-@implementation LZVideoDetailsVC
+@implementation TBVideoEditingViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -199,7 +201,8 @@ static NSString * const cellID = @"cellID";
 // 录音
 - (IBAction)recordingClick:(UIButton *)sender
 {
-    
+    TBVideoRecordingView *recordingView = [[TBVideoRecordingView alloc] init];
+    [recordingView showRecordingTime:self.videoTime.doubleValue];
 }
 #pragma mark  ----tool fun----
 //创建动态滤镜
@@ -247,31 +250,56 @@ static NSString * const cellID = @"cellID";
         return;
     }
     hudShowLoading(@"视频正在处理");
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
     [_player pause];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-//    AVMutableComposition *comosition = [AVMutableComposition composition];
-//    NSURL *audioInputUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]];
-//    AVURLAsset *audioAsset = [[AVURLAsset alloc] initWithURL:audioInputUrl options:nil];
-//    CMTimeRange audioTimeRange = CMTimeRangeMake(kCMTimeZero, _recordSession.duration);
-//    AVMutableCompositionTrack *audioTrack = [comosition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-//    AVAssetTrack *audioAssetTrack = [[audioAsset tracksWithMediaType:AVMediaTypeAudio] firstObject];
-//    [audioTrack insertTimeRange:audioTimeRange ofTrack:audioAssetTrack atTime:kCMTimeZero error:nil];
-//    AVMutableAudioMixInputParameters *parameters = [AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:audioAssetTrack];
-//    AVMutableAudioMix *audioMix = [AVMutableAudioMix audioMix];
-//    audioMix.inputParameters = @[parameters];
+    NSURL *audioInputUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]];
+    TBWeakSelf
+    // 合成音频
+    [TBCaptureUtilities mergeVideo:self.recordSession.assetRepresentingSegments
+                          andAudio:audioInputUrl
+                           results:^(NSString *path, NSError *error)
+     {
+
+         [weakSelf mergedidFinish:path WithError:nil];
+     }];
+
+}
+#pragma mark  ----视频合成----
+
+/**
+ 最终合成视频保存
+
+ @param video 视频 路径或AVAsset
+ @param error 错误信息
+ */
+- (void)mergedidFinish:(id )video WithError:(NSError *)error
+{
+    SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
+    AVAsset *set;
+    if ([video isKindOfClass:[NSString class]])
+    {
+        NSURL *url = [NSURL fileURLWithPath:video];
+        if (!url) {
+            [self promptExceptionInformation:@"视频合成异常！"];
+            return;
+        }
+        set = [AVAsset assetWithURL:url];
+    }
+    else
+    {
+        set = self.recordSession.assetRepresentingSegments;
+    }
     
-    SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:self.recordSession.assetRepresentingSegments];
+    SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:set];
     exportSession.videoConfiguration.filter = currentFilter;
     exportSession.videoConfiguration.preset = SCPresetHighestQuality;
     exportSession.audioConfiguration.preset = SCPresetHighestQuality;
     exportSession.videoConfiguration.maxFrameRate = 35;
     exportSession.outputUrl = self.recordSession.outputUrl;
-//    exportSession.audioConfiguration.audioMix = audioMix;
+    exportSession.audioConfiguration.enabled = YES;
     exportSession.outputFileType = AVFileTypeMPEG4;
     exportSession.contextType = SCContextTypeAuto;
-    exportSession.audioConfiguration.enabled = YES;
     
     TBWatermarkOverlayView *overlay = [TBWatermarkOverlayView new];
     overlay.date = self.recordSession.date;
@@ -304,21 +332,34 @@ static NSString * const cellID = @"cellID";
                     _videoPath = path;
                     [self pushCoverChooseControllerVideoPath:path];
                 } else {
-                    hudShowError(@"保存失败");
+                    [self promptExceptionInformation:@"保存失败！"];
                 }
             }];
         } else {
             if (!exportSession.cancelled) {
-                hudShowError(@"保存失败");
+                [self promptExceptionInformation:@"保存失败！"];
             }
         }
     }];
     
     
-    
-    
+}
+- (void)video:(NSString *)videoPath didFinishSavingWithUError:(NSError *)error contextInfo: (void *)contextInfo{
+    if (error) {
+        [self promptExceptionInformation:@"视频合成异常！"];
+    }
 }
 
+/**
+ 异常提示
+ 
+ @param msg 消息
+ */
+- (void)promptExceptionInformation:(NSString *)msg
+{
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+    hudShowError(msg);
+}
 /**
  push到封面图片选择VC
  
@@ -326,6 +367,7 @@ static NSString * const cellID = @"cellID";
  */
 - (void)pushCoverChooseControllerVideoPath:(NSString *)path
 {
+    hudDismiss();
     JXVideoImagePickerViewController *vc = [[JXVideoImagePickerViewController alloc]init];
     vc.videoPath = path;
     vc.videoTime = self.videoTime;

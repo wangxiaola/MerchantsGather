@@ -13,7 +13,7 @@
 #define MAX_VIDEO_DUR   10.0f //最大时间
 
 #import "TBVideoShootingController.h"
-#import "LZVideoDetailsVC.h"//视频详情
+#import "TBVideoEditingViewController.h"//视频详情
 
 #import "LZGridView.h"
 #import "LZLevelView.h"
@@ -41,6 +41,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;      //删除按钮
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;     //确认按钮
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;         // 闪光按钮
+@property (weak, nonatomic) IBOutlet UIControl *recordingButton;    // 录制按钮
 @property (strong, nonatomic) IBOutlet LZButton *gridOrlineButton;  //网格按钮
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoViewHeight;
 
@@ -122,6 +123,7 @@
     
     self.focusView.recorder = _recorder;
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"lz_recorder_change_hd"];
+    self.recordingButton.enabled = NO;
 }
 
 
@@ -157,7 +159,7 @@
     self.recorder.session = recordSession;
     
     //视频详情
-    LZVideoDetailsVC * vc = [[LZVideoDetailsVC alloc]initWithNibName:@"LZVideoDetailsVC" bundle:nil];
+    TBVideoEditingViewController * vc = [[TBVideoEditingViewController alloc]initWithNibName:@"LZVideoDetailsVC" bundle:nil];
     vc.recordSession = self.recorder.session;
     vc.videoTime     = self.timeLabel.text;
     [self.navigationController pushViewController:vc animated:YES];
@@ -274,11 +276,21 @@
 }
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureAudioInput:(NSError *)audioInputError {
-    MMLog(@"Reconfigured audio input: %@", audioInputError);
+
+    if (audioInputError) {
+        [UIView addMJNotifierWithText:@"音频录制异常!" dismissAutomatically:YES];
+    }
 }
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureVideoInput:(NSError *)videoInputError {
-    MMLog(@"Reconfigured video input: %@", videoInputError);
+
+    if (videoInputError) {
+        [UIView addMJNotifierWithText:@"视频录制异常!" dismissAutomatically:YES];
+    }
+    else
+    {
+      self.recordingButton.enabled = YES;
+    }
 }
 
 //启动录制
@@ -286,6 +298,7 @@
     [self.progressBar addProgressView];
     [self.progressBar stopShining];
     self.cancelButton.enabled = YES;
+    NSLog(@" 00000000");
 }
 
 //更新进度条

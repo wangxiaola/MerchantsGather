@@ -557,10 +557,12 @@
 		3B93D2DF1F56A7FC0010FBD0 /* TBVoiceProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B93D2DE1F56A7FC0010FBD0 /* TBVoiceProgressView.m */; };
 		3B95764F1E277F7C0031E3E1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B95764E1E277F7C0031E3E1 /* AudioToolbox.framework */; };
 		3B9576511E277FD70031E3E1 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9576501E277FD70031E3E1 /* libstdc++.6.0.9.tbd */; };
+		3B95CB2F2005C61F004BAC82 /* TBCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */; };
+		3B95CB32200604F0004BAC82 /* TBVideoRecordingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */; };
 		3BA2D5A01FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2D59F1FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m */; };
 		3BA4543E1FF1E69900176874 /* TBVideoShootingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */; };
 		3BA4543F1FF1E69900176874 /* TBVideoShootingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */; };
-		3BA454461FF1E74100176874 /* LZVideoDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454421FF1E74100176874 /* LZVideoDetailsVC.m */; };
+		3BA454461FF1E74100176874 /* TBVideoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */; };
 		3BA454471FF1E74100176874 /* LZVideoDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA454431FF1E74100176874 /* LZVideoDetailsVC.xib */; };
 		3BA454481FF1E74100176874 /* TBWatermarkOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */; };
 		3BA454541FF1E75100176874 /* LZGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4544B1FF1E75000176874 /* LZGridView.m */; };
@@ -1725,13 +1727,17 @@
 		3B94A4441DFE509500D81255 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3B95764E1E277F7C0031E3E1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3B9576501E277FD70031E3E1 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		3B95CB2D2005C61F004BAC82 /* TBCaptureUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBCaptureUtilities.h; sourceTree = "<group>"; };
+		3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBCaptureUtilities.m; sourceTree = "<group>"; };
+		3B95CB30200604F0004BAC82 /* TBVideoRecordingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoRecordingView.h; sourceTree = "<group>"; };
+		3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoRecordingView.m; sourceTree = "<group>"; };
 		3BA2D59E1FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBGZPeopleStatisticsViewController.h; sourceTree = "<group>"; };
 		3BA2D59F1FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBGZPeopleStatisticsViewController.m; sourceTree = "<group>"; };
 		3BA4543B1FF1E69900176874 /* TBVideoShootingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoShootingController.h; sourceTree = "<group>"; };
 		3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBVideoShootingController.xib; sourceTree = "<group>"; };
 		3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoShootingController.m; sourceTree = "<group>"; };
-		3BA454411FF1E74100176874 /* LZVideoDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZVideoDetailsVC.h; sourceTree = "<group>"; };
-		3BA454421FF1E74100176874 /* LZVideoDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZVideoDetailsVC.m; sourceTree = "<group>"; wrapsLines = 0; };
+		3BA454411FF1E74100176874 /* TBVideoEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoEditingViewController.h; sourceTree = "<group>"; };
+		3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoEditingViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
 		3BA454431FF1E74100176874 /* LZVideoDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LZVideoDetailsVC.xib; sourceTree = "<group>"; };
 		3BA454441FF1E74100176874 /* TBWatermarkOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBWatermarkOverlayView.h; sourceTree = "<group>"; };
 		3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBWatermarkOverlayView.m; sourceTree = "<group>"; };
@@ -3996,6 +4002,10 @@
 		3BA454381FF1E67300176874 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				3B95CB2D2005C61F004BAC82 /* TBCaptureUtilities.h */,
+				3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */,
+				3B95CB30200604F0004BAC82 /* TBVideoRecordingView.h */,
+				3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */,
 				3BA4546C1FF252C200176874 /* AWCollectionViewDialLayout.h */,
 				3BA4546D1FF252C300176874 /* AWCollectionViewDialLayout.m */,
 				3BA454631FF1EB0E00176874 /* SCRecordSessionSegment+LZAdd.h */,
@@ -4023,8 +4033,8 @@
 		3BA454401FF1E74100176874 /* VideoDetail(视频详情) */ = {
 			isa = PBXGroup;
 			children = (
-				3BA454411FF1E74100176874 /* LZVideoDetailsVC.h */,
-				3BA454421FF1E74100176874 /* LZVideoDetailsVC.m */,
+				3BA454411FF1E74100176874 /* TBVideoEditingViewController.h */,
+				3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */,
 				3BA454431FF1E74100176874 /* LZVideoDetailsVC.xib */,
 				3BA454441FF1E74100176874 /* TBWatermarkOverlayView.h */,
 				3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */,
@@ -4440,6 +4450,7 @@
 				3B5C745B1F4E7D5100B2CE42 /* ZXQRCodeVersion.m in Sources */,
 				3B5C73A31F4E7D5100B2CE42 /* ZXBookmarkDoCoMoResultParser.m in Sources */,
 				3B5C73FF1F4E7D5100B2CE42 /* ZXMaxiCodeReader.m in Sources */,
+				3B95CB32200604F0004BAC82 /* TBVideoRecordingView.m in Sources */,
 				3B5C74231F4E7D5100B2CE42 /* ZXCode39Reader.m in Sources */,
 				3B5C73C71F4E7D5100B2CE42 /* ZXWhiteRectangleDetector.m in Sources */,
 				3B5C73CF1F4E7D5100B2CE42 /* ZXBoolArray.m in Sources */,
@@ -4631,7 +4642,7 @@
 				3B93D2DC1F56A7910010FBD0 /* TBTaskMakeTitelView.m in Sources */,
 				3B5C745C1F4E7D5100B2CE42 /* ZXQRCodeAlignmentPattern.m in Sources */,
 				3B5C73AB1F4E7D5100B2CE42 /* ZXGeoResultParser.m in Sources */,
-				3BA454461FF1E74100176874 /* LZVideoDetailsVC.m in Sources */,
+				3BA454461FF1E74100176874 /* TBVideoEditingViewController.m in Sources */,
 				3B5C740F1F4E7D5100B2CE42 /* ZXRSSExpandedDecodedChar.m in Sources */,
 				3B5C762D1F4E7DA800B2CE42 /* TBCityChooseView.m in Sources */,
 				3B5C735D1F4E7D5100B2CE42 /* LBXScanWrapper.m in Sources */,
@@ -4769,6 +4780,7 @@
 				3B5C74331F4E7D5100B2CE42 /* ZXUPCEANExtension2Support.m in Sources */,
 				3B5C74421F4E7D5100B2CE42 /* ZXPDF417DetectionResult.m in Sources */,
 				3B5C76961F4E7DA800B2CE42 /* TBEarningsTableViewCell.m in Sources */,
+				3B95CB2F2005C61F004BAC82 /* TBCaptureUtilities.m in Sources */,
 				3BE53DDA1FCCFF44000EB7F4 /* TBFolkRoomsContenView.m in Sources */,
 				3B5C76011F4E7DA800B2CE42 /* TemplateViewController.m in Sources */,
 				3B5C73A81F4E7D5100B2CE42 /* ZXExpandedProductParsedResult.m in Sources */,
