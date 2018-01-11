@@ -10,6 +10,7 @@
 #import "AWCollectionViewDialLayout.h"
 #import "JXVideoImagePickerViewController.h"
 #import "LZVideoTools.h"
+#import "TBMoreReminderView.h"
 #import "TBCaptureUtilities.h"
 #import "TBFilterCollectionViewCell.h"
 #import "TBVideoRecordingView.h"
@@ -21,6 +22,7 @@ static NSString * const cellID = @"cellID";
 {
     CGFloat cell_height;
     NSString *_videoPath;
+    NSString *_recordingPath;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *collectionBackView;
@@ -196,13 +198,45 @@ static NSString * const cellID = @"cellID";
 // 重置视频
 - (IBAction)resetClick:(UIButton *)sender
 {
-    
+    TBWeakSelf
+    TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"确定还原视频操作？"];
+    [more showHandler:^{
+        _recordingPath = @"";
+        [weakSelf updateVideoMakeIndex:0];
+        [weakSelf.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }];
 }
 // 录音
 - (IBAction)recordingClick:(UIButton *)sender
 {
+    if (_recordingPath.length > 0) {
+        TBWeakSelf
+        TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"亲！您已经录了一段声音，需要重新录制吗？"];
+        
+        [more showHandler:^{
+            _recordingPath = @"";
+            [weakSelf startRecording];
+        }];
+    }else
+    {
+       [self startRecording];
+    }
+}
+
+/**
+ 开始录音
+ */
+- (void)startRecording{
+    [_player pause];
     TBVideoRecordingView *recordingView = [[TBVideoRecordingView alloc] init];
-    [recordingView showRecordingTime:self.videoTime.doubleValue];
+    [recordingView showRecordingTime:self.videoTime.doubleValue success:^(NSString *recordPath) {
+        
+        [_player play];
+        if (recordPath.length > 0) {
+            
+            _recordingPath = recordPath;
+        }
+    }];
 }
 #pragma mark  ----tool fun----
 //创建动态滤镜
@@ -253,23 +287,31 @@ static NSString * const cellID = @"cellID";
     [_player pause];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    NSURL *audioInputUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"music" ofType:@"mp3"]];
-    TBWeakSelf
-    // 合成音频
-    [TBCaptureUtilities mergeVideo:self.recordSession.assetRepresentingSegments
-                          andAudio:audioInputUrl
-                           results:^(NSString *path, NSError *error)
-     {
-
-         [weakSelf mergedidFinish:path WithError:nil];
-     }];
-
+    if (_recordingPath.length > 0) {
+        
+        NSURL *audioInputUrl = [NSURL fileURLWithPath:_recordingPath];
+        TBWeakSelf
+        // 合成音频
+        [TBCaptureUtilities mergeVideo:self.recordSession.assetRepresentingSegments
+                              andAudio:audioInputUrl
+                               results:^(NSString *path, NSError *error)
+         {
+             
+             [weakSelf mergedidFinish:path WithError:nil];
+         }];
+    }
+    else
+    {
+        [self mergedidFinish:self.recordSession.assetRepresentingSegments WithError:nil];
+        
+    }
+    
 }
 #pragma mark  ----视频合成----
 
 /**
  最终合成视频保存
-
+ 
  @param video 视频 路径或AVAsset
  @param error 错误信息
  */
@@ -288,7 +330,7 @@ static NSString * const cellID = @"cellID";
     }
     else
     {
-        set = self.recordSession.assetRepresentingSegments;
+        set = video;
     }
     
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:set];

@@ -58,7 +58,6 @@
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.title = @"视频录制";
-    
     [_gridOrlineButton setLoopImages:@[[UIImage imageNamed:@"lz_recorder_grid"], [UIImage imageNamed:@"lz_recorder_grid_hd"], [UIImage imageNamed:@"lz_recorder_line_hd"]] ];
     
     [self initSCRecorder];
@@ -159,7 +158,7 @@
     self.recorder.session = recordSession;
     
     //视频详情
-    TBVideoEditingViewController * vc = [[TBVideoEditingViewController alloc]initWithNibName:@"LZVideoDetailsVC" bundle:nil];
+    TBVideoEditingViewController * vc = [[TBVideoEditingViewController alloc]initWithNibName:@"TBVideoEditingViewController" bundle:nil];
     vc.recordSession = self.recorder.session;
     vc.videoTime     = self.timeLabel.text;
     [self.navigationController pushViewController:vc animated:YES];
@@ -298,7 +297,7 @@
     [self.progressBar addProgressView];
     [self.progressBar stopShining];
     self.cancelButton.enabled = YES;
-    NSLog(@" 00000000");
+
 }
 
 //更新进度条

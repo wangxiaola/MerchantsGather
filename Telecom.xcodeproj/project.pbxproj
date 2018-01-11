@@ -531,6 +531,7 @@
 		3B668BA31DFF8BEE00414612 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B668BA21DFF8BEE00414612 /* AVFoundation.framework */; };
 		3B691EFE1FF61D4A00D5BEFA /* TBRecordVideoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B691EFD1FF61D4A00D5BEFA /* TBRecordVideoMode.m */; };
 		3B69F58A1F149FFB008DB495 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B69F5891F149FFB008DB495 /* AMapLocationKit.framework */; };
+		3B784C0E20074A98001C42D8 /* TBRecordingCorrugatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B784C0D20074A98001C42D8 /* TBRecordingCorrugatedView.m */; };
 		3B8BA16A1DF106670007027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BA1691DF106670007027F /* main.m */; };
 		3B8BA16D1DF106670007027F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BA16C1DF106670007027F /* AppDelegate.m */; };
 		3B8BA1731DF106670007027F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B8BA1711DF106670007027F /* Main.storyboard */; };
@@ -563,7 +564,7 @@
 		3BA4543E1FF1E69900176874 /* TBVideoShootingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */; };
 		3BA4543F1FF1E69900176874 /* TBVideoShootingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */; };
 		3BA454461FF1E74100176874 /* TBVideoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */; };
-		3BA454471FF1E74100176874 /* LZVideoDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA454431FF1E74100176874 /* LZVideoDetailsVC.xib */; };
+		3BA454471FF1E74100176874 /* TBVideoEditingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA454431FF1E74100176874 /* TBVideoEditingViewController.xib */; };
 		3BA454481FF1E74100176874 /* TBWatermarkOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */; };
 		3BA454541FF1E75100176874 /* LZGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4544B1FF1E75000176874 /* LZGridView.m */; };
 		3BA454551FF1E75100176874 /* LZLevelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4544C1FF1E75000176874 /* LZLevelView.m */; };
@@ -612,7 +613,6 @@
 		3BBCE2001FCBF10800117771 /* TBAppearanceTemplateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCE1FE1FCBF10800117771 /* TBAppearanceTemplateTableViewCell.m */; };
 		3BBCE2011FCBF10800117771 /* TBAppearanceTemplateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBCE1FF1FCBF10800117771 /* TBAppearanceTemplateTableViewCell.xib */; };
 		3BD3F04E1FC7F70600894208 /* SPHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3F04D1FC7F70600894208 /* SPHTTPSessionManager.m */; };
-		3BD62D251FFCAE1200621607 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BD62D241FFCAE1200621607 /* music.mp3 */; };
 		3BD62D281FFCB83800621607 /* TBBankInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD62D271FFCB83800621607 /* TBBankInformationView.m */; };
 		3BD62D2B1FFCCDE500621607 /* TBBankListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD62D2A1FFCCDE500621607 /* TBBankListCellView.m */; };
 		3BD62D2E1FFCDD5A00621607 /* UITextField+banEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD62D2D1FFCDD5A00621607 /* UITextField+banEdit.m */; };
@@ -1673,6 +1673,8 @@
 		3B691EFC1FF61D4A00D5BEFA /* TBRecordVideoMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBRecordVideoMode.h; sourceTree = "<group>"; };
 		3B691EFD1FF61D4A00D5BEFA /* TBRecordVideoMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBRecordVideoMode.m; sourceTree = "<group>"; };
 		3B69F5891F149FFB008DB495 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapLocationKit.framework; sourceTree = "<group>"; };
+		3B784C0C20074A98001C42D8 /* TBRecordingCorrugatedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBRecordingCorrugatedView.h; sourceTree = "<group>"; };
+		3B784C0D20074A98001C42D8 /* TBRecordingCorrugatedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBRecordingCorrugatedView.m; sourceTree = "<group>"; };
 		3B85C9AE1E73C7690046FF02 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3B8BA1651DF106670007027F /* Telecom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telecom.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8BA1691DF106670007027F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1738,7 +1740,7 @@
 		3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoShootingController.m; sourceTree = "<group>"; };
 		3BA454411FF1E74100176874 /* TBVideoEditingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoEditingViewController.h; sourceTree = "<group>"; };
 		3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoEditingViewController.m; sourceTree = "<group>"; wrapsLines = 0; };
-		3BA454431FF1E74100176874 /* LZVideoDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LZVideoDetailsVC.xib; sourceTree = "<group>"; };
+		3BA454431FF1E74100176874 /* TBVideoEditingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBVideoEditingViewController.xib; sourceTree = "<group>"; };
 		3BA454441FF1E74100176874 /* TBWatermarkOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBWatermarkOverlayView.h; sourceTree = "<group>"; };
 		3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBWatermarkOverlayView.m; sourceTree = "<group>"; };
 		3BA454491FF1E74F00176874 /* LZGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZGridView.h; sourceTree = "<group>"; };
@@ -1832,7 +1834,6 @@
 		3BBCE1FF1FCBF10800117771 /* TBAppearanceTemplateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBAppearanceTemplateTableViewCell.xib; sourceTree = "<group>"; };
 		3BD3F04C1FC7F70600894208 /* SPHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPHTTPSessionManager.h; sourceTree = "<group>"; };
 		3BD3F04D1FC7F70600894208 /* SPHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPHTTPSessionManager.m; sourceTree = "<group>"; };
-		3BD62D241FFCAE1200621607 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		3BD62D261FFCB83800621607 /* TBBankInformationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBBankInformationView.h; sourceTree = "<group>"; };
 		3BD62D271FFCB83800621607 /* TBBankInformationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBBankInformationView.m; sourceTree = "<group>"; };
 		3BD62D291FFCCDE500621607 /* TBBankListCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBBankListCellView.h; sourceTree = "<group>"; };
@@ -3716,14 +3717,6 @@
 		3B5D35041FFF6BC70067688A /* view */ = {
 			isa = PBXGroup;
 			children = (
-				3B5D35061FFF6BD50067688A /* view */,
-			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		3B5D35061FFF6BD50067688A /* view */ = {
-			isa = PBXGroup;
-			children = (
 				3B93D2971F56A4550010FBD0 /* 模板页面小视图 */,
 				3B93D2961F56A4550010FBD0 /* 模版页面 */,
 			);
@@ -3774,7 +3767,6 @@
 		3B8BA15C1DF106620007027F = {
 			isa = PBXGroup;
 			children = (
-				3BD62D241FFCAE1200621607 /* music.mp3 */,
 				3BF0DD721EA78785002200BE /* AMap.bundle */,
 				3B8BA1671DF106670007027F /* Telecom */,
 				3B8BA1811DF106670007027F /* TelecomTests */,
@@ -4006,6 +3998,8 @@
 				3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */,
 				3B95CB30200604F0004BAC82 /* TBVideoRecordingView.h */,
 				3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */,
+				3B784C0C20074A98001C42D8 /* TBRecordingCorrugatedView.h */,
+				3B784C0D20074A98001C42D8 /* TBRecordingCorrugatedView.m */,
 				3BA4546C1FF252C200176874 /* AWCollectionViewDialLayout.h */,
 				3BA4546D1FF252C300176874 /* AWCollectionViewDialLayout.m */,
 				3BA454631FF1EB0E00176874 /* SCRecordSessionSegment+LZAdd.h */,
@@ -4035,7 +4029,7 @@
 			children = (
 				3BA454411FF1E74100176874 /* TBVideoEditingViewController.h */,
 				3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */,
-				3BA454431FF1E74100176874 /* LZVideoDetailsVC.xib */,
+				3BA454431FF1E74100176874 /* TBVideoEditingViewController.xib */,
 				3BA454441FF1E74100176874 /* TBWatermarkOverlayView.h */,
 				3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */,
 			);
@@ -4291,7 +4285,7 @@
 				3B5C75FC1F4E7DA800B2CE42 /* TBRegisteredViewController.xib in Resources */,
 				3B5C766D1F4E7DA800B2CE42 /* TBPublishingGroupViewController.xib in Resources */,
 				3B5C768D1F4E7DA800B2CE42 /* TBBusinessIntelligencePhotoTableViewCell.xib in Resources */,
-				3BA454471FF1E74100176874 /* LZVideoDetailsVC.xib in Resources */,
+				3BA454471FF1E74100176874 /* TBVideoEditingViewController.xib in Resources */,
 				3B5C738E1F4E7D5100B2CE42 /* WSDatePickerView.xib in Resources */,
 				3B8BA1751DF106670007027F /* Assets.xcassets in Resources */,
 				3B5C736C1F4E7D5100B2CE42 /* MBProgressHUD.bundle in Resources */,
@@ -4333,7 +4327,6 @@
 				3B5C73541F4E7D5100B2CE42 /* IQKeyboardManager.bundle in Resources */,
 				3B5C763E1F4E7DA800B2CE42 /* TBResourceLabelTableViewCell.xib in Resources */,
 				3B5C760C1F4E7DA800B2CE42 /* HomeHeaderView.xib in Resources */,
-				3BD62D251FFCAE1200621607 /* music.mp3 in Resources */,
 				3B5C76911F4E7DA800B2CE42 /* TBBusinessServiceTableViewCell.xib in Resources */,
 				3B5C76691F4E7DA800B2CE42 /* TBOfferDetailsViewController.xib in Resources */,
 			);
@@ -4874,6 +4867,7 @@
 				3B5C76791F4E7DA800B2CE42 /* TBPublishingGroupList.m in Sources */,
 				3B5C74071F4E7D5100B2CE42 /* ZXAI013x0x1xDecoder.m in Sources */,
 				3B93D2CB1F56A7790010FBD0 /* TBTemplateBackgroundView.m in Sources */,
+				3B784C0E20074A98001C42D8 /* TBRecordingCorrugatedView.m in Sources */,
 				3BAE38EB1F6696E600A391D8 /* HQliquidButton.m in Sources */,
 				3B5C73801F4E7D5100B2CE42 /* SDCollectionViewCell.m in Sources */,
 				3B5C76241F4E7DA800B2CE42 /* TBRegionESRootClass.m in Sources */,

@@ -105,8 +105,8 @@ NSString * const RecordErrorPermissionDenied = @"RecordErrorPermissionDenied";
     [[AVAudioSession sharedInstance] setActive:YES error:nil];//启动音频会话管理,此时会阻断后台音乐的播放
     //    UInt32 audioRouteOverride = kAudioSessionOverrideAudioRoute_Speaker;//扬声器
     //    AudioSessionSetProperty(kAudioSessionProperty_OverrideAudioRoute, sizeof(audioRouteOverride), &audioRouteOverride);
-    AVAudioSession *audioSession; // get your audio session somehow
-    
+    // get your audio session somehow
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     BOOL success = [audioSession overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
     if(!success)
     {
@@ -188,7 +188,10 @@ NSString * const RecordErrorPermissionDenied = @"RecordErrorPermissionDenied";
 
 - (void)stopRecord
 {
-    
+    if (self.recordTimer) {
+        dispatch_source_cancel(self.recordTimer);
+    }
+    self.recordTimer = NULL;
     [self.recorder stop];
     self.recorder = nil;
     
@@ -273,11 +276,14 @@ NSString * const RecordErrorPermissionDenied = @"RecordErrorPermissionDenied";
     
     if (self.recordSuccess) {
         
-        NSData *voiceData = [NSData dataWithContentsOfFile:[self mp3Path]];
-        self.recordSuccess(voiceData);
+        self.recordSuccess([self mp3Path]);
     }
 }
-
+- (void)deleteRecorder;
+{
+    [self deleteMp3Cache];
+    [self deleteCafCache];
+}
 - (void)deleteMp3Cache
 {
     [self deleteFileWithPath:[self mp3Path]];
