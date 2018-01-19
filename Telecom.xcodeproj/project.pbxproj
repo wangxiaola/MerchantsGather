@@ -605,7 +605,6 @@
 		3BAD86591FCFF26F00493C1A /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD864A1FCFF26F00493C1A /* UIView+Layout.m */; };
 		3BAE38EA1F6696E600A391D8 /* HQliquidAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE38E71F6696E600A391D8 /* HQliquidAnimationView.m */; };
 		3BAE38EB1F6696E600A391D8 /* HQliquidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE38E91F6696E600A391D8 /* HQliquidButton.m */; };
-		3BBB788A1FFB34890042054B /* TBPhotoVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB78891FFB34890042054B /* TBPhotoVideoViewController.m */; };
 		3BBBDEE51FECF2D000BDF183 /* ProgressGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBDEE31FECF2CF00BDF183 /* ProgressGradientView.m */; };
 		3BBCE1F31FCBAB9C00117771 /* TBFolkAppearanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCE1F21FCBAB9C00117771 /* TBFolkAppearanceView.m */; };
 		3BBCE1F61FCBABBF00117771 /* TBFolkRoomsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCE1F51FCBABBF00117771 /* TBFolkRoomsView.m */; };
@@ -624,14 +623,14 @@
 		3BE53DE71FCD5568000EB7F4 /* TBRoomEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DE51FCD5568000EB7F4 /* TBRoomEditorViewController.xib */; };
 		3BE53DEB1FCD55DE000EB7F4 /* TBRoomListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE53DE91FCD55DE000EB7F4 /* TBRoomListTableViewCell.m */; };
 		3BE53DEC1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DEA1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib */; };
-		3BEE3FB92011D9A40048A2DB /* TBVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FB82011D9A40048A2DB /* TBVideoPlayViewController.m */; };
-		3BEE3FC72011E6A40048A2DB /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FBB2011E6A40048A2DB /* LICENSE */; };
-		3BEE3FC82011E6A40048A2DB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FBC2011E6A40048A2DB /* README.md */; };
-		3BEE3FC92011E6A40048A2DB /* FastForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FC02011E6A40048A2DB /* FastForwardView.m */; };
-		3BEE3FCA2011E6A40048A2DB /* FastForwardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FC12011E6A40048A2DB /* FastForwardView.xib */; };
-		3BEE3FCB2011E6A40048A2DB /* WMLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FC32011E6A40048A2DB /* WMLightView.m */; };
-		3BEE3FCC2011E6A40048A2DB /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FC42011E6A40048A2DB /* WMPlayer.bundle */; };
-		3BEE3FCD2011E6A40048A2DB /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FC62011E6A40048A2DB /* WMPlayer.m */; };
+		3BEE3FF42011F68E0048A2DB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FE92011F68E0048A2DB /* BaseViewController.m */; };
+		3BEE3FF52011F68E0048A2DB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FEB2011F68E0048A2DB /* DetailViewController.m */; };
+		3BEE3FF62011F68E0048A2DB /* FastForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FED2011F68E0048A2DB /* FastForwardView.m */; };
+		3BEE3FF72011F68E0048A2DB /* FastForwardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FEE2011F68E0048A2DB /* FastForwardView.xib */; };
+		3BEE3FF82011F68E0048A2DB /* WMLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FF02011F68E0048A2DB /* WMLightView.m */; };
+		3BEE3FF92011F68E0048A2DB /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FF12011F68E0048A2DB /* WMPlayer.bundle */; };
+		3BEE3FFA2011F68E0048A2DB /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FF32011F68E0048A2DB /* WMPlayer.m */; };
+		3BEE3FFD2011F69A0048A2DB /* TBVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FFC2011F69A0048A2DB /* TBVideoPlayViewController.m */; };
 		3BF0DD6F1EA7876E002200BE /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6C1EA7876E002200BE /* AMapSearchKit.framework */; };
 		3BF0DD701EA7876E002200BE /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6D1EA7876E002200BE /* MAMapKit.framework */; };
 		3BF0DD711EA7876E002200BE /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6E1EA7876E002200BE /* AMapFoundationKit.framework */; };
@@ -1828,8 +1827,6 @@
 		3BAE38E71F6696E600A391D8 /* HQliquidAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQliquidAnimationView.m; sourceTree = "<group>"; };
 		3BAE38E81F6696E600A391D8 /* HQliquidButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQliquidButton.h; sourceTree = "<group>"; };
 		3BAE38E91F6696E600A391D8 /* HQliquidButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQliquidButton.m; sourceTree = "<group>"; };
-		3BBB78881FFB34890042054B /* TBPhotoVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBPhotoVideoViewController.h; sourceTree = "<group>"; };
-		3BBB78891FFB34890042054B /* TBPhotoVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPhotoVideoViewController.m; sourceTree = "<group>"; };
 		3BBBDEE31FECF2CF00BDF183 /* ProgressGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressGradientView.m; sourceTree = "<group>"; };
 		3BBBDEE41FECF2CF00BDF183 /* ProgressGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressGradientView.h; sourceTree = "<group>"; };
 		3BBCE1F11FCBAB9C00117771 /* TBFolkAppearanceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBFolkAppearanceView.h; sourceTree = "<group>"; };
@@ -1862,18 +1859,20 @@
 		3BE53DE81FCD55DE000EB7F4 /* TBRoomListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBRoomListTableViewCell.h; sourceTree = "<group>"; };
 		3BE53DE91FCD55DE000EB7F4 /* TBRoomListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBRoomListTableViewCell.m; sourceTree = "<group>"; };
 		3BE53DEA1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBRoomListTableViewCell.xib; sourceTree = "<group>"; };
-		3BEE3FB72011D9A40048A2DB /* TBVideoPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoPlayViewController.h; sourceTree = "<group>"; };
-		3BEE3FB82011D9A40048A2DB /* TBVideoPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoPlayViewController.m; sourceTree = "<group>"; };
-		3BEE3FBB2011E6A40048A2DB /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		3BEE3FBC2011E6A40048A2DB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		3BEE3FBF2011E6A40048A2DB /* FastForwardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastForwardView.h; sourceTree = "<group>"; };
-		3BEE3FC02011E6A40048A2DB /* FastForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastForwardView.m; sourceTree = "<group>"; };
-		3BEE3FC12011E6A40048A2DB /* FastForwardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastForwardView.xib; sourceTree = "<group>"; };
-		3BEE3FC22011E6A40048A2DB /* WMLightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLightView.h; sourceTree = "<group>"; };
-		3BEE3FC32011E6A40048A2DB /* WMLightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLightView.m; sourceTree = "<group>"; };
-		3BEE3FC42011E6A40048A2DB /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
-		3BEE3FC52011E6A40048A2DB /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
-		3BEE3FC62011E6A40048A2DB /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
+		3BEE3FE82011F68E0048A2DB /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		3BEE3FE92011F68E0048A2DB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		3BEE3FEA2011F68E0048A2DB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3BEE3FEB2011F68E0048A2DB /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		3BEE3FEC2011F68E0048A2DB /* FastForwardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastForwardView.h; sourceTree = "<group>"; };
+		3BEE3FED2011F68E0048A2DB /* FastForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastForwardView.m; sourceTree = "<group>"; };
+		3BEE3FEE2011F68E0048A2DB /* FastForwardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastForwardView.xib; sourceTree = "<group>"; };
+		3BEE3FEF2011F68E0048A2DB /* WMLightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLightView.h; sourceTree = "<group>"; };
+		3BEE3FF02011F68E0048A2DB /* WMLightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLightView.m; sourceTree = "<group>"; };
+		3BEE3FF12011F68E0048A2DB /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
+		3BEE3FF22011F68E0048A2DB /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
+		3BEE3FF32011F68E0048A2DB /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
+		3BEE3FFB2011F69A0048A2DB /* TBVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoPlayViewController.h; sourceTree = "<group>"; };
+		3BEE3FFC2011F69A0048A2DB /* TBVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoPlayViewController.m; sourceTree = "<group>"; };
 		3BF0DD6C1EA7876E002200BE /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		3BF0DD6D1EA7876E002200BE /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		3BF0DD6E1EA7876E002200BE /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
@@ -3857,7 +3856,7 @@
 		3B8BA19D1DF127110007027F /* Toolkit */ = {
 			isa = PBXGroup;
 			children = (
-				3BEE3FBA2011E6A40048A2DB /* WMPlayer */,
+				3BEE3FE72011F68E0048A2DB /* WMPlayer */,
 				3BAD862D1FCFF26F00493C1A /* TZImagePickerController */,
 				3BD3F04B1FC7F70600894208 /* SPHTTPSessionManager */,
 				3BAE38E51F6696E600A391D8 /* HQliquidAnimationViewLib */,
@@ -3993,10 +3992,8 @@
 				3BA4543B1FF1E69900176874 /* TBVideoShootingController.h */,
 				3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */,
 				3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */,
-				3BBB78881FFB34890042054B /* TBPhotoVideoViewController.h */,
-				3BBB78891FFB34890042054B /* TBPhotoVideoViewController.m */,
-				3BEE3FB72011D9A40048A2DB /* TBVideoPlayViewController.h */,
-				3BEE3FB82011D9A40048A2DB /* TBVideoPlayViewController.m */,
+				3BEE3FFB2011F69A0048A2DB /* TBVideoPlayViewController.h */,
+				3BEE3FFC2011F69A0048A2DB /* TBVideoPlayViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -4161,38 +4158,24 @@
 			path = SPHTTPSessionManager;
 			sourceTree = "<group>";
 		};
-		3BEE3FBA2011E6A40048A2DB /* WMPlayer */ = {
+		3BEE3FE72011F68E0048A2DB /* WMPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				3BEE3FBB2011E6A40048A2DB /* LICENSE */,
-				3BEE3FBC2011E6A40048A2DB /* README.md */,
-				3BEE3FBD2011E6A40048A2DB /* WMPlayer */,
+				3BEE3FE82011F68E0048A2DB /* BaseViewController.h */,
+				3BEE3FE92011F68E0048A2DB /* BaseViewController.m */,
+				3BEE3FEA2011F68E0048A2DB /* DetailViewController.h */,
+				3BEE3FEB2011F68E0048A2DB /* DetailViewController.m */,
+				3BEE3FEC2011F68E0048A2DB /* FastForwardView.h */,
+				3BEE3FED2011F68E0048A2DB /* FastForwardView.m */,
+				3BEE3FEE2011F68E0048A2DB /* FastForwardView.xib */,
+				3BEE3FEF2011F68E0048A2DB /* WMLightView.h */,
+				3BEE3FF02011F68E0048A2DB /* WMLightView.m */,
+				3BEE3FF12011F68E0048A2DB /* WMPlayer.bundle */,
+				3BEE3FF22011F68E0048A2DB /* WMPlayer.h */,
+				3BEE3FF32011F68E0048A2DB /* WMPlayer.m */,
 			);
 			name = WMPlayer;
-			path = ../../../../WMPlayer;
-			sourceTree = "<group>";
-		};
-		3BEE3FBD2011E6A40048A2DB /* WMPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				3BEE3FBE2011E6A40048A2DB /* View */,
-				3BEE3FC42011E6A40048A2DB /* WMPlayer.bundle */,
-				3BEE3FC52011E6A40048A2DB /* WMPlayer.h */,
-				3BEE3FC62011E6A40048A2DB /* WMPlayer.m */,
-			);
-			path = WMPlayer;
-			sourceTree = "<group>";
-		};
-		3BEE3FBE2011E6A40048A2DB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3BEE3FBF2011E6A40048A2DB /* FastForwardView.h */,
-				3BEE3FC02011E6A40048A2DB /* FastForwardView.m */,
-				3BEE3FC12011E6A40048A2DB /* FastForwardView.xib */,
-				3BEE3FC22011E6A40048A2DB /* WMLightView.h */,
-				3BEE3FC32011E6A40048A2DB /* WMLightView.m */,
-			);
-			path = View;
+			path = "../../../../开发项目/应急系列/2017最新应急集合/Emergency/Toolkit/WMPlayer";
 			sourceTree = "<group>";
 		};
 		3BF0DD6B1EA78725002200BE /* Map_Lib */ = {
@@ -4339,9 +4322,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BEE3FF72011F68E0048A2DB /* FastForwardView.xib in Resources */,
 				3BA4546B1FF1F47B00176874 /* a_filter.cisf in Resources */,
 				3BF0DD731EA78785002200BE /* AMap.bundle in Resources */,
 				3B5C736F1F4E7D5100B2CE42 /* MJPhotoBrowser.bundle in Resources */,
+				3BEE3FF92011F68E0048A2DB /* WMPlayer.bundle in Resources */,
 				3B5C760E1F4E7DA800B2CE42 /* TBBusinessTypeTableViewCell.xib in Resources */,
 				3B5C763A1F4E7DA800B2CE42 /* TBBackgroundMusicTableViewCell.xib in Resources */,
 				3B5C75FC1F4E7DA800B2CE42 /* TBRegisteredViewController.xib in Resources */,
@@ -4354,7 +4339,6 @@
 				3B5C769E1F4E7DA800B2CE42 /* TBGroupSpecificationTableViewCell.xib in Resources */,
 				3BE53DDC1FCCFF5D000EB7F4 /* TBFolkRoomsContenView.xib in Resources */,
 				3B5C76821F4E7DA800B2CE42 /* MyTaskCell.xib in Resources */,
-				3BEE3FC72011E6A40048A2DB /* LICENSE in Resources */,
 				3B5C76441F4E7DA800B2CE42 /* TBTemplateInfoTableViewCell.xib in Resources */,
 				3B5C76181F4E7DA800B2CE42 /* TBStopBusinessViewController.xib in Resources */,
 				3B5C76381F4E7DA800B2CE42 /* TBBackgroundImageTableViewCell.xib in Resources */,
@@ -4381,13 +4365,10 @@
 				3B5C76971F4E7DA800B2CE42 /* TBEarningsTableViewCell.xib in Resources */,
 				3B5C761F1F4E7DA800B2CE42 /* TBTemplateCompleteViewController.xib in Resources */,
 				3B5C763C1F4E7DA800B2CE42 /* TBNoteTableViewCell.xib in Resources */,
-				3BEE3FC82011E6A40048A2DB /* README.md in Resources */,
 				3B8BA1731DF106670007027F /* Main.storyboard in Resources */,
 				3B5C76111F4E7DA800B2CE42 /* TBMyBusinessTableViewCell.xib in Resources */,
 				3B5C76421F4E7DA800B2CE42 /* TBTemplateChooseCollectionViewCell.xib in Resources */,
-				3BEE3FCA2011E6A40048A2DB /* FastForwardView.xib in Resources */,
 				3B5C76931F4E7DA800B2CE42 /* TBDiscountsListTableViewCell.xib in Resources */,
-				3BEE3FCC2011E6A40048A2DB /* WMPlayer.bundle in Resources */,
 				3B5C76141F4E7DA800B2CE42 /* TBAddMerchantsViewController.xib in Resources */,
 				3B5C76461F4E7DA800B2CE42 /* TBTemplateLabelTableViewCell.xib in Resources */,
 				3B5C73541F4E7D5100B2CE42 /* IQKeyboardManager.bundle in Resources */,
@@ -4495,7 +4476,6 @@
 				3B5C73491F4E7D5100B2CE42 /* IQUIViewController+Additions.m in Sources */,
 				3B5C739B1F4E7D5100B2CE42 /* ZXAztecDetectorResult.m in Sources */,
 				3B5C73441F4E7D5100B2CE42 /* UIImage+Crop.m in Sources */,
-				3BEE3FB92011D9A40048A2DB /* TBVideoPlayViewController.m in Sources */,
 				3B575E281FF4DA42002BE5DC /* JXVideoImagePickerViewController.m in Sources */,
 				3B5C73F81F4E7D5100B2CE42 /* ZXDataMatrixTextEncoder.m in Sources */,
 				3B5C762E1F4E7DA800B2CE42 /* TBMakingSaveTool.m in Sources */,
@@ -4538,7 +4518,6 @@
 				3B5C74311F4E7D5100B2CE42 /* ZXUPCAReader.m in Sources */,
 				3B5C76A81F4E7DA800B2CE42 /* TBReleasePreviewHeadeTableViewCell.m in Sources */,
 				3B5C73661F4E7D5100B2CE42 /* WGS84TOGCJ02.m in Sources */,
-				3BBB788A1FFB34890042054B /* TBPhotoVideoViewController.m in Sources */,
 				3B93D2BB1F56A7720010FBD0 /* TBTaskSearchView.m in Sources */,
 				3B5C732E1F4E7D5100B2CE42 /* TBBaseViewController.m in Sources */,
 				3B5C76771F4E7DA800B2CE42 /* TBManagementTypeMode.m in Sources */,
@@ -4722,6 +4701,7 @@
 				3B5C76301F4E7DA800B2CE42 /* TBShowAddressResultsView.m in Sources */,
 				3B5C73481F4E7D5100B2CE42 /* IQUIView+Hierarchy.m in Sources */,
 				3B5C76471F4E7DA800B2CE42 /* TBTemplateResourceCollectionViewCell.m in Sources */,
+				3BEE3FF62011F68E0048A2DB /* FastForwardView.m in Sources */,
 				3BE53DE61FCD5568000EB7F4 /* TBRoomEditorViewController.m in Sources */,
 				3B5C74451F4E7D5100B2CE42 /* ZXPDF417ScanningDecoder.m in Sources */,
 				3B5C744B1F4E7D5100B2CE42 /* ZXPDF417Dimensions.m in Sources */,
@@ -4738,8 +4718,8 @@
 				3B5C739F1F4E7D5100B2CE42 /* ZXAddressBookAUResultParser.m in Sources */,
 				3B5C76741F4E7DA800B2CE42 /* TBDiscountsMode.m in Sources */,
 				3B5C74551F4E7D5100B2CE42 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
-				3BEE3FCD2011E6A40048A2DB /* WMPlayer.m in Sources */,
 				3BAD864C1FCFF26F00493C1A /* TZAssetCell.m in Sources */,
+				3BEE3FF52011F68E0048A2DB /* DetailViewController.m in Sources */,
 				3B5C74591F4E7D5100B2CE42 /* ZXQRCodeFormatInformation.m in Sources */,
 				3B5C735E1F4E7D5100B2CE42 /* LBXZXCapture.m in Sources */,
 				3B5C74631F4E7D5100B2CE42 /* ZXQRCodeBlockPair.m in Sources */,
@@ -4815,7 +4795,6 @@
 				3B5C734E1F4E7D5100B2CE42 /* IQTextView.m in Sources */,
 				3B5C73641F4E7D5100B2CE42 /* NSObject+LKModel.m in Sources */,
 				3B5C75F61F4E7DA800B2CE42 /* TBTimeButton.m in Sources */,
-				3BEE3FCB2011E6A40048A2DB /* WMLightView.m in Sources */,
 				3B5C76001F4E7DA800B2CE42 /* TBBusinessTypeViewController.m in Sources */,
 				3B5C73C31F4E7D5100B2CE42 /* ZXCGImageLuminanceSource.m in Sources */,
 				3B5C73451F4E7D5100B2CE42 /* IQNSArray+Sort.m in Sources */,
@@ -4830,10 +4809,10 @@
 				3B5C73471F4E7D5100B2CE42 /* IQUITextFieldView+Additions.m in Sources */,
 				3B5C746C1F4E7D5100B2CE42 /* ZXMultiFormatReader.m in Sources */,
 				3B5C769B1F4E7DA800B2CE42 /* TBGroupRecordsHeadView.m in Sources */,
+				3BEE3FF82011F68E0048A2DB /* WMLightView.m in Sources */,
 				3B5C75FB1F4E7DA800B2CE42 /* TBRegisteredViewController.m in Sources */,
 				3B5C74051F4E7D5100B2CE42 /* ZXAI01392xDecoder.m in Sources */,
 				3B5C765D1F4E7DA800B2CE42 /* MyTaskDetailController.m in Sources */,
-				3BEE3FC92011E6A40048A2DB /* FastForwardView.m in Sources */,
 				3B5C73321F4E7D5100B2CE42 /* NSObject+MJExtension.m in Sources */,
 				3B5C73CC1F4E7D5100B2CE42 /* ZXBitArray.m in Sources */,
 				3B5C741E1F4E7D5100B2CE42 /* ZXRSSUtils.m in Sources */,
@@ -4902,6 +4881,7 @@
 				3B5C735C1F4E7D5100B2CE42 /* LBXScanViewStyle.m in Sources */,
 				3B93D2A01F56A5C60010FBD0 /* SpectrumView.m in Sources */,
 				3BD62D2B1FFCCDE500621607 /* TBBankListCellView.m in Sources */,
+				3BEE3FFA2011F68E0048A2DB /* WMPlayer.m in Sources */,
 				3B5C734F1F4E7D5100B2CE42 /* IQBarButtonItem.m in Sources */,
 				3B93D2CE1F56A7790010FBD0 /* TBTemplateInfoView.m in Sources */,
 				3B5C73711F4E7D5100B2CE42 /* MJPhotoLoadingView.m in Sources */,
@@ -4996,6 +4976,7 @@
 				3B5C74431F4E7D5100B2CE42 /* ZXPDF417DetectionResultColumn.m in Sources */,
 				3B5C73891F4E7D5100B2CE42 /* TYTitlePageTabBar.m in Sources */,
 				3B5C737A1F4E7D5100B2CE42 /* UIButton+ScottCounter.m in Sources */,
+				3BEE3FF42011F68E0048A2DB /* BaseViewController.m in Sources */,
 				3B5C74151F4E7D5100B2CE42 /* ZXBitArrayBuilder.m in Sources */,
 				3B5C762C1F4E7DA800B2CE42 /* TBChoosePhotosTool.m in Sources */,
 				3B5C73881F4E7D5100B2CE42 /* TYSlidePageScrollViewController.m in Sources */,
@@ -5008,6 +4989,7 @@
 				3B575E2A1FF4DA42002BE5DC /* JXUIService.m in Sources */,
 				3B5C734C1F4E7D5100B2CE42 /* IQKeyboardManager.m in Sources */,
 				3B5C74281F4E7D5100B2CE42 /* ZXEAN8Reader.m in Sources */,
+				3BEE3FFD2011F69A0048A2DB /* TBVideoPlayViewController.m in Sources */,
 				3B5C73DC1F4E7D5100B2CE42 /* ZXBinaryBitmap.m in Sources */,
 				3B5C74251F4E7D5100B2CE42 /* ZXCode93Reader.m in Sources */,
 				3B5C73951F4E7D5100B2CE42 /* ZXAztecCode.m in Sources */,

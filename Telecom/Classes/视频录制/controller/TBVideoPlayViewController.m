@@ -7,6 +7,7 @@
 //
 
 #import "TBVideoPlayViewController.h"
+
 #import "WMPlayer.h"
 
 @interface TBVideoPlayViewController ()<WMPlayerDelegate>{
@@ -158,7 +159,6 @@
     
     wmPlayer.titleLabel.text = self.title;
     wmPlayer.closeBtn.hidden = NO;
-    wmPlayer.loadingView.backgroundColor = [UIColor whiteColor];
     wmPlayer.loadingView.color = [UIColor whiteColor];
     [wmPlayer.loadingView startAnimating];
     
@@ -166,13 +166,11 @@
     [wmPlayer play];
     
     [wmPlayer mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).with.offset(0);
-        make.left.equalTo(self.view).with.offset(0);
-        make.right.equalTo(self.view).with.offset(0);
-        make.height.equalTo(@(playerFrame.size.height));
+        make.width.equalTo(@([UIScreen mainScreen].bounds.size.height));
+        make.height.equalTo(@([UIScreen mainScreen].bounds.size.width));
+        make.center.equalTo(wmPlayer.superview);
     }];
-    
-   
+
 }
 
 - (void)releaseWMPlayer
@@ -196,4 +194,5 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"DetailViewController deallco");
 }
+
 @end

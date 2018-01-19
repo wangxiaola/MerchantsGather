@@ -8,7 +8,6 @@
 
 #import "TBMerchantsVideoView.h"
 #import "TBVideoShootingController.h"
-#import "TBPhotoVideoViewController.h"
 #import "TBVideoPlayViewController.h"
 #import "TBRecordVideoMode.h"
 #import "TBMoreReminderView.h"
