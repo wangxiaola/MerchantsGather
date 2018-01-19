@@ -12,4 +12,8 @@
  */
 @interface TBVideoShootingController : UIViewController
 
+/**
+ 视频水印名称
+ */
+@property (nonatomic, strong) NSString *videoName;
 @end

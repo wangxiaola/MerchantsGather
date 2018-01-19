@@ -11,6 +11,7 @@
 @interface TBWatermarkOverlayView() {
 
     UIImageView *_watermarkImageView;
+    
 }
 @end
 
@@ -24,6 +25,7 @@
         _watermarkImageView.contentMode = UIViewContentModeScaleAspectFill;
         _watermarkImageView.backgroundColor = [UIColor clearColor];
         [self addSubview:_watermarkImageView];
+        
     }
     
     return self;
@@ -35,6 +37,7 @@
     [_watermarkImageView sizeToFit];
     CGRect watermarkFrame = CGRectMake(10, 10, 100, 30.4);
     _watermarkImageView.frame = watermarkFrame;
+    
 }
 
 

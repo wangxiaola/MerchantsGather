@@ -11,6 +11,5 @@
 
 @interface TBWatermarkOverlayView : UIView<SCVideoOverlay>
 
-@property (strong, nonatomic) NSDate *date;
 
 @end

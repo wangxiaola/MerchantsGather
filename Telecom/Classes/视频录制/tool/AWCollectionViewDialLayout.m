@@ -146,7 +146,7 @@
 }
 
 -(NSIndexPath *)targetIndexPathForInteractivelyMovingItem:(NSIndexPath *)previousIndexPath withPosition:(CGPoint)position{
-    NSLog(@"targetIndexPathForInteractivelyMovingItem");
+    MMLog(@"targetIndexPathForInteractivelyMovingItem");
     return [NSIndexPath indexPathForItem:0 inSection:0];
 }
 
@@ -198,11 +198,11 @@
         if(shouldFlip){
             theAttributes.center = CGPointMake( self.collectionView.frame.size.width + self.dialRadius - self.xOffset , self.collectionView.bounds.size.height/2 + self.collectionView.contentOffset.y);
             translationT =CGAffineTransformMakeTranslation( -1 * (self.dialRadius  + ((1 - scaleFactor) * -30)) , 0);
-            NSLog(@"should Flip ");
+            MMLog(@"should Flip ");
         }else{
             theAttributes.center = CGPointMake(-self.dialRadius + self.xOffset , self.collectionView.bounds.size.height/2 + self.collectionView.contentOffset.y);
             translationT =CGAffineTransformMakeTranslation(self.dialRadius  + ((1 - scaleFactor) * -30) , 0);
-            NSLog(@"should not Flip ");
+            MMLog(@"should not Flip ");
         }
     }
     

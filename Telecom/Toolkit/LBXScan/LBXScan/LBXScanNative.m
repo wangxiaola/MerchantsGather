@@ -159,7 +159,7 @@
     AVCaptureConnection *videoConnection = [self connectionWithMediaType:AVMediaTypeVideo fromConnections:[[self stillImageOutput] connections]];
 //    CGFloat maxScale = videoConnection.videoMaxScaleAndCropFactor;
      CGFloat scale = videoConnection.videoScaleAndCropFactor;
-    NSLog(@"%f",scale);
+    MMLog(@"%f",scale);
 //    CGFloat zoom = maxScale / 50;
 //    if (zoom < 1.0f || zoom > maxScale)
 //    {
@@ -238,7 +238,7 @@
 {
     if ( object == _input.device ) {
         
-        NSLog(@"flash change");
+        MMLog(@"flash change");
     }
 }
 
@@ -348,8 +348,8 @@
         {
             
             NSString *scannedResult = [(AVMetadataMachineReadableCodeObject *) current stringValue];
-            NSLog(@"type:%@",current.type);
-            NSLog(@"result:%@",scannedResult);
+            MMLog(@"type:%@",current.type);
+            MMLog(@"result:%@",scannedResult);
             
             
             

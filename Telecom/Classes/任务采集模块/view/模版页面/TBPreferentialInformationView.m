@@ -217,7 +217,7 @@
 {
     if (number.length>0)
     {
-        NSLog(@" 发放数量 %@",number);
+        MMLog(@" 发放数量 %@",number);
        self.parameter[@"num"] = number;
     }
 }
@@ -226,7 +226,7 @@
 {
     if (rules.length>0)
     {
-        NSLog(@" 使用规则 %@",rules);
+        MMLog(@" 使用规则 %@",rules);
         self.parameter[@"ucondit"] = rules;
     }
 }
@@ -234,7 +234,7 @@
 - (void)usingPeriodOfTime:(NSString *__nonnull)time;
 {
     self.parameter[@"edate"] = time;
-    NSLog(@" 使用期限 %@",time);
+    MMLog(@" 使用期限 %@",time);
 }
 #pragma mark --date---
 //获取几个月时间

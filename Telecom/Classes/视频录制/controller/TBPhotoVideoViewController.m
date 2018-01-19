@@ -31,7 +31,7 @@
     // Do any additional setup after loading the view.
     
     if ([_path containsString:is_IMAGE_URL]) {
-        [self playVideoUrl:[NSURL URLWithString:_path]];
+        [self playVideoUrl:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMAGE_URL,_path]]];
     }
     else
     {
@@ -48,6 +48,7 @@
 }
 - (void)playVideoUrl:(NSURL *)url
 {
+    
     hudDismiss();
     _session = [AVAudioSession sharedInstance];
     [_session setCategory:AVAudioSessionCategoryPlayback error:nil];
@@ -71,7 +72,18 @@
     [_playerController.player play];    //自动播放
 }
 
-
+- (NSDictionary *)getVideoInfoWithSourcePath:(NSString *)path{
+    
+    path = [path stringByReplacingOccurrencesOfString:@"file:///" withString:@""];
+    AVURLAsset * asset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:path]];
+    CMTime   time = [asset duration];
+    int seconds = ceil(time.value/time.timescale);
+    
+    NSInteger   fileSize = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil].fileSize;
+    
+    return @{@"size" : @(fileSize),
+             @"duration" : @(seconds)};
+}
 /*
  #pragma mark - Navigation
  

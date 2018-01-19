@@ -9,6 +9,7 @@
 #import "TBMerchantsVideoView.h"
 #import "TBVideoShootingController.h"
 #import "TBPhotoVideoViewController.h"
+#import "TBVideoPlayViewController.h"
 #import "TBRecordVideoMode.h"
 #import "TBMoreReminderView.h"
 #import "ZKNavigationController.h"
@@ -220,6 +221,7 @@
 - (void)shootingVideo
 {
     TBVideoShootingController *vc = [[TBVideoShootingController alloc] init];
+    vc.videoName = [self.makingList.infoDic valueForKey:@"name"];
     ZKNavigationController *nav = [[ZKNavigationController alloc] initWithRootViewController:vc];
     [[ZKUtil getPresentedViewController] presentViewController:nav animated:YES completion:nil];
 }
@@ -241,7 +243,7 @@
  */
 - (void)playVideo
 {
-    TBPhotoVideoViewController *vc = [[TBPhotoVideoViewController alloc] initWithUrl:self.videoMode.videoPath];
+    TBVideoPlayViewController *vc = [[TBVideoPlayViewController alloc] initWithUrl:self.videoMode.videoPath];
     [[ZKUtil getPresentedViewController] presentViewController:vc animated:YES completion:nil];
 }
 - (void)videoInfoNotificationAction:(NSNotification *)notification{
@@ -293,6 +295,7 @@
         self.videoBackImageView.image = [UIImage imageNamed:@""];
     }
     
+    
     [self.playStateButton setImage:[UIImage imageNamed:playImageName] forState:UIControlStateNormal];
     [self.videoBackView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(videoHeight);
@@ -341,10 +344,7 @@
         
         [self updateVideoViewMode:self.videoMode];
     }
-    
-    
-    
-    
+
     return @{@"name":@"商户视频",@"prompt":@""};
 }
 /**

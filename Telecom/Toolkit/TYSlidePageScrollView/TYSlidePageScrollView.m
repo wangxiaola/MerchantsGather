@@ -392,7 +392,7 @@
 - (void)scrollToPageIndex:(NSInteger)index animated:(BOOL)animated
 {
     if (index < 0 || index >= _pageViewArray.count) {
-        NSLog(@"scrollToPageIndex index illegal");
+        MMLog(@"scrollToPageIndex index illegal");
         return;
     }
     
@@ -403,7 +403,7 @@
 - (UIScrollView *)pageScrollViewForIndex:(NSInteger)index
 {
     if (index < 0 || index >= _pageViewArray.count) {
-        NSLog(@"pageScrollViewForIndex index illegal");
+        MMLog(@"pageScrollViewForIndex index illegal");
         return nil;
     }
     
@@ -567,7 +567,7 @@
 {
     //[self resetPropertys];
     [self addPageViewKeyPathOffsetWithOldIndex:_curPageIndex newIndex:-1];
-    NSLog(@"TYSlidePageScrollView dealloc");
+    MMLog(@"TYSlidePageScrollView dealloc");
 }
 
 @end

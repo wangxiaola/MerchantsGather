@@ -399,14 +399,14 @@ static void ASReadStreamCallBack
 		if (err)
 		{
 			char *errChars = (char *)&err;
-			NSLog(@"%@ err: %c%c%c%c %d\n",
+			MMLog(@"%@ err: %c%c%c%c %d\n",
 				[AudioStreamer stringForErrorCode:anErrorCode],
 				errChars[3], errChars[2], errChars[1], errChars[0],
 				(int)err);
 		}
 		else
 		{
-			NSLog(@"%@", [AudioStreamer stringForErrorCode:anErrorCode]);
+			MMLog(@"%@", [AudioStreamer stringForErrorCode:anErrorCode]);
 		}
 
 		if (state == AS_PLAYING ||
@@ -741,7 +741,7 @@ static void ASReadStreamCallBack
 				if (state != AS_STOPPING &&
 					state != AS_STOPPED)
 				{
-					NSLog(@"### Not starting audio thread. State code is: %ld", (long)state);
+					MMLog(@"### Not starting audio thread. State code is: %ld", (long)state);
 				}
 				self.state = AS_INITIALIZED;
 				return;
@@ -1858,7 +1858,7 @@ cleanup:
 //  Enable this logging to measure how many buffers are queued at any time.
 //
 #if LOG_QUEUED_BUFFERS
-	NSLog(@"Queued buffers: %ld", buffersUsed);
+	MMLog(@"Queued buffers: %ld", buffersUsed);
 #endif
 	
 	pthread_cond_signal(&queueBufferReadyCondition);
@@ -1910,7 +1910,7 @@ cleanup:
 				}
 				else
 				{
-					NSLog(@"AudioQueue changed state in unexpected way.");
+					MMLog(@"AudioQueue changed state in unexpected way.");
 				}
 			}
 		}

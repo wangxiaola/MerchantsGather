@@ -15,6 +15,7 @@
 #import "TBFilterCollectionViewCell.h"
 #import "TBVideoRecordingView.h"
 #import "TBWatermarkOverlayView.h"
+#import "TBVideoCompositionTool.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 static NSString * const cellID = @"cellID";
 
@@ -233,7 +234,7 @@ static NSString * const cellID = @"cellID";
         
         [_player play];
         if (recordPath.length > 0) {
-            
+            hudShowSuccess(@"录制完成");
             _recordingPath = recordPath;
         }
     }];
@@ -287,24 +288,20 @@ static NSString * const cellID = @"cellID";
     [_player pause];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
+    NSURL *audioInputUrl = nil;
     if (_recordingPath.length > 0) {
         
-        NSURL *audioInputUrl = [NSURL fileURLWithPath:_recordingPath];
-        TBWeakSelf
-        // 合成音频
-        [TBCaptureUtilities mergeVideo:self.recordSession.assetRepresentingSegments
-                              andAudio:audioInputUrl
-                               results:^(NSString *path, NSError *error)
-         {
-             
-             [weakSelf mergedidFinish:path WithError:nil];
-         }];
+        audioInputUrl = [NSURL fileURLWithPath:_recordingPath];
     }
-    else
-    {
-        [self mergedidFinish:self.recordSession.assetRepresentingSegments WithError:nil];
-        
-    }
+    
+    TBWeakSelf
+    [TBCaptureUtilities mergeVideo:self.recordSession.assetRepresentingSegments
+                      andAudioPath:audioInputUrl
+                         videoName:self.videoName
+                           results:^(NSString *path, NSError *error) {
+                             
+                               [weakSelf mergedidFinish:path WithError:nil];
+                           }];
     
 }
 #pragma mark  ----视频合成----
@@ -344,7 +341,6 @@ static NSString * const cellID = @"cellID";
     exportSession.contextType = SCContextTypeAuto;
     
     TBWatermarkOverlayView *overlay = [TBWatermarkOverlayView new];
-    overlay.date = self.recordSession.date;
     exportSession.videoConfiguration.overlay = overlay;
     
     CFTimeInterval time = CACurrentMediaTime();
@@ -353,7 +349,7 @@ static NSString * const cellID = @"cellID";
         __strong typeof(self) strongSelf = wSelf;
         
         if (!exportSession.cancelled) {
-            NSLog(@"Completed compression in %fs", CACurrentMediaTime() - time);
+            MMLog(@"Completed compression in %fs", CACurrentMediaTime() - time);
         }
         
         if (strongSelf != nil) {
@@ -362,14 +358,15 @@ static NSString * const cellID = @"cellID";
         
         NSError *error = exportSession.error;
         if (exportSession.cancelled) {
-            NSLog(@"Export was cancelled");
+            MMLog(@"Export was cancelled");
         } else if (error == nil) {
+            
             [exportSession.outputUrl saveToCameraRollWithCompletion:^(NSString * _Nullable path,
                                                                       NSError * _Nullable error) {
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                
+
                 if (error == nil) {
-                    
+
                     hudShowSuccess(@"已保存到相机卷");
                     _videoPath = path;
                     [self pushCoverChooseControllerVideoPath:path];
@@ -383,7 +380,6 @@ static NSString * const cellID = @"cellID";
             }
         }
     }];
-    
     
 }
 - (void)video:(NSString *)videoPath didFinishSavingWithUError:(NSError *)error contextInfo: (void *)contextInfo{

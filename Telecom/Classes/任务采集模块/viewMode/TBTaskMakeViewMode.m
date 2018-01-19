@@ -89,6 +89,9 @@
     __block  NSString *images = @"";// 基础信息照片
     __block NSString *audioDataUrl = @"";//声音
     __block NSString *bossHeadImageUrl = @"";//头像
+    __block  NSString *videoUrl = @"";// 视频链接
+    __block  NSString *videoTime = @"";// 视频时间
+    __block  NSString *videoBackImageUrl = @"";// 视频截图
     __block NSString *coverImageUrl = @"";//背景图片
     __block NSString *appearanceImageUrls = @"";//外观图片
     __block NSString *foodImagesUrls = @"";//美食图片
@@ -108,6 +111,7 @@
     __block  NSString *positiveImages = @"";// 商家账户信息照片(正)
     __block  NSString *reverseImages = @"";// 商家账户信息照片(反)
     __block  NSString *signingImages = @"";// 签约合同信息照片
+    
     
     [self.dictionary removeAllObjects];
     
@@ -197,6 +201,53 @@
             dispatch_group_leave(group);
             
         }];
+    }
+    
+    if (self.makingMode.videoData) {
+        
+        dispatch_group_enter(group);
+        [self uploadingResourcesArray:@[self.makingMode.videoData] resourcesType:0 resultArray:^(NSArray *array) {
+            
+            if (array.count > 0) {
+                videoBackImageUrl = array.firstObject;
+            }
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    if (self.makingMode.videoDictionary.count > 0) {
+        
+        videoTime           = [self.makingMode.videoDictionary valueForKey:@"videoTime"];
+        NSString *videoPath = [self.makingMode.videoDictionary valueForKey:@"videoPath"];
+        NSString *coverUrl  = [self.makingMode.videoDictionary valueForKey:@"coverUrl"];
+        
+        if ([coverUrl containsString:is_IMAGE_URL] && videoPath.length > 0) {
+            
+            videoBackImageUrl = coverUrl;
+            videoUrl          = videoPath;
+        }
+        else if (videoPath.length > 0)
+        {
+            // 视频上传
+            NSString *path = NSTemporaryDirectory();
+            NSString * url = [NSString stringWithFormat:@"%@%@",path,videoPath];
+            NSData *data = [NSData dataWithContentsOfFile:url];
+            
+            if (data) {
+                
+                dispatch_group_enter(group);
+                [self uploadingResourcesArray:@[data] resourcesType:1 resultArray:^(NSArray *array) {
+                    
+                    if (array.count > 0) {
+                        videoUrl = array.firstObject;
+                    }
+                    dispatch_group_leave(group);
+                }];
+            }
+            
+        }
+        
+        
     }
     
     // 上传环境
@@ -487,6 +538,10 @@
             
             [weakSelf.dictionary addEntriesFromDictionary:@{@"m16":weakSelf.makingMode.bankDic}];
         }
+        
+        [weakSelf.dictionary addEntriesFromDictionary:@{@"m17":@{
+                                                                @"videoPath":videoUrl,
+                                                                @"coverUrl":videoBackImageUrl, @"videoTime":videoTime}}];
         [weakSelf uploadingAllData:self.dictionary.copy];
         
     });
@@ -574,8 +629,6 @@
 
 - (void)postSuccess:(BOOL)success
 {
-    NSLog(@" ======= ");
-    
     if (success == YES)
     {
         if (self.successful_s)
@@ -904,6 +957,8 @@
     NSDictionary *m13 = [dic_c valueForKey:@"m13"];
     
     mode.roomDatas = [[dic_c valueForKey:@"m15"] mutableCopy];
+    mode.bankDic   = [dic_c valueForKey:@"m16"];
+    mode.videoDictionary = [dic_c valueForKey:@"m17"];
     
     mode.modelsID = [[data valueForKey:@"mid"] integerValue];
     mode.saveID   = [NSString stringWithFormat:@"%ld",(long)_id];

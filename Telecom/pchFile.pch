@@ -125,14 +125,16 @@ alpha:(float)(alphaValue)]
 #define weixinID @"wx071c2201ad28845c"
 #define weixinSecret @"e96c5edc5384dba650fd0378411f104a"
 
-// DEBUG LOG
-#ifdef DEBUG
-#define TASK_DEBUG  0
 #define MMLog( s, ... ) NSLog( @"< %@ > ( 第%d行 ) %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
-#else
-#define MMLog( s, ... )
-#define TASK_DEBUG  0
-#endif
+
+// DEBUG LOG
+//#ifdef DEBUG
+//#define TASK_DEBUG  0
+//#define MMLog( s, ... ) NSLog( @"< %@ > ( 第%d行 ) %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+//#else
+//#define MMLog( s, ... )
+//#define TASK_DEBUG  0
+//#endif
 
 #ifdef __OBJC__
 

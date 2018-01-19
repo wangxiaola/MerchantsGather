@@ -40,7 +40,7 @@
     if ([model isMemberOfClass:self])
         return YES;
 
-    NSLog(@"%@ can not use %@", NSStringFromClass(self), NSStringFromClass(model.class));
+    MMLog(@"%@ can not use %@", NSStringFromClass(self), NSStringFromClass(model.class));
     return NO;
 }
 + (NSInteger)rowCountWithWhereFormat:(id)where, ...

@@ -10,12 +10,15 @@
 
 @interface TBCaptureUtilities : NSObject
 
+
 /**
- 视频合成方法
+ 视频合成
 
  @param asset 视频文件
  @param audioPath 音频路径
- @param results 结果
+ @param name 水印名称
+ @param results 成功返回
  */
-+ (void)mergeVideo:(id )asset andAudio:(NSURL *)audioPath results:(void(^)(NSString *path, NSError *error))results;
++ (void)mergeVideo:(id )asset andAudioPath:(NSURL *)audioPath videoName:(NSString *)name results:(void(^)(NSString *path, NSError *error))results;
+
 @end

@@ -154,7 +154,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 }
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     //Optional
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+    MMLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.

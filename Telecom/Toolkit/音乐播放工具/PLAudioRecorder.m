@@ -265,7 +265,7 @@ NSString * const RecordErrorPermissionDenied = @"RecordErrorPermissionDenied";
         fclose(pcm);
     }
     @catch (NSException *exception) {
-        NSLog(@"%@",[exception description]);
+        MMLog(@"%@",[exception description]);
     }
     @finally {
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategorySoloAmbient error: nil];
@@ -298,7 +298,7 @@ NSString * const RecordErrorPermissionDenied = @"RecordErrorPermissionDenied";
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if([fileManager removeItemAtPath:path error:nil])
     {
-        NSLog(@"删除以前的mp3文件");
+        MMLog(@"删除以前的mp3文件");
     }
 }
 

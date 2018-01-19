@@ -162,7 +162,7 @@
 
                 //如果 设置的 属性名 是空白的  自动转成 使用ColumnName
                 if ([LKDBUtils checkStringIsEmpty:mappingValue]) {
-                    NSLog(@"#ERROR sql column name %@ mapping value is empty,automatically converted LKDBInherit", column_name);
+                    MMLog(@"#ERROR sql column name %@ mapping value is empty,automatically converted LKDBInherit", column_name);
                     mappingValue = LKSQL_Mapping_Inherit;
                 }
 

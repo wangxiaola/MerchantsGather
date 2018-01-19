@@ -124,7 +124,7 @@ CGFloat offSet = 0;
 - (void)scroll_Progress:(CGFloat)progress ForIndex:(NSInteger)index
 {
     // 在这里输出 进程 与 第几项
-    NSLog(@"\n\n\n\n   progress == %lf and index == %ld",progress,(long)index);
+    MMLog(@"\n\n\n\n   progress == %lf and index == %ld",progress,(long)index);
     offSet = (- progress * self.bounds.size.width / 2) + _rightOffset;
     if (progress == 1) {
         _leftOffset = offSet;

@@ -91,7 +91,7 @@
         NSError *error = nil;
         BOOL success = [[NSFileManager defaultManager] createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:&error];
         if (success == NO)
-            NSLog(@"create dir error: %@", error.debugDescription);
+            MMLog(@"create dir error: %@", error.debugDescription);
     }
     return dirPath;
 }

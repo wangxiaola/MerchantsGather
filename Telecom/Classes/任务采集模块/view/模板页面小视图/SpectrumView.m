@@ -22,7 +22,6 @@
 
 - (id)init
 {
-    NSLog(@"init");
     if(self = [super init]) {
         [self setup];
     }
@@ -32,7 +31,6 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    NSLog(@"initWithFrame");
     if (self = [super initWithFrame:frame]) {
         [self setup];
     }
@@ -42,15 +40,12 @@
 
 - (void)awakeFromNib
 {
-    NSLog(@"awakeFromNib");
     [super awakeFromNib];
     [self setup];
 }
 
 - (void)setup
 {
-    
-    NSLog(@"setup");
     
     self.itemArray = [NSMutableArray new];
     
@@ -75,8 +70,6 @@
 
 -(void)setItemLevelCallback:(void (^)(void))itemLevelCallback
 {
-    NSLog(@"setItemLevelCallback");
-    
     _itemLevelCallback = itemLevelCallback;
     
     CADisplayLink *displaylink = [CADisplayLink displayLinkWithTarget:_itemLevelCallback selector:@selector(invoke)];
@@ -100,7 +93,6 @@
 
 - (void)setLevel:(CGFloat)level
 {
-    //NSLog(@"setLevel:%f",level);
     level = (level+37.5)*3.2;
     if( level < 0 ) level = 0;
 
@@ -116,7 +108,6 @@
 
 - (void)updateItems
 {
-    //NSLog(@"updateMeters");
     
     UIGraphicsBeginImageContext(self.frame.size);
     

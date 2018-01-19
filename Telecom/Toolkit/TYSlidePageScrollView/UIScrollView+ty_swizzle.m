@@ -45,12 +45,12 @@
     Method replMethod = class_getInstanceMethod(self, replacementSel);
     
     if (!origMethod) {
-        NSLog(@"original method %@ not found for class %@", NSStringFromSelector(originalSel), [self class]);
+        MMLog(@"original method %@ not found for class %@", NSStringFromSelector(originalSel), [self class]);
         return NO;
     }
     
     if (!replMethod) {
-        NSLog(@"replace method %@ not found for class %@", NSStringFromSelector(replacementSel), [self class]);
+        MMLog(@"replace method %@ not found for class %@", NSStringFromSelector(replacementSel), [self class]);
         return NO;
     }
     

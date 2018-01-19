@@ -17,4 +17,8 @@
  */
 @property (nonatomic, strong) NSString *videoTime;
 
+/**
+ 视频水印名称
+ */
+@property (nonatomic, strong) NSString *videoName;
 @end

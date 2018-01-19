@@ -674,16 +674,16 @@ static char LKModelBase_Key_Inserting;
 #pragma mark - your can overwrite
 - (void)setNilValueForKey:(NSString *)key
 {
-    NSLog(@"nil 这种设置到了 int 等基础类型中");
+    MMLog(@"nil 这种设置到了 int 等基础类型中");
 }
 - (id)valueForUndefinedKey:(NSString *)key
 {
-    NSLog(@"你有get方法没实现，key:%@", key);
+    MMLog(@"你有get方法没实现，key:%@", key);
     return nil;
 }
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"你有set方法没实现，key:%@", key);
+    MMLog(@"你有set方法没实现，key:%@", key);
 }
 
 #pragma mark -
@@ -970,7 +970,7 @@ static char LKModelBase_Key_Inserting;
     NSMutableString *sb = [NSMutableString stringWithFormat:@"\n <%@> :\n", NSStringFromClass(clazz)];
     [sb appendFormat:@"rowid : %ld\n", (long)self.rowid];
     [self mutableString:sb appendPropertyStringWithClass:clazz containParent:containParent];
-    NSLog(@"%@", sb);
+    MMLog(@"%@", sb);
     return sb;
 #else
     return @"";

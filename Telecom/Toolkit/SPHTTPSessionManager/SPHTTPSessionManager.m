@@ -227,16 +227,16 @@
                     self.task = nil;
                     return YES;
                 } else {
-                    NSLog(@"移除文件失败");
+                    MMLog(@"移除文件失败");
                     return NO;
                 }
                 
             } else {
-                NSLog(@"没找到文件路径");
+                MMLog(@"没找到文件路径");
                 return NO;
             }
         } else {
-            NSLog(@"没有需要删除的数据");
+            MMLog(@"没有需要删除的数据");
             return NO;
         }
     }
@@ -254,17 +254,17 @@
                     self.task = nil;
                     return YES;
                 } else {
-                    NSLog(@"移除失败");
+                    MMLog(@"移除失败");
                     return NO;
                 }
                 return YES;
             } else {
-                NSLog(@"没找到文件路径");
+                MMLog(@"没找到文件路径");
                 return NO;
             }
         }
         else { // 正在下载
-            NSLog(@"****** ‘SPDownloadWayRestart‘不支持在下载过程中删除");
+            MMLog(@"****** ‘SPDownloadWayRestart‘不支持在下载过程中删除");
            return NO;
         }
     }
@@ -310,7 +310,7 @@
             // 取出文件的总长度
             NSInteger totalLength = [self.fileInfoDictionry[SPFileName] integerValue];
             if (totalLength && SPDownloadLength == totalLength) {
-                NSLog(@"文件已经下载完成了");
+                MMLog(@"文件已经下载完成了");
                 return nil;
             }
             // 创建请求

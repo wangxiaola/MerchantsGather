@@ -19,6 +19,7 @@
 #import "LZLevelView.h"
 #import "ProgressBar.h"
 #import "LZButton.h"
+#import "TBCaptureUtilities.h"
 
 #import "SCRecorder.h"
 #import "SCRecordSessionManager.h"
@@ -105,12 +106,12 @@
 //初始化录制
 - (void)initSCRecorder {
     // 设置窗口大小
-    self.videoViewHeight.constant = _SCREEN_WIDTH*9/16;
+    self.videoViewHeight.constant = _SCREEN_WIDTH*9/16+1;
     
     _recorder = [SCRecorder recorder];
     _recorder.captureSessionPreset = [SCRecorderTools bestCaptureSessionPresetCompatibleWithAllDevices];
-    _recorder.maxRecordDuration = CMTimeMake(10, 1); //设置记录的最大持续时间
-    _recorder.videoConfiguration.size = CGSizeMake(720, 720*9/16);
+    _recorder.maxRecordDuration = CMTimeMake(10.0, 1); //设置记录的最大持续时间
+    _recorder.videoConfiguration.size = CGSizeMake(640, 640*9/16);
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = NO;
     _recorder.previewView = self.previewView;
@@ -161,6 +162,7 @@
     TBVideoEditingViewController * vc = [[TBVideoEditingViewController alloc]initWithNibName:@"TBVideoEditingViewController" bundle:nil];
     vc.recordSession = self.recorder.session;
     vc.videoTime     = self.timeLabel.text;
+    vc.videoName     = self.videoName;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -325,6 +327,7 @@
     MMLog(@"didCompleteSession:");
     [self.recordingBackimageView setImage:[UIImage imageNamed:@"boss_voice_0"]];
     [self saveAndShowSession:recordSession];
+
 }
 
 @end

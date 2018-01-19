@@ -654,7 +654,7 @@ static dispatch_once_t onceToken;
                 if (success && completion) {
                     completion(nil);
                 } else if (error) {
-                    NSLog(@"保存照片出错:%@",error.localizedDescription);
+                    MMLog(@"保存照片出错:%@",error.localizedDescription);
                     if (completion) {
                         completion(error);
                     }
@@ -664,7 +664,7 @@ static dispatch_once_t onceToken;
     } else {
         [self.assetLibrary writeImageToSavedPhotosAlbum:image.CGImage orientation:[self orientationFromImage:image] completionBlock:^(NSURL *assetURL, NSError *error) {
             if (error) {
-                NSLog(@"保存图片失败:%@",error.localizedDescription);
+                MMLog(@"保存图片失败:%@",error.localizedDescription);
                 if (completion) {
                     completion(error);
                 }
@@ -769,7 +769,7 @@ static dispatch_once_t onceToken;
             if (failure) {
                 failure(@"该视频类型暂不支持导出", nil);
             }
-            NSLog(@"No supported file types 视频类型暂不支持导出");
+            MMLog(@"No supported file types 视频类型暂不支持导出");
             return;
         } else {
             session.outputFileType = [supportedTypeArray objectAtIndex:0];
@@ -790,28 +790,28 @@ static dispatch_once_t onceToken;
             dispatch_async(dispatch_get_main_queue(), ^{
                 switch (session.status) {
                     case AVAssetExportSessionStatusUnknown: {
-                        NSLog(@"AVAssetExportSessionStatusUnknown");
+                        MMLog(@"AVAssetExportSessionStatusUnknown");
                     }  break;
                     case AVAssetExportSessionStatusWaiting: {
-                        NSLog(@"AVAssetExportSessionStatusWaiting");
+                        MMLog(@"AVAssetExportSessionStatusWaiting");
                     }  break;
                     case AVAssetExportSessionStatusExporting: {
-                        NSLog(@"AVAssetExportSessionStatusExporting");
+                        MMLog(@"AVAssetExportSessionStatusExporting");
                     }  break;
                     case AVAssetExportSessionStatusCompleted: {
-                        NSLog(@"AVAssetExportSessionStatusCompleted");
+                        MMLog(@"AVAssetExportSessionStatusCompleted");
                         if (success) {
                             success(outputPath);
                         }
                     }  break;
                     case AVAssetExportSessionStatusFailed: {
-                        NSLog(@"AVAssetExportSessionStatusFailed");
+                        MMLog(@"AVAssetExportSessionStatusFailed");
                         if (failure) {
                             failure(@"视频导出失败", session.error);
                         }
                     }  break;
                     case AVAssetExportSessionStatusCancelled: {
-                        NSLog(@"AVAssetExportSessionStatusCancelled");
+                        MMLog(@"AVAssetExportSessionStatusCancelled");
                         if (failure) {
                             failure(@"导出任务已被取消", nil);
                         }

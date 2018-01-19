@@ -214,7 +214,7 @@
     
     
     
-    NSLog(@"frame:%@",NSStringFromCGRect(self.frame));
+    MMLog(@"frame:%@",NSStringFromCGRect(self.frame));
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     

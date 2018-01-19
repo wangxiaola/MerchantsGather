@@ -74,7 +74,7 @@
 
 /// 定位失败回调方法
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"定位失败, 错误: %@",error);
+    MMLog(@"定位失败, 错误: %@",error);
     switch([error code]) {
         case kCLErrorDenied: { // 用户禁止了定位权限
             

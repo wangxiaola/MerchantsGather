@@ -209,7 +209,7 @@
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    NSLog(@"cancel");
+    MMLog(@"cancel");
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

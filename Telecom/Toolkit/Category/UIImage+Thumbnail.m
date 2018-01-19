@@ -58,7 +58,7 @@
     
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     if(newImage == nil)
-        NSLog(@"could not scale image");
+        MMLog(@"could not scale image");
     
     //pop the context to get back to the default
     UIGraphicsEndImageContext();
@@ -119,9 +119,9 @@
         {
             CGFloat scale = 0.9;
             NSData *pngData = UIImagePNGRepresentation(self);
-            NSLog(@"Original pnglength %zd", pngData.length);
+            MMLog(@"Original pnglength %zd", pngData.length);
             NSData *jpgData = UIImageJPEGRepresentation(self, scale);
-            NSLog(@"Original jpglength %zd", pngData.length);
+            MMLog(@"Original jpglength %zd", pngData.length);
             
             while (jpgData.length > length) {
                 newImage = [newImage compressWithWidth:newImage.size.width * scale];
@@ -134,7 +134,7 @@
                         newImageData = UIImageJPEGRepresentation(newImage, scale);
                     }
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        NSLog(@"Result jpglength %zd", newImageData.length);
+                        MMLog(@"Result jpglength %zd", newImageData.length);
                         block(newImageData);
                     });
                     return;
@@ -154,7 +154,7 @@
             if (scale < 0) {
                 break;
             }
-            NSLog(@"%f", scale);
+            MMLog(@"%f", scale);
             scaleData = UIImageJPEGRepresentation(self, scale);
         }
         dispatch_async(dispatch_get_main_queue(), ^{

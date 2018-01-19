@@ -343,7 +343,7 @@ static char *NSErrorStatusCodeKey = "NSErrorStatusCodeKey";
     }
     
     NSString*  pathStr = [path  stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"url:%@",pathStr);
+    MMLog(@"url:%@",pathStr);
     NSURL *url = [NSURL URLWithString:pathStr];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

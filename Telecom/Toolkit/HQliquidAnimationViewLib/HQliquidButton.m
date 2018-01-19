@@ -67,7 +67,7 @@
         case UIGestureRecognizerStateBegan:
         {
             self.hidden = YES;
-            NSLog(@"UIGestureRecognizerStateBegan");
+            MMLog(@"UIGestureRecognizerStateBegan");
             [[[UIApplication sharedApplication].windows lastObject] addSubview:self.liquidAnimationView];
             CGPoint originCenter = [self convertPoint:CGPointMake(10, 10) toView:(UIWindow *)LAST_WINDOW];
             self.liquidAnimationView.oringinCenter = originCenter;
@@ -101,7 +101,7 @@
 - (void)gestureRecognizerStateEnded
 {
     self.hidden = NO;
-    NSLog(@"UIGestureRecognizerStateEnded %ld",(long)self.liquidAnimationView.currentState);
+    MMLog(@"UIGestureRecognizerStateEnded %ld",(long)self.liquidAnimationView.currentState);
     [self.liquidAnimationView removeFromSuperview];
     
 //    if (self.liquidAnimationView.currentState ==  HQliquidAnimationViewStateSeperated) {

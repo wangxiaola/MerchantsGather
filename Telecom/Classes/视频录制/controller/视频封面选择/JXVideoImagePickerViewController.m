@@ -234,9 +234,10 @@
     if (videoURL == nil || videoURL.scheme == nil ) {
         videoURL = [NSURL fileURLWithPath:_videoPath];
     }
-    
+
     if (videoURL) {
         AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:videoURL options:nil];
+        
         return urlAsset;
     }
     

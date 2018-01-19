@@ -142,7 +142,7 @@
     
 
     NSString *identifierStr = [NSString stringWithFormat:@"%@", identifier];
-    NSLog(@" ======  %@", identifierStr);
+    MMLog(@" ======  %@", identifierStr);
     
 }
 #pragma mark  --- post --

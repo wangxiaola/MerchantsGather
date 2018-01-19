@@ -58,7 +58,7 @@
     
     if(_session == nil)
     {
-        NSLog(@"Error creating session: %@", [sessionError description]);
+        MMLog(@"Error creating session: %@", [sessionError description]);
     }
     else
     {
@@ -149,7 +149,7 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if([fileManager removeItemAtPath:path error:nil])
     {
-        NSLog(@"删除以前的mp3文件");
+        MMLog(@"删除以前的mp3文件");
     }
 }
 
@@ -163,7 +163,7 @@
     // remove the old mp3 file
     [self deleteMp3Cache];
     
-    NSLog(@"MP3转换开始");
+    MMLog(@"MP3转换开始");
     if (_delegate && [_delegate respondsToSelector:@selector(beginConvert)]) {
         [_delegate beginConvert];
     }
@@ -200,14 +200,14 @@
         fclose(pcm);
     }
     @catch (NSException *exception) {
-        NSLog(@"%@",[exception description]);
+        MMLog(@"%@",[exception description]);
     }
     @finally {
         [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategorySoloAmbient error: nil];
     }
     
     [self deleteCafCache];
-    NSLog(@"MP3转换结束");
+    MMLog(@"MP3转换结束");
     if (_delegate && [_delegate respondsToSelector:@selector(endConvertWithData:)]) {
         NSData *voiceData = [NSData dataWithContentsOfFile:[self mp3Path]];
         [_delegate endConvertWithData:voiceData];
