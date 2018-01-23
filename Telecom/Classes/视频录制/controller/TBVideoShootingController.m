@@ -58,6 +58,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    hudShowLoading(@"正在初始化");
     self.navigationItem.title = @"视频录制";
     [_gridOrlineButton setLoopImages:@[[UIImage imageNamed:@"lz_recorder_grid"], [UIImage imageNamed:@"lz_recorder_grid_hd"], [UIImage imageNamed:@"lz_recorder_line_hd"]] ];
     
@@ -285,6 +286,7 @@
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureVideoInput:(NSError *)videoInputError {
 
+    hudDismiss();
     if (videoInputError) {
         [UIView addMJNotifierWithText:@"视频录制异常!" dismissAutomatically:YES];
     }
