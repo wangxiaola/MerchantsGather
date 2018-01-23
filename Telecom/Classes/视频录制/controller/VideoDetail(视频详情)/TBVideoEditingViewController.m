@@ -332,26 +332,19 @@ static NSString * const cellID = @"cellID";
 /**
  最终合成视频保存
  
- @param video 视频 路径或AVAsset
+ @param videoPath 视频 路径或AVAsset
  @param error 错误信息
  */
-- (void)mergedidFinish:(id )video WithError:(NSError *)error
+- (void)mergedidFinish:(NSString *)videoPath WithError:(NSError *)error
 {
     SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
-    AVAsset *set;
-    if ([video isKindOfClass:[NSString class]])
-    {
-        NSURL *url = [NSURL fileURLWithPath:video];
-        if (!url) {
-            [self promptExceptionInformation:@"视频合成异常！"];
-            return;
-        }
-        set = [AVAsset assetWithURL:url];
+
+    NSURL *url = [NSURL fileURLWithPath:videoPath];
+    if (!url) {
+        [self promptExceptionInformation:@"视频合成异常！"];
+        return;
     }
-    else
-    {
-        set = video;
-    }
+        AVAsset *set = [AVAsset assetWithURL:url];
     
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:set];
     exportSession.videoConfiguration.filter = currentFilter;
