@@ -19,8 +19,8 @@
     // 初始化视频媒体文件
     AVURLAsset *videoAsset = asset;
     
-    CMTime startTime = CMTimeMakeWithSeconds(0.2, 600);
-    CMTime endTime = CMTimeMakeWithSeconds(videoAsset.duration.value/videoAsset.duration.timescale-0.2, videoAsset.duration.timescale);
+    CMTime startTime = CMTimeMakeWithSeconds(0.0, videoAsset.duration.timescale);
+    CMTime endTime = CMTimeMakeWithSeconds(videoAsset.duration.value/videoAsset.duration.timescale, videoAsset.duration.timescale);
     // 声音采集
     AVURLAsset * audioAsset;
     if (audioPath) {
@@ -180,7 +180,7 @@
     anima.fromValue = [NSNumber numberWithFloat:1.0f];
     anima.toValue = [NSNumber numberWithFloat:0.0f];
     anima.repeatCount = 0;
-    anima.duration = 3.0f;  //3s之后消失
+    anima.duration = 2.0f;  //2s之后消失
     [anima setRemovedOnCompletion:NO];
     [anima setFillMode:kCAFillModeForwards];
     anima.beginTime = AVCoreAnimationBeginTimeAtZero;

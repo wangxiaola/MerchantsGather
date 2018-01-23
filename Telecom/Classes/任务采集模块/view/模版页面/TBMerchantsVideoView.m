@@ -62,7 +62,7 @@
     [promptBackView addSubview:promptTagView];
     
     UILabel *promptLabel = [[UILabel alloc] init];
-    promptLabel.text = @"  为了让更多的网友分享您的店铺，你可以送出一些抵用券，给分享了您店铺的人，这样就会有更多的网友积极主动的帮您分享传播哦！";
+    promptLabel.text = @"  拍摄小视频能更好的展示您的店铺，这样就会有更多的网友积极主动的帮您分享传播哦！";
     promptLabel.font = [UIFont systemFontOfSize:14];
     promptLabel.textColor = [UIColor blackColor];
     promptLabel.numberOfLines = 0;

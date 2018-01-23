@@ -582,6 +582,27 @@
 		3BA454721FF2573700176874 /* TBFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454701FF2573700176874 /* TBFilterCollectionViewCell.m */; };
 		3BA5E5F71F5D481B00C0F6E3 /* TBRemoteNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5E5F61F5D481B00C0F6E3 /* TBRemoteNotificationManager.m */; };
 		3BABA1981FEA61A30020F074 /* TBMerchantsVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABA1971FEA61A30020F074 /* TBMerchantsVideoView.m */; };
+		3BAC7355201593AA00154FCD /* dg_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7341201593A900154FCD /* dg_0.mp3 */; };
+		3BAC7356201593AA00154FCD /* dg_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7342201593A900154FCD /* dg_1.mp3 */; };
+		3BAC7357201593AA00154FCD /* dg_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7343201593A900154FCD /* dg_2.mp3 */; };
+		3BAC7358201593AA00154FCD /* dg_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7344201593A900154FCD /* dg_3.mp3 */; };
+		3BAC7359201593AA00154FCD /* dg_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7345201593A900154FCD /* dg_4.mp3 */; };
+		3BAC735A201593AA00154FCD /* dg_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7346201593A900154FCD /* dg_5.mp3 */; };
+		3BAC735B201593AA00154FCD /* hk_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7348201593A900154FCD /* hk_0.mp3 */; };
+		3BAC735C201593AA00154FCD /* hk_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7349201593A900154FCD /* hk_1.mp3 */; };
+		3BAC735D201593AA00154FCD /* hk_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC734A201593A900154FCD /* hk_2.mp3 */; };
+		3BAC735E201593AA00154FCD /* hk_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC734B201593A900154FCD /* hk_3.mp3 */; };
+		3BAC735F201593AA00154FCD /* hk_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC734C201593A900154FCD /* hk_4.mp3 */; };
+		3BAC7360201593AA00154FCD /* hk_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC734D201593A900154FCD /* hk_5.mp3 */; };
+		3BAC7361201593AA00154FCD /* sh_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC734F201593A900154FCD /* sh_0.mp3 */; };
+		3BAC7362201593AA00154FCD /* sh_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7350201593A900154FCD /* sh_1.mp3 */; };
+		3BAC7363201593AA00154FCD /* sh_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7351201593A900154FCD /* sh_2.mp3 */; };
+		3BAC7364201593AA00154FCD /* sh_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7352201593A900154FCD /* sh_3.mp3 */; };
+		3BAC7365201593AA00154FCD /* sh_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7353201593A900154FCD /* sh_4.mp3 */; };
+		3BAC7366201593AA00154FCD /* sh_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7354201593A900154FCD /* sh_5.mp3 */; };
+		3BAC73692015B53600154FCD /* TBBackMusicChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC73682015B53600154FCD /* TBBackMusicChooseView.m */; };
+		3BAC736F2015C1B400154FCD /* TBMusicPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC736E2015C1B400154FCD /* TBMusicPageCell.m */; };
+		3BAC73722015E72D00154FCD /* TBMusicPlayTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC73712015E72D00154FCD /* TBMusicPlayTool.m */; };
 		3BAD71F51FBD387C00181864 /* TBGZEmployeesAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD71F41FBD387C00181864 /* TBGZEmployeesAddView.m */; };
 		3BAD71FD1FBD3A7A00181864 /* TBGZEmployeesAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BAD71FC1FBD3A7A00181864 /* TBGZEmployeesAddView.xib */; };
 		3BAD72041FBD9AD500181864 /* TBGZEmployeesAddViewMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD72031FBD9AD500181864 /* TBGZEmployeesAddViewMode.m */; };
@@ -1783,6 +1804,30 @@
 		3BA5E5F61F5D481B00C0F6E3 /* TBRemoteNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBRemoteNotificationManager.m; sourceTree = "<group>"; };
 		3BABA1961FEA61A30020F074 /* TBMerchantsVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBMerchantsVideoView.h; sourceTree = "<group>"; };
 		3BABA1971FEA61A30020F074 /* TBMerchantsVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBMerchantsVideoView.m; sourceTree = "<group>"; };
+		3BAC7341201593A900154FCD /* dg_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_0.mp3; sourceTree = "<group>"; };
+		3BAC7342201593A900154FCD /* dg_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_1.mp3; sourceTree = "<group>"; };
+		3BAC7343201593A900154FCD /* dg_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_2.mp3; sourceTree = "<group>"; };
+		3BAC7344201593A900154FCD /* dg_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_3.mp3; sourceTree = "<group>"; };
+		3BAC7345201593A900154FCD /* dg_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_4.mp3; sourceTree = "<group>"; };
+		3BAC7346201593A900154FCD /* dg_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_5.mp3; sourceTree = "<group>"; };
+		3BAC7348201593A900154FCD /* hk_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hk_0.mp3; sourceTree = "<group>"; };
+		3BAC7349201593A900154FCD /* hk_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hk_1.mp3; sourceTree = "<group>"; };
+		3BAC734A201593A900154FCD /* hk_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hk_2.mp3; sourceTree = "<group>"; };
+		3BAC734B201593A900154FCD /* hk_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hk_3.mp3; sourceTree = "<group>"; };
+		3BAC734C201593A900154FCD /* hk_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hk_4.mp3; sourceTree = "<group>"; };
+		3BAC734D201593A900154FCD /* hk_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hk_5.mp3; sourceTree = "<group>"; };
+		3BAC734F201593A900154FCD /* sh_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sh_0.mp3; sourceTree = "<group>"; };
+		3BAC7350201593A900154FCD /* sh_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sh_1.mp3; sourceTree = "<group>"; };
+		3BAC7351201593A900154FCD /* sh_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sh_2.mp3; sourceTree = "<group>"; };
+		3BAC7352201593A900154FCD /* sh_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sh_3.mp3; sourceTree = "<group>"; };
+		3BAC7353201593A900154FCD /* sh_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sh_4.mp3; sourceTree = "<group>"; };
+		3BAC7354201593A900154FCD /* sh_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sh_5.mp3; sourceTree = "<group>"; };
+		3BAC73672015B53600154FCD /* TBBackMusicChooseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBBackMusicChooseView.h; sourceTree = "<group>"; };
+		3BAC73682015B53600154FCD /* TBBackMusicChooseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBBackMusicChooseView.m; sourceTree = "<group>"; };
+		3BAC736D2015C1B400154FCD /* TBMusicPageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBMusicPageCell.h; sourceTree = "<group>"; };
+		3BAC736E2015C1B400154FCD /* TBMusicPageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBMusicPageCell.m; sourceTree = "<group>"; };
+		3BAC73702015E72D00154FCD /* TBMusicPlayTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBMusicPlayTool.h; sourceTree = "<group>"; };
+		3BAC73712015E72D00154FCD /* TBMusicPlayTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBMusicPlayTool.m; sourceTree = "<group>"; };
 		3BAD71F31FBD387C00181864 /* TBGZEmployeesAddView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBGZEmployeesAddView.h; sourceTree = "<group>"; };
 		3BAD71F41FBD387C00181864 /* TBGZEmployeesAddView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBGZEmployeesAddView.m; sourceTree = "<group>"; };
 		3BAD71FC1FBD3A7A00181864 /* TBGZEmployeesAddView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TBGZEmployeesAddView.xib; path = ServicePlaceView/views/TBGZEmployeesAddView.xib; sourceTree = "<group>"; };
@@ -2025,6 +2070,8 @@
 				3B5C70111F4E7D5000B2CE42 /* Mp3Recorder.m */,
 				3B5C70121F4E7D5000B2CE42 /* PLAudioRecorder.h */,
 				3B5C70131F4E7D5000B2CE42 /* PLAudioRecorder.m */,
+				3BAC73702015E72D00154FCD /* TBMusicPlayTool.h */,
+				3BAC73712015E72D00154FCD /* TBMusicPlayTool.m */,
 			);
 			path = "音乐播放工具";
 			sourceTree = "<group>";
@@ -3789,6 +3836,7 @@
 		3B8BA15C1DF106620007027F = {
 			isa = PBXGroup;
 			children = (
+				3BAC733F201593A900154FCD /* music */,
 				3BF0DD721EA78785002200BE /* AMap.bundle */,
 				3B8BA1671DF106670007027F /* Telecom */,
 				3B8BA1811DF106670007027F /* TelecomTests */,
@@ -4009,6 +4057,8 @@
 				3BA4544C1FF1E75000176874 /* LZLevelView.m */,
 				3BA4546F1FF2573700176874 /* TBFilterCollectionViewCell.h */,
 				3BA454701FF2573700176874 /* TBFilterCollectionViewCell.m */,
+				3BAC736D2015C1B400154FCD /* TBMusicPageCell.h */,
+				3BAC736E2015C1B400154FCD /* TBMusicPageCell.m */,
 				3BA4544D1FF1E75000176874 /* ProgressBar */,
 			);
 			path = view;
@@ -4019,6 +4069,8 @@
 			children = (
 				3B95CB2D2005C61F004BAC82 /* TBCaptureUtilities.h */,
 				3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */,
+				3BAC73672015B53600154FCD /* TBBackMusicChooseView.h */,
+				3BAC73682015B53600154FCD /* TBBackMusicChooseView.m */,
 				3B95CB30200604F0004BAC82 /* TBVideoRecordingView.h */,
 				3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */,
 				3B784C0C20074A98001C42D8 /* TBRecordingCorrugatedView.h */,
@@ -4100,6 +4152,55 @@
 				3B5C758B1F4E7DA800B2CE42 /* views */,
 			);
 			path = "我的模块";
+			sourceTree = "<group>";
+		};
+		3BAC733F201593A900154FCD /* music */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC7340201593A900154FCD /* dg */,
+				3BAC7347201593A900154FCD /* hk */,
+				3BAC734E201593A900154FCD /* sh */,
+			);
+			path = music;
+			sourceTree = "<group>";
+		};
+		3BAC7340201593A900154FCD /* dg */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC7341201593A900154FCD /* dg_0.mp3 */,
+				3BAC7342201593A900154FCD /* dg_1.mp3 */,
+				3BAC7343201593A900154FCD /* dg_2.mp3 */,
+				3BAC7344201593A900154FCD /* dg_3.mp3 */,
+				3BAC7345201593A900154FCD /* dg_4.mp3 */,
+				3BAC7346201593A900154FCD /* dg_5.mp3 */,
+			);
+			path = dg;
+			sourceTree = "<group>";
+		};
+		3BAC7347201593A900154FCD /* hk */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC7348201593A900154FCD /* hk_0.mp3 */,
+				3BAC7349201593A900154FCD /* hk_1.mp3 */,
+				3BAC734A201593A900154FCD /* hk_2.mp3 */,
+				3BAC734B201593A900154FCD /* hk_3.mp3 */,
+				3BAC734C201593A900154FCD /* hk_4.mp3 */,
+				3BAC734D201593A900154FCD /* hk_5.mp3 */,
+			);
+			path = hk;
+			sourceTree = "<group>";
+		};
+		3BAC734E201593A900154FCD /* sh */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC734F201593A900154FCD /* sh_0.mp3 */,
+				3BAC7350201593A900154FCD /* sh_1.mp3 */,
+				3BAC7351201593A900154FCD /* sh_2.mp3 */,
+				3BAC7352201593A900154FCD /* sh_3.mp3 */,
+				3BAC7353201593A900154FCD /* sh_4.mp3 */,
+				3BAC7354201593A900154FCD /* sh_5.mp3 */,
+			);
+			path = sh;
 			sourceTree = "<group>";
 		};
 		3BAD862D1FCFF26F00493C1A /* TZImagePickerController */ = {
@@ -4333,11 +4434,17 @@
 				3B5C766D1F4E7DA800B2CE42 /* TBPublishingGroupViewController.xib in Resources */,
 				3B5C768D1F4E7DA800B2CE42 /* TBBusinessIntelligencePhotoTableViewCell.xib in Resources */,
 				3BA454471FF1E74100176874 /* TBVideoEditingViewController.xib in Resources */,
+				3BAC735F201593AA00154FCD /* hk_4.mp3 in Resources */,
+				3BAC7355201593AA00154FCD /* dg_0.mp3 in Resources */,
 				3B5C738E1F4E7D5100B2CE42 /* WSDatePickerView.xib in Resources */,
 				3B8BA1751DF106670007027F /* Assets.xcassets in Resources */,
+				3BAC7359201593AA00154FCD /* dg_4.mp3 in Resources */,
 				3B5C736C1F4E7D5100B2CE42 /* MBProgressHUD.bundle in Resources */,
+				3BAC7362201593AA00154FCD /* sh_1.mp3 in Resources */,
 				3B5C769E1F4E7DA800B2CE42 /* TBGroupSpecificationTableViewCell.xib in Resources */,
+				3BAC7361201593AA00154FCD /* sh_0.mp3 in Resources */,
 				3BE53DDC1FCCFF5D000EB7F4 /* TBFolkRoomsContenView.xib in Resources */,
+				3BAC7357201593AA00154FCD /* dg_2.mp3 in Resources */,
 				3B5C76821F4E7DA800B2CE42 /* MyTaskCell.xib in Resources */,
 				3B5C76441F4E7DA800B2CE42 /* TBTemplateInfoTableViewCell.xib in Resources */,
 				3B5C76181F4E7DA800B2CE42 /* TBStopBusinessViewController.xib in Resources */,
@@ -4345,9 +4452,11 @@
 				3BA4543E1FF1E69900176874 /* TBVideoShootingController.xib in Resources */,
 				3BE53DEC1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib in Resources */,
 				3B5C766F1F4E7DA800B2CE42 /* TBReleaseCardVoucherViewController.xib in Resources */,
+				3BAC7366201593AA00154FCD /* sh_5.mp3 in Resources */,
 				3B5C76A21F4E7DA800B2CE42 /* TBIdentityInformationTableViewCell.xib in Resources */,
 				3B5C76991F4E7DA800B2CE42 /* TBGroupManagementTableViewCell.xib in Resources */,
 				3B5C76401F4E7DA800B2CE42 /* TBTaskListTableViewCell.xib in Resources */,
+				3BAC7365201593AA00154FCD /* sh_4.mp3 in Resources */,
 				3BAD71FD1FBD3A7A00181864 /* TBGZEmployeesAddView.xib in Resources */,
 				3B5C76341F4E7DA800B2CE42 /* TBAddNewMerchantsTableViewCell.xib in Resources */,
 				3B5C76641F4E7DA800B2CE42 /* TBWaitingTaskDataViewController.xib in Resources */,
@@ -4357,9 +4466,14 @@
 				3B5C768F1F4E7DA800B2CE42 /* TBBusinessIntelligenceTableViewCell.xib in Resources */,
 				3B5C76AC1F4E7DA800B2CE42 /* TBSigningPromptTableViewCell.xib in Resources */,
 				3B5C76AE1F4E7DA800B2CE42 /* TBVouchersRecordTableViewCell.xib in Resources */,
+				3BAC7364201593AA00154FCD /* sh_3.mp3 in Resources */,
+				3BAC735D201593AA00154FCD /* hk_2.mp3 in Resources */,
 				3B5C76A51F4E7DA800B2CE42 /* TBManagementTableViewCell.xib in Resources */,
 				3B5C769C1F4E7DA800B2CE42 /* TBGroupRecordsHeadView.xib in Resources */,
 				3B5C76361F4E7DA800B2CE42 /* TBAdvantagesTableViewCell.xib in Resources */,
+				3BAC735C201593AA00154FCD /* hk_1.mp3 in Resources */,
+				3BAC735E201593AA00154FCD /* hk_3.mp3 in Resources */,
+				3BAC735A201593AA00154FCD /* dg_5.mp3 in Resources */,
 				3B5C75FA1F4E7DA800B2CE42 /* TBLogInViewController.xib in Resources */,
 				3BBCE2011FCBF10800117771 /* TBAppearanceTemplateTableViewCell.xib in Resources */,
 				3B5C76971F4E7DA800B2CE42 /* TBEarningsTableViewCell.xib in Resources */,
@@ -4367,9 +4481,14 @@
 				3B5C763C1F4E7DA800B2CE42 /* TBNoteTableViewCell.xib in Resources */,
 				3B8BA1731DF106670007027F /* Main.storyboard in Resources */,
 				3B5C76111F4E7DA800B2CE42 /* TBMyBusinessTableViewCell.xib in Resources */,
+				3BAC7360201593AA00154FCD /* hk_5.mp3 in Resources */,
+				3BAC735B201593AA00154FCD /* hk_0.mp3 in Resources */,
+				3BAC7358201593AA00154FCD /* dg_3.mp3 in Resources */,
 				3B5C76421F4E7DA800B2CE42 /* TBTemplateChooseCollectionViewCell.xib in Resources */,
 				3B5C76931F4E7DA800B2CE42 /* TBDiscountsListTableViewCell.xib in Resources */,
 				3B5C76141F4E7DA800B2CE42 /* TBAddMerchantsViewController.xib in Resources */,
+				3BAC7356201593AA00154FCD /* dg_1.mp3 in Resources */,
+				3BAC7363201593AA00154FCD /* sh_2.mp3 in Resources */,
 				3B5C76461F4E7DA800B2CE42 /* TBTemplateLabelTableViewCell.xib in Resources */,
 				3B5C73541F4E7D5100B2CE42 /* IQKeyboardManager.bundle in Resources */,
 				3B5C763E1F4E7DA800B2CE42 /* TBResourceLabelTableViewCell.xib in Resources */,
@@ -4871,6 +4990,7 @@
 				3B5C744D1F4E7D5100B2CE42 /* ZXPDF417HighLevelEncoder.m in Sources */,
 				3B5C763B1F4E7DA800B2CE42 /* TBNoteTableViewCell.m in Sources */,
 				3B5C76A91F4E7DA800B2CE42 /* TBReleasePreviewInfoTableViewCell.m in Sources */,
+				3BAC736F2015C1B400154FCD /* TBMusicPageCell.m in Sources */,
 				3B5C735F1F4E7D5100B2CE42 /* ZXingWrapper.m in Sources */,
 				3B5C74391F4E7D5100B2CE42 /* ZXModulusGF.m in Sources */,
 				3B8BA16A1DF106670007027F /* main.m in Sources */,
@@ -4922,6 +5042,7 @@
 				3BAE38EB1F6696E600A391D8 /* HQliquidButton.m in Sources */,
 				3B5C73801F4E7D5100B2CE42 /* SDCollectionViewCell.m in Sources */,
 				3B5C76241F4E7DA800B2CE42 /* TBRegionESRootClass.m in Sources */,
+				3BAC73692015B53600154FCD /* TBBackMusicChooseView.m in Sources */,
 				3B5C74541F4E7D5100B2CE42 /* ZXQRCodeDataMask.m in Sources */,
 				3BAD86591FCFF26F00493C1A /* UIView+Layout.m in Sources */,
 				3B5C73BD1F4E7D5100B2CE42 /* ZXVEventResultParser.m in Sources */,
@@ -4954,6 +5075,7 @@
 				3B5C763D1F4E7DA800B2CE42 /* TBResourceLabelTableViewCell.m in Sources */,
 				3B5C73E61F4E7D5100B2CE42 /* ZXResultPoint.m in Sources */,
 				3B5C73C01F4E7D5100B2CE42 /* ZXWifiParsedResult.m in Sources */,
+				3BAC73722015E72D00154FCD /* TBMusicPlayTool.m in Sources */,
 				3B5C73601F4E7D5100B2CE42 /* LKDB+Mapping.m in Sources */,
 				3B5C76751F4E7DA800B2CE42 /* TBEarningsESRootClass.m in Sources */,
 				3B5C744E1F4E7D5100B2CE42 /* ZXPDF417Common.m in Sources */,

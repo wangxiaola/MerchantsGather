@@ -64,9 +64,9 @@
                                         <constraint firstAttribute="height" constant="28" id="hLg-ce-UIy"/>
                                         <constraint firstAttribute="width" constant="28" id="yti-bj-UJo"/>
                                     </constraints>
-                                    <state key="normal" image="video_reset"/>
+                                    <state key="normal" image="video_music"/>
                                     <connections>
-                                        <action selector="resetClick:" destination="-1" eventType="touchUpInside" id="Clt-wh-Syy"/>
+                                        <action selector="musicClick:" destination="-1" eventType="touchUpInside" id="OJF-kT-Xvu"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -91,19 +91,44 @@
                                 <constraint firstItem="Wmw-zd-0cp" firstAttribute="centerX" secondItem="yhD-KV-FOB" secondAttribute="centerX" id="UUo-3M-931"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y1I-la-Vzl">
+                            <rect key="frame" x="100" y="125" width="120" height="60"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0tQ-Y4-ri6">
+                                    <rect key="frame" x="46" y="16" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="28" id="EkI-m5-Ib3"/>
+                                        <constraint firstAttribute="height" constant="28" id="rUD-5H-KSB"/>
+                                    </constraints>
+                                    <state key="normal" image="video_reset"/>
+                                    <connections>
+                                        <action selector="resetClick:" destination="-1" eventType="touchUpInside" id="GDI-9q-hsa"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="0tQ-Y4-ri6" firstAttribute="centerY" secondItem="y1I-la-Vzl" secondAttribute="centerY" id="7FC-un-0Iv"/>
+                                <constraint firstItem="0tQ-Y4-ri6" firstAttribute="centerX" secondItem="y1I-la-Vzl" secondAttribute="centerX" id="tuk-cZ-7Gj"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="0m6-Ia-P2G" firstAttribute="centerX" secondItem="k7u-Ao-9y3" secondAttribute="centerX" id="1Y4-49-HHf"/>
+                        <constraint firstItem="y1I-la-Vzl" firstAttribute="top" secondItem="0m6-Ia-P2G" secondAttribute="bottom" id="6ie-Nc-tgu"/>
                         <constraint firstItem="05H-eq-gUZ" firstAttribute="leading" secondItem="k7u-Ao-9y3" secondAttribute="leading" id="6tF-Th-hY9"/>
                         <constraint firstItem="Iz9-MW-foc" firstAttribute="centerY" secondItem="jRU-hJ-tyl" secondAttribute="centerY" id="8F4-A0-zHr"/>
                         <constraint firstItem="Wmw-zd-0cp" firstAttribute="height" secondItem="Iz9-MW-foc" secondAttribute="height" id="CSG-oV-WTC"/>
                         <constraint firstItem="0m6-Ia-P2G" firstAttribute="leading" secondItem="05H-eq-gUZ" secondAttribute="trailing" id="G0W-w6-2BK"/>
+                        <constraint firstAttribute="trailing" secondItem="y1I-la-Vzl" secondAttribute="trailing" constant="100" id="NRu-lu-DxJ"/>
                         <constraint firstAttribute="bottom" secondItem="yhD-KV-FOB" secondAttribute="bottom" id="Ozg-Fj-QBV"/>
                         <constraint firstAttribute="bottom" secondItem="05H-eq-gUZ" secondAttribute="bottom" id="Un1-t3-PtT"/>
                         <constraint firstItem="0m6-Ia-P2G" firstAttribute="centerY" secondItem="k7u-Ao-9y3" secondAttribute="centerY" id="Ver-wD-paY"/>
                         <constraint firstItem="yhD-KV-FOB" firstAttribute="leading" secondItem="0m6-Ia-P2G" secondAttribute="trailing" id="VuE-Bt-OM3"/>
+                        <constraint firstItem="y1I-la-Vzl" firstAttribute="leading" secondItem="k7u-Ao-9y3" secondAttribute="leading" constant="100" id="XZq-gG-VhA"/>
                         <constraint firstItem="05H-eq-gUZ" firstAttribute="top" secondItem="k7u-Ao-9y3" secondAttribute="top" id="Y3f-XG-YaV"/>
+                        <constraint firstAttribute="bottom" secondItem="y1I-la-Vzl" secondAttribute="bottom" id="YPi-iL-QKX"/>
                         <constraint firstItem="yhD-KV-FOB" firstAttribute="top" secondItem="k7u-Ao-9y3" secondAttribute="top" id="ke8-E8-G1j"/>
                         <constraint firstAttribute="trailing" secondItem="yhD-KV-FOB" secondAttribute="trailing" id="lKh-C8-cmF"/>
                         <constraint firstItem="Wmw-zd-0cp" firstAttribute="centerY" secondItem="jRU-hJ-tyl" secondAttribute="centerY" id="nOC-h5-ig8"/>
@@ -135,6 +160,7 @@
     </objects>
     <resources>
         <image name="video_ confirm" width="100" height="100"/>
+        <image name="video_music" width="32" height="32"/>
         <image name="video_recording" width="32" height="32"/>
         <image name="video_reset" width="32" height="32"/>
     </resources>

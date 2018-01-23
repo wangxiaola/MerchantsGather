@@ -16,6 +16,8 @@
 #import "TBVideoRecordingView.h"
 #import "TBWatermarkOverlayView.h"
 #import "TBVideoCompositionTool.h"
+#import "TBBackMusicChooseView.h"
+#import "TBRecordVideoMode.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 static NSString * const cellID = @"cellID";
 
@@ -23,7 +25,7 @@ static NSString * const cellID = @"cellID";
 {
     CGFloat cell_height;
     NSString *_videoPath;
-    NSString *_recordingPath;
+    NSURL    *_musicUrl;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *collectionBackView;
@@ -202,28 +204,60 @@ static NSString * const cellID = @"cellID";
     TBWeakSelf
     TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"确定还原视频操作？"];
     [more showHandler:^{
-        _recordingPath = @"";
+        _musicUrl = nil;
         [weakSelf updateVideoMakeIndex:0];
         [weakSelf.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
     }];
 }
+- (IBAction)musicClick:(UIButton *)sender {
+    
+    if (_musicUrl) {
+        TBWeakSelf
+        TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"亲！您已经有音频文件了，需要重新选择吗？"];
+        
+        [more showHandler:^{
+            _musicUrl = nil;
+            [weakSelf startShooseMisic];
+        }];
+    }else
+    {
+        [self startShooseMisic];
+    }
+}
 // 录音
 - (IBAction)recordingClick:(UIButton *)sender
 {
-    if (_recordingPath.length > 0) {
+    if (_musicUrl) {
         TBWeakSelf
-        TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"亲！您已经录了一段声音，需要重新录制吗？"];
+        TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"亲！您已经有音频文件了，需要重新录制吗？"];
         
         [more showHandler:^{
-            _recordingPath = @"";
+            _musicUrl = nil;
             [weakSelf startRecording];
         }];
     }else
     {
-       [self startRecording];
+        [self startRecording];
     }
 }
 
+/**
+ 开始选择音乐
+ */
+- (void)startShooseMisic
+{
+    [_player pause];
+    TBBackMusicChooseView *musicView = [[TBBackMusicChooseView alloc] init];
+
+    [musicView showViewChooseSuccess:^(NSURL *musicPath) {
+        [_player play];
+        NSLog(@"----");
+        if (musicPath) {
+            hudShowSuccess(@"音乐已选择");
+            _musicUrl = musicPath;
+        }
+    }];
+}
 /**
  开始录音
  */
@@ -235,7 +269,7 @@ static NSString * const cellID = @"cellID";
         [_player play];
         if (recordPath.length > 0) {
             hudShowSuccess(@"录制完成");
-            _recordingPath = recordPath;
+            _musicUrl = [NSURL fileURLWithPath:recordPath];
         }
     }];
 }
@@ -279,27 +313,16 @@ static NSString * const cellID = @"cellID";
  */
 - (void)saveToCameraRoll
 {
-    if (_videoPath.length > 0)
-    {
-        [self pushCoverChooseControllerVideoPath:_videoPath];
-        return;
-    }
     hudShowLoading(@"视频正在处理");
     [_player pause];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    NSURL *audioInputUrl = nil;
-    if (_recordingPath.length > 0) {
-        
-        audioInputUrl = [NSURL fileURLWithPath:_recordingPath];
-    }
-    
     TBWeakSelf
     [TBCaptureUtilities mergeVideo:self.recordSession.assetRepresentingSegments
-                      andAudioPath:audioInputUrl
+                      andAudioPath:_musicUrl
                          videoName:self.videoName
                            results:^(NSString *path, NSError *error) {
-                             
+                               
                                [weakSelf mergedidFinish:path WithError:nil];
                            }];
     
@@ -364,12 +387,12 @@ static NSString * const cellID = @"cellID";
             [exportSession.outputUrl saveToCameraRollWithCompletion:^(NSString * _Nullable path,
                                                                       NSError * _Nullable error) {
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-
+                
                 if (error == nil) {
-
+                    
                     hudShowSuccess(@"已保存到相机卷");
                     _videoPath = path;
-                    [self pushCoverChooseControllerVideoPath:path];
+                    [self videoSavedPath:path];
                 } else {
                     [self promptExceptionInformation:@"保存失败！"];
                 }
@@ -403,14 +426,23 @@ static NSString * const cellID = @"cellID";
  
  @param path 视频路径
  */
-- (void)pushCoverChooseControllerVideoPath:(NSString *)path
+- (void)videoSavedPath:(NSString *)path
 {
-    hudDismiss();
-    JXVideoImagePickerViewController *vc = [[JXVideoImagePickerViewController alloc]init];
-    vc.videoPath = path;
-    vc.videoTime = self.videoTime;
+    UIImage *backImage = [self getScreenShotImageFromVideoPath:path];
     
-    [self.navigationController pushViewController:vc animated:YES];
+    NSString *url = [path componentsSeparatedByString:@"tmp/"].lastObject;
+    
+    TBRecordVideoMode *mode = [[TBRecordVideoMode alloc] init];
+    mode.videoPath = url;
+    mode.videoTime = self.videoTime;
+    mode.coverImage = backImage;
+    //发送消息
+    [[NSNotificationCenter defaultCenter] postNotificationName:Verification_video object:mode];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    hudShowSuccess(@"视频保存成功");
 }
 
 #pragma mark  ----UICollectionViewDelete----
@@ -473,5 +505,42 @@ static NSString * const cellID = @"cellID";
     [self updateVideoMakeIndex:indexPathNow.row];
     
 }
-
+/**
+ *  获取视频的缩略图方法
+ *
+ *  @param filePath 视频的本地路径
+ *
+ *  @return 视频截图
+ */
+- (UIImage *)getScreenShotImageFromVideoPath:(NSString *)filePath{
+    
+    UIImage *shotImage;
+    //视频路径URL
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:fileURL options:nil];
+    
+    AVAssetImageGenerator *gen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    
+    gen.appliesPreferredTrackTransform = YES;
+    
+    CMTime time = CMTimeMakeWithSeconds(0.5, 600);
+    
+    NSError *error = nil;
+    
+    CMTime actualTime;
+    
+    CGImageRef image = [gen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+    
+    shotImage = [[UIImage alloc] initWithCGImage:image];
+    
+    CGImageRelease(image);
+    
+    return shotImage;
+    
+}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

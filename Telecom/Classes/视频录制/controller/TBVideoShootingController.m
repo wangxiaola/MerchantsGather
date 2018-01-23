@@ -111,7 +111,7 @@
     _recorder = [SCRecorder recorder];
     _recorder.captureSessionPreset = [SCRecorderTools bestCaptureSessionPresetCompatibleWithAllDevices];
     _recorder.maxRecordDuration = CMTimeMake(10.0, 1); //设置记录的最大持续时间
-    _recorder.videoConfiguration.size = CGSizeMake(640, 640*9/16);
+    _recorder.videoConfiguration.size = CGSizeMake(960, 540);
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = NO;
     _recorder.previewView = self.previewView;
