@@ -139,7 +139,28 @@
 
 + (void)applyVideoEffectsToComposition:(AVMutableVideoComposition *)composition shopName:(NSString*)name size:(CGSize)size;
 {
-    UIFont *font = [UIFont systemFontOfSize:40 weight:0.3];
+    UIFont *font = [UIFont systemFontOfSize:60 weight:0.3];
+    CGSize textSize = [name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
+    
+    if (textSize.width > 800) {
+        font = [UIFont systemFontOfSize:40 weight:0.3];
+        textSize = [name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
+    }
+
+    UIImage *imgLog = [UIImage imageNamed:@"watermark_BoderLine"];
+    // 四个数值对应图片中距离上、左、下、右边界的不拉伸部分的范围宽度
+    //    stretchableImageWithLeftCapWidth:
+    // 设置端盖的值
+    CGFloat top = imgLog.size.height * 0.5;
+    CGFloat left = imgLog.size.width * 0.5;
+    CGFloat bottom = imgLog.size.height * 0.5;
+    CGFloat right = imgLog.size.width * 0.5;
+    imgLog = [imgLog resizableImageWithCapInsets:UIEdgeInsetsMake(top, left, bottom, right) resizingMode:UIImageResizingModeStretch];
+    
+    CALayer *imgLayer = [CALayer layer];
+    imgLayer.contents = (id)imgLog.CGImage;
+    imgLayer.bounds = CGRectMake(0, 0, textSize.width-10 , textSize.height + 60);
+    imgLayer.position = CGPointMake(size.width/2.0+5, size.height/2.0);
     
     CATextLayer *subtitleText = [[CATextLayer alloc] init];
     CFStringRef fontName = (__bridge CFStringRef)font.fontName;
@@ -152,13 +173,14 @@
     [subtitleText setBackgroundColor:[UIColor clearColor].CGColor];
     //解决文字模糊 以Retina方式来渲染，防止画出来的文本像素化
     subtitleText.contentsScale = [UIScreen mainScreen].scale;
-    CGSize textSize = [name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName, nil]];
+
     
     [subtitleText setFrame:CGRectMake(0, 0, textSize.width+30, textSize.height+10)];
     subtitleText.position = CGPointMake(size.width/2.0, size.height/2.0);
     
     // 2 - The usual overlay
     CALayer *overlayLayer = [CALayer layer];
+    [overlayLayer addSublayer:imgLayer];
     [overlayLayer addSublayer:subtitleText];
     
     overlayLayer.backgroundColor = [UIColor clearColor].CGColor;

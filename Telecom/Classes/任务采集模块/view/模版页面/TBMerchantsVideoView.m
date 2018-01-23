@@ -8,10 +8,10 @@
 
 #import "TBMerchantsVideoView.h"
 #import "TBVideoShootingController.h"
-#import "TBVideoPlayViewController.h"
 #import "TBRecordVideoMode.h"
 #import "TBMoreReminderView.h"
 #import "ZKNavigationController.h"
+#import "TBVideoPlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 @interface TBMerchantsVideoView ()
 {
@@ -242,7 +242,19 @@
  */
 - (void)playVideo
 {
-    TBVideoPlayViewController *vc = [[TBVideoPlayViewController alloc] initWithUrl:self.videoMode.videoPath];
+    NSString *url = @"";
+    if ([self.videoMode.videoPath containsString:is_IMAGE_URL])
+    {
+        url = [NSString stringWithFormat:@"%@%@",IMAGE_URL,self.videoMode.videoPath];
+    }
+    else
+    {
+        NSString *path = NSTemporaryDirectory();
+        url = [NSString stringWithFormat:@"file:///%@%@",path,self.videoMode.videoPath];
+    }
+    
+    TBVideoPlayerViewController *vc = [[TBVideoPlayerViewController alloc] init];
+    vc.videoPath = url;
     [[ZKUtil getPresentedViewController] presentViewController:vc animated:YES completion:nil];
 }
 - (void)videoInfoNotificationAction:(NSNotification *)notification{

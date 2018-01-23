@@ -581,6 +581,21 @@
 		3BA4546E1FF252C300176874 /* AWCollectionViewDialLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4546D1FF252C300176874 /* AWCollectionViewDialLayout.m */; };
 		3BA454721FF2573700176874 /* TBFilterCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454701FF2573700176874 /* TBFilterCollectionViewCell.m */; };
 		3BA5E5F71F5D481B00C0F6E3 /* TBRemoteNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA5E5F61F5D481B00C0F6E3 /* TBRemoteNotificationManager.m */; };
+		3BA9D5FC2016E05F00439ADA /* JPVideoPlayerActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5DF2016E05E00439ADA /* JPVideoPlayerActivityIndicator.m */; };
+		3BA9D5FD2016E05F00439ADA /* JPVideoPlayerCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5E12016E05E00439ADA /* JPVideoPlayerCache.m */; };
+		3BA9D5FE2016E05F00439ADA /* JPVideoPlayerCacheConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5E32016E05E00439ADA /* JPVideoPlayerCacheConfig.m */; };
+		3BA9D5FF2016E05F00439ADA /* JPVideoPlayerCachePathTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5E52016E05E00439ADA /* JPVideoPlayerCachePathTool.m */; };
+		3BA9D6002016E05F00439ADA /* JPVideoPlayerDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5E82016E05E00439ADA /* JPVideoPlayerDownloader.m */; };
+		3BA9D6012016E05F00439ADA /* JPVideoPlayerDownloaderOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5EA2016E05E00439ADA /* JPVideoPlayerDownloaderOperation.m */; };
+		3BA9D6022016E05F00439ADA /* JPVideoPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5EC2016E05E00439ADA /* JPVideoPlayerManager.m */; };
+		3BA9D6032016E05F00439ADA /* JPVideoPlayerPlayVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5EF2016E05E00439ADA /* JPVideoPlayerPlayVideoTool.m */; };
+		3BA9D6042016E05F00439ADA /* JPVideoPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5F12016E05E00439ADA /* JPVideoPlayerProgressView.m */; };
+		3BA9D6052016E05F00439ADA /* JPVideoPlayerResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5F32016E05E00439ADA /* JPVideoPlayerResourceLoader.m */; };
+		3BA9D6062016E05F00439ADA /* NSURL+QueryStrip.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5F52016E05E00439ADA /* NSURL+QueryStrip.m */; };
+		3BA9D6072016E05F00439ADA /* UIView+PlayerStatusAndDownloadIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5F72016E05E00439ADA /* UIView+PlayerStatusAndDownloadIndicator.m */; };
+		3BA9D6082016E05F00439ADA /* UIView+WebVideoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5F92016E05E00439ADA /* UIView+WebVideoCache.m */; };
+		3BA9D6092016E05F00439ADA /* UIView+WebVideoCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D5FB2016E05E00439ADA /* UIView+WebVideoCacheOperation.m */; };
+		3BA9D60C2016E0E800439ADA /* TBVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA9D60B2016E0E800439ADA /* TBVideoPlayerViewController.m */; };
 		3BABA1981FEA61A30020F074 /* TBMerchantsVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BABA1971FEA61A30020F074 /* TBMerchantsVideoView.m */; };
 		3BAC7355201593AA00154FCD /* dg_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7341201593A900154FCD /* dg_0.mp3 */; };
 		3BAC7356201593AA00154FCD /* dg_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3BAC7342201593A900154FCD /* dg_1.mp3 */; };
@@ -644,14 +659,6 @@
 		3BE53DE71FCD5568000EB7F4 /* TBRoomEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DE51FCD5568000EB7F4 /* TBRoomEditorViewController.xib */; };
 		3BE53DEB1FCD55DE000EB7F4 /* TBRoomListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE53DE91FCD55DE000EB7F4 /* TBRoomListTableViewCell.m */; };
 		3BE53DEC1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DEA1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib */; };
-		3BEE3FF42011F68E0048A2DB /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FE92011F68E0048A2DB /* BaseViewController.m */; };
-		3BEE3FF52011F68E0048A2DB /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FEB2011F68E0048A2DB /* DetailViewController.m */; };
-		3BEE3FF62011F68E0048A2DB /* FastForwardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FED2011F68E0048A2DB /* FastForwardView.m */; };
-		3BEE3FF72011F68E0048A2DB /* FastForwardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FEE2011F68E0048A2DB /* FastForwardView.xib */; };
-		3BEE3FF82011F68E0048A2DB /* WMLightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FF02011F68E0048A2DB /* WMLightView.m */; };
-		3BEE3FF92011F68E0048A2DB /* WMPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BEE3FF12011F68E0048A2DB /* WMPlayer.bundle */; };
-		3BEE3FFA2011F68E0048A2DB /* WMPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FF32011F68E0048A2DB /* WMPlayer.m */; };
-		3BEE3FFD2011F69A0048A2DB /* TBVideoPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE3FFC2011F69A0048A2DB /* TBVideoPlayViewController.m */; };
 		3BF0DD6F1EA7876E002200BE /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6C1EA7876E002200BE /* AMapSearchKit.framework */; };
 		3BF0DD701EA7876E002200BE /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6D1EA7876E002200BE /* MAMapKit.framework */; };
 		3BF0DD711EA7876E002200BE /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6E1EA7876E002200BE /* AMapFoundationKit.framework */; };
@@ -1802,6 +1809,38 @@
 		3BA5E5F41F5D2A0400C0F6E3 /* Telecom.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Telecom.entitlements; sourceTree = "<group>"; };
 		3BA5E5F51F5D481B00C0F6E3 /* TBRemoteNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBRemoteNotificationManager.h; sourceTree = "<group>"; };
 		3BA5E5F61F5D481B00C0F6E3 /* TBRemoteNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBRemoteNotificationManager.m; sourceTree = "<group>"; };
+		3BA9D5DE2016E05E00439ADA /* JPVideoPlayerActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerActivityIndicator.h; sourceTree = "<group>"; };
+		3BA9D5DF2016E05E00439ADA /* JPVideoPlayerActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerActivityIndicator.m; sourceTree = "<group>"; };
+		3BA9D5E02016E05E00439ADA /* JPVideoPlayerCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerCache.h; sourceTree = "<group>"; };
+		3BA9D5E12016E05E00439ADA /* JPVideoPlayerCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerCache.m; sourceTree = "<group>"; };
+		3BA9D5E22016E05E00439ADA /* JPVideoPlayerCacheConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerCacheConfig.h; sourceTree = "<group>"; };
+		3BA9D5E32016E05E00439ADA /* JPVideoPlayerCacheConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerCacheConfig.m; sourceTree = "<group>"; };
+		3BA9D5E42016E05E00439ADA /* JPVideoPlayerCachePathTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerCachePathTool.h; sourceTree = "<group>"; };
+		3BA9D5E52016E05E00439ADA /* JPVideoPlayerCachePathTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerCachePathTool.m; sourceTree = "<group>"; };
+		3BA9D5E62016E05E00439ADA /* JPVideoPlayerCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerCompat.h; sourceTree = "<group>"; };
+		3BA9D5E72016E05E00439ADA /* JPVideoPlayerDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerDownloader.h; sourceTree = "<group>"; };
+		3BA9D5E82016E05E00439ADA /* JPVideoPlayerDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerDownloader.m; sourceTree = "<group>"; };
+		3BA9D5E92016E05E00439ADA /* JPVideoPlayerDownloaderOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerDownloaderOperation.h; sourceTree = "<group>"; };
+		3BA9D5EA2016E05E00439ADA /* JPVideoPlayerDownloaderOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerDownloaderOperation.m; sourceTree = "<group>"; };
+		3BA9D5EB2016E05E00439ADA /* JPVideoPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerManager.h; sourceTree = "<group>"; };
+		3BA9D5EC2016E05E00439ADA /* JPVideoPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerManager.m; sourceTree = "<group>"; };
+		3BA9D5ED2016E05E00439ADA /* JPVideoPlayerOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerOperation.h; sourceTree = "<group>"; };
+		3BA9D5EE2016E05E00439ADA /* JPVideoPlayerPlayVideoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerPlayVideoTool.h; sourceTree = "<group>"; };
+		3BA9D5EF2016E05E00439ADA /* JPVideoPlayerPlayVideoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerPlayVideoTool.m; sourceTree = "<group>"; };
+		3BA9D5F02016E05E00439ADA /* JPVideoPlayerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerProgressView.h; sourceTree = "<group>"; };
+		3BA9D5F12016E05E00439ADA /* JPVideoPlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerProgressView.m; sourceTree = "<group>"; };
+		3BA9D5F22016E05E00439ADA /* JPVideoPlayerResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPVideoPlayerResourceLoader.h; sourceTree = "<group>"; };
+		3BA9D5F32016E05E00439ADA /* JPVideoPlayerResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPVideoPlayerResourceLoader.m; sourceTree = "<group>"; };
+		3BA9D5F42016E05E00439ADA /* NSURL+QueryStrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+QueryStrip.h"; sourceTree = "<group>"; };
+		3BA9D5F52016E05E00439ADA /* NSURL+QueryStrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+QueryStrip.m"; sourceTree = "<group>"; };
+		3BA9D5F62016E05E00439ADA /* UIView+PlayerStatusAndDownloadIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PlayerStatusAndDownloadIndicator.h"; sourceTree = "<group>"; };
+		3BA9D5F72016E05E00439ADA /* UIView+PlayerStatusAndDownloadIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PlayerStatusAndDownloadIndicator.m"; sourceTree = "<group>"; };
+		3BA9D5F82016E05E00439ADA /* UIView+WebVideoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebVideoCache.h"; sourceTree = "<group>"; };
+		3BA9D5F92016E05E00439ADA /* UIView+WebVideoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebVideoCache.m"; sourceTree = "<group>"; };
+		3BA9D5FA2016E05E00439ADA /* UIView+WebVideoCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebVideoCacheOperation.h"; sourceTree = "<group>"; };
+		3BA9D5FB2016E05E00439ADA /* UIView+WebVideoCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebVideoCacheOperation.m"; sourceTree = "<group>"; };
+		3BA9D60A2016E0E800439ADA /* TBVideoPlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoPlayerViewController.h; sourceTree = "<group>"; };
+		3BA9D60B2016E0E800439ADA /* TBVideoPlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoPlayerViewController.m; sourceTree = "<group>"; };
 		3BABA1961FEA61A30020F074 /* TBMerchantsVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBMerchantsVideoView.h; sourceTree = "<group>"; };
 		3BABA1971FEA61A30020F074 /* TBMerchantsVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBMerchantsVideoView.m; sourceTree = "<group>"; };
 		3BAC7341201593A900154FCD /* dg_0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dg_0.mp3; sourceTree = "<group>"; };
@@ -1904,20 +1943,6 @@
 		3BE53DE81FCD55DE000EB7F4 /* TBRoomListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBRoomListTableViewCell.h; sourceTree = "<group>"; };
 		3BE53DE91FCD55DE000EB7F4 /* TBRoomListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBRoomListTableViewCell.m; sourceTree = "<group>"; };
 		3BE53DEA1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBRoomListTableViewCell.xib; sourceTree = "<group>"; };
-		3BEE3FE82011F68E0048A2DB /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
-		3BEE3FE92011F68E0048A2DB /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		3BEE3FEA2011F68E0048A2DB /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		3BEE3FEB2011F68E0048A2DB /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		3BEE3FEC2011F68E0048A2DB /* FastForwardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastForwardView.h; sourceTree = "<group>"; };
-		3BEE3FED2011F68E0048A2DB /* FastForwardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastForwardView.m; sourceTree = "<group>"; };
-		3BEE3FEE2011F68E0048A2DB /* FastForwardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastForwardView.xib; sourceTree = "<group>"; };
-		3BEE3FEF2011F68E0048A2DB /* WMLightView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMLightView.h; sourceTree = "<group>"; };
-		3BEE3FF02011F68E0048A2DB /* WMLightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMLightView.m; sourceTree = "<group>"; };
-		3BEE3FF12011F68E0048A2DB /* WMPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WMPlayer.bundle; sourceTree = "<group>"; };
-		3BEE3FF22011F68E0048A2DB /* WMPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMPlayer.h; sourceTree = "<group>"; };
-		3BEE3FF32011F68E0048A2DB /* WMPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMPlayer.m; sourceTree = "<group>"; };
-		3BEE3FFB2011F69A0048A2DB /* TBVideoPlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoPlayViewController.h; sourceTree = "<group>"; };
-		3BEE3FFC2011F69A0048A2DB /* TBVideoPlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoPlayViewController.m; sourceTree = "<group>"; };
 		3BF0DD6C1EA7876E002200BE /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		3BF0DD6D1EA7876E002200BE /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		3BF0DD6E1EA7876E002200BE /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
@@ -3904,7 +3929,7 @@
 		3B8BA19D1DF127110007027F /* Toolkit */ = {
 			isa = PBXGroup;
 			children = (
-				3BEE3FE72011F68E0048A2DB /* WMPlayer */,
+				3BA9D5DD2016E05E00439ADA /* JPVideoPlayer */,
 				3BAD862D1FCFF26F00493C1A /* TZImagePickerController */,
 				3BD3F04B1FC7F70600894208 /* SPHTTPSessionManager */,
 				3BAE38E51F6696E600A391D8 /* HQliquidAnimationViewLib */,
@@ -4040,8 +4065,8 @@
 				3BA4543B1FF1E69900176874 /* TBVideoShootingController.h */,
 				3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */,
 				3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */,
-				3BEE3FFB2011F69A0048A2DB /* TBVideoPlayViewController.h */,
-				3BEE3FFC2011F69A0048A2DB /* TBVideoPlayViewController.m */,
+				3BA9D60A2016E0E800439ADA /* TBVideoPlayerViewController.h */,
+				3BA9D60B2016E0E800439ADA /* TBVideoPlayerViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -4154,6 +4179,43 @@
 			path = "我的模块";
 			sourceTree = "<group>";
 		};
+		3BA9D5DD2016E05E00439ADA /* JPVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3BA9D5DE2016E05E00439ADA /* JPVideoPlayerActivityIndicator.h */,
+				3BA9D5DF2016E05E00439ADA /* JPVideoPlayerActivityIndicator.m */,
+				3BA9D5E02016E05E00439ADA /* JPVideoPlayerCache.h */,
+				3BA9D5E12016E05E00439ADA /* JPVideoPlayerCache.m */,
+				3BA9D5E22016E05E00439ADA /* JPVideoPlayerCacheConfig.h */,
+				3BA9D5E32016E05E00439ADA /* JPVideoPlayerCacheConfig.m */,
+				3BA9D5E42016E05E00439ADA /* JPVideoPlayerCachePathTool.h */,
+				3BA9D5E52016E05E00439ADA /* JPVideoPlayerCachePathTool.m */,
+				3BA9D5E62016E05E00439ADA /* JPVideoPlayerCompat.h */,
+				3BA9D5E72016E05E00439ADA /* JPVideoPlayerDownloader.h */,
+				3BA9D5E82016E05E00439ADA /* JPVideoPlayerDownloader.m */,
+				3BA9D5E92016E05E00439ADA /* JPVideoPlayerDownloaderOperation.h */,
+				3BA9D5EA2016E05E00439ADA /* JPVideoPlayerDownloaderOperation.m */,
+				3BA9D5EB2016E05E00439ADA /* JPVideoPlayerManager.h */,
+				3BA9D5EC2016E05E00439ADA /* JPVideoPlayerManager.m */,
+				3BA9D5ED2016E05E00439ADA /* JPVideoPlayerOperation.h */,
+				3BA9D5EE2016E05E00439ADA /* JPVideoPlayerPlayVideoTool.h */,
+				3BA9D5EF2016E05E00439ADA /* JPVideoPlayerPlayVideoTool.m */,
+				3BA9D5F02016E05E00439ADA /* JPVideoPlayerProgressView.h */,
+				3BA9D5F12016E05E00439ADA /* JPVideoPlayerProgressView.m */,
+				3BA9D5F22016E05E00439ADA /* JPVideoPlayerResourceLoader.h */,
+				3BA9D5F32016E05E00439ADA /* JPVideoPlayerResourceLoader.m */,
+				3BA9D5F42016E05E00439ADA /* NSURL+QueryStrip.h */,
+				3BA9D5F52016E05E00439ADA /* NSURL+QueryStrip.m */,
+				3BA9D5F62016E05E00439ADA /* UIView+PlayerStatusAndDownloadIndicator.h */,
+				3BA9D5F72016E05E00439ADA /* UIView+PlayerStatusAndDownloadIndicator.m */,
+				3BA9D5F82016E05E00439ADA /* UIView+WebVideoCache.h */,
+				3BA9D5F92016E05E00439ADA /* UIView+WebVideoCache.m */,
+				3BA9D5FA2016E05E00439ADA /* UIView+WebVideoCacheOperation.h */,
+				3BA9D5FB2016E05E00439ADA /* UIView+WebVideoCacheOperation.m */,
+			);
+			path = JPVideoPlayer;
+			sourceTree = "<group>";
+		};
 		3BAC733F201593A900154FCD /* music */ = {
 			isa = PBXGroup;
 			children = (
@@ -4257,26 +4319,6 @@
 				3BD3F04D1FC7F70600894208 /* SPHTTPSessionManager.m */,
 			);
 			path = SPHTTPSessionManager;
-			sourceTree = "<group>";
-		};
-		3BEE3FE72011F68E0048A2DB /* WMPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				3BEE3FE82011F68E0048A2DB /* BaseViewController.h */,
-				3BEE3FE92011F68E0048A2DB /* BaseViewController.m */,
-				3BEE3FEA2011F68E0048A2DB /* DetailViewController.h */,
-				3BEE3FEB2011F68E0048A2DB /* DetailViewController.m */,
-				3BEE3FEC2011F68E0048A2DB /* FastForwardView.h */,
-				3BEE3FED2011F68E0048A2DB /* FastForwardView.m */,
-				3BEE3FEE2011F68E0048A2DB /* FastForwardView.xib */,
-				3BEE3FEF2011F68E0048A2DB /* WMLightView.h */,
-				3BEE3FF02011F68E0048A2DB /* WMLightView.m */,
-				3BEE3FF12011F68E0048A2DB /* WMPlayer.bundle */,
-				3BEE3FF22011F68E0048A2DB /* WMPlayer.h */,
-				3BEE3FF32011F68E0048A2DB /* WMPlayer.m */,
-			);
-			name = WMPlayer;
-			path = "../../../../开发项目/应急系列/2017最新应急集合/Emergency/Toolkit/WMPlayer";
 			sourceTree = "<group>";
 		};
 		3BF0DD6B1EA78725002200BE /* Map_Lib */ = {
@@ -4423,11 +4465,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BEE3FF72011F68E0048A2DB /* FastForwardView.xib in Resources */,
 				3BA4546B1FF1F47B00176874 /* a_filter.cisf in Resources */,
 				3BF0DD731EA78785002200BE /* AMap.bundle in Resources */,
 				3B5C736F1F4E7D5100B2CE42 /* MJPhotoBrowser.bundle in Resources */,
-				3BEE3FF92011F68E0048A2DB /* WMPlayer.bundle in Resources */,
 				3B5C760E1F4E7DA800B2CE42 /* TBBusinessTypeTableViewCell.xib in Resources */,
 				3B5C763A1F4E7DA800B2CE42 /* TBBackgroundMusicTableViewCell.xib in Resources */,
 				3B5C75FC1F4E7DA800B2CE42 /* TBRegisteredViewController.xib in Resources */,
@@ -4611,10 +4651,12 @@
 				3B5C73FF1F4E7D5100B2CE42 /* ZXMaxiCodeReader.m in Sources */,
 				3B95CB32200604F0004BAC82 /* TBVideoRecordingView.m in Sources */,
 				3B5C74231F4E7D5100B2CE42 /* ZXCode39Reader.m in Sources */,
+				3BA9D6022016E05F00439ADA /* JPVideoPlayerManager.m in Sources */,
 				3B5C73C71F4E7D5100B2CE42 /* ZXWhiteRectangleDetector.m in Sources */,
 				3B5C73CF1F4E7D5100B2CE42 /* ZXBoolArray.m in Sources */,
 				3B5C76661F4E7DA800B2CE42 /* TBGroupManagementViewController.m in Sources */,
 				3B5C733D1F4E7D5100B2CE42 /* UIView+Frame.m in Sources */,
+				3BA9D6012016E05F00439ADA /* JPVideoPlayerDownloaderOperation.m in Sources */,
 				3B5C76271F4E7DA800B2CE42 /* TBTaskMakeViewMode.m in Sources */,
 				3B5C746D1F4E7D5100B2CE42 /* ZXMultiFormatWriter.m in Sources */,
 				3B5C76251F4E7DA800B2CE42 /* TBTaskConfigurationMode.m in Sources */,
@@ -4643,6 +4685,7 @@
 				3B5C73501F4E7D5100B2CE42 /* IQPreviousNextView.m in Sources */,
 				3B5C73D31F4E7D5100B2CE42 /* ZXDefaultGridSampler.m in Sources */,
 				3BA2D5A01FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m in Sources */,
+				3BA9D5FD2016E05F00439ADA /* JPVideoPlayerCache.m in Sources */,
 				3B5C74001F4E7D5100B2CE42 /* ZXByQuadrantReader.m in Sources */,
 				3BA4546E1FF252C300176874 /* AWCollectionViewDialLayout.m in Sources */,
 				3B5C73B81F4E7D5100B2CE42 /* ZXTextParsedResult.m in Sources */,
@@ -4704,6 +4747,7 @@
 				3B5C73391F4E7D5100B2CE42 /* UIImage+Strenching.m in Sources */,
 				3B5C73E21F4E7D5100B2CE42 /* ZXInvertedLuminanceSource.m in Sources */,
 				3B5C73941F4E7D5100B2CE42 /* ZXAztecBinaryShiftToken.m in Sources */,
+				3BA9D6062016E05F00439ADA /* NSURL+QueryStrip.m in Sources */,
 				3B5C74081F4E7D5100B2CE42 /* ZXAI013x0xDecoder.m in Sources */,
 				3B5C76781F4E7DA800B2CE42 /* TBOfferDetailsMode.m in Sources */,
 				3B5C743E1F4E7D5100B2CE42 /* ZXPDF417BoundingBox.m in Sources */,
@@ -4747,6 +4791,7 @@
 				3B5C745A1F4E7D5100B2CE42 /* ZXQRCodeMode.m in Sources */,
 				3B5C73B91F4E7D5100B2CE42 /* ZXURIParsedResult.m in Sources */,
 				3B5C76A71F4E7DA800B2CE42 /* TBPovertyAlleviationTableViewCell.m in Sources */,
+				3BA9D6002016E05F00439ADA /* JPVideoPlayerDownloader.m in Sources */,
 				3B5C73DB1F4E7D5100B2CE42 /* ZXBinarizer.m in Sources */,
 				3B5C73EE1F4E7D5100B2CE42 /* ZXDataMatrixASCIIEncoder.m in Sources */,
 				3B5C768C1F4E7DA800B2CE42 /* TBBusinessIntelligencePhotoTableViewCell.m in Sources */,
@@ -4764,6 +4809,7 @@
 				3B5C76321F4E7DA800B2CE42 /* ZKPickDataView.m in Sources */,
 				3B5C761A1F4E7DA800B2CE42 /* TBTaskListViewController.m in Sources */,
 				3B5C74351F4E7D5100B2CE42 /* ZXUPCEANExtensionSupport.m in Sources */,
+				3BA9D6052016E05F00439ADA /* JPVideoPlayerResourceLoader.m in Sources */,
 				3B5C73BF1F4E7D5100B2CE42 /* ZXVINResultParser.m in Sources */,
 				3BAE38EA1F6696E600A391D8 /* HQliquidAnimationView.m in Sources */,
 				3B5C73B61F4E7D5100B2CE42 /* ZXTelParsedResult.m in Sources */,
@@ -4785,6 +4831,7 @@
 				3B5C73CD1F4E7D5100B2CE42 /* ZXBitMatrix.m in Sources */,
 				3B575E2B1FF4DA42002BE5DC /* JXVideoImagePickerVideoPlayerController.m in Sources */,
 				3BE53DEB1FCD55DE000EB7F4 /* TBRoomListTableViewCell.m in Sources */,
+				3BA9D5FC2016E05F00439ADA /* JPVideoPlayerActivityIndicator.m in Sources */,
 				3B5C76671F4E7DA800B2CE42 /* TBGroupRecordsViewController.m in Sources */,
 				3B5C768E1F4E7DA800B2CE42 /* TBBusinessIntelligenceTableViewCell.m in Sources */,
 				3B5C74141F4E7D5100B2CE42 /* ZXRSSExpandedGeneralAppIdDecoder.m in Sources */,
@@ -4820,7 +4867,6 @@
 				3B5C76301F4E7DA800B2CE42 /* TBShowAddressResultsView.m in Sources */,
 				3B5C73481F4E7D5100B2CE42 /* IQUIView+Hierarchy.m in Sources */,
 				3B5C76471F4E7DA800B2CE42 /* TBTemplateResourceCollectionViewCell.m in Sources */,
-				3BEE3FF62011F68E0048A2DB /* FastForwardView.m in Sources */,
 				3BE53DE61FCD5568000EB7F4 /* TBRoomEditorViewController.m in Sources */,
 				3B5C74451F4E7D5100B2CE42 /* ZXPDF417ScanningDecoder.m in Sources */,
 				3B5C744B1F4E7D5100B2CE42 /* ZXPDF417Dimensions.m in Sources */,
@@ -4838,7 +4884,6 @@
 				3B5C76741F4E7DA800B2CE42 /* TBDiscountsMode.m in Sources */,
 				3B5C74551F4E7D5100B2CE42 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
 				3BAD864C1FCFF26F00493C1A /* TZAssetCell.m in Sources */,
-				3BEE3FF52011F68E0048A2DB /* DetailViewController.m in Sources */,
 				3B5C74591F4E7D5100B2CE42 /* ZXQRCodeFormatInformation.m in Sources */,
 				3B5C735E1F4E7D5100B2CE42 /* LBXZXCapture.m in Sources */,
 				3B5C74631F4E7D5100B2CE42 /* ZXQRCodeBlockPair.m in Sources */,
@@ -4910,6 +4955,7 @@
 				3B5C76391F4E7DA800B2CE42 /* TBBackgroundMusicTableViewCell.m in Sources */,
 				3B5C75F51F4E7DA800B2CE42 /* TBStartPageView.m in Sources */,
 				3B5C73401F4E7D5100B2CE42 /* UIWebView+TS_JavaScriptContext.m in Sources */,
+				3BA9D6032016E05F00439ADA /* JPVideoPlayerPlayVideoTool.m in Sources */,
 				3B5C73AA1F4E7D5100B2CE42 /* ZXGeoParsedResult.m in Sources */,
 				3B5C734E1F4E7D5100B2CE42 /* IQTextView.m in Sources */,
 				3B5C73641F4E7D5100B2CE42 /* NSObject+LKModel.m in Sources */,
@@ -4928,7 +4974,6 @@
 				3B5C73471F4E7D5100B2CE42 /* IQUITextFieldView+Additions.m in Sources */,
 				3B5C746C1F4E7D5100B2CE42 /* ZXMultiFormatReader.m in Sources */,
 				3B5C769B1F4E7DA800B2CE42 /* TBGroupRecordsHeadView.m in Sources */,
-				3BEE3FF82011F68E0048A2DB /* WMLightView.m in Sources */,
 				3B5C75FB1F4E7DA800B2CE42 /* TBRegisteredViewController.m in Sources */,
 				3B5C74051F4E7D5100B2CE42 /* ZXAI01392xDecoder.m in Sources */,
 				3B5C765D1F4E7DA800B2CE42 /* MyTaskDetailController.m in Sources */,
@@ -4993,6 +5038,7 @@
 				3BAC736F2015C1B400154FCD /* TBMusicPageCell.m in Sources */,
 				3B5C735F1F4E7D5100B2CE42 /* ZXingWrapper.m in Sources */,
 				3B5C74391F4E7D5100B2CE42 /* ZXModulusGF.m in Sources */,
+				3BA9D6072016E05F00439ADA /* UIView+PlayerStatusAndDownloadIndicator.m in Sources */,
 				3B8BA16A1DF106670007027F /* main.m in Sources */,
 				3B5C72F81F4E7D5100B2CE42 /* HXTagCollectionViewFlowLayout.m in Sources */,
 				3B5C76941F4E7DA800B2CE42 /* TBEarningsFooterView.m in Sources */,
@@ -5001,9 +5047,9 @@
 				3B5C735C1F4E7D5100B2CE42 /* LBXScanViewStyle.m in Sources */,
 				3B93D2A01F56A5C60010FBD0 /* SpectrumView.m in Sources */,
 				3BD62D2B1FFCCDE500621607 /* TBBankListCellView.m in Sources */,
-				3BEE3FFA2011F68E0048A2DB /* WMPlayer.m in Sources */,
 				3B5C734F1F4E7D5100B2CE42 /* IQBarButtonItem.m in Sources */,
 				3B93D2CE1F56A7790010FBD0 /* TBTemplateInfoView.m in Sources */,
+				3BA9D6092016E05F00439ADA /* UIView+WebVideoCacheOperation.m in Sources */,
 				3B5C73711F4E7D5100B2CE42 /* MJPhotoLoadingView.m in Sources */,
 				3BA454611FF1EAEC00176874 /* LZVideoTools.m in Sources */,
 				3B5C73581F4E7D5100B2CE42 /* LBXScanResult.m in Sources */,
@@ -5092,14 +5138,16 @@
 				3B5C73F31F4E7D5100B2CE42 /* ZXDataMatrixEncoderContext.m in Sources */,
 				3B5C739D1F4E7D5100B2CE42 /* ZXAztecWriter.m in Sources */,
 				3B5C73511F4E7D5100B2CE42 /* IQTitleBarButtonItem.m in Sources */,
+				3BA9D6082016E05F00439ADA /* UIView+WebVideoCache.m in Sources */,
+				3BA9D5FF2016E05F00439ADA /* JPVideoPlayerCachePathTool.m in Sources */,
 				3B5C73FA1F4E7D5100B2CE42 /* ZXDataMatrixReader.m in Sources */,
 				3B5C742A1F4E7D5100B2CE42 /* ZXEANManufacturerOrgSupport.m in Sources */,
 				3B5C738C1F4E7D5100B2CE42 /* UIView+Extension.m in Sources */,
 				3B5C74431F4E7D5100B2CE42 /* ZXPDF417DetectionResultColumn.m in Sources */,
 				3B5C73891F4E7D5100B2CE42 /* TYTitlePageTabBar.m in Sources */,
 				3B5C737A1F4E7D5100B2CE42 /* UIButton+ScottCounter.m in Sources */,
-				3BEE3FF42011F68E0048A2DB /* BaseViewController.m in Sources */,
 				3B5C74151F4E7D5100B2CE42 /* ZXBitArrayBuilder.m in Sources */,
+				3BA9D60C2016E0E800439ADA /* TBVideoPlayerViewController.m in Sources */,
 				3B5C762C1F4E7DA800B2CE42 /* TBChoosePhotosTool.m in Sources */,
 				3B5C73881F4E7D5100B2CE42 /* TYSlidePageScrollViewController.m in Sources */,
 				3B5C73DA1F4E7D5100B2CE42 /* ZXStringUtils.m in Sources */,
@@ -5111,9 +5159,9 @@
 				3B575E2A1FF4DA42002BE5DC /* JXUIService.m in Sources */,
 				3B5C734C1F4E7D5100B2CE42 /* IQKeyboardManager.m in Sources */,
 				3B5C74281F4E7D5100B2CE42 /* ZXEAN8Reader.m in Sources */,
-				3BEE3FFD2011F69A0048A2DB /* TBVideoPlayViewController.m in Sources */,
 				3B5C73DC1F4E7D5100B2CE42 /* ZXBinaryBitmap.m in Sources */,
 				3B5C74251F4E7D5100B2CE42 /* ZXCode93Reader.m in Sources */,
+				3BA9D5FE2016E05F00439ADA /* JPVideoPlayerCacheConfig.m in Sources */,
 				3B5C73951F4E7D5100B2CE42 /* ZXAztecCode.m in Sources */,
 				3B5C73341F4E7D5100B2CE42 /* NSString+MD5Addition.m in Sources */,
 				3B5C74671F4E7D5100B2CE42 /* ZXMultiDetector.m in Sources */,
@@ -5127,6 +5175,7 @@
 				3BAD72041FBD9AD500181864 /* TBGZEmployeesAddViewMode.m in Sources */,
 				3B5C743B1F4E7D5100B2CE42 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				3B5C73F91F4E7D5100B2CE42 /* ZXDataMatrixX12Encoder.m in Sources */,
+				3BA9D6042016E05F00439ADA /* JPVideoPlayerProgressView.m in Sources */,
 				3B5C76351F4E7DA800B2CE42 /* TBAdvantagesTableViewCell.m in Sources */,
 				3B5C741D1F4E7D5100B2CE42 /* ZXRSSPair.m in Sources */,
 				3B5C76211F4E7DA800B2CE42 /* TBAddMerchantsMode.m in Sources */,

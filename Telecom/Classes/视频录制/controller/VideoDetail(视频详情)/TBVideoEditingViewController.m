@@ -355,8 +355,8 @@ static NSString * const cellID = @"cellID";
     
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:set];
     exportSession.videoConfiguration.filter = currentFilter;
-    exportSession.videoConfiguration.preset = SCPresetHighestQuality;
-    exportSession.audioConfiguration.preset = SCPresetHighestQuality;
+    exportSession.videoConfiguration.preset = SCPresetMediumQuality;
+    exportSession.audioConfiguration.preset = SCPresetMediumQuality;
     exportSession.videoConfiguration.maxFrameRate = 35;
     exportSession.outputUrl = self.recordSession.outputUrl;
     exportSession.audioConfiguration.enabled = YES;

@@ -14,6 +14,7 @@
 #import "TBVerifyViewController.h"
 #import "ZKNavigationController.h"
 #import "TBHeaderJellyView.h"
+#import "JPVideoPlayerCache.h"
 #import "TBMyBannerView.h"
 #import "TBMoreReminderView.h"
 #import <JPUSHService.h>
@@ -256,6 +257,9 @@
     [ZKUtil saveBoolForKey:VALIDATION valueBool:NO];
     [ZKUtil saveBoolForKey:START_PAGE valueBool:NO];
     [ZKUtil clearCache];
+    [[JPVideoPlayerCache sharedCache] clearDiskOnCompletion:^{
+        
+    }];
     
 #pragma mark  ----注销APP别名----
     NSString *falseStatic = @"00000000000";
