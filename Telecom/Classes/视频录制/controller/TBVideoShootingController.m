@@ -96,8 +96,6 @@
 }
 
 - (void)dealloc{
-    //清除缓存
-//    [ClearCacheTool clearAction];
     // 视频录制销毁
     [_recorder unprepare];
 }

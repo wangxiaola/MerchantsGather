@@ -17,6 +17,7 @@
 #import "JPVideoPlayerCache.h"
 #import "TBMyBannerView.h"
 #import "TBMoreReminderView.h"
+#import "ClearCacheTool.h"
 #import <JPUSHService.h>
 
 @interface TBMyTaskViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -114,6 +115,8 @@
     }];
     
     [self.tableView reloadData];
+    
+    
 }
 - (void)setTableviewStyle
 {
@@ -172,12 +175,19 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
     }
     NSArray *array = self.lefInfoData[indexPath.section];
     NSDictionary *dic = array[indexPath.row];
     
     cell.imageView.image = [UIImage imageNamed:[dic valueForKey:@"image"]];
     cell.textLabel.text = [dic valueForKey:@"name"];
+    cell.detailTextLabel.text = @"";
+    if ([indexPath isEqual:[NSIndexPath indexPathForRow:3 inSection:0]]) {
+        // 缓存大小
+        CGFloat size = [ClearCacheTool obtainCacheSize];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM",size];
+    }
     
     return cell;
 }
@@ -228,7 +238,8 @@
     }
     else if ([key isEqualToString:@"清理缓存"])
     {
-        [ZKUtil clearCache];
+        [ClearCacheTool clearAction];
+
     }
     else if ([key isEqualToString:@"设置密码"])
     {
@@ -241,6 +252,17 @@
     }
 }
 
+/**
+ 更新缓存大小
+ */
+- (void)updateClearSize
+{
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+    if (cell) {
+        CGFloat size = [ClearCacheTool obtainCacheSize];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2fM",size];
+    }
+}
 #pragma mark --- 退出登录---
 - (void)logOutClick
 {
@@ -254,12 +276,6 @@
 // 数据清理
 - (void)dataCleaning
 {
-    [ZKUtil saveBoolForKey:VALIDATION valueBool:NO];
-    [ZKUtil saveBoolForKey:START_PAGE valueBool:NO];
-    [ZKUtil clearCache];
-    [[JPVideoPlayerCache sharedCache] clearDiskOnCompletion:^{
-        
-    }];
     
 #pragma mark  ----注销APP别名----
     NSString *falseStatic = @"00000000000";
@@ -296,6 +312,7 @@
 {
     [super viewDidAppear:animated];
     [self.headerView endAnimation];
+    [self updateClearSize];
 }
 
 - (void)viewDidLoad {

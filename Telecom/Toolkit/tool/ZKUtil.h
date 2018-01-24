@@ -68,18 +68,6 @@
 + (BOOL)isExpire:(NSString *)fileName;
 
 /**
- *  获取缓存的大小
- *
- *  @return 缓存的大小  单位是B
- */
-+ (NSUInteger)getSize;
-
-/**
- *  清除缓存
- */
-+ (void)clearCache;
-
-/**
  获取bool值
 
  @param key 键

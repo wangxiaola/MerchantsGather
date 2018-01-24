@@ -11,9 +11,15 @@
 @interface ClearCacheTool : NSObject
 
 /**
- 清除缓存
+  清除缓存
  */
-//触发清除缓存事件
 + (void)clearAction;
+
+/**
+ 获取缓存大小
+
+ @return 大小
+ */
++ (CGFloat)obtainCacheSize;
 
 @end

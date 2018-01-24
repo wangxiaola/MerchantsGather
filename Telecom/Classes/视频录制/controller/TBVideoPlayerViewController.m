@@ -74,6 +74,7 @@
 #pragma mark - Tap Event
 
 - (void)handleTapGesture:(UITapGestureRecognizer *)sender {
+    
     if (sender.state == UIGestureRecognizerStateEnded) {
         if (self.videoContainer.viewStatus == JPVideoPlayerVideoViewStatusPortrait) {
             [self.videoContainer jp_gotoLandscapeAnimated:YES completion:nil];

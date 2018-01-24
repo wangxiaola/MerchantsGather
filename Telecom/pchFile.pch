@@ -102,7 +102,7 @@ alpha:(float)(alphaValue)]
 
 #define  TELECOM_ID @"1204691981"//app商店id
 #define  GDMAP_KEY @"3ef1c1270041d8eda5ad4212740a6004"//高德
-#define  START_PAGE @"START_PAGE"
+#define  START_PAGE @"START_PAGE" // 启动页
 #define  IMAGE_OPERATOR @"WENWEN"//图片分割符
 #define  BASEDATA_NEW @"BASEDATA_NEW"//是否是第一次加载。切换账号
 // 比例 系数

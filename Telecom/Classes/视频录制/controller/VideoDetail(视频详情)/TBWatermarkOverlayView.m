@@ -54,7 +54,7 @@
     [_watermarkDq sizeToFit];
 
     _watermarkWc.frame = CGRectMake(960-_imageW-12, videoH-_imageH-20, _imageW, _imageH);
-    _watermarkDq.frame = CGRectMake(960-(_imageW+12)*2, videoH-_imageH-20, _imageW, _imageH);
+    _watermarkDq.frame = CGRectMake(960-(_imageW+12)*2, videoH-_imageH-25, _imageW, _imageH);
 }
 
 

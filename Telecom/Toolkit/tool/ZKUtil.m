@@ -62,60 +62,7 @@
     return [[NSData alloc] initWithContentsOfFile:path];
 }
 
-+ (NSUInteger)getAFNSize
-{
-    NSUInteger size = 0;
-    NSFileManager *fm = [NSFileManager defaultManager];
-    
-    NSDirectoryEnumerator *fileEnumerator = [fm enumeratorAtPath:kCachePath];
-    for (NSString *fileName in fileEnumerator) {
-        NSString *filePath = [kCachePath stringByAppendingPathComponent:fileName];
-        NSDictionary *attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
-        size += [attrs fileSize];
-    }
-    return size;
-}
 
-+ (NSUInteger)getSize
-{
-    //获取AFN的缓存大小
-    NSUInteger afnSize = [self getAFNSize];
-    return afnSize;
-}
-
-+ (void)clearAFNCache
-{
-    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    activity.color = NAVIGATION_COLOR;
-    [[APPDELEGATE window] addSubview:activity];
-    activity.frame = CGRectMake(_SCREEN_WIDTH/2-20, _SCREEN_HEIGHT/2-20, 40, 40);
-
-    [activity startAnimating];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSFileManager *fm = [NSFileManager defaultManager];
-        
-        NSDirectoryEnumerator *fileEnumerator = [fm enumeratorAtPath:kCachePath];
-        for (NSString *fileName in fileEnumerator) {
-            NSString *filePath = [kCachePath stringByAppendingPathComponent:fileName];
-            [fm removeItemAtPath:filePath error:nil];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // 更新界面
-            [UIView addMJNotifierWithText:@"清理完毕" dismissAutomatically:YES];
-            [activity stopAnimating];
-            [activity removeFromSuperview];
-        });
-    });
-
-}
-
-+ (void)clearCache
-{
-    [self clearAFNCache];
-}
 
 + (BOOL)isExpire:(NSString *)fileName
 {
