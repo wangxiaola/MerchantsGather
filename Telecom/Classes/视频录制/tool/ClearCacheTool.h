@@ -12,8 +12,10 @@
 
 /**
   清除缓存
+
+ @param successful 清除成功
  */
-+ (void)clearAction;
++ (void)clearActionSuccessful:(void(^)())successful;
 
 /**
  获取缓存大小

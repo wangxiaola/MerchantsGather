@@ -238,8 +238,9 @@
     }
     else if ([key isEqualToString:@"清理缓存"])
     {
-        [ClearCacheTool clearAction];
-
+        [ClearCacheTool clearActionSuccessful:^{
+            [self updateClearSize];
+        }];
     }
     else if ([key isEqualToString:@"设置密码"])
     {

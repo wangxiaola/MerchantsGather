@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B0254542019AF4E00B82A7B /* TBScrecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0254532019AF4E00B82A7B /* TBScrecordTool.m */; };
+		3B0254572019D6F500B82A7B /* TBVideoRecordButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */; };
 		3B0595FC200F1E40000AB53A /* TBVideoCompositionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0595FB200F1E40000AB53A /* TBVideoCompositionTool.m */; };
 		3B3925AB200472850041AA0E /* TBLBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3925AA200472850041AA0E /* TBLBXScanViewController.m */; };
 		3B44EAA91F5946960089877B /* TBPreferentialInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAA61F5946960089877B /* TBPreferentialInformationView.m */; };
@@ -533,6 +535,7 @@
 		3B691EFE1FF61D4A00D5BEFA /* TBRecordVideoMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B691EFD1FF61D4A00D5BEFA /* TBRecordVideoMode.m */; };
 		3B69F58A1F149FFB008DB495 /* AMapLocationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B69F5891F149FFB008DB495 /* AMapLocationKit.framework */; };
 		3B784C0E20074A98001C42D8 /* TBRecordingCorrugatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B784C0D20074A98001C42D8 /* TBRecordingCorrugatedView.m */; };
+		3B846F1E201AF850002237B2 /* TBVideoRecordButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */; };
 		3B8BA16A1DF106670007027F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BA1691DF106670007027F /* main.m */; };
 		3B8BA16D1DF106670007027F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8BA16C1DF106670007027F /* AppDelegate.m */; };
 		3B8BA1731DF106670007027F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B8BA1711DF106670007027F /* Main.storyboard */; };
@@ -686,6 +689,10 @@
 /* Begin PBXFileReference section */
 		17BB67B0358954F0928443F7 /* Pods_Telecom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Telecom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		382E642283A572C6A35FAE7C /* Pods-Telecom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telecom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telecom/Pods-Telecom.debug.xcconfig"; sourceTree = "<group>"; };
+		3B0254522019AF4E00B82A7B /* TBScrecordTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBScrecordTool.h; sourceTree = "<group>"; };
+		3B0254532019AF4E00B82A7B /* TBScrecordTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBScrecordTool.m; sourceTree = "<group>"; };
+		3B0254552019D6F500B82A7B /* TBVideoRecordButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoRecordButtonView.h; sourceTree = "<group>"; };
+		3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoRecordButtonView.m; sourceTree = "<group>"; };
 		3B0595FA200F1E40000AB53A /* TBVideoCompositionTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoCompositionTool.h; sourceTree = "<group>"; };
 		3B0595FB200F1E40000AB53A /* TBVideoCompositionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoCompositionTool.m; sourceTree = "<group>"; };
 		3B3925A9200472850041AA0E /* TBLBXScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBLBXScanViewController.h; sourceTree = "<group>"; };
@@ -4084,6 +4091,8 @@
 				3BA454701FF2573700176874 /* TBFilterCollectionViewCell.m */,
 				3BAC736D2015C1B400154FCD /* TBMusicPageCell.h */,
 				3BAC736E2015C1B400154FCD /* TBMusicPageCell.m */,
+				3B0254552019D6F500B82A7B /* TBVideoRecordButtonView.h */,
+				3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */,
 				3BA4544D1FF1E75000176874 /* ProgressBar */,
 			);
 			path = view;
@@ -4122,6 +4131,8 @@
 				3BA4546A1FF1F47B00176874 /* a_filter.cisf */,
 				3BA454661FF1EC2400176874 /* SCRecordSessionManager */,
 				3BA454591FF1E79400176874 /* XBNSensorManager */,
+				3B0254522019AF4E00B82A7B /* TBScrecordTool.h */,
+				3B0254532019AF4E00B82A7B /* TBScrecordTool.m */,
 			);
 			path = LIB;
 			sourceTree = "<group>";
@@ -4406,6 +4417,7 @@
 		3B8BA15D1DF106620007027F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TB;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "王小腊";
 				TargetAttributes = {
@@ -4441,7 +4453,7 @@
 				};
 			};
 			buildConfigurationList = 3B8BA1601DF106620007027F /* Build configuration list for PBXProject "Telecom" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -4658,6 +4670,7 @@
 				3B5C733D1F4E7D5100B2CE42 /* UIView+Frame.m in Sources */,
 				3BA9D6012016E05F00439ADA /* JPVideoPlayerDownloaderOperation.m in Sources */,
 				3B5C76271F4E7DA800B2CE42 /* TBTaskMakeViewMode.m in Sources */,
+				3B0254572019D6F500B82A7B /* TBVideoRecordButtonView.m in Sources */,
 				3B5C746D1F4E7D5100B2CE42 /* ZXMultiFormatWriter.m in Sources */,
 				3B5C76251F4E7DA800B2CE42 /* TBTaskConfigurationMode.m in Sources */,
 				3B5C73D11F4E7D5100B2CE42 /* ZXCharacterSetECI.m in Sources */,
@@ -4949,6 +4962,7 @@
 				3BAD86261FCFD87D00493C1A /* TBTagsLabelView.m in Sources */,
 				3B5C76371F4E7DA800B2CE42 /* TBBackgroundImageTableViewCell.m in Sources */,
 				3B5C767B1F4E7DA800B2CE42 /* JFRefreshBezierLabel.m in Sources */,
+				3B0254542019AF4E00B82A7B /* TBScrecordTool.m in Sources */,
 				3B5C769F1F4E7DA800B2CE42 /* TBGroupSpecificationView.m in Sources */,
 				3B5C732A1F4E7D5100B2CE42 /* PLAudioRecorder.m in Sources */,
 				3B5C743F1F4E7D5100B2CE42 /* ZXPDF417Codeword.m in Sources */,
@@ -5211,6 +5225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B8BA18E1DF106680007027F /* TelecomUITests.m in Sources */,
+				3B846F1E201AF850002237B2 /* TBVideoRecordButtonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

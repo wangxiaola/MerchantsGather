@@ -8,14 +8,13 @@
 
 #import "ProgressBar.h"
 #import "SBCaptureToolKit.h"
-#import "SBCaptureToolKit.h"
 
 #define BAR_BLUE_COLOR      NAVIGATION_COLOR// 进度
 #define BAR_RED_COLOR       UIColorFromRGB(0xfa5a5a, 1)// 要删除的进度色
 #define BAR_BG_COLOR        UIColorFromRGB(0x808080, 1)// 进度背景色
 #define BAR_SELECT_COLOR    UIColorFromRGB(0xFF0000, 1)// 进度头
 
-
+#define NODES_W             2
 #define BAR_H               7.5
 #define BAR_MIN_W           75
 #define INDICATOR_W         5
@@ -25,12 +24,18 @@
 
 @property (strong, nonatomic) UIView *barView;
 
-@property (strong, nonatomic) NSTimer *shiningTimer;
 
+@property (strong, nonatomic) NSMutableArray *nodesViews;
 @end
 
 @implementation ProgressBar
-
+- (NSMutableArray *)nodesViews
+{
+    if (!_nodesViews) {
+        _nodesViews = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _nodesViews;
+}
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -60,46 +65,67 @@
     _barView.backgroundColor = BAR_BG_COLOR;
     [self addSubview:_barView];
     
-    //最短分割线
-    UIView *intervalView = [[UIView alloc] initWithFrame:CGRectMake(_SCREEN_WIDTH*0.3, 0, 1, BAR_H)];
-    intervalView.backgroundColor = [UIColor orangeColor];
-    [_barView addSubview:intervalView];
-    
-    //indicator
-    self.progressIndicator = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, INDICATOR_W, BAR_H)];
-    _progressIndicator.backgroundColor = UIColorFromRGB(0xff6600, 1);
-    _progressIndicator.center = CGPointMake(0, BAR_H / 2);
-    [self addSubview:_progressIndicator];
 }
-
+/**
+ 更新节点数量
+ 
+ @param number 数量
+ */
+- (void)updateViewNodesNumber:(NSInteger)number;
+{
+    [_nodesViews enumerateObjectsUsingBlock:^(UIView  *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    
+    if (number > 2) {
+        
+        CGFloat nodesWidth    = NODES_W;
+        CGFloat nodesinterval = (_SCREEN_WIDTH - number*nodesWidth)/number;
+        for (int i = 1; i<number; i++) {
+            
+            UIView *nodesView = [self getNodesView];
+            nodesView.frame = CGRectMake(nodesinterval * i + nodesWidth*(i-1), -1, nodesWidth, BAR_H + 2);
+            [_barView insertSubview:nodesView atIndex:1];
+            [self.nodesViews addObject:nodesView];
+        }
+        
+    }
+    
+}
+- (UIView *)getNodesView
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 2, 2)];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    return view;
+}
 - (UIView *)getProgressView
 {
     UIView *progressView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, BAR_H)];
     progressView.backgroundColor = BAR_BLUE_COLOR;
     progressView.autoresizesSubviews = YES;
+    progressView.tag = _progressViewArray.count;
+    UIButton *bty = [UIButton buttonWithType:UIButtonTypeCustom];
+    bty.backgroundColor = [UIColor clearColor];
+    [bty addTarget:self action:@selector(progressViewClick:) forControlEvents:UIControlEventTouchUpInside];
+    [progressView addSubview:bty];
     
+    [bty mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(progressView);
+        make.top.equalTo(progressView.mas_top).offset(-2);
+        make.bottom.equalTo(progressView.mas_bottom).offset(2);
+    }];
     return progressView;
 }
 
-- (void)refreshIndicatorPosition
-{
-    UIView *lastProgressView = [_progressViewArray lastObject];
-    if (!lastProgressView) {
-        _progressIndicator.center = CGPointMake(0, BAR_H / 2);
-        return;
-    }
-    
-    _progressIndicator.center = CGPointMake(MIN(lastProgressView.frame.origin.x + lastProgressView.frame.size.width, self.frame.size.width - _progressIndicator.frame.size.width / 2 + 2), BAR_H / 2);
-}
-
 - (void)refreshCurrentView:(NSInteger)idx andWidth:(CGFloat)width {
-
+    
     if (self.progressViewArray.count == 0) {
         return;
     }
-
+    
     for (int i = 0; i < self.progressViewArray.count; i++) {
-
+        
         if (i > idx) {
             
             UIView * foreProgressView = self.progressViewArray[i-1];
@@ -107,10 +133,10 @@
             
             UIView *currentProgressView = self.progressViewArray[i];
             CGRect frame = currentProgressView.frame;
-            frame.origin.x = foreViewFrame.origin.x+foreViewFrame.size.width+1;
+            frame.origin.x = foreViewFrame.origin.x+foreViewFrame.size.width+NODES_W;
             
             if (i == idx) {
-                frame.size.width = width - 1;
+                frame.size.width = width - NODES_W;
             }
             
             currentProgressView.frame = frame;
@@ -118,35 +144,58 @@
         else {
             UIView *currentProgressView = self.progressViewArray[idx];
             CGRect frame = currentProgressView.frame;
-            frame.size.width = width - 1;
+            frame.size.width = width - NODES_W;
             currentProgressView.frame = frame;
         }
     }
 }
 
-- (void)onTimer:(NSTimer *)timer
+#pragma mark  ----touch----
+- (void)progressViewClick:(UIButton *)bty
 {
-    [UIView animateWithDuration:TIMER_INTERVAL / 2 animations:^{
-        _progressIndicator.alpha = 0;
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:TIMER_INTERVAL / 2 animations:^{
-            _progressIndicator.alpha = 1;
-        }];
-    }];
+    UIView *view = bty.superview;
+    NSInteger index = view.tag;
+    [self progressViewResetAll];
+    [self setCurrentProgressToStyle:ProgressBarProgressStyleSelect andIndex:index];
+    if ([self.delegate respondsToSelector:@selector(progressViewSelected:)]) {
+        [self.delegate progressViewSelected:index];
+    }
+    UIAlertController *alertView = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    TBWeakSelf
+    [alertView addAction:[UIAlertAction actionWithTitle:@"重新录制本段视频" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self setCurrentProgressToStyle:ProgressBarProgressStyleNormal andIndex:index];
+        if ([weakSelf.delegate respondsToSelector:@selector(reRecordingInsertTheSegment:)] ) {
+            [weakSelf.delegate reRecordingInsertTheSegment:index];
+        }
+        
+    }]];
+    [alertView addAction:[UIAlertAction actionWithTitle:@"替换为本地视频" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self setCurrentProgressToStyle:ProgressBarProgressStyleNormal andIndex:index];
+        if ([weakSelf.delegate respondsToSelector:@selector(replacePhotoVideoInsertTheSegment:)] ) {
+            [weakSelf.delegate replacePhotoVideoInsertTheSegment:index];
+        }
+        
+    }]];
+    
+    [alertView addAction:[UIAlertAction actionWithTitle:@"删除本段视频" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self setCurrentProgressToStyle:ProgressBarProgressStyleNormal andIndex:index];
+        if ([weakSelf.delegate respondsToSelector:@selector(deleteTheSegment:)] ) {
+            [weakSelf.delegate deleteTheSegment:index];
+        }
+        
+    }]];
+    
+    [alertView addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        //按钮触发的方法
+        [self setCurrentProgressToStyle:ProgressBarProgressStyleNormal andIndex:index];
+    }]];
+    
+    [[ZKUtil getPresentedViewController] presentViewController:alertView animated:YES completion:nil];
+    
 }
 
 #pragma mark - method
-- (void)startShining
-{
-    self.shiningTimer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
-}
-
-- (void)stopShining
-{
-    [_shiningTimer invalidate];
-    self.shiningTimer = nil;
-    _progressIndicator.alpha = 1;
-}
 
 - (void)addProgressView
 {
@@ -155,17 +204,15 @@
     
     if (lastProgressView) {
         CGRect frame = lastProgressView.frame;
-        frame.size.width -= 1;
         lastProgressView.frame = frame;
         
-        newProgressX = frame.origin.x + frame.size.width + 1;
+        newProgressX = frame.origin.x + frame.size.width + NODES_W;
     }
     
     UIView *newProgressView = [self getProgressView];
     
     [SBCaptureToolKit setView:newProgressView toOriginX:newProgressX];
-    [_barView addSubview:newProgressView];
-    
+    [_barView insertSubview:newProgressView atIndex:0];
     [_progressViewArray addObject:newProgressView];
 }
 
@@ -177,11 +224,10 @@
     }
     
     [SBCaptureToolKit setView:lastProgressView toSizeWidth:width];
-    [self refreshIndicatorPosition];
 }
 
 - (void)setCurrentProgressToWidth:(CGFloat)width {
-
+    
     UIView *lastProgressView = [_progressViewArray lastObject];
     CGFloat newProgressX = 0.0f;
     if (!lastProgressView) {
@@ -193,10 +239,10 @@
     }
     else {
         CGRect frame = lastProgressView.frame;
-        frame.size.width -= 1;
+        frame.size.width -= NODES_W;
         lastProgressView.frame = frame;
         
-        newProgressX = frame.origin.x + frame.size.width + 1;
+        newProgressX = frame.origin.x + frame.size.width + NODES_W;
         
         UIView *newProgressView = [self getProgressView];
         [SBCaptureToolKit setView:newProgressView toOriginX:newProgressX];
@@ -205,10 +251,16 @@
         [_progressViewArray addObject:newProgressView];
     }
     
-    [self refreshIndicatorPosition];
 }
-
+- (void)progressViewResetAll
+{
+    [_progressViewArray enumerateObjectsUsingBlock:^(UIView *obj, NSUInteger index, BOOL * _Nonnull stop) {
+        
+        obj.backgroundColor = BAR_BLUE_COLOR;
+    }];
+}
 - (void)setCurrentProgressToStyle:(ProgressBarProgressStyle)style andIndex:(NSInteger)idx {
+    
     UIView * currentProgressView = [_progressViewArray objectAtIndex:idx];
     if (!currentProgressView) {
         return;
@@ -216,6 +268,11 @@
     
     switch (style) {
         case ProgressBarProgressStyleSelect:
+        {
+            currentProgressView.backgroundColor = BAR_SELECT_COLOR;
+        }
+            break;
+        case ProgressBarProgressStyleDelete:
         {
             currentProgressView.backgroundColor = BAR_SELECT_COLOR;
         }
@@ -228,31 +285,32 @@
         default:
             break;
     }
+    
 }
 
 - (void)setLastProgressToStyle:(ProgressBarProgressStyle)style
 {
     UIView *lastProgressView = [_progressViewArray lastObject];
-    if (!lastProgressView) {
-        return;
+    if (lastProgressView) {
+        
+        switch (style) {
+            case ProgressBarProgressStyleDelete:
+            {
+                lastProgressView.backgroundColor = BAR_RED_COLOR;
+                
+            }
+                break;
+            case ProgressBarProgressStyleNormal:
+            {
+                lastProgressView.backgroundColor = BAR_BLUE_COLOR;
+                
+            }
+                break;
+            default:
+                break;
+        }
     }
     
-    switch (style) {
-        case ProgressBarProgressStyleDelete:
-        {
-            lastProgressView.backgroundColor = BAR_RED_COLOR;
-            _progressIndicator.hidden = YES;
-        }
-            break;
-        case ProgressBarProgressStyleNormal:
-        {
-            lastProgressView.backgroundColor = BAR_BLUE_COLOR;
-            _progressIndicator.hidden = NO;
-        }
-            break;
-        default:
-            break;
-    }
 }
 
 - (void)deleteLastProgress
@@ -265,11 +323,25 @@
     [lastProgressView removeFromSuperview];
     [_progressViewArray removeLastObject];
     
-    _progressIndicator.hidden = NO;
-    
-    [self refreshIndicatorPosition];
 }
-
+- (void)deleteTheSegmentProgress:(NSInteger)index;
+{
+    UIView *progressView = _progressViewArray[index];
+    if (!progressView) {
+        return;
+    }
+    [progressView removeFromSuperview];
+    [_progressViewArray removeObjectAtIndex:index];
+    
+    CGFloat newProgressX = 0.0f;
+    for (int i = 0; i<_progressViewArray.count; i++) {
+        UIView *view = _progressViewArray[i];
+        view.tag = i;
+        view.frame = CGRectMake(newProgressX, 0, view.frame.size.width, BAR_H);
+        newProgressX = newProgressX + view.frame.size.width + NODES_W;
+    }
+    
+}
 - (void)removeAllSubViews {
     for (UIView * v in self.progressViewArray) {
         [v removeFromSuperview];

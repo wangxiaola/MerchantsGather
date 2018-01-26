@@ -27,10 +27,10 @@
         _imageW = image.size.width;
         _imageH = image.size.height;
         
-        _watermarkWc = [[UIImageView alloc] initWithImage:image];
-        _watermarkWc.contentMode = UIViewContentModeScaleAspectFill;
-        _watermarkWc.backgroundColor = [UIColor clearColor];
-        [self addSubview:_watermarkWc];
+//        _watermarkWc = [[UIImageView alloc] initWithImage:image];
+//        _watermarkWc.contentMode = UIViewContentModeScaleAspectFill;
+//        _watermarkWc.backgroundColor = [UIColor clearColor];
+//        [self addSubview:_watermarkWc];
         
         _watermarkDq = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"watermark_dq"]];
         _watermarkDq.contentMode = UIViewContentModeScaleAspectFill;
@@ -50,11 +50,11 @@
 
     CGFloat videoH = 540;
     
-    [_watermarkWc sizeToFit];
+//    [_watermarkWc sizeToFit];
     [_watermarkDq sizeToFit];
 
-    _watermarkWc.frame = CGRectMake(960-_imageW-12, videoH-_imageH-20, _imageW, _imageH);
-    _watermarkDq.frame = CGRectMake(960-(_imageW+12)*2, videoH-_imageH-25, _imageW, _imageH);
+//    _watermarkWc.frame = CGRectMake(960-_imageW-12, videoH-_imageH-20, _imageW, _imageH);
+    _watermarkDq.frame = CGRectMake(960-(_imageW+12)*1, videoH-_imageH-25, _imageW, _imageH);
 }
 
 

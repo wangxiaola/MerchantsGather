@@ -22,8 +22,7 @@
                 <outlet property="levelView" destination="YGh-h4-lhj" id="Em3-UF-p71"/>
                 <outlet property="previewView" destination="Nbh-Xr-mn6" id="GUB-Xl-VGh"/>
                 <outlet property="progressBar" destination="59Q-cY-Xac" id="nUj-FX-yzI"/>
-                <outlet property="recordingBackimageView" destination="9Jc-CL-bqu" id="5eI-BW-lWm"/>
-                <outlet property="recordingButton" destination="TuX-7V-eYx" id="oUC-LZ-DeP"/>
+                <outlet property="recordingView" destination="TuX-7V-eYx" id="v6l-EI-gTV"/>
                 <outlet property="timeLabel" destination="9mc-iQ-oMm" id="pBu-k3-oMj"/>
                 <outlet property="videoViewHeight" destination="f64-O3-Z7u" id="pcH-jJ-8if"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-iQ-oMm">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="207"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="187"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbh-Xr-mn6">
-                    <rect key="frame" x="0.0" y="207" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="187" width="375" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwV-zg-OGU" customClass="SCRecorderToolsView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -58,11 +57,11 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-Er-HdQ" customClass="LZGridView">
-                    <rect key="frame" x="0.0" y="207" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="188" width="375" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGh-h4-lhj" customClass="LZLevelView">
-                    <rect key="frame" x="0.0" y="207" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="188" width="375" height="200"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMw-fI-DcK">
@@ -86,30 +85,17 @@
                                 <action selector="cancelButton:" destination="-1" eventType="touchUpInside" id="dTy-nb-oGd"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuX-7V-eYx" customClass="UIControl">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuX-7V-eYx" customClass="TBVideoRecordButtonView">
                             <rect key="frame" x="131" y="43.5" width="113" height="113"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="boss_voice_0" translatesAutoresizingMaskIntoConstraints="NO" id="9Jc-CL-bqu">
-                                    <rect key="frame" x="0.0" y="0.0" width="113" height="113"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="9Jc-CL-bqu" secondAttribute="trailing" id="496-Ik-lx5"/>
                                 <constraint firstAttribute="width" secondItem="TuX-7V-eYx" secondAttribute="height" multiplier="1:1" id="QyI-MW-BF7"/>
-                                <constraint firstItem="9Jc-CL-bqu" firstAttribute="top" secondItem="TuX-7V-eYx" secondAttribute="top" id="WoF-9g-uCw"/>
-                                <constraint firstAttribute="bottom" secondItem="9Jc-CL-bqu" secondAttribute="bottom" id="djb-4O-xWt"/>
-                                <constraint firstItem="9Jc-CL-bqu" firstAttribute="leading" secondItem="TuX-7V-eYx" secondAttribute="leading" id="ftQ-HQ-5G1"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                     <real key="value" value="56.5"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="recordButton:" destination="-1" eventType="touchDown" id="Mow-Ol-If1"/>
-                                <action selector="recordPauseButton:" destination="-1" eventType="touchUpInside" id="gvM-Rk-aV5"/>
-                            </connections>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72Y-ht-z9P">
                             <rect key="frame" x="272" y="70" width="60" height="60"/>
@@ -198,9 +184,9 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="s4r-Er-HdQ" secondAttribute="bottom" id="116-fN-h3g"/>
+                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="s4r-Er-HdQ" secondAttribute="bottom" constant="19" id="116-fN-h3g"/>
                 <constraint firstItem="9mc-iQ-oMm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4Nt-y9-ksj"/>
-                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="YGh-h4-lhj" secondAttribute="bottom" id="6ar-Or-BO5"/>
+                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="YGh-h4-lhj" secondAttribute="bottom" constant="19" id="6ar-Or-BO5"/>
                 <constraint firstAttribute="trailing" secondItem="9mc-iQ-oMm" secondAttribute="trailing" id="Ftk-1G-qTM"/>
                 <constraint firstItem="s4r-Er-HdQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MXc-O1-fuF"/>
                 <constraint firstItem="9mc-iQ-oMm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="THM-Ik-xWR"/>
@@ -214,14 +200,13 @@
                 <constraint firstItem="Nbh-Xr-mn6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jc8-1c-Y2I"/>
                 <constraint firstAttribute="trailing" secondItem="YGh-h4-lhj" secondAttribute="trailing" id="kCn-Lx-FVb"/>
                 <constraint firstItem="s4r-Er-HdQ" firstAttribute="height" secondItem="Nbh-Xr-mn6" secondAttribute="height" id="w8d-2L-bx5"/>
-                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="Nbh-Xr-mn6" secondAttribute="bottom" id="yXw-F0-khi"/>
+                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="Nbh-Xr-mn6" secondAttribute="bottom" constant="20" id="yXw-F0-khi"/>
                 <constraint firstItem="YGh-h4-lhj" firstAttribute="height" secondItem="Nbh-Xr-mn6" secondAttribute="height" id="zQX-uJ-JOl"/>
             </constraints>
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
     </objects>
     <resources>
-        <image name="boss_voice_0" width="318" height="318"/>
         <image name="lz_recorder_change" width="22" height="19"/>
         <image name="lz_recorder_change_hd" width="22" height="19"/>
         <image name="lz_recorder_confirm" width="59" height="59"/>

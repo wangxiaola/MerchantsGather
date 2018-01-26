@@ -13,9 +13,9 @@
 /**
  清除缓存
  
- @param size 大小
+ @param successful 清除成功
  */
-+ (void)clearAction
++ (void)clearActionSuccessful:(void(^)())successful;
 {
     
     UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -41,7 +41,9 @@
             [UIView addMJNotifierWithText:@"清理完毕" dismissAutomatically:YES];
             [activity stopAnimating];
             [activity removeFromSuperview];
-            
+            if (successful) {
+                successful();
+            }
         });
     });
     

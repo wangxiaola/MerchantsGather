@@ -368,10 +368,9 @@ static NSString * const cellID = @"cellID";
             MMLog(@"Completed compression in %fs", CACurrentMediaTime() - time);
         }
         
-        if (strongSelf != nil) {
-            [strongSelf.player play];
+        if (strongSelf) {
+            
         }
-        
         NSError *error = exportSession.error;
         if (exportSession.cancelled) {
             MMLog(@"Export was cancelled");
@@ -413,6 +412,7 @@ static NSString * const cellID = @"cellID";
 {
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     hudShowError(msg);
+    [self.player play];
 }
 /**
  push到封面图片选择VC

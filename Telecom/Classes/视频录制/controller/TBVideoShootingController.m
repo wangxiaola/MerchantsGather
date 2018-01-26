@@ -9,7 +9,6 @@
  ==========================================视频相关=================================================
  */
 
-#define MIN_VIDEO_DUR   3.0f //最小时间
 #define MAX_VIDEO_DUR   10.0f //最大时间
 
 #import "TBVideoShootingController.h"
@@ -20,7 +19,7 @@
 #import "ProgressBar.h"
 #import "LZButton.h"
 #import "TBCaptureUtilities.h"
-
+#import "TBVideoRecordButtonView.h"
 #import "SCRecorder.h"
 #import "SCRecordSessionManager.h"
 #import <AVFoundation/AVFoundation.h>
@@ -30,25 +29,30 @@
 
 #import "ClearCacheTool.h"
 
-@interface TBVideoShootingController ()<SCRecorderDelegate>
+@interface TBVideoShootingController ()<SCRecorderDelegate,ProgressBarDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIView *previewView;         //试映view
 @property (strong, nonatomic) IBOutlet LZGridView *girdView;        //网格view
 @property (strong, nonatomic) IBOutlet LZLevelView *levelView;      //水平仪view
 @property (strong, nonatomic) IBOutlet ProgressBar *progressBar;    //进度条
 @property (strong, nonatomic) IBOutlet SCRecorderToolsView *focusView;
-@property (weak, nonatomic) IBOutlet UIImageView *recordingBackimageView;// 录制背景图片
+
 
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;      //删除按钮
 @property (strong, nonatomic) IBOutlet UIButton *confirmButton;     //确认按钮
 @property (weak, nonatomic) IBOutlet UIButton *flashButton;         // 闪光按钮
-@property (weak, nonatomic) IBOutlet UIControl *recordingButton;    // 录制按钮
+@property (weak, nonatomic) IBOutlet TBVideoRecordButtonView *recordingView;
+
 @property (strong, nonatomic) IBOutlet LZButton *gridOrlineButton;  //网格按钮
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoViewHeight;
-
+@property (nonatomic, assign) NSInteger nodesFolat;
 //recorder
 @property (nonatomic, strong) SCRecorder *recorder;
 
+/**
+ 更新第几个
+ */
+@property (nonatomic, assign) NSInteger updateIndex;
 
 @end
 
@@ -63,8 +67,10 @@
     [_gridOrlineButton setLoopImages:@[[UIImage imageNamed:@"lz_recorder_grid"], [UIImage imageNamed:@"lz_recorder_grid_hd"], [UIImage imageNamed:@"lz_recorder_line_hd"]] ];
     
     [self initSCRecorder];
-    [self.progressBar startShining];
-    
+    self.nodesFolat  = 4;
+    self.progressBar.delegate = self;
+    [self.progressBar updateViewNodesNumber:self.nodesFolat];
+    self.updateIndex = -1;
     self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
@@ -122,7 +128,11 @@
     
     self.focusView.recorder = _recorder;
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"lz_recorder_change_hd"];
-    self.recordingButton.enabled = NO;
+    JXWeakSelf(self)
+    [self.recordingView setStartRecord:^{
+        JXStrongSelf(self)
+        [self recordVideo];
+    }];
 }
 
 
@@ -133,7 +143,7 @@
     }
     
     self.cancelButton.enabled = YES;
-    if (CMTimeGetSeconds(self.recorder.session.duration) >= 3) {
+    if (self.recorder.session.segments.count > 0) {
         self.confirmButton.enabled = YES;
     } else {
         self.confirmButton.enabled = NO;
@@ -164,14 +174,17 @@
     vc.videoName     = self.videoName;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
+- (void)updateTimeText
+{
+   self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",CMTimeGetSeconds(self.recorder.session.duration)];
+}
 #pragma mark - Event
 
 - (IBAction)dismmClick:(UIButton *)sender {
     
     [self.recorder.session removeAllSegments];
     [self dismissViewControllerAnimated:YES completion:^{
-
+        
     }];
 }
 //取消/删除视频按钮
@@ -187,7 +200,7 @@
         if (self.recorder.session.segments.count > 0) {
             sender.selected = NO;
             sender.enabled = YES;
-            if (CMTimeGetSeconds(self.recorder.session.duration) >= 3) {
+            if (self.recorder.session.segments.count > 0) {
                 self.confirmButton.enabled = YES;
             } else {
                 self.confirmButton.enabled = NO;
@@ -197,29 +210,44 @@
             sender.enabled = NO;
             self.confirmButton.enabled = NO;
         }
-        
-        self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",CMTimeGetSeconds(self.recorder.session.duration)];
+        [self updateTimeText];
     }
 }
 
-//开始录制按钮
-- (IBAction)recordButton:(UIControl *)sender {
-    [self.recordingBackimageView setImage:[UIImage imageNamed:@"vide_ recording"]];
-    [self.progressBar setLastProgressToStyle:ProgressBarProgressStyleNormal];
-    [self.recorder record];
+/**
+ 开始录制视频
+ */
+- (void)recordVideo
+{
+    if (self.recorder.session.segments.count == self.nodesFolat) {
+        
+        [UIView addMJNotifierWithText:@"不能再录制了！" dismissAutomatically:YES];
+    }
+    else
+    {
+        self.cancelButton.enabled = NO;
+        self.confirmButton.enabled = NO;
+        self.cancelButton.selected = NO;
+        self.progressBar.userInteractionEnabled = NO;
+        [self.progressBar progressViewResetAll];
+        [self.recorder record];
+        
+    }
 }
 
 //暂停录制
-- (IBAction)recordPauseButton:(id)sender {
+- (void)recordPause{
     
-    [self.recordingBackimageView setImage:[UIImage imageNamed:@"boss_voice_0"]];
     [self.recorder pause];
+    self.cancelButton.enabled = YES;
+    self.confirmButton.enabled = YES;
+    self.progressBar.userInteractionEnabled = YES;
+    
 }
 
 //确认按钮
 - (IBAction)confirmButton:(UIButton *)sender {
     [self saveAndShowSession:self.recorder.session];
-    [self.recordingBackimageView setImage:[UIImage imageNamed:@"boss_voice_0"]];
 }
 
 //切换摄像头按钮
@@ -269,37 +297,75 @@
         self.recorder.flashMode = SCFlashModeOff;
     }
 }
-
+#pragma mark  ----ProgressBarDelegate----
+/**
+ 选中
+ 
+ @param index 第几个
+ */
+- (void)progressViewSelected:(NSInteger)index;
+{
+  
+}
+/**
+ 重新录制
+ 
+ @param segment 第几段
+ */
+- (void)reRecordingInsertTheSegment:(NSInteger)segment;
+{
+    [self.recorder.session removeSegmentAtIndex:segment deleteFile:YES];
+    self.updateIndex = segment;
+    [self recordVideo];
+}
+/**
+ 导入相册视频
+ 
+ @param segment 第几段
+ */
+- (void)replacePhotoVideoInsertTheSegment:(NSInteger)segment;
+{
+    
+}
+/**
+ 删除第几段
+ 
+ @param segment 第几段
+ */
+- (void)deleteTheSegment:(NSInteger)segment;
+{
+    [self.progressBar deleteTheSegmentProgress:segment];
+    [self.recorder.session removeSegmentAtIndex:segment deleteFile:YES];
+    [self updateTimeText];
+}
 #pragma mark - SCRecorderDelegate
 - (void)recorder:(SCRecorder *)recorder didSkipVideoSampleBufferInSession:(SCRecordSession *)recordSession {
     MMLog(@"Skipped video buffer(跳过视频缓冲)");
 }
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureAudioInput:(NSError *)audioInputError {
-
+    
     if (audioInputError) {
         [UIView addMJNotifierWithText:@"音频录制异常!" dismissAutomatically:YES];
     }
 }
 
 - (void)recorder:(SCRecorder *)recorder didReconfigureVideoInput:(NSError *)videoInputError {
-
+    
     hudDismiss();
     if (videoInputError) {
         [UIView addMJNotifierWithText:@"视频录制异常!" dismissAutomatically:YES];
     }
-    else
-    {
-      self.recordingButton.enabled = YES;
-    }
+    
 }
 
 //启动录制
 - (void)recorder:(SCRecorder *__nonnull)recorder didBeginSegmentInSession:(SCRecordSession *__nonnull)session error:(NSError *__nullable)error {
-    [self.progressBar addProgressView];
-    [self.progressBar stopShining];
-    self.cancelButton.enabled = YES;
-
+    
+    if (self.updateIndex < 0) {
+    
+        [self.progressBar addProgressView];
+    }
 }
 
 //更新进度条
@@ -310,24 +376,58 @@
         currentTime = recordSession.currentSegmentDuration;
         recorderTime = recordSession.duration;
     }
-    self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",CMTimeGetSeconds(recorderTime)];
+    CGFloat time = CMTimeGetSeconds(recorderTime);
+    self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",time];
     
-    CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR * _SCREEN_WIDTH;
-    [self.progressBar setLastProgressToWidth:width];
+    CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR * (_SCREEN_WIDTH - 2*(self.nodesFolat-1));
+    CGFloat nodesTime = MAX_VIDEO_DUR/self.nodesFolat;
+    CGFloat progress  = 0;
     
-    if (CMTimeGetSeconds(recorderTime) >= 3) {
-        self.confirmButton.enabled = YES;
-    } else {
-        self.confirmButton.enabled = NO;
+    if (time > nodesTime) {
+        // 有几个时间段
+        NSInteger num = (time / nodesTime);
+        time          =  time - num*nodesTime;
+    }
+    // 每段的时间限制
+    
+    if ([[NSString stringWithFormat:@"%.1f",time] isEqualToString:[NSString stringWithFormat:@"%.1f",nodesTime]]) {
+        progress = 1;
+        time     = nodesTime;
+
+        [self recordPause];
+    }
+    else
+    {
+        progress = time/nodesTime;
+    }
+    if (self.updateIndex < 0) {
+        [self.progressBar setLastProgressToWidth:width];
+    }
+    [self.recordingView updateLabelText:time];
+    [self.recordingView setValue:progress];
+    
+}
+
+/**
+录制一段视频后的结果
+ */
+- (void)recorder:(SCRecorder *__nonnull)recorder didCompleteSegment:(SCRecordSessionSegment *__nullable)segment inSession:(SCRecordSession *__nonnull)session error:(NSError *__nullable)error;
+{
+    if (self.updateIndex > -1) {
+     
+        SCRecordSessionSegment *seg = [SCRecordSessionSegment segmentWithURL:segment.url info:nil];
+        [self.recorder.session insertSegment:seg atIndex:self.updateIndex];
+        [self.recorder.session removeLastSegment];
+        self.updateIndex = -1;
     }
 }
 
 //录制完成
 - (void)recorder:(SCRecorder *)recorder didCompleteSession:(SCRecordSession *)recordSession {
     MMLog(@"didCompleteSession:");
-    [self.recordingBackimageView setImage:[UIImage imageNamed:@"boss_voice_0"]];
+    
     [self saveAndShowSession:recordSession];
-
+    
 }
 
 @end
