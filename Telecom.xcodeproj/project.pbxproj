@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B00E0E620201ACB00417B53 /* TBClipVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0E520201ACB00417B53 /* TBClipVideoViewController.m */; };
+		3B00E0EF20201B6E00417B53 /* FMLClipFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0E720201B6D00417B53 /* FMLClipFrameView.m */; };
+		3B00E0F020201B6E00417B53 /* AVAsset+FMLVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0E820201B6D00417B53 /* AVAsset+FMLVideo.m */; };
+		3B00E0F120201B6E00417B53 /* FMLVideoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0EA20201B6D00417B53 /* FMLVideoCommand.m */; };
+		3B00E0F220201B6E00417B53 /* UIImage+FMLClipRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0EE20201B6E00417B53 /* UIImage+FMLClipRect.m */; };
+		3B00E0F520201B7A00417B53 /* FMLPlayLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0F420201B7900417B53 /* FMLPlayLayerView.m */; };
+		3B00E0F920201BAE00417B53 /* FMLScaledImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0F720201BAE00417B53 /* FMLScaledImageViewCell.m */; };
+		3B00E0FA20201BAE00417B53 /* FMLScaledImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B00E0F820201BAE00417B53 /* FMLScaledImageViewCell.xib */; };
+		3B00E0FD20201D9E00417B53 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0FB20201D9E00417B53 /* UIView+Extension.m */; };
 		3B0254542019AF4E00B82A7B /* TBScrecordTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0254532019AF4E00B82A7B /* TBScrecordTool.m */; };
 		3B0254572019D6F500B82A7B /* TBVideoRecordButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */; };
 		3B0595FC200F1E40000AB53A /* TBVideoCompositionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0595FB200F1E40000AB53A /* TBVideoCompositionTool.m */; };
@@ -662,6 +671,8 @@
 		3BE53DE71FCD5568000EB7F4 /* TBRoomEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DE51FCD5568000EB7F4 /* TBRoomEditorViewController.xib */; };
 		3BE53DEB1FCD55DE000EB7F4 /* TBRoomListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE53DE91FCD55DE000EB7F4 /* TBRoomListTableViewCell.m */; };
 		3BE53DEC1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DEA1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib */; };
+		3BEB8C26201F034F00E4D688 /* TBPhotoChooseCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB8C25201F034F00E4D688 /* TBPhotoChooseCollectionViewController.m */; };
+		3BEB8C29201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEB8C28201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.m */; };
 		3BF0DD6F1EA7876E002200BE /* AMapSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6C1EA7876E002200BE /* AMapSearchKit.framework */; };
 		3BF0DD701EA7876E002200BE /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6D1EA7876E002200BE /* MAMapKit.framework */; };
 		3BF0DD711EA7876E002200BE /* AMapFoundationKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF0DD6E1EA7876E002200BE /* AMapFoundationKit.framework */; };
@@ -689,6 +700,23 @@
 /* Begin PBXFileReference section */
 		17BB67B0358954F0928443F7 /* Pods_Telecom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Telecom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		382E642283A572C6A35FAE7C /* Pods-Telecom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Telecom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Telecom/Pods-Telecom.debug.xcconfig"; sourceTree = "<group>"; };
+		3B00E0E420201ACB00417B53 /* TBClipVideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBClipVideoViewController.h; sourceTree = "<group>"; };
+		3B00E0E520201ACB00417B53 /* TBClipVideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBClipVideoViewController.m; sourceTree = "<group>"; };
+		3B00E0E720201B6D00417B53 /* FMLClipFrameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLClipFrameView.m; sourceTree = "<group>"; };
+		3B00E0E820201B6D00417B53 /* AVAsset+FMLVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVAsset+FMLVideo.m"; sourceTree = "<group>"; };
+		3B00E0E920201B6D00417B53 /* FMLClipFrameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLClipFrameView.h; sourceTree = "<group>"; };
+		3B00E0EA20201B6D00417B53 /* FMLVideoCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLVideoCommand.m; sourceTree = "<group>"; };
+		3B00E0EB20201B6D00417B53 /* UIImage+FMLClipRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FMLClipRect.h"; sourceTree = "<group>"; };
+		3B00E0EC20201B6D00417B53 /* AVAsset+FMLVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAsset+FMLVideo.h"; sourceTree = "<group>"; };
+		3B00E0ED20201B6D00417B53 /* FMLVideoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLVideoCommand.h; sourceTree = "<group>"; };
+		3B00E0EE20201B6E00417B53 /* UIImage+FMLClipRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FMLClipRect.m"; sourceTree = "<group>"; };
+		3B00E0F320201B7900417B53 /* FMLPlayLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLPlayLayerView.h; sourceTree = "<group>"; };
+		3B00E0F420201B7900417B53 /* FMLPlayLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLPlayLayerView.m; sourceTree = "<group>"; };
+		3B00E0F620201BAD00417B53 /* FMLScaledImageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLScaledImageViewCell.h; sourceTree = "<group>"; };
+		3B00E0F720201BAE00417B53 /* FMLScaledImageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLScaledImageViewCell.m; sourceTree = "<group>"; };
+		3B00E0F820201BAE00417B53 /* FMLScaledImageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMLScaledImageViewCell.xib; sourceTree = "<group>"; };
+		3B00E0FB20201D9E00417B53 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		3B00E0FC20201D9E00417B53 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		3B0254522019AF4E00B82A7B /* TBScrecordTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBScrecordTool.h; sourceTree = "<group>"; };
 		3B0254532019AF4E00B82A7B /* TBScrecordTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBScrecordTool.m; sourceTree = "<group>"; };
 		3B0254552019D6F500B82A7B /* TBVideoRecordButtonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoRecordButtonView.h; sourceTree = "<group>"; };
@@ -1790,7 +1818,7 @@
 		3BA454451FF1E74100176874 /* TBWatermarkOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBWatermarkOverlayView.m; sourceTree = "<group>"; };
 		3BA454491FF1E74F00176874 /* LZGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZGridView.h; sourceTree = "<group>"; };
 		3BA4544A1FF1E74F00176874 /* LZLevelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZLevelView.h; sourceTree = "<group>"; };
-		3BA4544B1FF1E75000176874 /* LZGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZGridView.m; sourceTree = "<group>"; };
+		3BA4544B1FF1E75000176874 /* LZGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = LZGridView.m; sourceTree = "<group>"; };
 		3BA4544C1FF1E75000176874 /* LZLevelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZLevelView.m; sourceTree = "<group>"; };
 		3BA4544E1FF1E75000176874 /* ProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBar.h; sourceTree = "<group>"; };
 		3BA4544F1FF1E75000176874 /* ProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBar.m; sourceTree = "<group>"; };
@@ -1950,6 +1978,10 @@
 		3BE53DE81FCD55DE000EB7F4 /* TBRoomListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBRoomListTableViewCell.h; sourceTree = "<group>"; };
 		3BE53DE91FCD55DE000EB7F4 /* TBRoomListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBRoomListTableViewCell.m; sourceTree = "<group>"; };
 		3BE53DEA1FCD55DE000EB7F4 /* TBRoomListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBRoomListTableViewCell.xib; sourceTree = "<group>"; };
+		3BEB8C24201F034F00E4D688 /* TBPhotoChooseCollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBPhotoChooseCollectionViewController.h; sourceTree = "<group>"; };
+		3BEB8C25201F034F00E4D688 /* TBPhotoChooseCollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPhotoChooseCollectionViewController.m; sourceTree = "<group>"; };
+		3BEB8C27201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBPhotoVideoChooseCollectionViewCell.h; sourceTree = "<group>"; };
+		3BEB8C28201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBPhotoVideoChooseCollectionViewCell.m; sourceTree = "<group>"; };
 		3BF0DD6C1EA7876E002200BE /* AMapSearchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapSearchKit.framework; sourceTree = "<group>"; };
 		3BF0DD6D1EA7876E002200BE /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		3BF0DD6E1EA7876E002200BE /* AMapFoundationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AMapFoundationKit.framework; sourceTree = "<group>"; };
@@ -2021,7 +2053,6 @@
 		3B575E1A1FF4DA1F002BE5DC /* 视频封面选择 */ = {
 			isa = PBXGroup;
 			children = (
-				3B575E2E1FF4E81A002BE5DC /* view */,
 				3B575E1B1FF4DA41002BE5DC /* JXVideoImagePickerViewController.h */,
 				3B575E1E1FF4DA41002BE5DC /* JXVideoImagePickerViewController.m */,
 				3B575E201FF4DA42002BE5DC /* JXVideoImagePickerCursorViewController.h */,
@@ -4067,6 +4098,7 @@
 		3BA454361FF1E66700176874 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				3BEB8C23201F02DB00E4D688 /* 视频裁剪 */,
 				3B575E1A1FF4DA1F002BE5DC /* 视频封面选择 */,
 				3BA454401FF1E74100176874 /* VideoDetail(视频详情) */,
 				3BA4543B1FF1E69900176874 /* TBVideoShootingController.h */,
@@ -4081,6 +4113,8 @@
 		3BA454371FF1E66F00176874 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				3BA4544D1FF1E75000176874 /* ProgressBar */,
+				3B575E2E1FF4E81A002BE5DC /* view */,
 				3BA454521FF1E75000176874 /* LZButton.h */,
 				3BA454531FF1E75100176874 /* LZButton.m */,
 				3BA454491FF1E74F00176874 /* LZGridView.h */,
@@ -4093,7 +4127,11 @@
 				3BAC736E2015C1B400154FCD /* TBMusicPageCell.m */,
 				3B0254552019D6F500B82A7B /* TBVideoRecordButtonView.h */,
 				3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */,
-				3BA4544D1FF1E75000176874 /* ProgressBar */,
+				3BEB8C27201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.h */,
+				3BEB8C28201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.m */,
+				3B00E0F620201BAD00417B53 /* FMLScaledImageViewCell.h */,
+				3B00E0F720201BAE00417B53 /* FMLScaledImageViewCell.m */,
+				3B00E0F820201BAE00417B53 /* FMLScaledImageViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4101,6 +4139,18 @@
 		3BA454381FF1E67300176874 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				3B00E0FC20201D9E00417B53 /* UIView+Extension.h */,
+				3B00E0FB20201D9E00417B53 /* UIView+Extension.m */,
+				3B00E0F320201B7900417B53 /* FMLPlayLayerView.h */,
+				3B00E0F420201B7900417B53 /* FMLPlayLayerView.m */,
+				3B00E0E920201B6D00417B53 /* FMLClipFrameView.h */,
+				3B00E0E720201B6D00417B53 /* FMLClipFrameView.m */,
+				3B00E0ED20201B6D00417B53 /* FMLVideoCommand.h */,
+				3B00E0EA20201B6D00417B53 /* FMLVideoCommand.m */,
+				3B00E0EC20201B6D00417B53 /* AVAsset+FMLVideo.h */,
+				3B00E0E820201B6D00417B53 /* AVAsset+FMLVideo.m */,
+				3B00E0EB20201B6D00417B53 /* UIImage+FMLClipRect.h */,
+				3B00E0EE20201B6E00417B53 /* UIImage+FMLClipRect.m */,
 				3B95CB2D2005C61F004BAC82 /* TBCaptureUtilities.h */,
 				3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */,
 				3BAC73672015B53600154FCD /* TBBackMusicChooseView.h */,
@@ -4332,6 +4382,17 @@
 			path = SPHTTPSessionManager;
 			sourceTree = "<group>";
 		};
+		3BEB8C23201F02DB00E4D688 /* 视频裁剪 */ = {
+			isa = PBXGroup;
+			children = (
+				3BEB8C24201F034F00E4D688 /* TBPhotoChooseCollectionViewController.h */,
+				3BEB8C25201F034F00E4D688 /* TBPhotoChooseCollectionViewController.m */,
+				3B00E0E420201ACB00417B53 /* TBClipVideoViewController.h */,
+				3B00E0E520201ACB00417B53 /* TBClipVideoViewController.m */,
+			);
+			path = "视频裁剪";
+			sourceTree = "<group>";
+		};
 		3BF0DD6B1EA78725002200BE /* Map_Lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -4508,6 +4569,7 @@
 				3B5C76A21F4E7DA800B2CE42 /* TBIdentityInformationTableViewCell.xib in Resources */,
 				3B5C76991F4E7DA800B2CE42 /* TBGroupManagementTableViewCell.xib in Resources */,
 				3B5C76401F4E7DA800B2CE42 /* TBTaskListTableViewCell.xib in Resources */,
+				3B00E0FA20201BAE00417B53 /* FMLScaledImageViewCell.xib in Resources */,
 				3BAC7365201593AA00154FCD /* sh_4.mp3 in Resources */,
 				3BAD71FD1FBD3A7A00181864 /* TBGZEmployeesAddView.xib in Resources */,
 				3B5C76341F4E7DA800B2CE42 /* TBAddNewMerchantsTableViewCell.xib in Resources */,
@@ -4754,6 +4816,7 @@
 				3B5C765E1F4E7DA800B2CE42 /* TaskViewController.m in Sources */,
 				3BAD864B1FCFF26F00493C1A /* NSBundle+TZImagePicker.m in Sources */,
 				3B5C74011F4E7D5100B2CE42 /* ZXGenericMultipleBarcodeReader.m in Sources */,
+				3B00E0E620201ACB00417B53 /* TBClipVideoViewController.m in Sources */,
 				3B5C766B1F4E7DA800B2CE42 /* TBPrivilegeManagementViewController.m in Sources */,
 				3B5C73CB1F4E7D5100B2CE42 /* ZXReedSolomonEncoder.m in Sources */,
 				3B5C766A1F4E7DA800B2CE42 /* TBPreferentialBaseViewController.m in Sources */,
@@ -4833,6 +4896,7 @@
 				3B5C76431F4E7DA800B2CE42 /* TBTemplateInfoTableViewCell.m in Sources */,
 				3B5C74501F4E7D5100B2CE42 /* ZXPDF417ResultMetadata.m in Sources */,
 				3BA454561FF1E75100176874 /* ProgressBar.m in Sources */,
+				3B00E0F020201B6E00417B53 /* AVAsset+FMLVideo.m in Sources */,
 				3BBCE1F61FCBABBF00117771 /* TBFolkRoomsView.m in Sources */,
 				3B5C767D1F4E7DA800B2CE42 /* TBBusinessIntelligenceViewMode.m in Sources */,
 				3B5C73BB1F4E7D5100B2CE42 /* ZXURLTOResultParser.m in Sources */,
@@ -4874,6 +4938,7 @@
 				3B5C73E51F4E7D5100B2CE42 /* ZXResult.m in Sources */,
 				3B5C73871F4E7D5100B2CE42 /* TYSlidePageScrollView.m in Sources */,
 				3B5C742E1F4E7D5100B2CE42 /* ZXMultiFormatUPCEANReader.m in Sources */,
+				3BEB8C26201F034F00E4D688 /* TBPhotoChooseCollectionViewController.m in Sources */,
 				3B5C741B1F4E7D5100B2CE42 /* ZXRSSDataCharacter.m in Sources */,
 				3B5C743A1F4E7D5100B2CE42 /* ZXModulusPoly.m in Sources */,
 				3B5C73C11F4E7D5100B2CE42 /* ZXWifiResultParser.m in Sources */,
@@ -4906,6 +4971,8 @@
 				3B5C73EC1F4E7D5100B2CE42 /* ZXDataMatrixVersion.m in Sources */,
 				3B5C73D01F4E7D5100B2CE42 /* ZXByteArray.m in Sources */,
 				3B5C73A01F4E7D5100B2CE42 /* ZXAddressBookDoCoMoResultParser.m in Sources */,
+				3B00E0FD20201D9E00417B53 /* UIView+Extension.m in Sources */,
+				3BEB8C29201F050D00E4D688 /* TBPhotoVideoChooseCollectionViewCell.m in Sources */,
 				3B5C74381F4E7D5100B2CE42 /* ZXUPCEReader.m in Sources */,
 				3B5C76411F4E7DA800B2CE42 /* TBTemplateChooseCollectionViewCell.m in Sources */,
 				3B44EAA91F5946960089877B /* TBPreferentialInformationView.m in Sources */,
@@ -4956,6 +5023,7 @@
 				3B575E271FF4DA42002BE5DC /* JXVideoImagePickerCell.m in Sources */,
 				3BA454721FF2573700176874 /* TBFilterCollectionViewCell.m in Sources */,
 				3B5C732C1F4E7D5100B2CE42 /* ASProgressPopUpView.m in Sources */,
+				3B00E0F120201B6E00417B53 /* FMLVideoCommand.m in Sources */,
 				3B5C76281F4E7DA800B2CE42 /* TBTemplateBackgroundData.m in Sources */,
 				3B5C73271F4E7D5100B2CE42 /* AudioStreamer.m in Sources */,
 				3B5C76A31F4E7DA800B2CE42 /* TBInServiceAreaView.m in Sources */,
@@ -4964,6 +5032,7 @@
 				3B5C767B1F4E7DA800B2CE42 /* JFRefreshBezierLabel.m in Sources */,
 				3B0254542019AF4E00B82A7B /* TBScrecordTool.m in Sources */,
 				3B5C769F1F4E7DA800B2CE42 /* TBGroupSpecificationView.m in Sources */,
+				3B00E0EF20201B6E00417B53 /* FMLClipFrameView.m in Sources */,
 				3B5C732A1F4E7D5100B2CE42 /* PLAudioRecorder.m in Sources */,
 				3B5C743F1F4E7D5100B2CE42 /* ZXPDF417Codeword.m in Sources */,
 				3B5C76391F4E7DA800B2CE42 /* TBBackgroundMusicTableViewCell.m in Sources */,
@@ -4999,6 +5068,7 @@
 				3B93D2CD1F56A7790010FBD0 /* TBTemplateBossHeadBaseView.m in Sources */,
 				3B5C76AD1F4E7DA800B2CE42 /* TBVouchersRecordTableViewCell.m in Sources */,
 				3B5C74331F4E7D5100B2CE42 /* ZXUPCEANExtension2Support.m in Sources */,
+				3B00E0F520201B7A00417B53 /* FMLPlayLayerView.m in Sources */,
 				3B5C74421F4E7D5100B2CE42 /* ZXPDF417DetectionResult.m in Sources */,
 				3B5C76961F4E7DA800B2CE42 /* TBEarningsTableViewCell.m in Sources */,
 				3B95CB2F2005C61F004BAC82 /* TBCaptureUtilities.m in Sources */,
@@ -5019,6 +5089,7 @@
 				3B5C737D1F4E7D5100B2CE42 /* TAAnimatedDotView.m in Sources */,
 				3B5C76B51F4E7DA800B2CE42 /* HomePageViewController.m in Sources */,
 				3B5C73C51F4E7D5100B2CE42 /* ZXMathUtils.m in Sources */,
+				3B00E0F920201BAE00417B53 /* FMLScaledImageViewCell.m in Sources */,
 				3B5C73F41F4E7D5100B2CE42 /* ZXDataMatrixErrorCorrection.m in Sources */,
 				3B5C75F81F4E7DA800B2CE42 /* UserInfo.m in Sources */,
 				3B5C73B41F4E7D5100B2CE42 /* ZXSMSTOMMSTOResultParser.m in Sources */,
@@ -5206,6 +5277,7 @@
 				3B5C76761F4E7DA800B2CE42 /* TBGroupRecordsMode.m in Sources */,
 				3B5C73561F4E7D5100B2CE42 /* LBXScanNative.m in Sources */,
 				3B5C73AE1F4E7D5100B2CE42 /* ZXParsedResult.m in Sources */,
+				3B00E0F220201B6E00417B53 /* UIImage+FMLClipRect.m in Sources */,
 				3B5C74461F4E7D5100B2CE42 /* ZXPDF417Detector.m in Sources */,
 				3BA454691FF1EC2400176874 /* SCRecordSessionManager.m in Sources */,
 				3B691EFE1FF61D4A00D5BEFA /* TBRecordVideoMode.m in Sources */,

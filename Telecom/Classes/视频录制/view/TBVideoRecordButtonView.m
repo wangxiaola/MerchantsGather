@@ -85,7 +85,7 @@
 -(void)setValue:(CGFloat)value{
     _value = value;
     _shapeLayer.strokeEnd = value;
-//    NSLog(@"%f",value);
+
     if (value >=1) {
         _recordButton.hidden = NO;
         _pathView.hidden     = YES;

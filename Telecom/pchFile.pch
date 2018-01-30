@@ -12,6 +12,7 @@
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
+
 #define checkStringNull(Str) (Str) == [NSNull class]||Str == nil?@"":Str;
 
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
@@ -99,6 +100,10 @@ alpha:(float)(alphaValue)]
 #define  Verification_code @"VALIDATION_code"// 验证码保存
 #define  Verification_phone @"VALIDATION_phone"// 验证手机号保存
 #define  Verification_video @"Verification_video"// 视频录制完成通知
+#define  Verification_clip @"Verification_clip"// 视频剪裁完成通知
+
+#define FMLEditCommandCompletionNotification @"FMLEditCommandCompletionNotification"
+#define FMLExportCommandCompletionNotification @"FMLExportCommandCompletionNotification"
 
 #define  TELECOM_ID @"1204691981"//app商店id
 #define  GDMAP_KEY @"3ef1c1270041d8eda5ad4212740a6004"//高德
