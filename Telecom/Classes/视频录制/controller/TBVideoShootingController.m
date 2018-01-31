@@ -15,6 +15,7 @@
 #import "TBVideoEditingViewController.h"//视频详情
 #import "TBPhotoChooseCollectionViewController.h"// 相册浏览
 
+#import "YBPopupMenu.h"
 #import "LZGridView.h"
 #import "LZLevelView.h"
 #import "ProgressBar.h"
@@ -30,7 +31,7 @@
 
 #import "ClearCacheTool.h"
 
-@interface TBVideoShootingController ()<SCRecorderDelegate,ProgressBarDelegate>
+@interface TBVideoShootingController ()<SCRecorderDelegate,ProgressBarDelegate,YBPopupMenuDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UIView *previewView;         //试映view
 @property (strong, nonatomic) IBOutlet LZGridView *girdView;        //网格view
@@ -46,9 +47,11 @@
 
 @property (strong, nonatomic) IBOutlet LZButton *gridOrlineButton;  //网格按钮
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *videoViewHeight;
+
 @property (nonatomic, assign) NSInteger nodesFolat;// 几段
 //recorder
 @property (nonatomic, strong) SCRecorder *recorder;
+@property (nonatomic, assign) CGFloat  nodesAllWidth;// 进度全长
 @property (nonatomic, assign) CGFloat progressWidth;// 进度宽
 /**
  更新第几个
@@ -67,15 +70,15 @@
     self.navigationItem.title = @"视频录制";
     [_gridOrlineButton setLoopImages:@[[UIImage imageNamed:@"lz_recorder_grid"], [UIImage imageNamed:@"lz_recorder_grid_hd"], [UIImage imageNamed:@"lz_recorder_line_hd"]] ];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"userPhotos"] style:(UIBarButtonItemStylePlain) target:self action:@selector(photoChoose)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"userPhotos"] style:(UIBarButtonItemStylePlain) target:self action:@selector(photoChoose)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"recorder_nodes"] style:(UIBarButtonItemStylePlain) target:self action:@selector(recorderNodes:)];
     
     self.progressBar.delegate = self;
     self.nodesFolat  = 4;
     self.updateIndex = -1;
     [self initSCRecorder];
-    [self updateProgressWidth];
-    [self.progressBar updateViewNodesNumber:self.nodesFolat];
+    [self updateProgress];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self addVideoNotificationCenter];
 }
@@ -149,9 +152,12 @@
     }];
 }
 
-
-//更新进度条
-- (void)updateProgressBar {
+/**
+ 更新进度条
+ */
+- (void)updateProgressBar
+{
+    [self updateViewState];
     if (self.recorder.session.segments.count == 0) {
         return;
     }
@@ -188,12 +194,17 @@
     vc.videoName     = self.videoName;
     [self.navigationController pushViewController:vc animated:YES];
 }
-- (void)updateTimeText
+
+/**
+ 更新视图状态
+ */
+- (void)updateViewState
 {
     self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",self.recorder.session.segments.count *(MAX_VIDEO_DUR/self.nodesFolat)];
     
     if (self.recorder.session.segments.count == self.nodesFolat) {
         
+        self.navigationItem.leftBarButtonItem.enabled = NO;
         self.navigationItem.rightBarButtonItem.enabled = NO;
         self.cancelButton.enabled = YES;
         self.confirmButton.enabled = YES;
@@ -201,33 +212,52 @@
     }
     else if (self.recorder.session.segments.count == 0)
     {
+        self.navigationItem.leftBarButtonItem.enabled = YES;
         self.navigationItem.rightBarButtonItem.enabled = YES;
+        
         self.cancelButton.enabled = NO;
         self.confirmButton.enabled = NO;
         self.cancelButton.selected = NO;
     }
     else
     {
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.navigationItem.leftBarButtonItem.enabled = YES;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
         self.cancelButton.enabled = YES;
         self.cancelButton.selected = NO;
         self.confirmButton.enabled = YES;
         
     }
 }
-- (void)updateProgressWidth
+- (void)updateProgress
 {
-    CGFloat width = (_SCREEN_WIDTH - 2*(self.nodesFolat-1))/self.nodesFolat;
-    self.progressWidth = width;
+    [self.progressBar updateViewNodesNumber:self.nodesFolat];
+    self.nodesAllWidth = _SCREEN_WIDTH - 2*(self.nodesFolat-1);
+    self.progressWidth = self.nodesAllWidth/self.nodesFolat;
 }
 #pragma mark - Event
 - (void)photoChoose
 {
-    
     TBPhotoChooseCollectionViewController *photoVc = [[TBPhotoChooseCollectionViewController alloc] init];
     photoVc.miniTime = MAX_VIDEO_DUR/self.nodesFolat;
     [self.navigationController pushViewController:photoVc animated:YES];
     
+}
+- (void)recorderNodes:(UIBarButtonItem *)sender
+{
+    // 状态栏(statusbar)
+    CGRect rectStatus = [[UIApplication sharedApplication] statusBarFrame];
+    // 导航栏（navigationbar）
+    CGRect rectNav = self.navigationController.navigationBar.frame;
+    
+    YBPopupMenu *popupMenu = [YBPopupMenu showAtPoint:CGPointMake(_SCREEN_WIDTH - 30, rectStatus.size.height + rectNav.size.height)
+                                               titles:@[@"一个录制节点",@"二个录制节点",@"三个录制节点",@"四个录制节点",@"五个录制节点"]
+                                                icons:@[@"service-selected",@"service-selected",@"service-selected",@"service-selected",@"service-selected"]
+                                            menuWidth:140
+                                             delegate:self];
+    popupMenu.offset = -60;
+    popupMenu.fontSize = 12;
+    popupMenu.type = YBPopupMenuTypeDefault;
 }
 - (IBAction)dismmClick:(UIButton *)sender {
     
@@ -245,7 +275,7 @@
     else if (sender.selected == YES) {//第二次按下删除按钮
         [self.recorder.session removeLastSegment];
         [self.progressBar deleteLastProgress];
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.navigationItem.leftBarButtonItem.enabled = YES;
         if (self.recorder.session.segments.count > 0) {
             sender.selected = NO;
             sender.enabled = YES;
@@ -259,7 +289,7 @@
             sender.enabled = NO;
             self.confirmButton.enabled = NO;
         }
-        [self updateTimeText];
+        [self updateViewState];
     }
 }
 
@@ -268,13 +298,14 @@
  */
 - (void)recordVideo
 {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     if (self.recorder.session.segments.count == self.nodesFolat) {
         
         [UIView addMJNotifierWithText:@"不能再录制了！" dismissAutomatically:YES];
     }
     else
     {
-        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.navigationItem.leftBarButtonItem.enabled = NO;
         self.cancelButton.enabled = NO;
         self.confirmButton.enabled = NO;
         self.cancelButton.selected = NO;
@@ -292,8 +323,7 @@
     self.cancelButton.enabled = YES;
     self.confirmButton.enabled = YES;
     self.progressBar.userInteractionEnabled = YES;
-    self.navigationItem.rightBarButtonItem.enabled = YES;
-    
+    self.navigationItem.leftBarButtonItem.enabled = YES;
 }
 
 //确认按钮
@@ -403,7 +433,7 @@
 {
     [self.progressBar deleteTheSegmentProgress:segment];
     [self.recorder.session removeSegmentAtIndex:segment deleteFile:YES];
-    [self updateTimeText];
+    [self updateViewState];
 }
 #pragma mark - SCRecorderDelegate
 - (void)recorder:(SCRecorder *)recorder didSkipVideoSampleBufferInSession:(SCRecordSession *)recordSession {
@@ -448,34 +478,21 @@
     CGFloat time = CMTimeGetSeconds(recorderTime);
     self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",time];
     
-    CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR * (_SCREEN_WIDTH - 2*(self.nodesFolat-1));
-    CGFloat nodesTime = MAX_VIDEO_DUR/self.nodesFolat;
-    CGFloat progress  = 0;
-
-    if (time > nodesTime) {
-        // 有几个时间段
-        NSInteger num = (time / nodesTime);
-        time          =  time - num*nodesTime;
-    }
+    CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR *     self.nodesAllWidth;
+    CGFloat progress  = width/self.progressWidth;
     
-    if (time >= nodesTime - 0.04) {
-        progress = 1;
-        time     = nodesTime;
+    if (width >= self.progressWidth) {
         
+        progress = 1;
         [self recordPause];
     }
-    else
-    {
-        progress = time/nodesTime;
-    }
+    
     if (self.updateIndex < 0) {
         [self.progressBar setLastProgressToWidth:width];
     }
-    [self.recordingView updateLabelText:time];
+    [self.recordingView updateLabelText:progress * MAX_VIDEO_DUR/self.nodesFolat];
     [self.recordingView setValue:progress];
-    
 }
-
 /**
  录制一段视频后的结果
  */
@@ -492,9 +509,18 @@
     MMLog(@"didCompleteSession:");
     
     [self saveAndShowSession:recordSession];
+    [self updateViewState];
     
 }
-
+#pragma mark  ----YBPopupMenuDelegate----
+/**
+ 点击事件回调
+ */
+- (void)ybPopupMenuDidSelectedAtIndex:(NSInteger)index ybPopupMenu:(YBPopupMenu *)ybPopupMenu;
+{
+    self.nodesFolat = index + 1;
+    [self updateProgress];
+}
 /**
  添加视频
  
@@ -516,7 +542,7 @@
         [self.progressBar setLastProgressToWidth:self.progressWidth];
     }
     
-    [self updateTimeText];
+    [self updateViewState];
     self.updateIndex = -1;
 }
 @end

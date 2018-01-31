@@ -72,33 +72,40 @@ static NSString * const cellID = @"cellID";
     SCFilter *emptyFilter = [SCFilter emptyFilter];
     emptyFilter.name = @"#nofilter";
     
-    SCFilter *CIPhotoEffectNoir =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectNoir"];
     
-    SCFilter *CIPhotoEffectChrome =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectChrome"];
+    SCFilter *CIColorInvert    =   [SCFilter filterWithCIFilterName:@"CIColorInvert"];
+    
+    SCFilter *CIPhotoEffectNoir    =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectNoir"];
+    
+    SCFilter *CISepiaTone          = [SCFilter filterWithCIFilterName:@"CISepiaTone"];
+    
+    SCFilter *CIPhotoEffectChrome  =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectChrome"];
     
     SCFilter *CIPhotoEffectInstant =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectInstant"];
     
-    SCFilter *CIPhotoEffectTonal =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectTonal"];
+    SCFilter *CIPhotoEffectTonal   =   [SCFilter filterWithCIFilterName:@"CIPhotoEffectTonal"];
     
-    SCFilter *CIPhotoEffectFade =  [SCFilter filterWithCIFilterName:@"CIPhotoEffectFade"];
+    SCFilter *CIPhotoEffectFade    =  [SCFilter filterWithCIFilterName:@"CIPhotoEffectFade"];
     
     SCFilter *cisf =  [SCFilter filterWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"a_filter" withExtension:@"cisf"]];
     
     SCFilter *dtFilter =  [self createAnimatedFilter];
     
     self.filterSwitcherView.filters = @[
-                                        emptyFilter,// 默认
-                                        CIPhotoEffectNoir,//黑色
+                                        cisf,
                                         CIPhotoEffectChrome,
                                         CIPhotoEffectInstant,
+                                        CISepiaTone,
+                                        dtFilter,
+                                        CIColorInvert,
+                                        emptyFilter,// 默认
                                         CIPhotoEffectTonal,
                                         CIPhotoEffectFade,
-                                        // Adding a filter created using CoreImageShop
-                                        cisf,
-                                        dtFilter
+                                        CIPhotoEffectNoir//黑色
                                         ];
-    self.filtrtNames = @[@"默认",@"黑白",@"铬黄",@"怀旧",@"色调",@"淡化",@"清新",@"渐变"];
+    self.filtrtNames = @[@"清新",@"铬黄",@"怀旧",@"棕榈",@"渐变",@"幽灵",@"默认",@"色调",@"淡化",@"黑白"];
     self.player.SCImageView = self.filterSwitcherView;
+    [self updateVideoMakeIndex:0];
 }
 /**
  更新视频蒙版
@@ -108,6 +115,7 @@ static NSString * const cellID = @"cellID";
 - (void)updateVideoMakeIndex:(NSInteger)row
 {
     _videoPath = @"";
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
     [self.filterSwitcherView.selectFilterScrollView setContentOffset:CGPointMake(_SCREEN_WIDTH * row, 0) animated:YES];
     
     if (self.filterSwitcherView.filters.count > row)
@@ -205,8 +213,7 @@ static NSString * const cellID = @"cellID";
     TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"确定还原视频操作？"];
     [more showHandler:^{
         _musicUrl = nil;
-        [weakSelf updateVideoMakeIndex:0];
-        [weakSelf.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [weakSelf updateVideoMakeIndex:self.filterSwitcherView.filters.count - 4];
     }];
 }
 - (IBAction)musicClick:(UIButton *)sender {
@@ -248,7 +255,7 @@ static NSString * const cellID = @"cellID";
 {
     [_player pause];
     TBBackMusicChooseView *musicView = [[TBBackMusicChooseView alloc] init];
-
+    
     [musicView showViewChooseSuccess:^(NSURL *musicPath) {
         [_player play];
         NSLog(@"----");
@@ -338,13 +345,13 @@ static NSString * const cellID = @"cellID";
 - (void)mergedidFinish:(NSString *)videoPath WithError:(NSError *)error
 {
     SCFilter *currentFilter = [self.filterSwitcherView.selectedFilter copy];
-
+    
     NSURL *url = [NSURL fileURLWithPath:videoPath];
     if (!url) {
         [self promptExceptionInformation:@"视频合成异常！"];
         return;
     }
-        AVAsset *set = [AVAsset assetWithURL:url];
+    AVAsset *set = [AVAsset assetWithURL:url];
     
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:set];
     exportSession.videoConfiguration.filter = currentFilter;
@@ -465,7 +472,6 @@ static NSString * const cellID = @"cellID";
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
     [self updateVideoMakeIndex:indexPath.row];
 }
 #pragma mark - UIScrollDelegate

@@ -77,7 +77,7 @@
         [obj removeFromSuperview];
     }];
     
-    if (number > 2) {
+    if (number > 1) {
         
         CGFloat nodesWidth    = NODES_W;
         CGFloat nodesinterval = (_SCREEN_WIDTH - number*nodesWidth)/number;
