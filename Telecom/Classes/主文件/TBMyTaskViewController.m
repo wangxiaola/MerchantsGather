@@ -239,6 +239,7 @@
     else if ([key isEqualToString:@"清理缓存"])
     {
         [ClearCacheTool clearActionSuccessful:^{
+            [UIView addMJNotifierWithText:@"清理完毕" dismissAutomatically:YES];
             [self updateClearSize];
         }];
     }
@@ -277,14 +278,18 @@
 // 数据清理
 - (void)dataCleaning
 {
-    
-#pragma mark  ----注销APP别名----
+    [ZKUtil saveBoolForKey:VALIDATION valueBool:NO];
+    [ZKUtil saveBoolForKey:START_PAGE valueBool:NO];
+    #pragma mark  ----注销APP别名----
     NSString *falseStatic = @"00000000000";
     NSSet *set = [[NSSet alloc] initWithObjects:falseStatic, nil];
     [JPUSHService setTags:set alias:falseStatic fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
         MMLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags , iAlias);
     }];
-    [self pushMainViewController];
+    [ClearCacheTool clearActionSuccessful:^{
+
+        [self pushMainViewController];
+    }];
     
 }
 - (void)pushMainViewController

@@ -233,7 +233,7 @@
     if (!lastProgressView) {
         UIView *newProgressView = [self getProgressView];
         [SBCaptureToolKit setView:newProgressView toOriginX:newProgressX];
-        [SBCaptureToolKit setView:newProgressView toSizeWidth:width];
+        [SBCaptureToolKit setView:newProgressView toSizeWidth:width - NODES_W];
         [_barView addSubview:newProgressView];
         [_progressViewArray addObject:newProgressView];
     }

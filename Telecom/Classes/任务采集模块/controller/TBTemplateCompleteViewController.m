@@ -270,8 +270,7 @@
 }
 - (void)goBack
 {
-    NSUInteger index = [self.navigationController.viewControllers indexOfObject:self];
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-2]animated:YES];
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1]animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

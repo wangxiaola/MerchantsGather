@@ -93,7 +93,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self updateProgressBar];
+    [self updateViewState];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -150,37 +150,6 @@
         JXStrongSelf(self)
         [self recordVideo];
     }];
-}
-
-/**
- 更新进度条
- */
-- (void)updateProgressBar
-{
-    [self updateViewState];
-    if (self.recorder.session.segments.count == 0) {
-        return;
-    }
-    
-    self.cancelButton.enabled = YES;
-    if (self.recorder.session.segments.count > 0) {
-        self.confirmButton.enabled = YES;
-    } else {
-        self.confirmButton.enabled = NO;
-    }
-    
-    [self.progressBar removeAllSubViews];
-    for (int i = 0; i < self.recorder.session.segments.count; i++) {
-        SCRecordSessionSegment * segment = self.recorder.session.segments[i];
-        
-        NSAssert(segment != nil, @"segment must be non-nil");
-        CMTime currentTime = kCMTimeZero;
-        if (segment) {
-            currentTime = segment.duration;
-            CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR * _SCREEN_WIDTH;
-            [self.progressBar setCurrentProgressToWidth:width];
-        }
-    }
 }
 
 - (void)saveAndShowSession:(SCRecordSession *)recordSession {
@@ -488,7 +457,7 @@
     }
     
     if (self.updateIndex < 0) {
-        [self.progressBar setLastProgressToWidth:width];
+        [self.progressBar setLastProgressToWidth:width-0.5];
     }
     [self.recordingView updateLabelText:progress * MAX_VIDEO_DUR/self.nodesFolat];
     [self.recordingView setValue:progress];
@@ -539,6 +508,7 @@
     }
     else
     {
+        [self.progressBar addProgressView];
         [self.progressBar setLastProgressToWidth:self.progressWidth];
     }
     

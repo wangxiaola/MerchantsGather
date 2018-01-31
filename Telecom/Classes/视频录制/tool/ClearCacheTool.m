@@ -38,7 +38,6 @@
     
         dispatch_async(dispatch_get_main_queue(), ^{
             // 更新界面
-            [UIView addMJNotifierWithText:@"清理完毕" dismissAutomatically:YES];
             [activity stopAnimating];
             [activity removeFromSuperview];
             if (successful) {

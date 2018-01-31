@@ -34,13 +34,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mc-iQ-oMm">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="205"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="206"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbh-Xr-mn6">
-                    <rect key="frame" x="0.0" y="205" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="206" width="375" height="200"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwV-zg-OGU" customClass="SCRecorderToolsView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -57,11 +57,11 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-Er-HdQ" customClass="LZGridView">
-                    <rect key="frame" x="0.0" y="206" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="206" width="375" height="201"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGh-h4-lhj" customClass="LZLevelView">
-                    <rect key="frame" x="0.0" y="206" width="375" height="200"/>
+                    <rect key="frame" x="0.0" y="206" width="375" height="201"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMw-fI-DcK">
@@ -184,24 +184,24 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="s4r-Er-HdQ" secondAttribute="bottom" constant="1" id="116-fN-h3g"/>
                 <constraint firstItem="9mc-iQ-oMm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4Nt-y9-ksj"/>
-                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="YGh-h4-lhj" secondAttribute="bottom" constant="1" id="6ar-Or-BO5"/>
+                <constraint firstAttribute="trailing" secondItem="s4r-Er-HdQ" secondAttribute="trailing" id="8D5-rs-bLr"/>
+                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="YGh-h4-lhj" secondAttribute="bottom" id="8JQ-PS-q80"/>
+                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="s4r-Er-HdQ" secondAttribute="bottom" id="9EA-mU-Uvm"/>
                 <constraint firstAttribute="trailing" secondItem="9mc-iQ-oMm" secondAttribute="trailing" id="Ftk-1G-qTM"/>
-                <constraint firstItem="s4r-Er-HdQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MXc-O1-fuF"/>
+                <constraint firstItem="s4r-Er-HdQ" firstAttribute="top" secondItem="9mc-iQ-oMm" secondAttribute="bottom" id="Pjv-ct-A0M"/>
                 <constraint firstItem="9mc-iQ-oMm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="THM-Ik-xWR"/>
-                <constraint firstItem="YGh-h4-lhj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ULT-jA-7Wm"/>
                 <constraint firstItem="Nbh-Xr-mn6" firstAttribute="top" secondItem="9mc-iQ-oMm" secondAttribute="bottom" id="Zdv-4X-Rw9"/>
                 <constraint firstAttribute="bottom" secondItem="AMw-fI-DcK" secondAttribute="bottom" id="ZtH-gE-IeS"/>
                 <constraint firstAttribute="trailing" secondItem="AMw-fI-DcK" secondAttribute="trailing" id="a2I-Ab-fFo"/>
-                <constraint firstAttribute="trailing" secondItem="s4r-Er-HdQ" secondAttribute="trailing" id="bsk-Bg-6IB"/>
+                <constraint firstItem="s4r-Er-HdQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cVW-yw-5ro"/>
+                <constraint firstAttribute="trailing" secondItem="YGh-h4-lhj" secondAttribute="trailing" id="cfx-ac-e4G"/>
                 <constraint firstAttribute="trailing" secondItem="Nbh-Xr-mn6" secondAttribute="trailing" id="cjv-7P-jfo"/>
                 <constraint firstItem="AMw-fI-DcK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dxF-SK-jat"/>
                 <constraint firstItem="Nbh-Xr-mn6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jc8-1c-Y2I"/>
-                <constraint firstAttribute="trailing" secondItem="YGh-h4-lhj" secondAttribute="trailing" id="kCn-Lx-FVb"/>
-                <constraint firstItem="s4r-Er-HdQ" firstAttribute="height" secondItem="Nbh-Xr-mn6" secondAttribute="height" id="w8d-2L-bx5"/>
-                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="Nbh-Xr-mn6" secondAttribute="bottom" constant="2" id="yXw-F0-khi"/>
-                <constraint firstItem="YGh-h4-lhj" firstAttribute="height" secondItem="Nbh-Xr-mn6" secondAttribute="height" id="zQX-uJ-JOl"/>
+                <constraint firstItem="YGh-h4-lhj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p3B-at-sxZ"/>
+                <constraint firstItem="YGh-h4-lhj" firstAttribute="top" secondItem="9mc-iQ-oMm" secondAttribute="bottom" id="puN-iS-e4P"/>
+                <constraint firstItem="AMw-fI-DcK" firstAttribute="top" secondItem="Nbh-Xr-mn6" secondAttribute="bottom" constant="1" id="yXw-F0-khi"/>
             </constraints>
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
