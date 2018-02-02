@@ -102,9 +102,6 @@ alpha:(float)(alphaValue)]
 #define  Verification_video @"Verification_video"// 视频录制完成通知
 #define  Verification_clip @"Verification_clip"// 视频剪裁完成通知
 
-#define FMLEditCommandCompletionNotification @"FMLEditCommandCompletionNotification"
-#define FMLExportCommandCompletionNotification @"FMLExportCommandCompletionNotification"
-
 #define  TELECOM_ID @"1204691981"//app商店id
 #define  GDMAP_KEY @"3ef1c1270041d8eda5ad4212740a6004"//高德
 #define  START_PAGE @"START_PAGE" // 启动页

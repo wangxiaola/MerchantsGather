@@ -213,7 +213,7 @@
         [compositionAudioTrack insertTimeRange:CMTimeRangeMake(startDuration, duration) ofTrack:assetAudioTrack atTime:insertionPoint error:&error];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:FMLEditCommandCompletionNotification object:self];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:FMLEditCommandCompletionNotification object:self];
 }
 
 - (void)exportAsset
@@ -242,8 +242,8 @@
                 // Step 3
                 _assetURL = exportSession.outputURL;
                 
-                [[NSNotificationCenter defaultCenter] postNotificationName:FMLExportCommandCompletionNotification
-                                                                    object:self];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:FMLExportCommandCompletionNotification
+//                                                                    object:self];
                 break;
             case AVAssetExportSessionStatusFailed:
                 NSLog(@"Failed:%@", exportSession.error);

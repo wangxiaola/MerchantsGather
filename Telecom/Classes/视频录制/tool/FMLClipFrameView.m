@@ -423,12 +423,11 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
         if (cell) {
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
 
-                cell.imageData = image;
+                [cell setImageData:image];
             }];
         }
     }];
 
-    
     return cell;
 }
 
@@ -558,6 +557,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
         _collectionView = [[UICollectionView alloc] initWithFrame:collectionRect collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
+        _collectionView.bounces = NO;
         [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([FMLScaledImageViewCell class]) bundle:nil] forCellWithReuseIdentifier:FMLScaledImageId];
         _collectionView.showsHorizontalScrollIndicator = NO;
     }

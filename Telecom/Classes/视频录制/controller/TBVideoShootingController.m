@@ -353,11 +353,11 @@
     NSURL *url = notification.object;
     if (self.updateIndex > -1)
     {
-        [self insertVideoUrl:url atIndex:self.updateIndex];
+        [self insertVideoUrl:url atIndex:self.updateIndex isRecorder:NO];
     }
     else
     {
-        [self insertVideoUrl:url atIndex:self.recorder.session.segments.count];
+        [self insertVideoUrl:url atIndex:self.recorder.session.segments.count isRecorder:NO];
     }
     
 }
@@ -379,7 +379,6 @@
  */
 - (void)reRecordingInsertTheSegment:(NSInteger)segment;
 {
-    [self.recorder.session removeSegmentAtIndex:segment deleteFile:YES];
     self.updateIndex = segment;
     [self recordVideo];
 }
@@ -445,8 +444,6 @@
         recorderTime = recordSession.duration;
     }
     CGFloat time = CMTimeGetSeconds(recorderTime);
-    self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",time];
-    
     CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR *     self.nodesAllWidth;
     CGFloat progress  = width/self.progressWidth;
     
@@ -458,6 +455,7 @@
     
     if (self.updateIndex < 0) {
         [self.progressBar setLastProgressToWidth:width-0.5];
+        self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",time];
     }
     [self.recordingView updateLabelText:progress * MAX_VIDEO_DUR/self.nodesFolat];
     [self.recordingView setValue:progress];
@@ -468,8 +466,7 @@
 - (void)recorder:(SCRecorder *__nonnull)recorder didCompleteSegment:(SCRecordSessionSegment *__nullable)segment inSession:(SCRecordSession *__nonnull)session error:(NSError *__nullable)error;
 {
     if (self.updateIndex > -1) {
-        
-        [self insertVideoUrl:segment.url atIndex:self.updateIndex];
+        [self insertVideoUrl:segment.url atIndex:self.updateIndex isRecorder:YES];
     }
 }
 
@@ -495,10 +492,21 @@
  
  @param url 视频链接
  @param segmentIndex 插入序列
+ @param recorder 是否是录制的
  */
-- (void)insertVideoUrl:(NSURL *)url atIndex:(NSInteger)segmentIndex
+- (void)insertVideoUrl:(NSURL *)url atIndex:(NSInteger)segmentIndex isRecorder:(BOOL)recorder;
 {
-    SCRecordSessionSegment *seg = [SCRecordSessionSegment segmentWithURL:url info:nil];
+    SCRecordSessionSegment *seg;
+    if (recorder == YES) {
+        NSLog(@" --- %ld",self.recorder.session.segments.count);
+        seg = [self.recorder.session.segments.lastObject copy];
+        [self.recorder.session removeLastSegment];
+        NSLog(@" +++ %ld",self.recorder.session.segments.count);
+    }
+    else
+    {
+       seg = [SCRecordSessionSegment segmentWithURL:url info:nil];
+    }
     [self.recorder.session insertSegment:seg atIndex:segmentIndex];
     NSInteger segments = self.recorder.session.segments.count-1;
     

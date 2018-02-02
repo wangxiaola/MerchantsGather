@@ -9,6 +9,9 @@
 #import "TBBaseViewController.h"
 #import "SCRecordSessionSegment+LZAdd.h"
 
+/**
+ 视频裁剪
+ */
 @interface TBClipVideoViewController : TBBaseViewController
 @property (nonatomic, strong) SCRecordSessionSegment * selectSegment;
 @property (nonatomic, assign) Float64 recordTime;

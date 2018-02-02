@@ -17,9 +17,7 @@
 @implementation FMLScaledImageViewCell
 
 - (void)setImageData:(UIImage *)imageData
-{
-    _imageData = imageData;
-    
+{    
     self.scaledIamgeView.image = imageData;
 }
 

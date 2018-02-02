@@ -10,6 +10,6 @@
 
 @interface FMLScaledImageViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UIImage *imageData;
+- (void)setImageData:(UIImage *)imageData;
 
 @end

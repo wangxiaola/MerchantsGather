@@ -12,7 +12,6 @@
 		3B00E0F020201B6E00417B53 /* AVAsset+FMLVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0E820201B6D00417B53 /* AVAsset+FMLVideo.m */; };
 		3B00E0F120201B6E00417B53 /* FMLVideoCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0EA20201B6D00417B53 /* FMLVideoCommand.m */; };
 		3B00E0F220201B6E00417B53 /* UIImage+FMLClipRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0EE20201B6E00417B53 /* UIImage+FMLClipRect.m */; };
-		3B00E0F520201B7A00417B53 /* FMLPlayLayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0F420201B7900417B53 /* FMLPlayLayerView.m */; };
 		3B00E0F920201BAE00417B53 /* FMLScaledImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0F720201BAE00417B53 /* FMLScaledImageViewCell.m */; };
 		3B00E0FA20201BAE00417B53 /* FMLScaledImageViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B00E0F820201BAE00417B53 /* FMLScaledImageViewCell.xib */; };
 		3B00E0FD20201D9E00417B53 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00E0FB20201D9E00417B53 /* UIView+Extension.m */; };
@@ -20,6 +19,7 @@
 		3B0254572019D6F500B82A7B /* TBVideoRecordButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0254562019D6F500B82A7B /* TBVideoRecordButtonView.m */; };
 		3B0595FC200F1E40000AB53A /* TBVideoCompositionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0595FB200F1E40000AB53A /* TBVideoCompositionTool.m */; };
 		3B3925AB200472850041AA0E /* TBLBXScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3925AA200472850041AA0E /* TBLBXScanViewController.m */; };
+		3B4076F120243311005526BD /* TBVideoClipTailor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4076F020243311005526BD /* TBVideoClipTailor.swift */; };
 		3B44EAA91F5946960089877B /* TBPreferentialInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAA61F5946960089877B /* TBPreferentialInformationView.m */; };
 		3B44EAAA1F5946960089877B /* TBDiscountCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAA81F5946960089877B /* TBDiscountCardView.m */; };
 		3B44EAAD1F59469F0089877B /* TBPreferentialStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44EAAC1F59469F0089877B /* TBPreferentialStatusView.m */; };
@@ -711,8 +711,6 @@
 		3B00E0EC20201B6D00417B53 /* AVAsset+FMLVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVAsset+FMLVideo.h"; sourceTree = "<group>"; };
 		3B00E0ED20201B6D00417B53 /* FMLVideoCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLVideoCommand.h; sourceTree = "<group>"; };
 		3B00E0EE20201B6E00417B53 /* UIImage+FMLClipRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FMLClipRect.m"; sourceTree = "<group>"; };
-		3B00E0F320201B7900417B53 /* FMLPlayLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLPlayLayerView.h; sourceTree = "<group>"; };
-		3B00E0F420201B7900417B53 /* FMLPlayLayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLPlayLayerView.m; sourceTree = "<group>"; };
 		3B00E0F620201BAD00417B53 /* FMLScaledImageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMLScaledImageViewCell.h; sourceTree = "<group>"; };
 		3B00E0F720201BAE00417B53 /* FMLScaledImageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMLScaledImageViewCell.m; sourceTree = "<group>"; };
 		3B00E0F820201BAE00417B53 /* FMLScaledImageViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMLScaledImageViewCell.xib; sourceTree = "<group>"; };
@@ -726,6 +724,7 @@
 		3B0595FB200F1E40000AB53A /* TBVideoCompositionTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoCompositionTool.m; sourceTree = "<group>"; };
 		3B3925A9200472850041AA0E /* TBLBXScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBLBXScanViewController.h; sourceTree = "<group>"; };
 		3B3925AA200472850041AA0E /* TBLBXScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBLBXScanViewController.m; sourceTree = "<group>"; };
+		3B4076F020243311005526BD /* TBVideoClipTailor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBVideoClipTailor.swift; sourceTree = "<group>"; };
 		3B44EAA51F5946960089877B /* TBPreferentialInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBPreferentialInformationView.h; sourceTree = "<group>"; };
 		3B44EAA61F5946960089877B /* TBPreferentialInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBPreferentialInformationView.m; sourceTree = "<group>"; };
 		3B44EAA71F5946960089877B /* TBDiscountCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBDiscountCardView.h; sourceTree = "<group>"; };
@@ -2051,6 +2050,14 @@
 				17BB67B0358954F0928443F7 /* Pods_Telecom.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B4076EF202432BD005526BD /* VideoTailor */ = {
+			isa = PBXGroup;
+			children = (
+				3B4076F020243311005526BD /* TBVideoClipTailor.swift */,
+			);
+			path = VideoTailor;
 			sourceTree = "<group>";
 		};
 		3B575E1A1FF4DA1F002BE5DC /* 视频封面选择 */ = {
@@ -3970,6 +3977,7 @@
 		3B8BA19D1DF127110007027F /* Toolkit */ = {
 			isa = PBXGroup;
 			children = (
+				3B4076EF202432BD005526BD /* VideoTailor */,
 				3BA9D5DD2016E05E00439ADA /* JPVideoPlayer */,
 				3BAD862D1FCFF26F00493C1A /* TZImagePickerController */,
 				3BD3F04B1FC7F70600894208 /* SPHTTPSessionManager */,
@@ -4146,8 +4154,6 @@
 				3BA367FF2023165D00ED193E /* TBVideoCropView.m */,
 				3B00E0FC20201D9E00417B53 /* UIView+Extension.h */,
 				3B00E0FB20201D9E00417B53 /* UIView+Extension.m */,
-				3B00E0F320201B7900417B53 /* FMLPlayLayerView.h */,
-				3B00E0F420201B7900417B53 /* FMLPlayLayerView.m */,
 				3B00E0E920201B6D00417B53 /* FMLClipFrameView.h */,
 				3B00E0E720201B6D00417B53 /* FMLClipFrameView.m */,
 				3B00E0ED20201B6D00417B53 /* FMLVideoCommand.h */,
@@ -4490,6 +4496,7 @@
 					3B8BA1641DF106620007027F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = YC78659G27;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -5073,7 +5080,6 @@
 				3B93D2CD1F56A7790010FBD0 /* TBTemplateBossHeadBaseView.m in Sources */,
 				3B5C76AD1F4E7DA800B2CE42 /* TBVouchersRecordTableViewCell.m in Sources */,
 				3B5C74331F4E7D5100B2CE42 /* ZXUPCEANExtension2Support.m in Sources */,
-				3B00E0F520201B7A00417B53 /* FMLPlayLayerView.m in Sources */,
 				3B5C74421F4E7D5100B2CE42 /* ZXPDF417DetectionResult.m in Sources */,
 				3B5C76961F4E7DA800B2CE42 /* TBEarningsTableViewCell.m in Sources */,
 				3B95CB2F2005C61F004BAC82 /* TBCaptureUtilities.m in Sources */,
@@ -5178,6 +5184,7 @@
 				3B784C0E20074A98001C42D8 /* TBRecordingCorrugatedView.m in Sources */,
 				3BAE38EB1F6696E600A391D8 /* HQliquidButton.m in Sources */,
 				3B5C73801F4E7D5100B2CE42 /* SDCollectionViewCell.m in Sources */,
+				3B4076F120243311005526BD /* TBVideoClipTailor.swift in Sources */,
 				3B5C76241F4E7DA800B2CE42 /* TBRegionESRootClass.m in Sources */,
 				3BAC73692015B53600154FCD /* TBBackMusicChooseView.m in Sources */,
 				3B5C74541F4E7D5100B2CE42 /* ZXQRCodeDataMask.m in Sources */,
@@ -5446,11 +5453,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = Telecom/Telecom.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YC78659G27;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5489,6 +5498,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "";
 			};
 			name = Debug;
@@ -5500,11 +5511,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_CXX_LIBRARY = "compiler-default";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_ENTITLEMENTS = Telecom/Telecom.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = YC78659G27;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -5544,6 +5557,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
 				WARNING_CFLAGS = "";
 			};
 			name = Release;
@@ -5551,6 +5565,7 @@
 		3B8BA1961DF106680007027F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TelecomTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -5563,6 +5578,7 @@
 		3B8BA1971DF106680007027F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = TelecomTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -5575,6 +5591,7 @@
 		3B8BA1991DF106680007027F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = TelecomUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daqsoft.ios.add.TelecomUITests;
@@ -5586,6 +5603,7 @@
 		3B8BA19A1DF106680007027F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = TelecomUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daqsoft.ios.add.TelecomUITests;

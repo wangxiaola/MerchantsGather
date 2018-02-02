@@ -12,18 +12,16 @@
 #import "UIImage+FMLClipRect.h"
 #import "FMLVideoCommand.h"
 #import "FMLClipFrameView.h"
-#import "TBVideoClipTailor.h"
+#import "Telecom-Swift.h"
 #import "TBVideoCropView.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <AVFoundation/AVFoundation.h>
 
+@interface TBClipVideoViewController () <FMLClipFrameViewDelegate>
 
-@interface TBClipVideoViewController () <FMLClipFrameViewDelegate,TBVideoClipTailorDelegate>
-
-@property (nonatomic, strong) NSURL *assetUrl;
 @property (nonatomic, strong) AVAsset *avAsset;
 @property (nonatomic, assign) CGSize outputSize;
-@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
 @property (nonatomic, strong) TBVideoCropView *cropView;
 @property (nonatomic, strong) FMLClipFrameView *clipFrameView;
@@ -31,26 +29,26 @@
 @property (nonatomic, assign) Float64 endSecond;   ///< rightDragView对应的秒
 
 @property (nonatomic, strong) id observer;
-@property (nonatomic, strong) AVPlayer *player;                     ///< 播放器
+@property (nonatomic, strong) AVPlayer *player;     ///< 播放器
 
-@property (nonatomic, strong) AVMutableComposition *composition;
 @property (nonatomic, strong) TBVideoClipTailor *clipTailor;
 @property (nonatomic, strong) NSURL *compositionURL;
 
-@property (nonatomic, strong) UIButton *sendButton ;
+@property (nonatomic, strong) UIButton *sendButton;
 @end
 
 static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
-static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 
 @implementation TBClipVideoViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self finishClip];
+
+    self.outputSize = CGSizeMake(960, 540);
     [self setUpView];
     [self setUpData];
+    [self finishClip];
 }
 
 #pragma mark - 初始化view
@@ -60,7 +58,7 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
     
     [self setUpNavBar];
     [self setUpPlayerView];
-
+    
 }
 
 /** 添加自定义navigationbar */
@@ -71,10 +69,18 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 
 - (void)setUpPlayerView
 {
-
     CGFloat viewH = _SCREEN_WIDTH*9/16;
+    CGFloat lenght = self.view.size.width;
+    CGFloat cropRatio = self.outputSize.width/self.outputSize.height;
+    CGFloat y = 0;
     
-    self.cropView = [[TBVideoCropView alloc] initWithFrame:CGRectMake(0, 30, _SCREEN_WIDTH, viewH)];
+    if (cropRatio > 1) {
+        
+       y = (1-1/cropRatio)*0.5*lenght;
+    }
+    
+    self.cropView = [[TBVideoCropView alloc] initWithFrame:CGRectMake(0, 0, _SCREEN_WIDTH, viewH+y*2)];
+    self.cropView.backgroundColor = RGB(19, 21, 17);
     [self.view addSubview:self.cropView];
     
     UIView *bottomView = [[UIView alloc] init];
@@ -89,7 +95,7 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.equalTo(self.view);
         make.height.equalTo(@80);
-       
+        
     }];
     [self.sendButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(bottomView);
@@ -100,9 +106,6 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 #pragma mark - 初始化数据
 - (void)setUpData
 {
-    self.outputSize = CGSizeMake(960, 540);
-    self.assetUrl = self.selectSegment.url;
-    
     AVAsset  *avAsset =  self.selectSegment.asset;
     
     NSArray *assetKeysToLoadAndTest = @[@"playable", @"composable", @"tracks", @"duration"];
@@ -114,15 +117,32 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
         });
     }];
     
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *outputURL = paths[0];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    [manager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
+    outputURL = [outputURL stringByAppendingPathComponent:@"addOutput.mp4"];
+    // Remove Existing File
+    [manager removeItemAtPath:outputURL error:nil];
+    self.compositionURL = [NSURL fileURLWithPath:outputURL];
+    
     self.avAsset = avAsset;
     
     self.clipTailor = [[TBVideoClipTailor alloc] init];
-    self.clipTailor.delegate = self;
-
+    
+    TBWeakSelf
+    [self.clipTailor setExportFailedHandler:^(NSError * _Nullable error) {
+        [weakSelf exportFailed:error];
+    }];
+    [self.clipTailor setExportProgressHandler:^(CGFloat progress) {
+        [weakSelf exportProgress:progress];
+    }];
+    [self.clipTailor setExportSuccessHandler:^(NSURL * _Nonnull url) {
+        [weakSelf exportSuccess:url];
+    }];
+    
     [self addObserver:self forKeyPath:@"player.currentItem.status" options:NSKeyValueObservingOptionNew context:HJClipVideoStatusContext];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playerItemDidReachEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(editCommandCompletionNotificationReceiver:) name:FMLEditCommandCompletionNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exportCommandCompletionNotificationReceiver:) name:FMLExportCommandCompletionNotification object:nil];
     
 }
 
@@ -194,7 +214,7 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
     
     [clipFrameView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(0);
-        make.bottom.equalTo(self.view.mas_bottom).offset(-80);
+        make.top.equalTo(self.cropView.mas_bottom);
         make.height.mas_equalTo(150);
     }];
     [self.player play];
@@ -202,6 +222,8 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 
 - (void)stopLoadingAnimationAndHandleError:(NSError *)error
 {
+    self.sendButton.enabled = YES;
+    self.view.userInteractionEnabled = YES;
     // 去除加载动画
     // 有错误提示的时候，显示错误提示
     if (error) {
@@ -216,15 +238,23 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 #pragma mark  ----TBVideoClipTailorDelegate----
 - (void)exportFailed:(NSError *_Nonnull)error;
 {
-        NSLog(@" ooooooooo ");
+    dispatch_async( dispatch_get_main_queue(), ^{
+        self.sendButton.enabled = YES;
+        self.view.userInteractionEnabled = YES;
+        hudShowError(@"导出视频失败");
+    });
 }
 - (void)exportSuccess:(NSURL *_Nonnull)outputUrl;
 {
-        NSLog(@" === %@",outputUrl);
+    self.sendButton.enabled = YES;
+    hudDismiss();
+    self.view.userInteractionEnabled = YES;
+    [self videoExportSuccessUrl:outputUrl];
+    
 }
 - (void)exportProgress:(CGFloat)progress;
 {
-       NSLog(@" === %f",progress);
+    [SVProgressHUD showProgress:progress];
 }
 #pragma mark - FMLClipFrameView代理
 - (void)didStartDragView
@@ -274,72 +304,24 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 - (void)senderClick
 {
     self.sendButton.enabled = NO;
-    [self.indicatorView startAnimating];
+    hudShowLoading(@"开始剪裁视频");
     [self.player pause];
     
     self.view.userInteractionEnabled = NO;
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *outputURL = paths[0];
-    NSFileManager *manager = [NSFileManager defaultManager];
-    [manager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
-    outputURL = [outputURL stringByAppendingPathComponent:@"output.mp4"];
-    // Remove Existing File
-    [manager removeItemAtPath:outputURL error:nil];
     
     CMTime start = CMTimeMakeWithSeconds(self.startSecond, self.avAsset.duration.timescale);
     CMTime duration = CMTimeMakeWithSeconds(self.endSecond, self.avAsset.duration.timescale);
     CMTimeRange range = CMTimeRangeMake(start, duration);
     
-    [self.clipTailor export:self.avAsset :[self.cropView cropRect] :range :self.outputSize :[NSURL URLWithString:outputURL]];
+    [self.clipTailor export:self.avAsset :[self.cropView cropRect] :range :self.outputSize :self.compositionURL];
     
-    
-//    FMLVideoCommand *videoCommand = [[FMLVideoCommand alloc] init];
-//    [videoCommand trimAsset:self.avAsset WithStartTime:self.startSecond andEndTime:self.endSecond exportVideoURL:^(NSURL *url) {
-//
-//         [self videoExportSuccessUrl:url];
-//    }];
-//    [videoCommand trimAsset:self.avAsset WithStartSecond:self.startSecond andEndSecond:self.endSecond];
 }
-#pragma mark - 监听状态
-- (void)editCommandCompletionNotificationReceiver:(NSNotification*) notification
-{
-    if ([[notification name] isEqualToString:FMLEditCommandCompletionNotification]) {
-        self.composition = [[notification object] mutableComposition];
-        
-        dispatch_async( dispatch_get_main_queue(), ^{
-            FMLVideoCommand *videoCommand = [[FMLVideoCommand alloc] initVideoCommendWithComposition:self.composition];
-            [videoCommand exportAsset];
-        });
-    }
-}
-
-- (void)exportCommandCompletionNotificationReceiver:(NSNotification*) notification
-{
-    if ([[notification name] isEqualToString:FMLExportCommandCompletionNotification]) {
-        NSURL *url = [[notification object] assetURL];
-        
-        self.compositionURL = url;
-        
-        dispatch_async( dispatch_get_main_queue(), ^{
-            self.sendButton.enabled = YES;
-            [self.indicatorView stopAnimating];
-            self.view.userInteractionEnabled = YES;
-            
-            if (!url) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"导出视频失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                [alertView show];
-            } else {
-                
-                [self videoExportSuccessUrl:url];
-            }
-        });
-    }
-}
+#pragma mark - 导出成功
 
 /**
  视频导出成功
-
+ 
  @param url 地址
  */
 - (void)videoExportSuccessUrl:(NSURL *)url
@@ -359,7 +341,7 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
                 break;
             case AVPlayerItemStatusReadyToPlay:
                 enable = YES;
-       
+                
                 break;
             case AVPlayerItemStatusFailed:
                 [self stopLoadingAnimationAndHandleError:[[[self player] currentItem] error]];
@@ -367,9 +349,7 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
         }
         
         // 无法播放的时候操作
-    } else if (context == HJClipVideoLayerReadyForDisplay) {
-              [self stopLoadingAnimationAndHandleError:nil];
-    } else {
+    }else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -393,24 +373,11 @@ static void *HJClipVideoLayerReadyForDisplay = &HJClipVideoLayerReadyForDisplay;
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"player.currentItem.status" context:HJClipVideoStatusContext];
-    [self removeObserver:self forKeyPath:@"playerView.playerLayer.readyForDisplay" context:HJClipVideoLayerReadyForDisplay];
     
     self.player.rate =0;
     [self.player removeTimeObserver:self.observer];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - 懒加载
-
-- (UIActivityIndicatorView *)indicatorView
-{
-    if (!_indicatorView) {
-        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        _indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        _indicatorView.hidesWhenStopped = YES;
-    }
-    
-    return _indicatorView;
-}
-
 @end
+
