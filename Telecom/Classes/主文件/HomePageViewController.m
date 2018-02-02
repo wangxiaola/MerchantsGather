@@ -19,6 +19,7 @@ static CGFloat cellClearance = 0.00f;
 #import "TBTaskListViewController.h"
 #import "TBManagementTypeViewController.h"
 #import "TBMakingSaveTool.h"
+#import "TBVideoShootingController.h"
 #import <JPUSHService.h>
 // 首页
 @interface HomePageViewController () <UICollectionViewDelegate,UICollectionViewDataSource>
@@ -295,7 +296,14 @@ static CGFloat cellClearance = 0.00f;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self jumpViewControllerIndexPath:indexPath];
+    TBVideoShootingController *vc = [[TBVideoShootingController alloc] init];
+    vc.videoName = @"测试";
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
+#warning ----
+//    [self jumpViewControllerIndexPath:indexPath];
 }
 #pragma mark  ----跳转页面----
 - (void)jumpViewControllerIndexPath:(NSIndexPath *)indexPath

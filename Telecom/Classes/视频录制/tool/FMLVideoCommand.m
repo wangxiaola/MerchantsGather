@@ -20,6 +20,168 @@
     
     return self;
 }
+- (void)trimAsset:(AVAsset *)asset WithStartTime:(Float64)startTime andEndTime:(Float64)endTime exportVideoURL:(void(^)(NSURL *url))videoURL;
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *outputURL = paths[0];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    [manager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
+    outputURL = [outputURL stringByAppendingPathComponent:@"output.mp4"];
+    // Remove Existing File
+    [manager removeItemAtPath:outputURL error:nil];
+    
+
+    AVAssetTrack *clipVideoTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
+    
+    AVMutableVideoComposition* videoComposition = [AVMutableVideoComposition videoComposition];
+    
+    videoComposition.frameDuration = CMTimeMake(1, 30);
+    
+    // Here we are setting its render size to its height x height (Square)
+    
+    //    CGFloat width=MIN(cropRect.size.width, clipVideoTrack.naturalSize.width);
+    
+    //    CGFloat height=MIN( cropRect.size.height, clipVideoTrack.naturalSize.height);
+    
+    CGFloat renderSizeWidth = clipVideoTrack.naturalSize.height;
+    
+    videoComposition.renderSize =CGSizeMake(renderSizeWidth, renderSizeWidth*9/16.0);
+    
+    CALayer *parentLayer = [CALayer layer];
+    
+    CALayer *videoLayer = [CALayer layer];
+    
+    videoLayer.frame = CGRectMake(0,0, 320, 320*9/16.0);
+    
+    parentLayer.frame = CGRectMake(0,0, 320, 320*9/16.0);
+    
+    [parentLayer addSublayer:videoLayer];
+    
+    
+    videoComposition.animationTool = [AVVideoCompositionCoreAnimationTool videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+    
+    AVMutableVideoCompositionInstruction *instruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
+    
+    instruction.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration);
+    
+    
+    
+    AVMutableVideoCompositionLayerInstruction *avMutableVideoCompositionLayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:clipVideoTrack];
+    
+    
+    
+    CGAffineTransform t1 = clipVideoTrack.preferredTransform;
+    
+//    t1 = CGAffineTransformTranslate(t1, transY,0);
+    
+    [avMutableVideoCompositionLayerInstruction setTransform:t1 atTime:kCMTimeZero];
+    
+    
+    
+    instruction.layerInstructions = [NSArray arrayWithObject:avMutableVideoCompositionLayerInstruction];
+    
+    
+    
+    videoComposition.instructions = [NSArray arrayWithObject:instruction];
+    
+    AVAssetExportSession * exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetMediumQuality];
+
+    //长度
+    
+    CMTime start = CMTimeMakeWithSeconds(startTime, asset.duration.timescale);
+    
+    CMTime duration = CMTimeMakeWithSeconds(endTime, asset.duration.timescale);
+    
+    CMTimeRange range = CMTimeRangeMake(start, duration);
+    
+    exportSession.timeRange = range;
+
+    //范围
+    [exportSession setVideoComposition:videoComposition];
+    
+    exportSession.outputURL = [NSURL fileURLWithPath:outputURL];
+    
+    exportSession.outputFileType = AVFileTypeMPEG4;
+    
+    __block BOOL copyOK = NO;
+    
+    [exportSession exportAsynchronouslyWithCompletionHandler:^(void)
+     
+     {
+         
+         dispatch_async(dispatch_get_main_queue(), ^{
+             
+//             [[WJTCtoolgetInstance] hideAnimation_seq_animation];
+             
+         });
+         
+         switch (exportSession.status)
+         
+         {
+                 
+             caseAVAssetExportSessionStatusUnknown:
+                 
+                 break;
+                 
+             caseAVAssetExportSessionStatusWaiting:
+                 
+//                 MyLog(@"------视频ok-----waiting");
+                 
+                 break;
+                 
+             caseAVAssetExportSessionStatusExporting:
+                 
+//                 MyLog(@"------视频ok-----expotring");
+                 
+                 
+                 
+                 break;
+                 
+             caseAVAssetExportSessionStatusCompleted:
+                 
+//                 MyLog(@"------视频ok");
+                 
+                 copyOK=YES;
+                 
+                 break;
+                 
+             caseAVAssetExportSessionStatusFailed:
+                 
+//                 MyLog(@"Export failed: %@", [[exportSession error] localizedDescription]);
+                 
+                 break;
+                 
+             caseAVAssetExportSessionStatusCancelled:
+                 
+                 break;
+                 
+             default:
+                 
+                 break;
+                 
+         }
+         
+         if (copyOK) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 if (videoURL) {
+                     videoURL(exportSession.outputURL);
+                 }
+                 
+             });
+             
+         }else
+             
+         {
+             
+//             [[WJTCtoolgetInstance] showAlertWithTitile:@"保存失败"];
+             
+         }
+         
+     }];
+    
+}
 
 - (void)trimAsset:(AVAsset *)asset WithStartSecond:(Float64)startSecond andEndSecond:(Float64)endSecond
 {

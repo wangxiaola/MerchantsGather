@@ -13,9 +13,9 @@
 /**
  *  裁剪图片
  *
- *  @param imageRect 原始图片大小
+ *  @param orginalRect 原始图片大小
  *  @param clipRect  需要裁剪成的图片大小
- *  @param image     完成裁剪后的回调
+ *  @param imageBackBlock     完成裁剪后的回调
  */
 - (void)fml_imageOrginalRect:(CGRect)orginalRect clipRect:(CGRect)clipRect completeBlock:(void (^)(UIImage *))imageBackBlock;
 

@@ -16,6 +16,7 @@
 
 - (instancetype)initVideoCommendWithComposition:(AVMutableComposition *)composition;
 
+- (void)trimAsset:(AVAsset *)asset WithStartTime:(Float64)startTime andEndTime:(Float64)endTime exportVideoURL:(void(^)(NSURL *url))videoURL;
 /**
  *  裁剪资源
  *

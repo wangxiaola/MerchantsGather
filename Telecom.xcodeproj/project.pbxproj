@@ -574,6 +574,7 @@
 		3B95CB2F2005C61F004BAC82 /* TBCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B95CB2E2005C61F004BAC82 /* TBCaptureUtilities.m */; };
 		3B95CB32200604F0004BAC82 /* TBVideoRecordingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */; };
 		3BA2D5A01FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2D59F1FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m */; };
+		3BA368002023165D00ED193E /* TBVideoCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA367FF2023165D00ED193E /* TBVideoCropView.m */; };
 		3BA4543E1FF1E69900176874 /* TBVideoShootingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */; };
 		3BA4543F1FF1E69900176874 /* TBVideoShootingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */; };
 		3BA454461FF1E74100176874 /* TBVideoEditingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA454421FF1E74100176874 /* TBVideoEditingViewController.m */; };
@@ -1808,6 +1809,8 @@
 		3B95CB31200604F0004BAC82 /* TBVideoRecordingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoRecordingView.m; sourceTree = "<group>"; };
 		3BA2D59E1FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBGZPeopleStatisticsViewController.h; sourceTree = "<group>"; };
 		3BA2D59F1FBEDA1F001C2013 /* TBGZPeopleStatisticsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBGZPeopleStatisticsViewController.m; sourceTree = "<group>"; };
+		3BA367FE2023165D00ED193E /* TBVideoCropView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBVideoCropView.h; sourceTree = "<group>"; };
+		3BA367FF2023165D00ED193E /* TBVideoCropView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBVideoCropView.m; sourceTree = "<group>"; };
 		3BA4543B1FF1E69900176874 /* TBVideoShootingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBVideoShootingController.h; sourceTree = "<group>"; };
 		3BA4543C1FF1E69900176874 /* TBVideoShootingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TBVideoShootingController.xib; sourceTree = "<group>"; };
 		3BA4543D1FF1E69900176874 /* TBVideoShootingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBVideoShootingController.m; sourceTree = "<group>"; };
@@ -4139,6 +4142,8 @@
 		3BA454381FF1E67300176874 /* tool */ = {
 			isa = PBXGroup;
 			children = (
+				3BA367FE2023165D00ED193E /* TBVideoCropView.h */,
+				3BA367FF2023165D00ED193E /* TBVideoCropView.m */,
 				3B00E0FC20201D9E00417B53 /* UIView+Extension.h */,
 				3B00E0FB20201D9E00417B53 /* UIView+Extension.m */,
 				3B00E0F320201B7900417B53 /* FMLPlayLayerView.h */,
@@ -5161,6 +5166,7 @@
 				3B5C739C1F4E7D5100B2CE42 /* ZXAztecReader.m in Sources */,
 				3B5C76601F4E7DA800B2CE42 /* TBManagementTypeViewController.m in Sources */,
 				3B5C73681F4E7D5100B2CE42 /* MJDIYBackFooter.m in Sources */,
+				3BA368002023165D00ED193E /* TBVideoCropView.m in Sources */,
 				3B5C76291F4E7DA800B2CE42 /* TBBusinessesLocateViewController.m in Sources */,
 				3BD3F04E1FC7F70600894208 /* SPHTTPSessionManager.m in Sources */,
 				3B5C72F71F4E7D5100B2CE42 /* HXTagCollectionViewCell.m in Sources */,
