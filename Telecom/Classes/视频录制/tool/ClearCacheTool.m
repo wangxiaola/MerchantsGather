@@ -60,7 +60,7 @@
     CGFloat size4 = [self folderSizeAtPath:path4];
     MMLog(@"还剩的缓存 = %.2f",size3);
     CGFloat size = size1+size2+size4;
-    
+     
     return size;
 }
 // 计算目录大小

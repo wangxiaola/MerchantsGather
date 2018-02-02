@@ -416,7 +416,14 @@ NSString * const SCRecordSessionDocumentDirectory = @"DocumentDirectory";
         _segmentsDuration = CMTimeAdd(_segmentsDuration, segment.duration);
     }];
 }
-
+- (void)exchangeObjectAtIndex:(NSInteger)index
+{
+    [self dispatchSyncOnSessionQueue:^{
+         [_segments exchangeObjectAtIndex:index withObjectAtIndex:_segments.count-1];
+         [self removeLastSegment];
+    }];
+    
+}
 - (void)insertSegment:(SCRecordSessionSegment *)segment atIndex:(NSInteger)segmentIndex {
     [self dispatchSyncOnSessionQueue:^{
         [_segments insertObject:segment atIndex:segmentIndex];

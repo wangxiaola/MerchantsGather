@@ -473,8 +473,6 @@
 //录制完成
 - (void)recorder:(SCRecorder *)recorder didCompleteSession:(SCRecordSession *)recordSession {
     MMLog(@"didCompleteSession:");
-    
-    [self saveAndShowSession:recordSession];
     [self updateViewState];
     
 }
@@ -496,28 +494,25 @@
  */
 - (void)insertVideoUrl:(NSURL *)url atIndex:(NSInteger)segmentIndex isRecorder:(BOOL)recorder;
 {
-    SCRecordSessionSegment *seg;
     if (recorder == YES) {
-        NSLog(@" --- %ld",self.recorder.session.segments.count);
-        seg = [self.recorder.session.segments.lastObject copy];
-        [self.recorder.session removeLastSegment];
-        NSLog(@" +++ %ld",self.recorder.session.segments.count);
+        [self.recorder.session exchangeObjectAtIndex:segmentIndex];
     }
     else
     {
-       seg = [SCRecordSessionSegment segmentWithURL:url info:nil];
-    }
-    [self.recorder.session insertSegment:seg atIndex:segmentIndex];
-    NSInteger segments = self.recorder.session.segments.count-1;
-    
-    if (segmentIndex < segments) {
+        SCRecordSessionSegment *seg = [SCRecordSessionSegment segmentWithURL:url info:nil];
+        [self.recorder.session insertSegment:seg atIndex:segmentIndex];
         
-        [self.recorder.session removeSegmentAtIndex:segmentIndex+1 deleteFile:YES];
-    }
-    else
-    {
-        [self.progressBar addProgressView];
-        [self.progressBar setLastProgressToWidth:self.progressWidth];
+        NSInteger segments = self.recorder.session.segments.count-1;
+        
+        if (segmentIndex < segments) {
+            
+            [self.recorder.session removeSegmentAtIndex:segmentIndex+1 deleteFile:YES];
+        }
+        else
+        {
+            [self.progressBar addProgressView];
+            [self.progressBar setLastProgressToWidth:self.progressWidth];
+        }
     }
     
     [self updateViewState];

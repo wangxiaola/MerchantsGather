@@ -150,6 +150,12 @@ extern NSString *__nonnull const SCRecordSessionDocumentDirectory;
 - (void)addSegment:(SCRecordSessionSegment *__nonnull)segment;
 
 /**
+ 替换并删除
+
+ @param index 第几个
+ */
+- (void)exchangeObjectAtIndex:(NSInteger)index;
+/**
  Insert a record segment.
  */
 - (void)insertSegment:(SCRecordSessionSegment *__nonnull)segment atIndex:(NSInteger)segmentIndex;

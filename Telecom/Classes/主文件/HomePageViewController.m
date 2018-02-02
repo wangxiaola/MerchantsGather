@@ -300,7 +300,7 @@ static CGFloat cellClearance = 0.00f;
     vc.videoName = @"测试";
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
     [self presentViewController:nav animated:YES completion:^{
-        
+
     }];
 #warning ----
 //    [self jumpViewControllerIndexPath:indexPath];
