@@ -57,7 +57,7 @@
  更新第几个
  */
 @property (nonatomic, assign) NSInteger updateIndex;
-
+@property (nonatomic, assign) BOOL isRecorderLas;// 是否录制最后一个
 @end
 
 @implementation TBVideoShootingController
@@ -137,7 +137,8 @@
     _recorder.delegate = self;
     _recorder.autoSetVideoOrientation = NO;
     _recorder.previewView = self.previewView;
-    
+    // 准备录制
+//    [_recorder prepare:nil];
     //初始Session
     SCRecordSession *session = [SCRecordSession recordSession];
     session.fileType = AVFileTypeMPEG4;
@@ -145,6 +146,7 @@
     
     self.focusView.recorder = _recorder;
     self.focusView.outsideFocusTargetImage = [UIImage imageNamed:@"lz_recorder_change_hd"];
+    
     JXWeakSelf(self)
     [self.recordingView setStartRecord:^{
         JXStrongSelf(self)
@@ -170,7 +172,7 @@
 - (void)updateViewState
 {
     self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",self.recorder.session.segments.count *(MAX_VIDEO_DUR/self.nodesFolat)];
-    
+    //    NSLog(@"%ld",self.recorder.session.segments.count);
     if (self.recorder.session.segments.count == self.nodesFolat) {
         
         self.navigationItem.leftBarButtonItem.enabled = NO;
@@ -220,9 +222,9 @@
     CGRect rectNav = self.navigationController.navigationBar.frame;
     
     YBPopupMenu *popupMenu = [YBPopupMenu showAtPoint:CGPointMake(_SCREEN_WIDTH - 30, rectStatus.size.height + rectNav.size.height)
-                                               titles:@[@"一个录制节点",@"二个录制节点",@"三个录制节点",@"四个录制节点",@"五个录制节点"]
+                                               titles:@[@"一段视频",@"二段视频",@"三段视频",@"四段视频",@"五段视频"]
                                                 icons:@[@"service-selected",@"service-selected",@"service-selected",@"service-selected",@"service-selected"]
-                                            menuWidth:140
+                                            menuWidth:120
                                              delegate:self];
     popupMenu.offset = -60;
     popupMenu.fontSize = 12;
@@ -267,6 +269,12 @@
  */
 - (void)recordVideo
 {
+    self.isRecorderLas = (self.nodesFolat-self.recorder.session.segments.count) == 1;
+    
+    if (!self.recorder.isPrepared) {
+        [UIView addMJNotifierWithText:@"还未准备好,请稍等！" dismissAutomatically:YES];
+        return;
+    }
     self.navigationItem.rightBarButtonItem.enabled = NO;
     if (self.recorder.session.segments.count == self.nodesFolat) {
         
@@ -447,7 +455,7 @@
     CGFloat width = CMTimeGetSeconds(currentTime) / MAX_VIDEO_DUR *     self.nodesAllWidth;
     CGFloat progress  = width/self.progressWidth;
     
-    if (width >= self.progressWidth) {
+    if (width >= self.progressWidth && self.isRecorderLas == NO) {
         
         progress = 1;
         [self recordPause];

@@ -92,21 +92,22 @@ static NSString * const cellID = @"cellID";
     SCFilter *dtFilter =  [self createAnimatedFilter];
     
     self.filterSwitcherView.filters = @[
+                                        emptyFilter,// 默认
                                         cisf,
                                         CIPhotoEffectChrome,
                                         CIPhotoEffectInstant,
                                         CISepiaTone,
                                         dtFilter,
                                         CIColorInvert,
-                                        emptyFilter,// 默认
                                         CIPhotoEffectTonal,
                                         CIPhotoEffectFade,
                                         CIPhotoEffectNoir//黑色
                                         ];
-    self.filtrtNames = @[@"清新",@"铬黄",@"怀旧",@"棕榈",@"渐变",@"幽灵",@"默认",@"色调",@"淡化",@"黑白"];
+    self.filtrtNames = @[@"默认",@"清新",@"铬黄",@"怀旧",@"棕榈",@"渐变",@"幽灵",@"色调",@"淡化",@"黑白"];
     self.player.SCImageView = self.filterSwitcherView;
     [self updateVideoMakeIndex:0];
 }
+
 /**
  更新视频蒙版
  
@@ -115,8 +116,17 @@ static NSString * const cellID = @"cellID";
 - (void)updateVideoMakeIndex:(NSInteger)row
 {
     _videoPath = @"";
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    
+    if (row == 0) {
+        
+        [self.collectionView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
+    else
+    {
+     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    }
     [self.filterSwitcherView.selectFilterScrollView setContentOffset:CGPointMake(_SCREEN_WIDTH * row, 0) animated:YES];
+    
     
     if (self.filterSwitcherView.filters.count > row)
     {
@@ -137,7 +147,6 @@ static NSString * const cellID = @"cellID";
     CGFloat xOffset = 0.23 * 320;
     CGFloat cell_width = 240;
     cell_height = 100;
-    
     
     self.dialLayout = [[AWCollectionViewDialLayout alloc] initWithRadius:radius andAngularSpacing:angularSpacing andCellSize:CGSizeMake(cell_width, cell_height) andAlignment:WHEELALIGNMENTCENTER andItemHeight:cell_height andXOffset:xOffset];
     self.dialLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -213,7 +222,7 @@ static NSString * const cellID = @"cellID";
     TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:@"确定还原视频操作？"];
     [more showHandler:^{
         _musicUrl = nil;
-        [weakSelf updateVideoMakeIndex:self.filterSwitcherView.filters.count - 4];
+        [weakSelf updateVideoMakeIndex:0];
     }];
 }
 - (IBAction)musicClick:(UIButton *)sender {

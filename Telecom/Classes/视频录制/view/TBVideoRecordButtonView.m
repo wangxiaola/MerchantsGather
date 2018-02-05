@@ -39,9 +39,15 @@
     _pathView.hidden = YES;
     [self addSubview:_pathView];
     
-    _path = [UIBezierPath bezierPathWithOvalInRect:_pathView.bounds];
+//    _path = [UIBezierPath bezierPathWithOvalInRect:_pathView.bounds];
     
-    
+    // 参数一: 圆弧圆心
+    // 参数二: 圆弧半径
+    // 参数三: 开始弧度
+    // 参数四: 结束弧度
+    // 参数五: 是否为顺时针
+    _path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) radius:CGRectGetWidth(self.bounds)/2 startAngle:- M_PI_2 endAngle:(M_PI*2 - M_PI_2) clockwise:YES];
+
     _shapeLayer = [CAShapeLayer layer];
     _shapeLayer.frame = self.bounds;
     _shapeLayer.fillColor = [UIColor clearColor].CGColor;
@@ -50,7 +56,6 @@
     _shapeLayer.strokeColor = [UIColor whiteColor].CGColor;
     _shapeLayer.strokeStart = 0.f;
     _shapeLayer.strokeEnd = 0.f;
-
     _shapeLayer.path = _path.CGPath;
     [_pathView.layer addSublayer:_shapeLayer];
     

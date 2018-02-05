@@ -308,10 +308,9 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
     [self.player pause];
     
     self.view.userInteractionEnabled = NO;
-    
-    
+
     CMTime start = CMTimeMakeWithSeconds(self.startSecond, self.avAsset.duration.timescale);
-    CMTime duration = CMTimeMakeWithSeconds(self.endSecond, self.avAsset.duration.timescale);
+    CMTime duration = CMTimeMakeWithSeconds(self.recordTime, self.avAsset.duration.timescale);
     CMTimeRange range = CMTimeRangeMake(start, duration);
     
     [self.clipTailor export:self.avAsset :[self.cropView cropRect] :range :self.outputSize :self.compositionURL];
