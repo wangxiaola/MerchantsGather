@@ -221,6 +221,7 @@
 {
     TBVideoShootingController *vc = [[TBVideoShootingController alloc] init];
     vc.videoName = [self.makingList.infoDic valueForKey:@"name"];
+    vc.videoID = self.makingList.modelsID + self.makingList.merchantsID;
     ZKNavigationController *nav = [[ZKNavigationController alloc] initWithRootViewController:vc];
     [[ZKUtil getPresentedViewController] presentViewController:nav animated:YES completion:nil];
 }

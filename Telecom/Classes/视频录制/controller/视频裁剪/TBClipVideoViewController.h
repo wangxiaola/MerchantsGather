@@ -15,5 +15,6 @@
 @interface TBClipVideoViewController : TBBaseViewController
 @property (nonatomic, strong) SCRecordSessionSegment * selectSegment;
 @property (nonatomic, assign) Float64 recordTime;
+@property (nonatomic, strong) NSString *pathQZ;
 
 @end

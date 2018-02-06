@@ -665,6 +665,7 @@
 		3BD62D281FFCB83800621607 /* TBBankInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD62D271FFCB83800621607 /* TBBankInformationView.m */; };
 		3BD62D2B1FFCCDE500621607 /* TBBankListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD62D2A1FFCCDE500621607 /* TBBankListCellView.m */; };
 		3BD62D2E1FFCDD5A00621607 /* UITextField+banEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD62D2D1FFCDD5A00621607 /* UITextField+banEdit.m */; };
+		3BD9FF3720299356005EFB0C /* TBTBProgressButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD9FF3620299356005EFB0C /* TBTBProgressButton.m */; };
 		3BE53DDA1FCCFF44000EB7F4 /* TBFolkRoomsContenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE53DD91FCCFF44000EB7F4 /* TBFolkRoomsContenView.m */; };
 		3BE53DDC1FCCFF5D000EB7F4 /* TBFolkRoomsContenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE53DDB1FCCFF5D000EB7F4 /* TBFolkRoomsContenView.xib */; };
 		3BE53DE21FCD54D8000EB7F4 /* TBRoomListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE53DE11FCD54D8000EB7F4 /* TBRoomListTableViewController.m */; };
@@ -1969,6 +1970,8 @@
 		3BD62D2A1FFCCDE500621607 /* TBBankListCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBBankListCellView.m; sourceTree = "<group>"; };
 		3BD62D2C1FFCDD5A00621607 /* UITextField+banEdit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+banEdit.h"; sourceTree = "<group>"; };
 		3BD62D2D1FFCDD5A00621607 /* UITextField+banEdit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+banEdit.m"; sourceTree = "<group>"; };
+		3BD9FF3520299356005EFB0C /* TBTBProgressButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBTBProgressButton.h; sourceTree = "<group>"; };
+		3BD9FF3620299356005EFB0C /* TBTBProgressButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBTBProgressButton.m; sourceTree = "<group>"; };
 		3BE53DD81FCCFF44000EB7F4 /* TBFolkRoomsContenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBFolkRoomsContenView.h; sourceTree = "<group>"; };
 		3BE53DD91FCCFF44000EB7F4 /* TBFolkRoomsContenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBFolkRoomsContenView.m; sourceTree = "<group>"; };
 		3BE53DDB1FCCFF5D000EB7F4 /* TBFolkRoomsContenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBFolkRoomsContenView.xib; sourceTree = "<group>"; };
@@ -4143,6 +4146,8 @@
 				3B00E0F620201BAD00417B53 /* FMLScaledImageViewCell.h */,
 				3B00E0F720201BAE00417B53 /* FMLScaledImageViewCell.m */,
 				3B00E0F820201BAE00417B53 /* FMLScaledImageViewCell.xib */,
+				3BD9FF3520299356005EFB0C /* TBTBProgressButton.h */,
+				3BD9FF3620299356005EFB0C /* TBTBProgressButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4803,6 +4808,7 @@
 				3B5C741A1F4E7D5100B2CE42 /* ZXRSS14Reader.m in Sources */,
 				3BBCE1F31FCBAB9C00117771 /* TBFolkAppearanceView.m in Sources */,
 				3B5C765C1F4E7DA800B2CE42 /* FeedbackController.m in Sources */,
+				3BD9FF3720299356005EFB0C /* TBTBProgressButton.m in Sources */,
 				3B5C73901F4E7D5100B2CE42 /* YPTabBar.m in Sources */,
 				3B5C74291F4E7D5100B2CE42 /* ZXEAN8Writer.m in Sources */,
 				3B5C72F61F4E7D5100B2CE42 /* HXTagAttribute.m in Sources */,

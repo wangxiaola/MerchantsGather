@@ -7,6 +7,7 @@
 //
 
 #import "ProgressBar.h"
+#import "TBTBProgressButton.h"
 #import "SBCaptureToolKit.h"
 
 #define BAR_BLUE_COLOR      NAVIGATION_COLOR// 进度
@@ -15,9 +16,8 @@
 #define BAR_SELECT_COLOR    UIColorFromRGB(0xFF0000, 1)// 进度头
 
 #define NODES_W             2
-#define BAR_H               7.5
+#define BAR_H               10
 #define BAR_MIN_W           75
-#define INDICATOR_W         5
 #define TIMER_INTERVAL      1.0f
 
 @interface ProgressBar ()
@@ -56,6 +56,7 @@
 
 - (void)initalize
 {
+    self.userInteractionEnabled = YES;
     self.autoresizingMask = UIViewAutoresizingNone;
     self.backgroundColor = BAR_BG_COLOR;
     self.progressViewArray = [[NSMutableArray alloc] init];
@@ -101,20 +102,11 @@
 }
 - (UIView *)getProgressView
 {
-    UIView *progressView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, BAR_H)];
+    TBTBProgressButton *progressView = [[TBTBProgressButton alloc] initWithFrame:CGRectMake(0, 0, 1, BAR_H) addTarget:self buttonAction:@selector(progressViewClick:)];
     progressView.backgroundColor = BAR_BLUE_COLOR;
     progressView.autoresizesSubviews = YES;
     progressView.tag = _progressViewArray.count;
-    UIButton *bty = [UIButton buttonWithType:UIButtonTypeCustom];
-    bty.backgroundColor = [UIColor clearColor];
-    [bty addTarget:self action:@selector(progressViewClick:) forControlEvents:UIControlEventTouchUpInside];
-    [progressView addSubview:bty];
     
-    [bty mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.equalTo(progressView);
-        make.top.equalTo(progressView.mas_top).offset(-2);
-        make.bottom.equalTo(progressView.mas_bottom).offset(2);
-    }];
     return progressView;
 }
 

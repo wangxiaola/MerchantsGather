@@ -17,7 +17,7 @@
     Float64 durationSeconds = [self fml_getSeconds];
     
     // 获取视频的帧数
-    float fps = [self fml_getFPS];
+    float fps = 10;
     
     NSMutableArray *times = [NSMutableArray array];
     Float64 totalFrames = durationSeconds * fps; //获得视频总帧数

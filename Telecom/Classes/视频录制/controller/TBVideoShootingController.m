@@ -212,6 +212,7 @@
 {
     TBPhotoChooseCollectionViewController *photoVc = [[TBPhotoChooseCollectionViewController alloc] init];
     photoVc.miniTime = MAX_VIDEO_DUR/self.nodesFolat;
+    photoVc.pathQZ = [NSString stringWithFormat:@"%ld-%ld",self.videoID,self.recorder.session.segments.count];
     [self.navigationController pushViewController:photoVc animated:YES];
     
 }
@@ -307,6 +308,7 @@
 //确认按钮
 - (IBAction)confirmButton:(UIButton *)sender {
     [self saveAndShowSession:self.recorder.session];
+    MMLog(@"视频数量 == %ld",self.recorder.session.segments.count);
 }
 
 //切换摄像头按钮
@@ -503,25 +505,25 @@
  */
 - (void)insertVideoUrl:(NSURL *)url atIndex:(NSInteger)segmentIndex isRecorder:(BOOL)recorder;
 {
+    
     if (recorder == YES) {
         [self.recorder.session exchangeObjectAtIndex:segmentIndex];
     }
     else
     {
+        NSInteger segments = self.recorder.session.segments.count;
         SCRecordSessionSegment *seg = [SCRecordSessionSegment segmentWithURL:url info:nil];
-        [self.recorder.session insertSegment:seg atIndex:segmentIndex];
-        MMLog(@"完成截取时间 = %f,",CMTimeGetSeconds(seg.duration));
-        NSInteger segments = self.recorder.session.segments.count-1;
-        
-        if (segmentIndex < segments) {
-            
-            [self.recorder.session removeSegmentAtIndex:segmentIndex+1 deleteFile:YES];
-        }
-        else
-        {
+        if (segmentIndex == segments) {
+            [self.recorder.session addSegment:seg];
             [self.progressBar addProgressView];
             [self.progressBar setLastProgressToWidth:self.progressWidth];
         }
+        else
+        {
+            [self.recorder.session insertSegment:seg atIndex:segmentIndex];
+            [self.recorder.session removeSegmentAtIndex:segmentIndex+1 deleteFile:YES];
+        }
+        MMLog(@"完成截取时间 = %f,",CMTimeGetSeconds(seg.duration));
     }
     
     [self updateViewState];

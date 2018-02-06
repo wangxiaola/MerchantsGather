@@ -16,4 +16,5 @@
  视频水印名称
  */
 @property (nonatomic, strong) NSString *videoName;
+@property (nonatomic, assign) NSInteger videoID;
 @end

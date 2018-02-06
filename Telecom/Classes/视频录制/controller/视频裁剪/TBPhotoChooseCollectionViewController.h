@@ -17,6 +17,6 @@
 /**
  最小时间
  */
-@property (nonatomic, assign) CGFloat miniTime;
-
+@property (nonatomic, assign) Float64 miniTime;
+@property (nonatomic, strong) NSString *pathQZ;
 @end

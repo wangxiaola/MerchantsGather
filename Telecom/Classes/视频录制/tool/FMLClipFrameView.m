@@ -170,6 +170,8 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     imgGenerator.requestedTimeToleranceBefore = kCMTimeZero;
     imgGenerator.requestedTimeToleranceAfter = kCMTimeZero;
     imgGenerator.appliesPreferredTrackTransform = YES;  // 截图的时候调整到正确的方向
+    imgGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
     self.imageGenerator = imgGenerator;
     
     self.totalSeconds = [self.asset fml_getSeconds];
@@ -408,7 +410,31 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
             }
         }];
 }
-
+/**
+ * 获取视频的某一帧缩略图方法
+ *
+ * @param videoURL 视频的链接地址 帧时间
+ * @param time  帧时间
+ *
+ * @return 视频截图
+ */
+- (UIImage*)ihefe_thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time
+{
+    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
+    NSParameterAssert(asset);
+    AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+    assetImageGenerator.appliesPreferredTrackTransform = YES;
+    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+    
+    CGImageRef thumbnailImageRef = NULL;
+    CFTimeInterval thumbnailImageTime = time;
+    NSError *thumbnailImageGenerationError = nil;
+    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60) actualTime:NULL error:&thumbnailImageGenerationError];
+    
+    UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
+    
+    return thumbnailImage;
+}
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

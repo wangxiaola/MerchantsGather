@@ -110,6 +110,11 @@ static NSString * const reuseIdentifier = @"Cell";
                         if (CMTimeGetSeconds(segment.duration) >= self.miniTime) {
                           [weakSelf.videoListSegmentArrays addObject:segment];
                         }
+                        else
+                        {
+                            [segment deleteFile];
+                            segment = nil;
+                        }
                         
                     }
                     
@@ -119,11 +124,6 @@ static NSString * const reuseIdentifier = @"Cell";
                         [self.collectionView.mj_header endRefreshing];
                     });
                 }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    // 更新界面
-                    [self.collectionView reloadData];
-                    [self.collectionView.mj_header endRefreshing];
-                });
                 
             }];
         } failureBlock:^(NSError *error) {
@@ -178,7 +178,7 @@ static NSString * const reuseIdentifier = @"Cell";
     TBClipVideoViewController *vc =[[TBClipVideoViewController alloc] init];
     vc.selectSegment = segment;
     vc.recordTime    = self.miniTime;
-
+    vc.pathQZ = self.pathQZ;
     [self.navigationController pushViewController:vc animated:YES];
     
 }

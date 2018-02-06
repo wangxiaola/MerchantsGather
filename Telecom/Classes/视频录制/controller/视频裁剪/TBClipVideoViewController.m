@@ -128,7 +128,8 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
     NSString *outputURL = paths[0];
     NSFileManager *manager = [NSFileManager defaultManager];
     [manager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
-    outputURL = [outputURL stringByAppendingPathComponent:@"addOutput.mp4"];
+    NSString *pathName = [NSString stringWithFormat:@"%@-Output.mp4",self.pathQZ];
+    outputURL = [outputURL stringByAppendingPathComponent:pathName];
     // Remove Existing File
     [manager removeItemAtPath:outputURL error:nil];
     self.compositionURL = [NSURL fileURLWithPath:outputURL];
