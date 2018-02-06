@@ -41,7 +41,13 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
 
 @implementation TBClipVideoViewController
 
-
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.player) {
+        [self.player play];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 

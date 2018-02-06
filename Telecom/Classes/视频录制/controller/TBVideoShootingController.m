@@ -114,6 +114,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    
     // Dispose of any resources that can be recreated.
 }
 
@@ -138,7 +139,7 @@
     _recorder.autoSetVideoOrientation = NO;
     _recorder.previewView = self.previewView;
     // 准备录制
-//    [_recorder prepare:nil];
+    //    [_recorder prepare:nil];
     //初始Session
     SCRecordSession *session = [SCRecordSession recordSession];
     session.fileType = AVFileTypeMPEG4;

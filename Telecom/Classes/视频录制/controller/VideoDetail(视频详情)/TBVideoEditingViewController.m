@@ -39,6 +39,7 @@ static NSString * const cellID = @"cellID";
 @property (weak, nonatomic) IBOutlet UIButton *recordingButton;
 
 @property (nonatomic, strong) NSArray *filtrtNames;
+
 @end
 
 @implementation TBVideoEditingViewController
