@@ -85,7 +85,15 @@
     }
 }
 
-
+- (void)playingStatusDidChanged:(JPVideoPlayerPlayingStatus)playingStatus;
+{
+    if (playingStatus == JPVideoPlayerPlayingStatusFailed) {
+        
+        hudShowError(@"网络异常！");
+        [self dismissClick];
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

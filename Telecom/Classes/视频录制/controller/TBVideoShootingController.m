@@ -510,7 +510,7 @@
     {
         SCRecordSessionSegment *seg = [SCRecordSessionSegment segmentWithURL:url info:nil];
         [self.recorder.session insertSegment:seg atIndex:segmentIndex];
-        
+        MMLog(@"完成截取时间 = %f,",CMTimeGetSeconds(seg.duration));
         NSInteger segments = self.recorder.session.segments.count-1;
         
         if (segmentIndex < segments) {

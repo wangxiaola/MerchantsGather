@@ -112,7 +112,12 @@ static NSString * const reuseIdentifier = @"Cell";
                         }
                         
                     }
-
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // 更新界面
+                        [self.collectionView reloadData];
+                        [self.collectionView.mj_header endRefreshing];
+                    });
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     // 更新界面

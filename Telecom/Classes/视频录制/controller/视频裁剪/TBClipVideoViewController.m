@@ -55,6 +55,7 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
     [self setUpView];
     [self setUpData];
     [self finishClip];
+    MMLog(@"采取时间 = %f",self.recordTime);
 }
 
 #pragma mark - 初始化view
