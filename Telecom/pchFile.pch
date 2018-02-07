@@ -62,6 +62,12 @@ alpha:(float)(alphaValue)]
 
 #define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
 
+// 文件夹
+#define KrecordPath    @"recordTelecom"// 父文件夹
+// 子文件夹
+#define KclipImagePath @"clipImage"
+#define KrecordVideoPath @"recordVideo"
+
 // 找widow
 #define APPDELEGATE     [[UIApplication sharedApplication] delegate]
 // 屏幕

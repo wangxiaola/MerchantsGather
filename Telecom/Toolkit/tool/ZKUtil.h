@@ -210,5 +210,16 @@
  @param cardNo 卡号
  @return yes
  */
-+ (BOOL)checkCardNo:(NSString*)cardNo; 
++ (BOOL)checkCardNo:(NSString*)cardNo;
+
+
+/**
+ 返回一个子文件路径
+
+ @param superiorName 上一级文件名
+ @param childName 子文件名
+ @return 子文件完成路径
+ */
++ (NSString *)createRecordingSuperiorName:(nullable NSString *)superiorName childName:(nullable NSString *)childName;
+
 @end

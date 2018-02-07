@@ -12,6 +12,7 @@
 #import "UIImage+FMLClipRect.h"
 #import "FMLScaledImageViewCell.h"
 #import "UIView+Extension.h"
+#import "ClearCacheTool.h"
 
 #define FMLLineW 4                // 线宽
 #define FMLMinImageCount 8     // 显示的图片个数
@@ -21,7 +22,8 @@
 
 static NSString * const FMLScaledImageId = @"FMLScaledImageId";
 @interface FMLClipFrameView () <UICollectionViewDataSource, UICollectionViewDelegate>
-@property (nonatomic, strong) AVAssetImageGenerator *imageGenerator;
+
+@property (nonatomic, strong) AVAssetImageGenerator *generator;
 
 @property (nonatomic, assign) Float64 totalSeconds;         ///< 总秒数
 @property (nonatomic, assign) Float64 screenSeconds;    ///< 当前屏幕显示的秒数
@@ -42,6 +44,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
 @property (nonatomic, strong) UIView *rightDragView;  ///< 右边时间拖拽view
 @property (nonatomic, strong) UIView *progressBarView; ///< 进度播放view
 
+@property (nonatomic, strong) NSString *filePath;// 图片的路径
 @end
 
 @implementation FMLClipFrameView
@@ -163,8 +166,16 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     }];
 }
 
+/**
+ *   获取每帧图片
+ */
 - (void)initData
 {
+    // 在Documents文件夹中创建文件夹
+   __block NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    self.filePath = [ZKUtil createRecordingSuperiorName:@"clip" childName:KclipImagePath];
+    
     AVAssetImageGenerator *imgGenerator = [[AVAssetImageGenerator alloc] initWithAsset:_asset];
     // 防止时间出现偏差
     imgGenerator.requestedTimeToleranceBefore = kCMTimeZero;
@@ -172,7 +183,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     imgGenerator.appliesPreferredTrackTransform = YES;  // 截图的时候调整到正确的方向
     imgGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
     
-    self.imageGenerator = imgGenerator;
+    self.generator = imgGenerator;
     
     self.totalSeconds = [self.asset fml_getSeconds];
     
@@ -184,23 +195,78 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
         imageCount = ceil(self.totalSeconds * FMLMinImageCount / self.recordTime);
         self.screenSeconds = self.recordTime;
     }
-
+    
     self.clipSecondLabel.text = [NSString stringWithFormat:@"%.1f", self.screenSeconds];
     self.endTimeLabel.text = [self secondsToStr:self.screenSeconds];
-
-    __weak typeof(self) weakSelf = self;
-    [self.asset fml_getImagesCount:imageCount imageBackBlock:^(NSArray *timeArray) {
+    
+    Float64 durationSeconds = [_asset fml_getSeconds];
+    
+    // 获取视频的帧数
+    float fps = 10;
+    
+    NSMutableArray *times = [NSMutableArray array];
+    Float64 totalFrames = durationSeconds * fps; //获得视频总帧数
+    
+    Float64 perFrames = totalFrames / imageCount; // 一共切imageCount张图
+    Float64 frame = 0;
+    
+    CMTime timeFrame;
+    while (frame < totalFrames) {
+        timeFrame = CMTimeMake(frame, fps); //第i帧  帧率
+        NSValue *timeValue = [NSValue valueWithCMTime:timeFrame];
+        [times addObject:timeValue];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.collectionImages addObjectsFromArray:timeArray];
-            [weakSelf.collectionView reloadData];
-            NSLog(@"创建cell数量 %ld",self.collectionImages.count);
-        });
-        
-    }];
-
+        frame += perFrames;
+    }
+    TBWeakSelf
+    __block NSInteger count = 0;
+    AVAssetImageGeneratorCompletionHandler handler = ^(CMTime requestedTime, CGImageRef im, CMTime actualTime, AVAssetImageGeneratorResult result, NSError *error){
+        //   VideoEditDemo
+        if (result == AVAssetImageGeneratorSucceeded) {
+            
+            NSString * imageFile = [weakSelf.filePath stringByAppendingString:[NSString stringWithFormat:@"/%f.jpg",CMTimeGetSeconds(requestedTime)]];
+            
+            [fileManager createFileAtPath:imageFile contents:UIImageJPEGRepresentation([UIImage imageWithCGImage:im], 0.5f) attributes:nil];
+            
+            [weakSelf.collectionImages addObject:imageFile];
+            
+            count++;
+            if (count == times.count) {
+                [weakSelf reloadData];
+            }
+            else
+            {
+                if (count < 8) {
+                    [weakSelf reloadData];
+                }
+                else if (count%8 == 0)
+                {
+                    [weakSelf reloadData];
+                }
+            }
+            
+           
+        }
+        else if(result == AVAssetImageGeneratorFailed)
+        {
+        }
+        else if(result == AVAssetImageGeneratorCancelled)
+        {
+        }
+    };
+    
+    self.generator.requestedTimeToleranceBefore = kCMTimeZero;
+    self.generator.requestedTimeToleranceAfter = kCMTimeZero;
+    [self.generator generateCGImagesAsynchronouslyForTimes:times completionHandler:handler];
 }
-
+- (void)reloadData
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.collectionView reloadData];
+        
+    });
+}
 /** 将秒转为字符串 */
 - (NSString *)secondsToStr:(Float64)seconds
 {
@@ -387,54 +453,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     
     self.progressBarView.hidden = NO;
 }
-- (BOOL)isRetina {
-    return ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
-            ([UIScreen mainScreen].scale == 2.0));
-}
 
-- (void)cjImageTime:(NSValue *)timeValue imageBackBlock:(void (^)(UIImage *image))imageBackBlock;
-{
-
-    [self.imageGenerator generateCGImagesAsynchronouslyForTimes:@[timeValue] completionHandler:^(CMTime requestedTime, CGImageRef  _Nullable image, CMTime actualTime, AVAssetImageGeneratorResult result, NSError * _Nullable error) {
-            switch (result) {
-                case AVAssetImageGeneratorCancelled:
-                    break;
-                case AVAssetImageGeneratorFailed:
-                    break;
-                case AVAssetImageGeneratorSucceeded: {
-                    UIImage *displayImage = [UIImage imageWithCGImage:image];
-
-                 !imageBackBlock ? : imageBackBlock(displayImage);
-                }
-                    break;
-            }
-        }];
-}
-/**
- * 获取视频的某一帧缩略图方法
- *
- * @param videoURL 视频的链接地址 帧时间
- * @param time  帧时间
- *
- * @return 视频截图
- */
-- (UIImage*)ihefe_thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time
-{
-    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:videoURL options:nil];
-    NSParameterAssert(asset);
-    AVAssetImageGenerator *assetImageGenerator = [[AVAssetImageGenerator alloc] initWithAsset:asset];
-    assetImageGenerator.appliesPreferredTrackTransform = YES;
-    assetImageGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
-    
-    CGImageRef thumbnailImageRef = NULL;
-    CFTimeInterval thumbnailImageTime = time;
-    NSError *thumbnailImageGenerationError = nil;
-    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60) actualTime:NULL error:&thumbnailImageGenerationError];
-    
-    UIImage *thumbnailImage = thumbnailImageRef ? [[UIImage alloc] initWithCGImage:thumbnailImageRef] : nil;
-    
-    return thumbnailImage;
-}
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -445,15 +464,12 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
 {
     FMLScaledImageViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:FMLScaledImageId forIndexPath:indexPath];
     
-    [self cjImageTime:self.collectionImages[indexPath.item] imageBackBlock:^(UIImage *image) {
-        if (cell) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-
-                [cell setImageData:image];
-            }];
-        }
-    }];
-
+    if (self.collectionImages.count > indexPath.row) {
+        
+        
+        [cell setImageData:[self.collectionImages objectAtIndex:indexPath.row]];
+    }
+    
     return cell;
 }
 
@@ -472,7 +488,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     
     self.startTimeLabel.text = [self secondsToStr:leftTime];
     self.endTimeLabel.text = [self secondsToStr:rightTime];
-
+    
     if ([self.delegate respondsToSelector:@selector(clipFrameView:didDragView:)]) {
         [self.delegate clipFrameView:self didDragView:leftTime];
     }
@@ -488,14 +504,14 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
 {
     Float64 leftTime = [self getSecondsUsingView:self.leftDragView];
     Float64 rightTime = [self getSecondsUsingView:self.rightDragView];
-
+    
     if ([self.delegate respondsToSelector:@selector(clipFrameView:didEndDragLeftView:)]) {
         [self.delegate clipFrameView:self didEndDragLeftView:leftTime];
     }
     if ([self.delegate respondsToSelector:@selector(clipFrameView:didEndDragRightView:)]) {
         [self.delegate clipFrameView:self didEndDragRightView:rightTime];
     }
-
+    
     if ([self.delegate respondsToSelector:@selector(clipFrameView:isScrolling:)]) {
         [self.delegate clipFrameView:self isScrolling:NO];
     }
@@ -506,7 +522,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     if (!decelerate) {
         Float64 leftTime = [self getSecondsUsingView:self.leftDragView];
         Float64 rightTime = [self getSecondsUsingView:self.rightDragView];
-
+        
         if ([self.delegate respondsToSelector:@selector(clipFrameView:didEndDragLeftView:)]) {
             [self.delegate clipFrameView:self didEndDragLeftView:leftTime];
         }
@@ -590,5 +606,8 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     
     return _collectionView;
 }
-
+- (void)dealloc
+{
+    [ClearCacheTool cleanCaches:self.filePath isDeleteVideo:YES];
+}
 @end

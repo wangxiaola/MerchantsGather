@@ -277,7 +277,7 @@ NSString * const SCRecordSessionDocumentDirectory = @"DocumentDirectory";
     NSString *extension = [self _suggestedFileExtension];
 
     if (extension != nil) {
-        NSString *filename = [NSString stringWithFormat:@"%@SCVideo.%d.%@", _identifier, _currentSegmentCount, extension];
+        NSString *filename = [NSString stringWithFormat:@"%@recordVideo.%d.%@", _identifier, _currentSegmentCount, extension];
         NSURL *file = [SCRecordSessionSegment segmentURLForFilename:filename andDirectory:self.segmentsDirectory];
         
         [self removeFile:file];

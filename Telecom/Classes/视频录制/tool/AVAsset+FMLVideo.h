@@ -10,13 +10,14 @@
 
 @interface AVAsset (FMLVideo)
 
+
 /**
  *   获取每帧图片
  *
  *  @param imageCount     需要获取的图片个数
  *  @param imageBackBlock 得到一个图片时返回的block
  */
-- (void)fml_getImagesCount:(NSUInteger)imageCount imageBackBlock:(void (^)(NSArray *timeArray))imageBackBlock;
+- (void)fml_getImagesCount:(NSUInteger)imageCount imageBackBlock:(void (^)(NSMutableArray *timeArray))imageBackBlock;
 
 /**
  *  获取视频的总秒数

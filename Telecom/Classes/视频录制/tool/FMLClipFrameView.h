@@ -32,6 +32,7 @@
 
 @property (nonatomic, weak) id<FMLClipFrameViewDelegate> delegate;
 
+
 - (instancetype)initWithAsset:(AVAsset *)asset recordTime:(Float64)recordTime;
 
 @property (nonatomic, assign) Float64 recordTime;

@@ -24,4 +24,6 @@
  */
 + (CGFloat)obtainCacheSize;
 
+// 根据路径删除文件
++ (void)cleanCaches:(NSString *)path isDeleteVideo:(BOOL)deleteVideo;
 @end

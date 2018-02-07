@@ -12,8 +12,9 @@
 
 @implementation AVAsset (FMLVideo)
 
-- (void)fml_getImagesCount:(NSUInteger)imageCount imageBackBlock:(void (^)(NSArray *timeArray))imageBackBlock;
+- (void)fml_getImagesCount:(NSUInteger)imageCount imageBackBlock:(void (^)(NSMutableArray *timeArray))imageBackBlock;
 {
+    
     Float64 durationSeconds = [self fml_getSeconds];
     
     // 获取视频的帧数
@@ -39,6 +40,8 @@
         [times removeAllObjects];
         times = nil;
     }
+    
+    
 //    AVAssetImageGenerator *imgGenerator = [[AVAssetImageGenerator alloc] initWithAsset:self];
 //    // 防止时间出现偏差
 //    imgGenerator.requestedTimeToleranceBefore = kCMTimeZero;

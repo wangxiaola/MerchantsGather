@@ -27,13 +27,14 @@
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        NSString *path1 = NSTemporaryDirectory();
         NSString *path2 = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).lastObject;
         NSString *path4 = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).lastObject;
-        NSArray *array = @[path2,path1,path4];
+        NSArray *array = @[path2,path4];
         
         for (NSString *path in array) {
-            [self cleanCaches:path];
+            
+            NSLog(@"\n%@\n",path);
+            [self cleanCaches:path isDeleteVideo:NO];
         }
     
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -82,17 +83,23 @@
 }
 
 // 根据路径删除文件
-+ (void)cleanCaches:(NSString *)path{
++ (void)cleanCaches:(NSString *)path isDeleteVideo:(BOOL)deleteVideo
+{
     // 利用NSFileManager实现对文件的管理
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:path]) {
         // 获取该路径下面的文件名
         NSArray *childrenFiles = [fileManager subpathsAtPath:path];
+        
+        
         for (NSString *fileName in childrenFiles) {
+            
             // 拼接路径
             NSString *absolutePath = [path stringByAppendingPathComponent:fileName];
             // 将文件删除
             [fileManager removeItemAtPath:absolutePath error:nil];
+
+
         }
     }
 }

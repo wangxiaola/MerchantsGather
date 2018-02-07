@@ -16,9 +16,14 @@
 
 @implementation FMLScaledImageViewCell
 
-- (void)setImageData:(UIImage *)imageData
-{    
-    self.scaledIamgeView.image = imageData;
+- (void)setImageData:(NSString *)filePath
+{
+    if (filePath.length > 0) {
+
+        UIImage *image = [UIImage imageWithContentsOfFile:filePath];;
+        self.scaledIamgeView.image = image;
+    }
+
 }
 
 @end

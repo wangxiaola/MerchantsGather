@@ -156,6 +156,7 @@
 }
 
 - (void)saveAndShowSession:(SCRecordSession *)recordSession {
+    
     [[SCRecordSessionManager sharedInstance] saveRecordSession:recordSession];
     self.recorder.session = recordSession;
     
@@ -164,6 +165,7 @@
     vc.recordSession = self.recorder.session;
     vc.videoTime     = self.timeLabel.text;
     vc.videoName     = self.videoName;
+    vc.videoID       = [NSString stringWithFormat:@"%ld",self.videoID];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -212,7 +214,7 @@
 {
     TBPhotoChooseCollectionViewController *photoVc = [[TBPhotoChooseCollectionViewController alloc] init];
     photoVc.miniTime = MAX_VIDEO_DUR/self.nodesFolat;
-    photoVc.pathQZ = [NSString stringWithFormat:@"%ld-%ld",self.videoID,self.recorder.session.segments.count];
+    photoVc.pathQZ = [NSString stringWithFormat:@"%ld&%ld",self.videoID,self.recorder.session.segments.count];
     [self.navigationController pushViewController:photoVc animated:YES];
     
 }

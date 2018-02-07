@@ -54,7 +54,6 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
     self.outputSize = CGSizeMake(960, 540);
     [self setUpView];
     [self setUpData];
-    [self finishClip];
     MMLog(@"采取时间 = %f",self.recordTime);
 }
 
@@ -124,14 +123,11 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
         });
     }];
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-    NSString *outputURL = paths[0];
-    NSFileManager *manager = [NSFileManager defaultManager];
-    [manager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
-    NSString *pathName = [NSString stringWithFormat:@"%@-Output.mp4",self.pathQZ];
-    outputURL = [outputURL stringByAppendingPathComponent:pathName];
-    // Remove Existing File
-    [manager removeItemAtPath:outputURL error:nil];
+    NSArray *info = [self.pathQZ componentsSeparatedByString:@"&"];
+    NSString *pathName = [NSString stringWithFormat:@"/%@Output.mp4",info.lastObject];
+    
+    NSString *outputURL = [ZKUtil createRecordingSuperiorName:info.firstObject childName:pathName];
+
     self.compositionURL = [NSURL fileURLWithPath:outputURL];
     
     self.avAsset = avAsset;
@@ -311,6 +307,7 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
 // 完成
 - (void)senderClick
 {
+    [self finishClip];
     self.sendButton.enabled = NO;
     hudShowLoading(@"开始剪裁视频");
     [self.player pause];

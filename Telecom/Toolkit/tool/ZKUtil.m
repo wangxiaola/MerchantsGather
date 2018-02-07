@@ -421,4 +421,35 @@
         return NO;
     
 }
+/**
+ 返回一个子文件路径
+ 
+ @param superiorName 上一级文件名
+ @param childName 子文件名
+ @return 子文件完成路径
+ */
++ (NSString *)createRecordingSuperiorName:(nullable NSString *)superiorName childName:(nullable NSString *)childName;
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *createPath = [kDocumentPath stringByAppendingPathComponent:KrecordPath];
+    
+    if (![[NSFileManager defaultManager]fileExistsAtPath:createPath]) {
+        
+        [fileManager createDirectoryAtPath:createPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+
+    NSString *superiorPath = [createPath stringByAppendingPathComponent:superiorName];
+    
+    if (![[NSFileManager defaultManager]fileExistsAtPath:superiorPath]) {
+        
+        [fileManager createDirectoryAtPath:superiorPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSString *outputURL = [superiorPath stringByAppendingPathComponent:childName];
+    
+    if (![[NSFileManager defaultManager]fileExistsAtPath:outputURL]) {
+        
+        [fileManager createDirectoryAtPath:outputURL withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return outputURL;
+}
 @end

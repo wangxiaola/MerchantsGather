@@ -18,6 +18,7 @@
 #import "TBVideoCompositionTool.h"
 #import "TBBackMusicChooseView.h"
 #import "TBRecordVideoMode.h"
+#import "ClearCacheTool.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 static NSString * const cellID = @"cellID";
 
@@ -362,7 +363,6 @@ static NSString * const cellID = @"cellID";
         return;
     }
     AVAsset *set = [AVAsset assetWithURL:url];
-    
     SCAssetExportSession *exportSession = [[SCAssetExportSession alloc] initWithAsset:set];
     exportSession.videoConfiguration.filter = currentFilter;
     exportSession.videoConfiguration.preset = SCPresetMediumQuality;
@@ -438,6 +438,17 @@ static NSString * const cellID = @"cellID";
  */
 - (void)videoSavedPath:(NSString *)path
 {
+    //    代码框架结构如下：
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 耗时的操作
+
+        NSString *createPath = [kDocumentPath stringByAppendingPathComponent:KrecordPath];
+        createPath = [NSString stringWithFormat:@"%@/%@",createPath,self.videoID];
+        
+        [ClearCacheTool cleanCaches:createPath isDeleteVideo:YES];
+        
+    });
+
     UIImage *backImage = [self getScreenShotImageFromVideoPath:path];
     
     NSString *url = [path componentsSeparatedByString:@"tmp/"].lastObject;
@@ -453,6 +464,7 @@ static NSString * const cellID = @"cellID";
         
     }];
     hudShowSuccess(@"视频保存成功");
+    
 }
 
 #pragma mark  ----UICollectionViewDelete----
