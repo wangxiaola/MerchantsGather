@@ -462,10 +462,9 @@
     
     if (width >= self.progressWidth && self.isRecorderLas == NO) {
         
-        progress = 1;
+        progress = 1.0;
         [self recordPause];
     }
-    
     if (self.updateIndex < 0) {
         [self.progressBar setLastProgressToWidth:width-0.5];
         self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",time];
@@ -487,6 +486,8 @@
 - (void)recorder:(SCRecorder *)recorder didCompleteSession:(SCRecordSession *)recordSession {
     MMLog(@"didCompleteSession:");
     [self updateViewState];
+    [self.recordingView updateLabelText:1 * MAX_VIDEO_DUR/self.nodesFolat];
+    [self.recordingView setValue:1];
     
 }
 #pragma mark  ----YBPopupMenuDelegate----

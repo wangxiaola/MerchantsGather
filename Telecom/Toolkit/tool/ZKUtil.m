@@ -12,7 +12,7 @@
 
 @implementation ZKUtil
 
-+ (void)downloadImage:(UIImageView*)imageView imageUrl:(NSString*)url;
++ (void)downloadImage:(UIImageView *)imageView imageUrl:(NSString*)url;
 {
     if (![url containsString:IMAGE_URL]) {
         url = [NSString stringWithFormat:@"%@%@",IMAGE_URL,url];
@@ -428,7 +428,7 @@
  @param childName 子文件名
  @return 子文件完成路径
  */
-+ (NSString *)createRecordingSuperiorName:(nullable NSString *)superiorName childName:(nullable NSString *)childName;
++ (NSString *)createRecordingSuperiorName:(NSString *)superiorName childName:(NSString *)childName;
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *createPath = [kDocumentPath stringByAppendingPathComponent:KrecordPath];
