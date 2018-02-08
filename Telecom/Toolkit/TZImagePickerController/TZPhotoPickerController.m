@@ -714,6 +714,7 @@ static CGFloat itemMargin = 5;
 }
 
 - (void)reloadPhotoArray {
+    
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     [[TZImageManager manager] getCameraRollAlbum:tzImagePickerVc.allowPickingVideo allowPickingImage:tzImagePickerVc.allowPickingImage completion:^(TZAlbumModel *model) {
         _model = model;

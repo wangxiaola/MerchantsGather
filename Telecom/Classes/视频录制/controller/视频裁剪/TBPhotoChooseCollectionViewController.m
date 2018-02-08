@@ -12,13 +12,13 @@
 #import "SCRecordSessionSegment+LZAdd.h"
 #import "UIScrollView+EmptyDataSet.h"
 #import <AssetsLibrary/AssetsLibrary.h>
-
+#import "TZImageManager.h"
 @interface TBPhotoChooseCollectionViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
-@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
-@property (nonatomic, strong) NSMutableArray *videoListSegmentArrays;
+@property (nonatomic, strong) NSMutableArray <PHAsset *> *videoListSegmentArrays;
 
-
+@property (nonatomic, strong) PHImageManager *phManager;
+@property (nonatomic, strong) PHVideoRequestOptions *options;
 @end
 
 @implementation TBPhotoChooseCollectionViewController
@@ -45,7 +45,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的视频";
-
+    
     [self configuration];
     // Do any additional setup after loading the view.
 }
@@ -65,7 +65,15 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.mj_header = [MJDIYHeader headerWithRefreshingTarget:self refreshingAction:@selector(verifyAuthorization)];
     [self.collectionView.mj_header beginRefreshing];
     
-
+    PHImageManager *phManager = [PHImageManager defaultManager];
+    
+    PHVideoRequestOptions *options = [[PHVideoRequestOptions alloc] init];
+    options.version = PHImageRequestOptionsVersionCurrent;
+    options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+    
+    self.options = options;
+    self.phManager = phManager;
+    
 }
 #pragma mark  ----数据加载----
 /** 验证授权信息 */
@@ -90,50 +98,62 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)getAlbumsGroup
 {
-    WS(weakSelf);
+    TBWeakSelf
     [self.videoListSegmentArrays removeAllObjects];
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc] init];
-        [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-            //获取所有group
-            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {//从group里面
-                NSString* assetType = [result valueForProperty:ALAssetPropertyType];
-                if([assetType isEqualToString:ALAssetTypeVideo]){
-    
-                    NSDictionary *assetUrls = [result valueForProperty:ALAssetPropertyURLs];
+        TZImageManager *manager = [TZImageManager manager];
+        
+        __block NSInteger videos = 0;
+        [manager getCameraRollAlbum:YES allowPickingImage:NO completion:^(TZAlbumModel *model) {
             
-                    for (NSString *assetURLKey in assetUrls) {
-
-                        SCRecordSessionSegment * segment = [[SCRecordSessionSegment alloc] initWithURL:assetUrls[assetURLKey] info:nil];
+            [model.models enumerateObjectsUsingBlock:^(TZAssetModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                videos += 1;
+                
+                if (obj.type == TZAssetModelMediaTypeVideo) {
+                    
+                    PHAsset *asset = obj.asset;
+                    
+                    if (asset.duration >= weakSelf.miniTime) {
                         
-                        if (CMTimeGetSeconds(segment.duration) >= self.miniTime) {
-                          [weakSelf.videoListSegmentArrays addObject:segment];
-                        }
-                        else
-                        {
-                            [segment deleteFile];
-                            segment = nil;
-                        }
+                        [weakSelf.videoListSegmentArrays addObject:asset];
                         
                     }
+                    if (videos == model.count) {
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            // 更新界面
+                            [self.collectionView reloadData];
+                            [self.collectionView.mj_header endRefreshing];
+                        });
+                    }
                     
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        // 更新界面
-                        [self.collectionView reloadData];
-                        [self.collectionView.mj_header endRefreshing];
-                    });
                 }
                 
             }];
-        } failureBlock:^(NSError *error) {
-          
-            [self.collectionView.mj_header endRefreshing];
         }];
-       
+        
     });
+    
 }
-
+/**
+ 通过资源获取图片的数据
+ 
+ @param mAsset 资源文件
+ @param imageBlock 图片数据回传
+ */
+- (void)fetchImageWithAsset:(PHAsset*)mAsset imageBlock:(void(^)(UIImage *))imageBlock {
+    
+    [[PHImageManager defaultManager] requestImageForAsset:mAsset targetSize:CGSizeMake(80, 80) contentMode:PHImageContentModeAspectFill options:nil resultHandler:^(UIImage *resultImage, NSDictionary *info) {
+        
+        if (imageBlock) {
+            imageBlock(resultImage);
+        }
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -145,12 +165,12 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-
+    
     return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-
+    
     return self.videoListSegmentArrays.count;
 }
 
@@ -160,10 +180,13 @@ static NSString * const reuseIdentifier = @"Cell";
     
     if (self.videoListSegmentArrays) {
         
-        SCRecordSessionSegment * segment = self.videoListSegmentArrays[indexPath.row];
-        
-        [cell.imageView setImage:segment.thumbnail];
-        cell.timeLabel.text = [NSString stringWithFormat:@" %.2f秒  ",CMTimeGetSeconds(segment.duration)];
+        PHAsset * asset = self.videoListSegmentArrays[indexPath.row];
+        [cell.imageView setImage:[UIImage imageNamed:@""]];
+        [self fetchImageWithAsset:asset imageBlock:^(UIImage *image) {
+            
+            [cell.imageView setImage:image];
+        }];
+        cell.timeLabel.text = [NSString stringWithFormat:@" %.2f秒  ",asset.duration];
     }
     return cell;
 }
@@ -172,14 +195,24 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    SCRecordSessionSegment * segment = self.videoListSegmentArrays[indexPath.row];
-    
-    TBClipVideoViewController *vc =[[TBClipVideoViewController alloc] init];
-    vc.selectSegment = segment;
-    vc.recordTime    = self.miniTime;
-    vc.pathQZ = self.pathQZ;
-    [self.navigationController pushViewController:vc animated:YES];
+    PHAsset * asset = self.videoListSegmentArrays[indexPath.row];
+    TBWeakSelf
+    [self.phManager requestAVAssetForVideo:asset options:self.options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+        
+        AVURLAsset *urlAsset = (AVURLAsset *)asset;
+        
+        NSURL *url = urlAsset.URL;
+        
+        SCRecordSessionSegment * segment = [[SCRecordSessionSegment alloc] initWithURL:url info:nil];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            TBClipVideoViewController *vc =[[TBClipVideoViewController alloc] init];
+            vc.selectSegment = segment;
+            vc.recordTime    = weakSelf.miniTime;
+            vc.pathQZ = weakSelf.pathQZ;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        });
+    }];
     
 }
 #pragma mark ---DZNEmptyDataSetSource--
@@ -245,14 +278,12 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark - 懒加载
-- (NSMutableArray *)videoListSegmentArrays
+- (NSMutableArray <PHAsset *> *)videoListSegmentArrays
 {
     if (!_videoListSegmentArrays) {
-        _videoListSegmentArrays = [NSMutableArray array];
+        _videoListSegmentArrays = [NSMutableArray arrayWithCapacity:1];
     }
-    
     return _videoListSegmentArrays;
 }
-
 
 @end
