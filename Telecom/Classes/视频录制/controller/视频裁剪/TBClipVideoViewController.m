@@ -242,9 +242,10 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
 #pragma mark  ----TBVideoClipTailorDelegate----
 - (void)exportFailed:(NSError *_Nonnull)error;
 {
+    TBWeakSelf
     dispatch_async( dispatch_get_main_queue(), ^{
-        self.sendButton.enabled = YES;
-        self.view.userInteractionEnabled = YES;
+        weakSelf.sendButton.enabled = YES;
+        weakSelf.view.userInteractionEnabled = YES;
         hudShowError(@"导出视频失败");
     });
 }

@@ -43,6 +43,7 @@ static BOOL isProduction = YES;
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
+    
     // 初始化微信
     [self initSDK];
     [self startWebView];

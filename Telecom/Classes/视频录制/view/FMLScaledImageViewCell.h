@@ -10,6 +10,6 @@
 
 @interface FMLScaledImageViewCell : UICollectionViewCell
 
-- (void)setImageData:(NSString *)filePath;
+- (void)setImageData:(UIImage *)filePath;
 
 @end
