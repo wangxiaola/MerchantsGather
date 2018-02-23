@@ -175,14 +175,17 @@
 - (void)updateViewState
 {
     self.timeLabel.text = [NSString stringWithFormat:@"%.1f秒",self.recorder.session.segments.count *(MAX_VIDEO_DUR/self.nodesFolat)];
+    self.progressBar.userInteractionEnabled = YES;
     //    NSLog(@"%ld",self.recorder.session.segments.count);
     if (self.recorder.session.segments.count == self.nodesFolat) {
         
         self.navigationItem.leftBarButtonItem.enabled = NO;
         self.navigationItem.rightBarButtonItem.enabled = NO;
+        
         self.cancelButton.enabled = YES;
         self.confirmButton.enabled = YES;
         self.cancelButton.selected = NO;
+        
     }
     else if (self.recorder.session.segments.count == 0)
     {
