@@ -98,9 +98,10 @@ static BOOL isProduction = YES;
     [keyboardManager setEnableAutoToolbar:YES];
     [keyboardManager setToolbarManageBehaviour:IQAutoToolbarBySubviews];
     [keyboardManager setPlaceholderFont:[UIFont systemFontOfSize:14]];
-    [keyboardManager setShouldResignOnTouchOutside:NO];
+    [keyboardManager setShouldResignOnTouchOutside:YES];
     [keyboardManager setToolbarTintColor:NAVIGATION_COLOR];
-    
+    //设置为文字
+    [keyboardManager setToolbarDoneBarButtonItemText:@"完成"];
     [AMapServices sharedServices].apiKey = GDMAP_KEY;
     // 开启定位权限
     self.locationManager = [[CLLocationManager alloc] init];

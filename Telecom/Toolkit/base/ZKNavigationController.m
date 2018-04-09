@@ -62,7 +62,8 @@
      UIViewController *vc = self.viewControllers.lastObject;
     if (self.childViewControllers.count == 1
         ||[vc isKindOfClass:[NSClassFromString(@"TBTemplateCompleteViewController") class]]
-        ||[vc isKindOfClass:[NSClassFromString(@"TBTaskMakeViewController") class]]) {
+        ||[vc isKindOfClass:[NSClassFromString(@"TBTaskMakeViewController") class]]
+        ||[vc isKindOfClass:[NSClassFromString(@"TBClipVideoViewController") class]]) {
         // 表示用户在根控制器界面，就不需要触发滑动手势，
         return NO;
     }

@@ -38,7 +38,8 @@ typedef NS_ENUM(NSUInteger, ZKCacheType)
  @param success 成功回调Block
  @param failure 失败回调Block
  */
-+ (void)post:(NSString *)url params:(NSMutableDictionary *)params success:(void(^)(id responseObj))success failure:(void(^)(NSError *error))failure;
++ (void)
+post:(NSString *)url params:(NSMutableDictionary *)params success:(void(^)(id responseObj))success failure:(void(^)(NSError *error))failure;
 
 /**
  post请求

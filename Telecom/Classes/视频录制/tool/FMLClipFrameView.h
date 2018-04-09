@@ -38,7 +38,7 @@
 @property (nonatomic, assign) Float64 recordTime;
 
 - (void)resetProgressBarMode;
-
+- (void)removeImage;// 清除
 - (void)setProgressBarPoisionWithSecond:(Float64)second;
 
 @end

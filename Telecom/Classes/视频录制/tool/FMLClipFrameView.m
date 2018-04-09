@@ -55,6 +55,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
         self.recordTime = recordTime;
         [self initView];
         [self initData];
+        
     }
     
     return self;
@@ -170,10 +171,11 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
  */
 - (void)initData
 {
-
+   
     AVAssetImageGenerator *imgGenerator = [[AVAssetImageGenerator alloc] initWithAsset:_asset];
     // 防止时间出现偏差
     imgGenerator.requestedTimeToleranceBefore = kCMTimeZero;
+    imgGenerator.maximumSize = CGSizeMake(50, 60);
     imgGenerator.requestedTimeToleranceAfter  = kCMTimeZero;
     imgGenerator.appliesPreferredTrackTransform = YES;  // 截图的时候调整到正确的方向
     imgGenerator.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
@@ -219,10 +221,8 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
         if (result == AVAssetImageGeneratorSucceeded) {
 
             UIImage *image = [UIImage imageWithCGImage:im];
-            image = [self compressImageWith:image];
-            
+//            image = [self compressImageWith:image];
             [weakSelf.collectionImages addObject:image];
-            
             count++;
             if (count == times.count) {
                 [weakSelf reloadData];
@@ -251,6 +251,7 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
     self.generator.requestedTimeToleranceBefore = kCMTimeZero;
     self.generator.requestedTimeToleranceAfter = kCMTimeZero;
     [self.generator generateCGImagesAsynchronouslyForTimes:times completionHandler:handler];
+
 }
 - (UIImage *)compressImageWith:(UIImage *)image
 {
@@ -414,6 +415,13 @@ static NSString * const FMLScaledImageId = @"FMLScaledImageId";
 - (void)resetProgressBarMode
 {
     self.progressBarView.hidden = YES;
+}
+- (void)removeImage;
+{
+    [self.generator cancelAllCGImageGeneration];
+    self.generator = nil;
+    [self.collectionImages removeAllObjects];
+    self.collectionImages = nil;
 }
 
 - (Float64)getSecondsUsingView:(UIView *)view

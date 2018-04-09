@@ -68,6 +68,7 @@
     passwordTextField.font = [UIFont systemFontOfSize:14];
     [passwordTextField setValue:[UIFont boldSystemFontOfSize:14]forKeyPath:@"_placeholderLabel.font"];
     passwordTextField.borderStyle = UITextBorderStyleNone;
+    passwordTextField.keyboardType =  UIKeyboardTypeAlphabet;
     passwordTextField.returnKeyType = UIReturnKeyDone;
     [fieldView addSubview:passwordTextField];
     

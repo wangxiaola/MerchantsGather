@@ -11,8 +11,9 @@
 #import "TBPhotoVideoChooseCollectionViewCell.h"
 #import "SCRecordSessionSegment+LZAdd.h"
 #import "UIScrollView+EmptyDataSet.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "TBMoreReminderView.h"
 #import "TZImageManager.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 @interface TBPhotoChooseCollectionViewController ()<DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSMutableArray <PHAsset *> *videoListSegmentArrays;
@@ -45,8 +46,23 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"我的视频";
-    
-    [self configuration];
+    // 系统弹出授权对话框
+    TBWeakSelf
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied)
+            {
+                // 用户拒绝，跳转到自定义提示页面
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }
+            else if (status == PHAuthorizationStatusAuthorized)
+            {
+                // 用户授权，弹出相册对话框
+                [weakSelf configuration];
+            }
+        });
+    }];
+
     // Do any additional setup after loading the view.
 }
 #pragma mark  ----配置----
@@ -80,17 +96,19 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)verifyAuthorization
 {
     NSString *tipTextWhenNoPhotosAuthorization; // 提示语
-    
     ALAuthorizationStatus authorizationStatus = [ALAssetsLibrary authorizationStatus];
     
     if (authorizationStatus == ALAuthorizationStatusRestricted || authorizationStatus == ALAuthorizationStatusDenied) {
         NSDictionary *mainInfoDictionary = [[NSBundle mainBundle] infoDictionary];
         NSString *appName = [mainInfoDictionary objectForKey:@"CFBundleDisplayName"];
         tipTextWhenNoPhotosAuthorization = [NSString stringWithFormat:@"请在设备的\"设置-隐私-照片\"选项中，允许%@访问你的手机相册", appName];
+
         // 展示提示语
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:tipTextWhenNoPhotosAuthorization delegate:nil cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
-        [alert show];
+        TBMoreReminderView *more = [[TBMoreReminderView alloc] initShowPrompt:tipTextWhenNoPhotosAuthorization];
+        [more showHandler:^{
+          [self getAlbumsGroup];
+        }];
+
     } else {
         [self getAlbumsGroup];
     }
@@ -101,13 +119,19 @@ static NSString * const reuseIdentifier = @"Cell";
     TBWeakSelf
     [self.videoListSegmentArrays removeAllObjects];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    __block NSInteger videos = 0;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"tz_allowPickingVideo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[TZImageManager manager] getCameraRollAlbum:YES allowPickingImage:NO completion:^(TZAlbumModel *model) {
         
-        TZImageManager *manager = [TZImageManager manager];
-        
-        __block NSInteger videos = 0;
-        [manager getCameraRollAlbum:YES allowPickingImage:NO completion:^(TZAlbumModel *model) {
+        if (model.models.count == 0) {
             
+            [weakSelf updateCollectionView];
+        }
+        else
+        {
             [model.models enumerateObjectsUsingBlock:^(TZAssetModel *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 
                 videos += 1;
@@ -123,20 +147,25 @@ static NSString * const reuseIdentifier = @"Cell";
                     }
                     if (videos == model.count) {
                         
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            // 更新界面
-                            [self.collectionView reloadData];
-                            [self.collectionView.mj_header endRefreshing];
-                        });
+                        // 更新界面
+                        [weakSelf updateCollectionView];
                     }
-                    
                 }
                 
             }];
-        }];
-        
+        }
+    }];
+}
+
+/**
+ 更新界面
+ */
+- (void)updateCollectionView
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
     });
-    
 }
 /**
  通过资源获取图片的数据
@@ -285,5 +314,9 @@ static NSString * const reuseIdentifier = @"Cell";
     }
     return _videoListSegmentArrays;
 }
-
+- (void)dealloc
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"tz_allowPickingVideo"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

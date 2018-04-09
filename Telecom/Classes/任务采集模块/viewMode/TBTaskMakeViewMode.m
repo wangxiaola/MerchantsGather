@@ -491,9 +491,18 @@
         if (povertyImages.count > 0) {
             [povertyDic setObject:povertyImages forKey:@"listPoverty"];
         }
+        else
+        {
+            [povertyDic setObject:@[] forKey:@"listPoverty"];
+        }
+        
         if (weakSelf.makingMode.poorPeopleArray.count > 0)
         {
             [povertyDic setObject:weakSelf.makingMode.poorPeopleArray forKey:@"listPoorPeople"];
+        }
+        else
+        {
+            [povertyDic setObject:@[] forKey:@"listPoorPeople"];
         }
         
         // m1 m2-老板 m3-外观 m5-美食 m6-环境 m9-封面

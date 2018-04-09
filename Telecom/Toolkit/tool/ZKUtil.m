@@ -93,9 +93,9 @@
 + (BOOL)isMobileNumber:(NSString *)mobileNum;
 {
     /**
-     * 手机号码
+     * 手机号码  ^1[3-9][0-9]\\d{8}$  ^1(3[0-9]|4[0-9]|5[0-9]|7[0-9]|8[0-9])\\d{8}$
      */
-    NSString * MOBIL = @"^1(3[0-9]|4[0-9]|5[0-9]|7[0-9]|8[0-9])\\d{8}$";
+    NSString * MOBIL = @"^1[3-9][0-9]\\d{8}$";
     
     NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", MOBIL];
     
@@ -192,7 +192,9 @@
     while (resultVC.presentedViewController) {
         resultVC = [self _topViewController:resultVC.presentedViewController];
     }
-    return resultVC;}
+    return resultVC;
+    
+}
 + (NSMutableAttributedString *)ls_changeFontAndColor:(UIFont *)font Color:(UIColor *)color TotalString:(NSString *)totalString SubStringArray:(NSArray *)subArray;
 {
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:totalString];

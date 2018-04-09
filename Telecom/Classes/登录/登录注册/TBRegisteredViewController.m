@@ -149,6 +149,7 @@
          if ([errcode isEqualToString:@"00000"])
          {
              NSString *data = [responseObj valueForKey:@"data"];
+             NSLog(@"%@",data);
              [weakSelf startTheDate:120];
              weakSelf.verification = data;
              [weakSelf.validationTextField becomeFirstResponder];//自动弹出键盘

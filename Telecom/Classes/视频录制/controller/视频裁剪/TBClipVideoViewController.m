@@ -41,6 +41,12 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
 
 @implementation TBClipVideoViewController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.player pause];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -292,7 +298,7 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
 
 - (void)clipFrameView:(FMLClipFrameView *)clipFrameView isScrolling:(BOOL)scrolling
 {
-    self.view.userInteractionEnabled = !scrolling;
+//    self.view.userInteractionEnabled = !scrolling;
 }
 
 #pragma mark - 事件
@@ -368,12 +374,6 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-    [self.player pause];
-}
 
 - (void)dealloc
 {
@@ -381,6 +381,7 @@ static void *HJClipVideoStatusContext = &HJClipVideoStatusContext;
     
     self.player.rate =0;
     [self.player removeTimeObserver:self.observer];
+    [self.clipFrameView removeImage];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
