@@ -245,8 +245,9 @@
     }
     else if ([key isEqualToString:@"设置密码"])
     {
-        TBVerifyViewController *passViewC = [[TBVerifyViewController alloc] init];
-        [self.navigationController pushViewController:passViewC animated:YES];
+        TBVerifyViewController *passViewVC = [[TBVerifyViewController alloc] init];
+        passViewVC.viewControllerType = userSetPassword;
+        [self.navigationController pushViewController:passViewVC animated:YES];
     }
     else if ([key isEqualToString:@"退出账号"])
     {
