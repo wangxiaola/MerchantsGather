@@ -76,6 +76,9 @@ alpha:(float)(alphaValue)]
 
 #define GET_SCREEN_SCALE(scale) CGFloat scale = _SCREEN_WIDTH /375.0f;
 
+//判断iPhone x
+#define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
 /*
  ==========================================弱引用=================================================
  */

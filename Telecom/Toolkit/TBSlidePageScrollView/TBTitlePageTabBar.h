@@ -1,14 +1,14 @@
 //
-//  TYTitlePageTabBar.h
-//  TYSlidePageScrollViewDemo
+//  TBTitlePageTabBar.h
+//  Telecom
 //
-//  Created by SunYong on 15/7/16.
-//  Copyright (c) 2015年 tanyang. All rights reserved.
+//  Created by 小腊 on 17/3/19.
+//  Copyright © 2017年 王小腊. All rights reserved.
 //
 
-#import "TYBasePageTabBar.h"
+#import "TBBasePageTabBar.h"
 
-@interface TYTitlePageTabBar : TYBasePageTabBar
+@interface TBTitlePageTabBar : TBBasePageTabBar
 
 @property (nonatomic, strong) UIFont *textFont;
 @property (nonatomic, strong) UIFont *selectedTextFont;

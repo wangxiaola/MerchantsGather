@@ -1,18 +1,18 @@
 //
-//  TYBasePageTabBar.m
-//  TYSlidePageScrollViewDemo
+//  TBBasePageTabBar.m
+//  Telecom
 //
-//  Created by tanyang on 15/7/16.
-//  Copyright (c) 2015年 tanyang. All rights reserved.
+//  Created by 小腊 on 17/3/19.
+//  Copyright © 2017年 王小腊. All rights reserved.
 //
 
-#import "TYBasePageTabBar.h"
+#import "TBBasePageTabBar.h"
 
-@interface TYBasePageTabBar ()
-@property (nonatomic, weak) id<TYBasePageTabBarPrivateDelegate> praviteDelegate;
+@interface TBBasePageTabBar ()
+@property (nonatomic, weak) id<TBBasePageTabBarPrivateDelegate> praviteDelegate;
 @end
 
-@implementation TYBasePageTabBar
+@implementation TBBasePageTabBar
 
 - (void)clickedPageTabBarAtIndex:(NSInteger)index
 {

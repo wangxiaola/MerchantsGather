@@ -22,7 +22,7 @@
     {
         _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:self.view.bounds shouldInfiniteLoop:YES imageNamesGroup:@[@"strategy_1",@"strategy_2",@"strategy_3",@"strategy_4",@"strategy_5",@"strategy_6",@"strategy_7",@"strategy_8",@"strategy_9",@"strategy_10"]];
         _cycleScrollView.showPageControl = YES;
-        _cycleScrollView.pageControlStyle =SDCycleScrollViewPageContolStyleAnimated;
+        _cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
         _cycleScrollView.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
         _cycleScrollView.currentPageDotColor = [UIColor whiteColor];
         _cycleScrollView.pageDotColor = [UIColor whiteColor];

@@ -1,18 +1,19 @@
 //
-//  TYSlidePageScrollViewController.m
-//  TYSlidePageScrollViewDemo
+//  TBSlidePageScrollViewController.m
+//  Telecom
 //
-//  Created by SunYong on 15/7/17.
-//  Copyright (c) 2015年 tanyang. All rights reserved.
+//  Created by 小腊 on 17/3/19.
+//  Copyright © 2017年 王小腊. All rights reserved.
 //
 
-#import "TYSlidePageScrollViewController.h"
 
-@interface TYSlidePageScrollViewController ()
-@property (nonatomic, weak) TYSlidePageScrollView *slidePageScrollView;
+#import "TBSlidePageScrollViewController.h"
+
+@interface TBSlidePageScrollViewController ()
+@property (nonatomic, weak) TBSlidePageScrollView *slidePageScrollView;
 @end
 
-@implementation TYSlidePageScrollViewController
+@implementation TBSlidePageScrollViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,7 +26,7 @@
 
 - (void)addSlidePageScrollView
 {
-    TYSlidePageScrollView *slidePageScrollView = [[TYSlidePageScrollView alloc]initWithFrame:self.view.bounds];
+    TBSlidePageScrollView *slidePageScrollView = [[TBSlidePageScrollView alloc]initWithFrame:self.view.bounds];
     slidePageScrollView.dataSource = self;
     slidePageScrollView.delegate = self;
     [self.view addSubview:slidePageScrollView];
@@ -43,15 +44,15 @@
 
 #pragma mark - TYSlidePageScrollViewDataSource
 
-// if you want to deal with dataSource , you can override
+
 - (NSInteger)numberOfPageViewOnSlidePageScrollView
 {
     return _viewControllers.count;
 }
 
-- (UIScrollView *)slidePageScrollView:(TYSlidePageScrollView *)slidePageScrollView pageVerticalScrollViewForIndex:(NSInteger)index
+- (UIScrollView *)slidePageScrollView:(TBSlidePageScrollView *)slidePageScrollView pageVerticalScrollViewForIndex:(NSInteger)index
 {
-    UIViewController<TYDisplayPageScrollViewDelegate> *viewController = _viewControllers[index];
+    UIViewController<TBDisplayPageScrollViewDelegate> *viewController = _viewControllers[index];
 
     if (![self.childViewControllers containsObject:viewController]) {
         // don't forget set frame and addChildViewController
@@ -68,7 +69,7 @@
     }else if ([viewController.view isKindOfClass:[UIScrollView class]]) {
         return (UIScrollView *)viewController.view;
     }
-    MMLog(@"you don't implemente UIViewControllerDisplayViewDelegate ,I don't konw need display View");
+
     return nil;
 }
 

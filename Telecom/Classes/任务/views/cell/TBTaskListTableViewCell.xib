@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -124,7 +124,7 @@
                         <rect key="frame" x="0.0" y="108" width="371" height="38"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBz-ks-pFp">
-                                <rect key="frame" x="0.0" y="0.0" width="144.5" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="145" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="编辑">
@@ -135,7 +135,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMQ-qh-YSE">
-                                <rect key="frame" x="145.5" y="0.0" width="80" height="38"/>
+                                <rect key="frame" x="145" y="0.0" width="80" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="YHV-Im-Vtg"/>
@@ -149,7 +149,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOC-MO-0s4">
-                                <rect key="frame" x="227" y="0.0" width="144" height="38"/>
+                                <rect key="frame" x="226.5" y="0.0" width="144.5" height="38"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="分享">
@@ -160,7 +160,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mY-h3-4Ny">
-                                <rect key="frame" x="144.5" y="11" width="1" height="16"/>
+                                <rect key="frame" x="145" y="11" width="1" height="16"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="Of7-wf-d5l"/>
@@ -168,7 +168,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tia-zA-Z46">
-                                <rect key="frame" x="225.5" y="11" width="1" height="16"/>
+                                <rect key="frame" x="225" y="11" width="1" height="16"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="Bt4-RJ-bme"/>
@@ -205,7 +205,7 @@
                             <constraint firstItem="BBz-ks-pFp" firstAttribute="leading" secondItem="jCF-j3-GcV" secondAttribute="leading" id="C5C-Zg-uKR"/>
                             <constraint firstAttribute="bottom" secondItem="eMQ-qh-YSE" secondAttribute="bottom" id="FEB-jI-YvV"/>
                             <constraint firstItem="xOC-MO-0s4" firstAttribute="top" secondItem="jCF-j3-GcV" secondAttribute="top" id="FOd-EE-wOR"/>
-                            <constraint firstItem="eMQ-qh-YSE" firstAttribute="leading" secondItem="0mY-h3-4Ny" secondAttribute="trailing" id="HKQ-Qa-BO6"/>
+                            <constraint firstItem="eMQ-qh-YSE" firstAttribute="leading" secondItem="0mY-h3-4Ny" secondAttribute="trailing" constant="-1" id="HKQ-Qa-BO6"/>
                             <constraint firstItem="xOC-MO-0s4" firstAttribute="width" secondItem="BBz-ks-pFp" secondAttribute="width" id="IXw-He-kvh"/>
                             <constraint firstItem="Tia-zA-Z46" firstAttribute="height" secondItem="0mY-h3-4Ny" secondAttribute="height" id="Jsx-Rq-d3d"/>
                             <constraint firstAttribute="bottom" secondItem="xBM-M0-RWj" secondAttribute="bottom" id="Ssp-gJ-VpJ"/>

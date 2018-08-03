@@ -6,11 +6,11 @@
 //  Copyright © 2016年 王小腊. All rights reserved.
 //
 
-#import "TYSlidePageScrollViewController.h"
+#import "TBSlidePageScrollViewController.h"
 
 /**
  任务
  */
-@interface TBTaskListViewController : TYSlidePageScrollViewController
+@interface TBTaskListViewController : TBSlidePageScrollViewController
 
 @end

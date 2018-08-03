@@ -117,10 +117,10 @@
 		3B5C73831F4E7D5100B2CE42 /* HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70E41F4E7D5000B2CE42 /* HUD.m */; };
 		3B5C73841F4E7D5100B2CE42 /* ZKPostHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70E61F4E7D5000B2CE42 /* ZKPostHttp.m */; };
 		3B5C73851F4E7D5100B2CE42 /* ZKUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70E81F4E7D5000B2CE42 /* ZKUtil.m */; };
-		3B5C73861F4E7D5100B2CE42 /* TYBasePageTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70EC1F4E7D5000B2CE42 /* TYBasePageTabBar.m */; };
-		3B5C73871F4E7D5100B2CE42 /* TYSlidePageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70EE1F4E7D5000B2CE42 /* TYSlidePageScrollView.m */; };
-		3B5C73881F4E7D5100B2CE42 /* TYSlidePageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F01F4E7D5000B2CE42 /* TYSlidePageScrollViewController.m */; };
-		3B5C73891F4E7D5100B2CE42 /* TYTitlePageTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F21F4E7D5000B2CE42 /* TYTitlePageTabBar.m */; };
+		3B5C73861F4E7D5100B2CE42 /* TBBasePageTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70EC1F4E7D5000B2CE42 /* TBBasePageTabBar.m */; };
+		3B5C73871F4E7D5100B2CE42 /* TBSlidePageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70EE1F4E7D5000B2CE42 /* TBSlidePageScrollView.m */; };
+		3B5C73881F4E7D5100B2CE42 /* TBSlidePageScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F01F4E7D5000B2CE42 /* TBSlidePageScrollViewController.m */; };
+		3B5C73891F4E7D5100B2CE42 /* TBTitlePageTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F21F4E7D5000B2CE42 /* TBTitlePageTabBar.m */; };
 		3B5C738A1F4E7D5100B2CE42 /* UIScrollView+ty_swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F41F4E7D5000B2CE42 /* UIScrollView+ty_swizzle.m */; };
 		3B5C738B1F4E7D5100B2CE42 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F71F4E7D5000B2CE42 /* NSDate+Extension.m */; };
 		3B5C738C1F4E7D5100B2CE42 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C70F91F4E7D5000B2CE42 /* UIView+Extension.m */; };
@@ -653,6 +653,8 @@
 		3BAD86591FCFF26F00493C1A /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD864A1FCFF26F00493C1A /* UIView+Layout.m */; };
 		3BAE38EA1F6696E600A391D8 /* HQliquidAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE38E71F6696E600A391D8 /* HQliquidAnimationView.m */; };
 		3BAE38EB1F6696E600A391D8 /* HQliquidButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAE38E91F6696E600A391D8 /* HQliquidButton.m */; };
+		3BBBB5632113F22A0088AB10 /* TBNoDataClickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBB5622113F22A0088AB10 /* TBNoDataClickView.m */; };
+		3BBBB5652113F2530088AB10 /* TBNoDataClickView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBBB5642113F2530088AB10 /* TBNoDataClickView.xib */; };
 		3BBBDEE51FECF2D000BDF183 /* ProgressGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBBDEE31FECF2CF00BDF183 /* ProgressGradientView.m */; };
 		3BBCE1F31FCBAB9C00117771 /* TBFolkAppearanceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCE1F21FCBAB9C00117771 /* TBFolkAppearanceView.m */; };
 		3BBCE1F61FCBABBF00117771 /* TBFolkRoomsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCE1F51FCBABBF00117771 /* TBFolkRoomsView.m */; };
@@ -922,14 +924,14 @@
 		3B5C70E61F4E7D5000B2CE42 /* ZKPostHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKPostHttp.m; sourceTree = "<group>"; };
 		3B5C70E71F4E7D5000B2CE42 /* ZKUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZKUtil.h; sourceTree = "<group>"; };
 		3B5C70E81F4E7D5000B2CE42 /* ZKUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZKUtil.m; sourceTree = "<group>"; };
-		3B5C70EB1F4E7D5000B2CE42 /* TYBasePageTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBasePageTabBar.h; sourceTree = "<group>"; };
-		3B5C70EC1F4E7D5000B2CE42 /* TYBasePageTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBasePageTabBar.m; sourceTree = "<group>"; };
-		3B5C70ED1F4E7D5000B2CE42 /* TYSlidePageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSlidePageScrollView.h; sourceTree = "<group>"; };
-		3B5C70EE1F4E7D5000B2CE42 /* TYSlidePageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSlidePageScrollView.m; sourceTree = "<group>"; };
-		3B5C70EF1F4E7D5000B2CE42 /* TYSlidePageScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYSlidePageScrollViewController.h; sourceTree = "<group>"; };
-		3B5C70F01F4E7D5000B2CE42 /* TYSlidePageScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYSlidePageScrollViewController.m; sourceTree = "<group>"; };
-		3B5C70F11F4E7D5000B2CE42 /* TYTitlePageTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTitlePageTabBar.h; sourceTree = "<group>"; };
-		3B5C70F21F4E7D5000B2CE42 /* TYTitlePageTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTitlePageTabBar.m; sourceTree = "<group>"; };
+		3B5C70EB1F4E7D5000B2CE42 /* TBBasePageTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBBasePageTabBar.h; sourceTree = "<group>"; };
+		3B5C70EC1F4E7D5000B2CE42 /* TBBasePageTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBBasePageTabBar.m; sourceTree = "<group>"; };
+		3B5C70ED1F4E7D5000B2CE42 /* TBSlidePageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSlidePageScrollView.h; sourceTree = "<group>"; };
+		3B5C70EE1F4E7D5000B2CE42 /* TBSlidePageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSlidePageScrollView.m; sourceTree = "<group>"; };
+		3B5C70EF1F4E7D5000B2CE42 /* TBSlidePageScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBSlidePageScrollViewController.h; sourceTree = "<group>"; };
+		3B5C70F01F4E7D5000B2CE42 /* TBSlidePageScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBSlidePageScrollViewController.m; sourceTree = "<group>"; };
+		3B5C70F11F4E7D5000B2CE42 /* TBTitlePageTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBTitlePageTabBar.h; sourceTree = "<group>"; };
+		3B5C70F21F4E7D5000B2CE42 /* TBTitlePageTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBTitlePageTabBar.m; sourceTree = "<group>"; };
 		3B5C70F31F4E7D5000B2CE42 /* UIScrollView+ty_swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+ty_swizzle.h"; sourceTree = "<group>"; };
 		3B5C70F41F4E7D5000B2CE42 /* UIScrollView+ty_swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+ty_swizzle.m"; sourceTree = "<group>"; };
 		3B5C70F61F4E7D5000B2CE42 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
@@ -1946,6 +1948,9 @@
 		3BAE38E71F6696E600A391D8 /* HQliquidAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQliquidAnimationView.m; sourceTree = "<group>"; };
 		3BAE38E81F6696E600A391D8 /* HQliquidButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQliquidButton.h; sourceTree = "<group>"; };
 		3BAE38E91F6696E600A391D8 /* HQliquidButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQliquidButton.m; sourceTree = "<group>"; };
+		3BBBB5612113F2290088AB10 /* TBNoDataClickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBNoDataClickView.h; sourceTree = "<group>"; };
+		3BBBB5622113F22A0088AB10 /* TBNoDataClickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBNoDataClickView.m; sourceTree = "<group>"; };
+		3BBBB5642113F2530088AB10 /* TBNoDataClickView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TBNoDataClickView.xib; sourceTree = "<group>"; };
 		3BBBDEE31FECF2CF00BDF183 /* ProgressGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressGradientView.m; sourceTree = "<group>"; };
 		3BBBDEE41FECF2CF00BDF183 /* ProgressGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressGradientView.h; sourceTree = "<group>"; };
 		3BBCE1F11FCBAB9C00117771 /* TBFolkAppearanceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBFolkAppearanceView.h; sourceTree = "<group>"; };
@@ -2433,21 +2438,21 @@
 			path = tool;
 			sourceTree = "<group>";
 		};
-		3B5C70EA1F4E7D5000B2CE42 /* TYSlidePageScrollView */ = {
+		3B5C70EA1F4E7D5000B2CE42 /* TBSlidePageScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				3B5C70EB1F4E7D5000B2CE42 /* TYBasePageTabBar.h */,
-				3B5C70EC1F4E7D5000B2CE42 /* TYBasePageTabBar.m */,
-				3B5C70ED1F4E7D5000B2CE42 /* TYSlidePageScrollView.h */,
-				3B5C70EE1F4E7D5000B2CE42 /* TYSlidePageScrollView.m */,
-				3B5C70EF1F4E7D5000B2CE42 /* TYSlidePageScrollViewController.h */,
-				3B5C70F01F4E7D5000B2CE42 /* TYSlidePageScrollViewController.m */,
-				3B5C70F11F4E7D5000B2CE42 /* TYTitlePageTabBar.h */,
-				3B5C70F21F4E7D5000B2CE42 /* TYTitlePageTabBar.m */,
+				3B5C70EB1F4E7D5000B2CE42 /* TBBasePageTabBar.h */,
+				3B5C70EC1F4E7D5000B2CE42 /* TBBasePageTabBar.m */,
+				3B5C70ED1F4E7D5000B2CE42 /* TBSlidePageScrollView.h */,
+				3B5C70EE1F4E7D5000B2CE42 /* TBSlidePageScrollView.m */,
+				3B5C70EF1F4E7D5000B2CE42 /* TBSlidePageScrollViewController.h */,
+				3B5C70F01F4E7D5000B2CE42 /* TBSlidePageScrollViewController.m */,
+				3B5C70F11F4E7D5000B2CE42 /* TBTitlePageTabBar.h */,
+				3B5C70F21F4E7D5000B2CE42 /* TBTitlePageTabBar.m */,
 				3B5C70F31F4E7D5000B2CE42 /* UIScrollView+ty_swizzle.h */,
 				3B5C70F41F4E7D5000B2CE42 /* UIScrollView+ty_swizzle.m */,
 			);
-			path = TYSlidePageScrollView;
+			path = TBSlidePageScrollView;
 			sourceTree = "<group>";
 		};
 		3B5C70F51F4E7D5000B2CE42 /* WSDaePickerView */ = {
@@ -3505,6 +3510,9 @@
 				3B93D2B51F56A7720010FBD0 /* TBReviewTipsPopView.m */,
 				3B93D2B61F56A7720010FBD0 /* TBTaskSearchView.h */,
 				3B93D2B71F56A7720010FBD0 /* TBTaskSearchView.m */,
+				3BBBB5612113F2290088AB10 /* TBNoDataClickView.h */,
+				3BBBB5622113F22A0088AB10 /* TBNoDataClickView.m */,
+				3BBBB5642113F2530088AB10 /* TBNoDataClickView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -4001,7 +4009,7 @@
 				3B5C70C81F4E7D5000B2CE42 /* ScottCounter */,
 				3B5C70D21F4E7D5000B2CE42 /* SDCycleScrollView */,
 				3B5C70E21F4E7D5000B2CE42 /* tool */,
-				3B5C70EA1F4E7D5000B2CE42 /* TYSlidePageScrollView */,
+				3B5C70EA1F4E7D5000B2CE42 /* TBSlidePageScrollView */,
 				3B5C70F51F4E7D5000B2CE42 /* WSDaePickerView */,
 				3B5C70FF1F4E7D5000B2CE42 /* YBPopupMenu */,
 				3B5C71021F4E7D5000B2CE42 /* YPTabBarView */,
@@ -4618,6 +4626,7 @@
 				3B5C76461F4E7DA800B2CE42 /* TBTemplateLabelTableViewCell.xib in Resources */,
 				3B5C763E1F4E7DA800B2CE42 /* TBResourceLabelTableViewCell.xib in Resources */,
 				3B5C760C1F4E7DA800B2CE42 /* HomeHeaderView.xib in Resources */,
+				3BBBB5652113F2530088AB10 /* TBNoDataClickView.xib in Resources */,
 				3B7B00322064F9870039E1C1 /* IQKeyboardManager.bundle in Resources */,
 				3B5C76911F4E7DA800B2CE42 /* TBBusinessServiceTableViewCell.xib in Resources */,
 				3B5C76691F4E7DA800B2CE42 /* TBOfferDetailsViewController.xib in Resources */,
@@ -4952,7 +4961,7 @@
 				3B5C76051F4E7DA800B2CE42 /* TBHomeDataMode.m in Sources */,
 				3B5C75F31F4E7DA800B2CE42 /* TBRegisteredRegionView.m in Sources */,
 				3B5C73E51F4E7D5100B2CE42 /* ZXResult.m in Sources */,
-				3B5C73871F4E7D5100B2CE42 /* TYSlidePageScrollView.m in Sources */,
+				3B5C73871F4E7D5100B2CE42 /* TBSlidePageScrollView.m in Sources */,
 				3B5C742E1F4E7D5100B2CE42 /* ZXMultiFormatUPCEANReader.m in Sources */,
 				3BEB8C26201F034F00E4D688 /* TBPhotoChooseCollectionViewController.m in Sources */,
 				3B5C741B1F4E7D5100B2CE42 /* ZXRSSDataCharacter.m in Sources */,
@@ -5214,7 +5223,7 @@
 				3BAD86531FCFF26F00493C1A /* TZLocationManager.m in Sources */,
 				3B5C733F1F4E7D5100B2CE42 /* UIViewController+Prompt.m in Sources */,
 				3B5C733A1F4E7D5100B2CE42 /* UIImage+Thumbnail.m in Sources */,
-				3B5C73861F4E7D5100B2CE42 /* TYBasePageTabBar.m in Sources */,
+				3B5C73861F4E7D5100B2CE42 /* TBBasePageTabBar.m in Sources */,
 				3B5C76221F4E7DA800B2CE42 /* TBHistoricalDataUpload.m in Sources */,
 				3B5C74691F4E7D5100B2CE42 /* ZXQRCodeMultiReader.m in Sources */,
 				3B5C763D1F4E7DA800B2CE42 /* TBResourceLabelTableViewCell.m in Sources */,
@@ -5243,12 +5252,12 @@
 				3B5C742A1F4E7D5100B2CE42 /* ZXEANManufacturerOrgSupport.m in Sources */,
 				3B5C738C1F4E7D5100B2CE42 /* UIView+Extension.m in Sources */,
 				3B5C74431F4E7D5100B2CE42 /* ZXPDF417DetectionResultColumn.m in Sources */,
-				3B5C73891F4E7D5100B2CE42 /* TYTitlePageTabBar.m in Sources */,
+				3B5C73891F4E7D5100B2CE42 /* TBTitlePageTabBar.m in Sources */,
 				3B5C737A1F4E7D5100B2CE42 /* UIButton+ScottCounter.m in Sources */,
 				3B5C74151F4E7D5100B2CE42 /* ZXBitArrayBuilder.m in Sources */,
 				3BA9D60C2016E0E800439ADA /* TBVideoPlayerViewController.m in Sources */,
 				3B5C762C1F4E7DA800B2CE42 /* TBChoosePhotosTool.m in Sources */,
-				3B5C73881F4E7D5100B2CE42 /* TYSlidePageScrollViewController.m in Sources */,
+				3B5C73881F4E7D5100B2CE42 /* TBSlidePageScrollViewController.m in Sources */,
 				3B5C73DA1F4E7D5100B2CE42 /* ZXStringUtils.m in Sources */,
 				3B5C73731F4E7D5100B2CE42 /* MJPhotoToolbar.m in Sources */,
 				3B5C73811F4E7D5100B2CE42 /* SDCycleScrollView.m in Sources */,
@@ -5273,6 +5282,7 @@
 				3BAD72041FBD9AD500181864 /* TBGZEmployeesAddViewMode.m in Sources */,
 				3B5C743B1F4E7D5100B2CE42 /* ZXPDF417ECErrorCorrection.m in Sources */,
 				3B5C73F91F4E7D5100B2CE42 /* ZXDataMatrixX12Encoder.m in Sources */,
+				3BBBB5632113F22A0088AB10 /* TBNoDataClickView.m in Sources */,
 				3BA9D6042016E05F00439ADA /* JPVideoPlayerProgressView.m in Sources */,
 				3B5C76351F4E7DA800B2CE42 /* TBAdvantagesTableViewCell.m in Sources */,
 				3B5C741D1F4E7D5100B2CE42 /* ZXRSSPair.m in Sources */,

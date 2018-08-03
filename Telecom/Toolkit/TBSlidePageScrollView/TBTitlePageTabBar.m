@@ -1,21 +1,21 @@
 //
-//  TYTitlePageTabBar.m
-//  TYSlidePageScrollViewDemo
+//  TBTitlePageTabBar.m
+//  Telecom
 //
-//  Created by SunYong on 15/7/16.
-//  Copyright (c) 2015年 tanyang. All rights reserved.
+//  Created by 小腊 on 17/3/19.
+//  Copyright © 2017年 王小腊. All rights reserved.
 //
 
-#import "TYTitlePageTabBar.h"
+#import "TBTitlePageTabBar.h"
 
-@interface TYTitlePageTabBar ()
+@interface TBTitlePageTabBar ()
 @property (nonatomic, strong) NSArray *btnArray;
 @property (nonatomic, strong) UIButton *selectBtn;
 
 @property (nonatomic, weak) UIView *horIndicator;
 @end
 
-@implementation TYTitlePageTabBar
+@implementation TBTitlePageTabBar
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

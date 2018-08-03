@@ -19,11 +19,11 @@
 #import "TBTaskMakeViewController.h"
 #import "TBTemplateChooseCollectionViewController.h"
 #import "TBWebViewController.h"
-#import "UIScrollView+EmptyDataSet.h"
-#import "UIView+UIScreenDisplaying.h"
+#import "TBNoDataClickView.h"
+
 #import "WXApi.h"
 
-@interface TBTaskListTypeViewController ()<TBTaskListTableViewCellDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
+@interface TBTaskListTypeViewController ()<TBTaskListTableViewCellDelegate>
 
 @property (nonatomic, assign) NSInteger page;
 @property (nonatomic, strong) NSString *key;
@@ -34,6 +34,8 @@
 @property (nonatomic, strong) NSMutableArray <TBTaskListRoot*>*rootArray;
 @property (nonatomic, strong) UILabel *recordLabel;// 记录
 @property (nonatomic, strong) NSString *modelid;
+
+@property (nonatomic, strong) TBNoDataClickView *noDataView;
 @end
 
 @implementation TBTaskListTypeViewController
@@ -78,8 +80,10 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TBTaskListTableViewCell" bundle:nil] forCellReuseIdentifier:TBTaskListTableViewCellID];
     
-    self.tableView.emptyDataSetSource = self;
-    self.tableView.emptyDataSetDelegate = self;
+    self.noDataView = [TBNoDataClickView loadingNibConetenViewWithFrame:CGRectMake(0, 0, _SCREEN_WIDTH, _SCREEN_WIDTH)];
+    [self.tableView insertSubview:self.noDataView atIndex:999];
+    self.noDataView.center = CGPointMake(_SCREEN_WIDTH/2,_SCREEN_HEIGHT/2-50);
+    [self.noDataView.addClickButton addTarget:self action:@selector(noDataViewClickReloadTheData) forControlEvents:UIControlEventTouchUpInside];
     
     self.page = 1;
     self.key = @"";
@@ -107,6 +111,14 @@
     
     hudShowLoading(@"正在搜索");
     [self requestData];
+}
+
+/**
+ 无数据点击重新加载数据
+ */
+- (void)noDataViewClickReloadTheData
+{
+    [self.tableView.mj_header beginRefreshing];
 }
 /**
  *  重新加载数据
@@ -148,6 +160,7 @@
          weakSelf.isSearch = NO;
          [weakSelf.tableView.mj_header endRefreshing];
          [weakSelf.tableView.mj_footer endRefreshing];
+         [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
      }];
 }
 /**
@@ -189,6 +202,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        self.noDataView.hidden = self.rootArray.count > 0;
         [self.tableView reloadData];
     });
     
@@ -276,67 +290,7 @@
 {
     [self.view endEditing:YES];
 }
-#pragma mark ---DZNEmptyDataSetSource--
 
-- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
-{
-    NSString *text = nil;
-    UIFont *font = nil;
-    UIColor *textColor = nil;
-    
-    NSMutableDictionary *attributes = [NSMutableDictionary new];
-    
-    NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
-    paragraph.lineBreakMode = NSLineBreakByWordWrapping;
-    paragraph.alignment = NSTextAlignmentCenter;
-    
-    text = @"暂无数据可加载，点击加载";
-    font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17.75];
-    textColor = [UIColor grayColor];
-    paragraph.lineSpacing = 3.0;
-    
-    if (font) [attributes setObject:font forKey:NSFontAttributeName];
-    if (textColor) [attributes setObject:textColor forKey:NSForegroundColorAttributeName];
-    if (paragraph) [attributes setObject:paragraph forKey:NSParagraphStyleAttributeName];
-    
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:attributes];
-    
-    [attributedString addAttribute:NSForegroundColorAttributeName value:NAVIGATION_COLOR range:[attributedString.string rangeOfString:@"点击加载"]];
-    
-    return attributedString;
-}
-- (CGFloat)spaceHeightForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return 10.0f;
-}
-// 返回可点击按钮的 image
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
-{
-    return [UIImage imageNamed:@"sure_placeholder_error"];
-}
-- (UIImage *)buttonBackgroundImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
-{
-    NSString *imageName = @"sure_placeholder_error";
-    
-    if (state == UIControlStateNormal) imageName = [imageName stringByAppendingString:@"_normal"];
-    if (state == UIControlStateHighlighted) imageName = [imageName stringByAppendingString:@"_highlight"];
-    
-    UIEdgeInsets capInsets = UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0);
-    UIEdgeInsets rectInsets = UIEdgeInsetsZero;
-    
-    return [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:capInsets resizingMode:UIImageResizingModeStretch] imageWithAlignmentRectInsets:rectInsets];
-}
-#pragma mark ---DZNEmptyDataSetDelegate--
-
-// 处理按钮的点击事件
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapView:(UIView *)view;
-{
-    [self.tableView.mj_header beginRefreshing];
-}
-- (void)emptyDataSet:(UIScrollView *)scrollView didTapButton:(UIButton *)button;
-{
-    [self.tableView.mj_header beginRefreshing];
-}
 
 #pragma mark ---TBTaskListTableViewCellDelegate--
 /**

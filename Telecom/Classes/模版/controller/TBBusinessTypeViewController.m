@@ -99,7 +99,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    if (_SCREEN_HEIGHT == 812) {
+    if (KIsiPhoneX) {
         bottomFlot = 34;
     }
     self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];

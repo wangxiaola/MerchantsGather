@@ -10,7 +10,7 @@
 #import "TBTaskListTypeViewController.h"
 #import "TBAddMerchantsViewController.h"
 #import "TBTaskSearchView.h"
-#import "TYTitlePageTabBar.h"
+#import "TBTitlePageTabBar.h"
 #import "UIButton+ImageTitleStyle.h"
 #import "UIBarButtonItem+Custom.h"
 #import "AppDelegate.h"
@@ -54,7 +54,7 @@
     // Do any additional setup after loading the view.
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    if (@available(iOS 11.0, *)) {
+    if (KIsiPhoneX) {
         self.slidePageScrollView.pageTabBarStopOnTopHeight = 40.0f;
         self.navigationHieght = 84;
     } else {
@@ -124,7 +124,7 @@
 
 - (void)addTabPageMenu
 {
-    TYTitlePageTabBar *titlePageTabBar = [[TYTitlePageTabBar alloc]initWithTitleArray:@[@"已通过",@"未通过",@"待审核"]];
+    TBTitlePageTabBar *titlePageTabBar = [[TBTitlePageTabBar alloc]initWithTitleArray:@[@"已通过",@"未通过",@"待审核"]];
     titlePageTabBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.slidePageScrollView.frame), 44);
     titlePageTabBar.edgeInset = UIEdgeInsetsMake(0, 36, 0,36);
     titlePageTabBar.titleSpacing = 8;
@@ -135,7 +135,7 @@
 
 }
 
-- (void)slidePageScrollView:(TYSlidePageScrollView *)slidePageScrollView pageTabBarScrollOffset:(CGFloat)offset state:(TYPageTabBarState)state
+- (void)slidePageScrollView:(TBSlidePageScrollView *)slidePageScrollView pageTabBarScrollOffset:(CGFloat)offset state:(TBPageTabBarState)state
 {
     [self.view endEditing:YES];
 }
@@ -153,12 +153,12 @@
 }
 #pragma mark --TYDisplayPageScrollViewDelegate--
 // pageIndex horizen滚动,当指数变化将调用
-- (void)slidePageScrollView:(TYSlidePageScrollView *)slidePageScrollView horizenScrollToPageIndex:(NSInteger)index;
+- (void)slidePageScrollView:(TBSlidePageScrollView *)slidePageScrollView horizenScrollToPageIndex:(NSInteger)index;
 {
 
 }
 // horizen滚动时调用滚动视图嘎然而止
-- (void)slidePageScrollView:(TYSlidePageScrollView *)slidePageScrollView horizenScrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+- (void)slidePageScrollView:(TBSlidePageScrollView *)slidePageScrollView horizenScrollViewDidEndDecelerating:(UIScrollView *)scrollView;
 {
 
 

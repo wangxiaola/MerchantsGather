@@ -1,19 +1,20 @@
 //
-//  TYSlidePageScrollView.m
-//  TYSlidePageScrollViewDemo
+//  TBSlidePageScrollView.m
+//  Telecom
 //
-//  Created by tanyang on 15/7/16.
-//  Copyright (c) 2015年 tanyang. All rights reserved.
+//  Created by 小腊 on 17/3/19.
+//  Copyright © 2017年 王小腊. All rights reserved.
 //
 
-#import "TYSlidePageScrollView.h"
+
+#import "TBSlidePageScrollView.h"
 #import "UIScrollView+ty_swizzle.h"
 
-@interface TYBasePageTabBar ()
-@property (nonatomic, weak) id<TYBasePageTabBarPrivateDelegate> praviteDelegate;
+@interface TBBasePageTabBar ()
+@property (nonatomic, weak) id<TBBasePageTabBarPrivateDelegate> praviteDelegate;
 @end
 
-@interface TYSlidePageScrollView ()<UIScrollViewDelegate,TYBasePageTabBarPrivateDelegate>{
+@interface TBSlidePageScrollView ()<UIScrollViewDelegate,TBBasePageTabBarPrivateDelegate>{
     struct {
         unsigned int horizenScrollToPageIndex   :1;
         unsigned int horizenScrollViewDidScroll :1;
@@ -38,7 +39,7 @@
 
 @end
 
-@implementation TYSlidePageScrollView
+@implementation TBSlidePageScrollView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -109,7 +110,7 @@
     }
 }
 
-- (void)setDelegate:(id<TYSlidePageScrollViewDelegate>)delegate
+- (void)setDelegate:(id<TBSlidePageScrollViewDelegate>)delegate
 {
     _delegate = delegate;
     
@@ -506,7 +507,7 @@
         if (_headerContentYConstraint.constant != 0) {
             _headerContentYConstraint.constant = 0;
             if (_delegateFlags.pageTabBarScrollOffset) {
-                [_delegate slidePageScrollView:self pageTabBarScrollOffset:offsetY state:TYPageTabBarStateStopOnButtom];
+                [_delegate slidePageScrollView:self pageTabBarScrollOffset:offsetY state:TBPageTabBarStateStopOnButtom];
             }
         }
         if (_parallaxHeaderEffect) {
@@ -524,7 +525,7 @@
         _headerContentYConstraint.constant = -(offsetY+_headerContentViewHeight);
         
         if (_delegateFlags.pageTabBarScrollOffset) {
-            [_delegate slidePageScrollView:self pageTabBarScrollOffset:offsetY state:TYPageTabBarStateScrolling];
+            [_delegate slidePageScrollView:self pageTabBarScrollOffset:offsetY state:TBPageTabBarStateScrolling];
         }
         
         if (isNeedChange) {
@@ -541,7 +542,7 @@
             _headerContentYConstraint.constant = -_headerContentViewHeight+pageTabBarHieght + pageTabBarIsStopOnTop;
 
             if (_delegateFlags.pageTabBarScrollOffset) {
-                [_delegate slidePageScrollView:self pageTabBarScrollOffset:offsetY state:TYPageTabBarStateStopOnTop];
+                [_delegate slidePageScrollView:self pageTabBarScrollOffset:offsetY state:TBPageTabBarStateStopOnTop];
             }
         }
         
@@ -558,7 +559,7 @@
     }
 }
 
-- (void)basePageTabBar:(TYBasePageTabBar *)basePageTabBar clickedPageTabBarAtIndex:(NSInteger)index
+- (void)basePageTabBar:(TBBasePageTabBar *)basePageTabBar clickedPageTabBarAtIndex:(NSInteger)index
 {
     [self scrollToPageIndex:index animated:NO];
 }
