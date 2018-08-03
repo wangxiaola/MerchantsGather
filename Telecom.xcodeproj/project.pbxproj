@@ -4444,7 +4444,6 @@
 				3B8BA1621DF106620007027F /* Frameworks */,
 				3B8BA1631DF106620007027F /* Resources */,
 				8A81C710BE07BE85940691AE /* [CP] Embed Pods Frameworks */,
-				44C4E835C6556CC49C7DE4C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -4508,7 +4507,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -4650,21 +4649,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		44C4E835C6556CC49C7DE4C6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Telecom/Pods-Telecom-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5F55B6DF9720E2EE8307C9D3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -68,6 +68,11 @@
 	<string>是否允许此App访问你的媒体资料库？</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>是否允许此App使用语音识别？</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

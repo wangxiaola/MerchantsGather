@@ -9,6 +9,6 @@ pod 'SDWebImage'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'FMDB'
-pod 'JPush'
+pod 'JPush', '3.0.2'
 pod 'SCRecorder'
 end

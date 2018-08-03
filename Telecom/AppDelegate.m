@@ -43,7 +43,6 @@ static BOOL isProduction = YES;
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    
     // 初始化微信
     [self initSDK];
     [self startWebView];
@@ -78,6 +77,7 @@ static BOOL isProduction = YES;
     }
     
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    
     
     //如不需要使用IDFA，advertisingIdentifier 可为nil
     [JPUSHService setupWithOption:launchOptions appKey:appKey
@@ -146,7 +146,6 @@ static BOOL isProduction = YES;
     NSNotification * notice = [NSNotification notificationWithName:@"VoiceStopNotice" object:nil];
     //发送消息
     [[NSNotificationCenter defaultCenter] postNotification:notice];
-    
 }
 
 - (void)application:(UIApplication *)application
